@@ -17,6 +17,17 @@ export default function GalleryDisplayer({ title, pages }: any) {
   };
 
   console.log(pages);
+
+  const next = () => {
+    if (pages && pages.length > 0) {
+      setP(Math.min(p + 1, pages.length - 1));
+    }
+  };
+  const prev = () => {
+    if (pages && pages.length > 0) {
+      setP(Math.max(p - 1, 0));
+    }
+  };
   return (
     <main id="gallery-displayer">
       <section id="gd-head" className="confine">
@@ -33,6 +44,7 @@ export default function GalleryDisplayer({ title, pages }: any) {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className="btn btn-page"
+              onClick={prev}
             >
               <path
                 d="M43 50.2487L0.999998 26L43 1.7513L43 50.2487Z"
@@ -40,7 +52,9 @@ export default function GalleryDisplayer({ title, pages }: any) {
                 stroke="#D9D9D9"
               />
             </svg>
-            <p>1/35</p>
+            <p>
+              {p + 1}/{pages.length}
+            </p>
             <svg
               width="44"
               height="52"
@@ -48,6 +62,7 @@ export default function GalleryDisplayer({ title, pages }: any) {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className="btn btn-page r"
+              onClick={next}
             >
               <path
                 d="M43 50.2487L0.999998 26L43 1.7513L43 50.2487Z"
