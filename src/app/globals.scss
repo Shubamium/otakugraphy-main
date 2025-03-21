@@ -1,0 +1,79 @@
+:root {
+  --dgold: #c7a654;
+}
+
+html,
+body {
+  // max-width: 100vw;
+  // overflow-x: hidden;
+  // background: linear-gradient(to bottom, #121211, #11100f);
+}
+
+main {
+  min-height: 100vh;
+}
+
+@keyframes speen {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}
+button {
+  padding: 0;
+  outline: none;
+  border: none;
+  background: none;
+  text-decoration: none;
+  color: black;
+}
+.btn {
+  cursor: pointer;
+  transition: all 200ms ease;
+  &:hover {
+    scale: 1.05;
+  }
+  &:active {
+    scale: 0.95;
+  }
+}
+
+body {
+  // font-family: Arial, Helvetica, sans-serif;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(#20201e, #11100f), url("/bg/noise.png");
+  background-blend-mode: multiply;
+  background-size: 500px;
+  // background-repeat: no-repeat;
+  font-family: var(--fontM);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--fontO);
+}
+p {
+  font-family: var(--fontM);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.confine {
+  margin: 0 auto;
+  max-width: min(95%, 1200px);
+}

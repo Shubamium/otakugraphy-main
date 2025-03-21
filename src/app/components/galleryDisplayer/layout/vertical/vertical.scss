@@ -1,0 +1,17 @@
+#gd_vertical {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  max-width: 90%;
+  margin: 0 auto;
+  gap: 2em;
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    .media {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
