@@ -53,7 +53,7 @@ export default function GalleryDisplayer({ title, pages }: any) {
               />
             </svg>
             <p>
-              {p + 1}/{pages.length}
+              {p + 1}/{pages ? pages.length : 0}
             </p>
             <svg
               width="44"
