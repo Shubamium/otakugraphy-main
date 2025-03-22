@@ -5,6 +5,7 @@ import { Zen_Kaku_Gothic_New } from "next/font/google";
 import "./globals.scss";
 import { CSSProperties } from "react";
 import Header from "./components/header/Header";
+import MediaDetail from "./components/mediaDetail/MediaDetail";
 
 const noto = Noto_Sans_JP({
   variable: "--fontM",
@@ -44,6 +45,7 @@ export default function RootLayout({
       >
         {children}
         <Header />
+        <MediaDetail />
       </body>
     </html>
   );

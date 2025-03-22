@@ -1,10 +1,21 @@
+"use client";
 import { urlFor } from "@/app/db/sanity";
 import "./media.scss";
 type Props = {};
 
 export default function Media({ data }: any) {
   return (
-    <div className="media">
+    <div
+      className="media"
+      onClick={() => {
+        const mdEvent = new CustomEvent("md", {
+          detail: {
+            ...data,
+          },
+        });
+        window.dispatchEvent(mdEvent);
+      }}
+    >
       {data.type === "image" && data.image && (
         <img
           src={urlFor(data.image).auto("format").url()}
@@ -22,6 +33,7 @@ export default function Media({ data }: any) {
           autoPlay
           muted
           controls
+          loop
         />
       )}
     </div>
