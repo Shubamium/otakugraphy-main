@@ -6,7 +6,9 @@ import "./globals.scss";
 import { CSSProperties } from "react";
 import Header from "./components/header/Header";
 import MediaDetail from "./components/mediaDetail/MediaDetail";
-
+import Scroll from "./Scroll";
+import ReactLenis, { Lenis } from "lenis/react";
+import "lenis/dist/lenis.css";
 const noto = Noto_Sans_JP({
   variable: "--fontM",
   subsets: ["latin"],
@@ -43,9 +45,11 @@ export default function RootLayout({
           } as CSSProperties
         }
       >
-        {children}
-        <Header />
-        <MediaDetail />
+        <ReactLenis options={{ autoRaf: true }} root>
+          {children}
+          <Header />
+          <MediaDetail />
+        </ReactLenis>
       </body>
     </html>
   );
