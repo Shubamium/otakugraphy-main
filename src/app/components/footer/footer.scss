@@ -1,0 +1,90 @@
+#footer {
+  height: 600px;
+  background: linear-gradient(to bottom, #212121, #1a1a1a);
+  border-top: 4px solid var(--dgold);
+
+  .confine {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 2em;
+    height: 100%;
+    .fh {
+      font-size: 2.5rem;
+      color: var(--dgold);
+      letter-spacing: -2px;
+      font-family: var(--fontM);
+      margin-bottom: 1em;
+    }
+    .l {
+      text-align: right;
+      padding: 2em 0;
+      padding-left: 3em;
+      .fn {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.5em;
+        .btn-fn {
+          background: #141414;
+          color: var(--dgold);
+          border-bottom: 1px solid transparent;
+          font-size: 1.2rem;
+          padding: 0.2em 1em;
+          transition: all 250ms ease;
+          text-transform: uppercase;
+          font-weight: bold;
+          width: 100%;
+          transition: all 200ms ease;
+          max-width: 100%;
+          &:hover {
+            max-width: 90%;
+            border-bottom: 1px solid var(--dgold);
+          }
+        }
+      }
+    }
+
+    .c {
+      padding-top: 100px;
+      background: url("/bg/footer-bg.png");
+      background-size: cover;
+      object-fit: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0px 0px 42px 10px rgba(0, 0, 0, 0.254);
+      .logo {
+        width: 80%;
+        margin: 0 auto;
+      }
+      .lens-scl {
+        margin-top: 1em;
+      }
+    }
+
+    .r {
+      padding: 4em 0;
+      p {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.51);
+      }
+
+      .btn-scroll {
+        background: black;
+        color: var(--dgold);
+        border: 2px solid var(--dgold);
+        font-weight: bold;
+        padding: 0.25em 1em;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 80%;
+        margin-top: 4em;
+      }
+      .attribution {
+        opacity: 0.8;
+        margin-top: 2em;
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 #page_home {
-  min-height: 8000px;
+  margin-bottom: 200px;
   #banner-h {
     display: flex;
     justify-content: center;
@@ -470,7 +470,9 @@
     }
 
     .p-l {
-      background: #202020;
+      background: #121111 url("/bg/wave.png");
+      box-shadow: 0px 0px 24px 14px black;
+      // background-blend-mode: multiply;
       min-height: 500px;
       margin-top: 1em;
       padding: 2cqi 0;

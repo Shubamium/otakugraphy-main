@@ -9,6 +9,8 @@ import MediaDetail from "./components/mediaDetail/MediaDetail";
 import Scroll from "./Scroll";
 import ReactLenis, { Lenis } from "lenis/react";
 import "lenis/dist/lenis.css";
+import Footer from "./components/footer/Footer";
+import SideContact from "./components/sideContact/SideContact";
 const noto = Noto_Sans_JP({
   variable: "--fontM",
   subsets: ["latin"],
@@ -46,9 +48,12 @@ export default function RootLayout({
         }
       >
         <ReactLenis options={{ autoRaf: true }} root>
+          <div id="top"></div>
+          <SideContact />
           {children}
           <Header />
           <MediaDetail />
+          <Footer />
         </ReactLenis>
       </body>
     </html>
