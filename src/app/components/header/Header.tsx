@@ -15,17 +15,18 @@ export default function Header({}: Props) {
         <img src="/gfx/logo.png" alt="" />
       </Link>
       <nav id="main-nav">
-        <Link href={"/nightlife"} className="btn btn-nav">
-          <img src="/gfx/nightlife.png" alt="" />
-        </Link>
         <Link href={"/conventions"} className="btn btn-nav">
           <img src="/gfx/conventions.png" alt="" />
+        </Link>
+
+        <Link href={"/brands"} className="btn btn-nav">
+          <img src="/gfx/brands.png" alt="" />
         </Link>
         <Link href={"/vtubers"} className="btn btn-nav">
           <img src="/gfx/vtubers.png" alt="" />
         </Link>
-        <Link href={"/brands"} className="btn btn-nav">
-          <img src="/gfx/brands.png" alt="" />
+        <Link href={"/nightlife"} className="btn btn-nav">
+          <img src="/gfx/nightlife.png" alt="" />
         </Link>
         <Link href={"/contact"} className="btn btn-nav">
           <img src="/gfx/contactus.png" alt="" />

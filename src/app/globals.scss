@@ -44,8 +44,8 @@ button {
 
 body {
   // font-family: Arial, Helvetica, sans-serif;
-  // -webkit-font-smoothing: antialiased;
-  // -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(#20201e, #11100f), url("/bg/noise.png");
   background-blend-mode: multiply;
   background-size: 500px;
