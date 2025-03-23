@@ -1,21 +1,53 @@
+"use client";
 import { HiPaperAirplane } from "react-icons/hi";
 import "./contact.scss";
 import { GoPaperAirplane } from "react-icons/go";
+import { LuLoaderPinwheel } from "react-icons/lu";
+import { useState } from "react";
+import { sendMail } from "../db/mail";
 
 type Props = {};
 
 export default function page({}: Props) {
+  const [l, setL] = useState(false);
+
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState<string | null>(null);
+  const [mail, setMail] = useState<string>("");
+  const [subject, setSubject] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+
+  const submit = async () => {
+    setL(true);
+    const res = await sendMail(name, mail, phone, subject, message);
+
+    if (res) {
+      alert("Your message has been submitted successfully!");
+    } else {
+      alert("Error, something went wrong");
+    }
+
+    setL(false);
+  };
   return (
     <main id="page_contact">
       <div className="bgtop"></div>
-
+      <div className={"ct-loading " + (l ? "v" : " h")}>
+        <LuLoaderPinwheel />
+      </div>
       <section className="ct-heading">
         <img src="/gfx/logo.png" alt="" className="logo" />
       </section>
 
       <section className="ct-form">
         <div className="confine">
-          <form className="ct-panel">
+          <form
+            className="ct-panel"
+            onSubmit={(e) => {
+              e.preventDefault();
+              submit();
+            }}
+          >
             <div className="l">
               <img src="/bg/about-side.png" alt="" />
             </div>
@@ -29,6 +61,10 @@ export default function page({}: Props) {
                   name="name"
                   required
                   placeholder="Write your name here..."
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
                 />
               </div>
               <div className="ff">
@@ -38,13 +74,25 @@ export default function page({}: Props) {
                   name="email"
                   required
                   placeholder="your_email@mail.com"
+                  value={mail}
+                  onChange={(e) => {
+                    setMail(e.target.value);
+                  }}
                 />
               </div>
               <div className="ff">
                 <label htmlFor="phone">
                   PHONE NUMBER <span className="op">(optional)</span>
                 </label>
-                <input type="tel" name="phone" placeholder="+1 (123) 456 789" />
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="+1 (123) 456 789"
+                  value={phone ?? ""}
+                  onChange={(e) => {
+                    setPhone(e.target.value);
+                  }}
+                />
               </div>
               <div className="ff">
                 <label htmlFor="sub">Subject</label>
@@ -52,6 +100,10 @@ export default function page({}: Props) {
                   type="text"
                   name="sub"
                   required
+                  value={subject}
+                  onChange={(e) => {
+                    setSubject(e.target.value);
+                  }}
                   placeholder="Write the subject here..."
                 />
               </div>
@@ -61,11 +113,15 @@ export default function page({}: Props) {
                   name="message"
                   id="message"
                   placeholder="Write your message here. . ."
+                  value={message}
+                  onChange={(e) => {
+                    setMessage(e.target.value);
+                  }}
                 ></textarea>
               </div>
 
               <div className="action">
-                <button className="btn btn-send">
+                <button className="btn btn-send" type="submit">
                   <span>SEND</span>
                   <GoPaperAirplane />
                 </button>
