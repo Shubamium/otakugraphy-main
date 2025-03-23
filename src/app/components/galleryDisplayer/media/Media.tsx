@@ -1,9 +1,11 @@
 "use client";
 import { urlFor } from "@/app/db/sanity";
 import "./media.scss";
-type Props = {};
+type Props = {
+  data?: any;
+};
 
-export default function Media({ data }: any) {
+export default function Media({ data }: Props) {
   return (
     <div
       className="media"

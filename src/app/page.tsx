@@ -3,6 +3,7 @@ import Media from "./components/galleryDisplayer/media/Media";
 import "./home.scss";
 import { FaArrowRightLong } from "react-icons/fa6";
 import PartnershipSlide from "./components/partnershipSlide/PartnershipSlide";
+import { fetchData } from "./db/sanity";
 
 const conventionPartners = [
   "/gfx/p/c1.png",
@@ -42,7 +43,23 @@ const nightlifePartners = [
   "/gfx/p/n/n3.png",
   "/gfx/p/n/n4.png",
 ];
-export default function Home() {
+export default async function Home() {
+  const gd = await fetchData<any>(`
+		*[_type == 'general' && preset == 'main']{
+			...,
+			cm[]{
+				name,
+				ml[] ->{
+					...,
+					'video': video.asset -> url
+				}
+			},
+			hlm[] ->
+		}[0]
+	`);
+
+  console.log(gd);
+  const hlm = gd?.hlm ?? null;
   return (
     <main id="page_home">
       <section id="banner-h">
@@ -59,25 +76,25 @@ export default function Home() {
           </div>
           <div className="images">
             <div className="l">
-              <Media />
+              <Media data={hlm[0]} />
             </div>
             <div className="c">
               <div className="t">
-                <Media />
-                <Media />
+                <Media data={hlm[1]} />
+                <Media data={hlm[2]} />
               </div>
               <div className="b">
-                <Media />
+                <Media data={hlm[3]} />
               </div>
             </div>
             <div className="r">
-              <Media />
+              <Media data={hlm[4]} />
             </div>
           </div>
 
           <div className="videos">
-            <Media />
-            <Media />
+            <Media data={hlm[5]} />
+            <Media data={hlm[6]} />
           </div>
         </div>
       </section>
@@ -109,22 +126,29 @@ export default function Home() {
       </section>
 
       <section id="category">
-        <div className="category-row">
-          <Link href={"/conventions"} className="cr-h">
-            <h2> CONVENTIONS</h2>
-            <p className="footer">
-              <span>
-                VIEW MORE <FaArrowRightLong />
-              </span>
-            </p>
-          </Link>
-          <div className="cr-l">
-            <Media />
-            <Media />
-            <Media />
-          </div>
-        </div>
-        <div className="category-row">
+        {gd &&
+          gd.cm &&
+          gd.cm.map((cr: any, i: number) => {
+            return (
+              <div className="category-row" key={cr._key + "" + i}>
+                <Link href={"/" + cr.name} className="cr-h">
+                  <h2> {cr.name} </h2>
+                  <p className="footer">
+                    <span>
+                      VIEW MORE <FaArrowRightLong />
+                    </span>
+                  </p>
+                </Link>
+                <div className="cr-l">
+                  {cr.ml &&
+                    cr.ml.map((md: any, i: number) => {
+                      return <Media key={md._key + "id" + i} data={md} />;
+                    })}
+                </div>
+              </div>
+            );
+          })}
+        {/* <div className="category-row">
           <Link href={"/brands"} className="cr-h">
             <h2> BRANDS</h2>
             <p className="footer">
@@ -170,7 +194,7 @@ export default function Home() {
             <Media />
             <Media />
           </div>
-        </div>
+        </div> */}
       </section>
 
       <section id="about">
