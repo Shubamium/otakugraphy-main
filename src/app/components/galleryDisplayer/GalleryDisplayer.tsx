@@ -2,18 +2,21 @@
 import React, { useState } from "react";
 import "./galleryDisplayer.scss";
 import Vertical from "./layout/vertical/Vertical";
+import Horizontal from "./layout/horizontal/Horizontal";
 type Props = {};
 
-const layoutList = {
-  vertical: <Vertical />,
-  horizontal: <Vertical />,
-  fixedA: <Vertical />,
-};
 export default function GalleryDisplayer({ title, pages }: any) {
   const [p, setP] = useState(0);
 
   const renderPage = (pageData: any) => {
-    return <Vertical ml={pageData.ml} />;
+    switch (pageData.lt) {
+      case "vertical":
+        return <Vertical ml={pageData.ml} />;
+      case "horizontal":
+        return <Horizontal ml={pageData.ml} />;
+      default:
+        return <Vertical ml={pageData.ml} />;
+    }
   };
 
   console.log(pages);

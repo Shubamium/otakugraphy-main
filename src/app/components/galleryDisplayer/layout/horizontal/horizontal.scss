@@ -1,0 +1,39 @@
+#gd_horizontal {
+  // display: grid;
+  // grid-template-columns: repeat(4, 1fr);
+
+  // max-width: 90%;
+  // margin: 0 auto;
+  // display: flex;
+  // flex-direction: column;
+  // height: 900px;
+  // width: 90%;
+  // overflow-x: scroll;
+  // // background: red;
+  // gap: 1em;
+  // .col {
+  //   display: flex;
+  //   gap: 1vw;
+  //   height: 250px;
+
+  //   flex-wrap: wrap;
+  //   .media {
+  //     height: 100%;
+  //     width: auto;
+  //   }
+  // }
+
+  .list {
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 0 auto;
+    // background: white;
+    min-height: 900px;
+    .media {
+      height: 250px;
+      width: auto;
+    }
+  }
+}
