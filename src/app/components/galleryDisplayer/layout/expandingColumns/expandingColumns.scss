@@ -1,0 +1,27 @@
+#twoCol {
+  .list {
+    max-width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-shrink: 1;
+    .media {
+      height: 70vh;
+      transition: all 450ms ease;
+      width: 100%;
+
+      .video {
+        object-fit: cover;
+      }
+    }
+    &:has(:hover) {
+      .media:hover {
+        transition: all 350ms ease;
+        width: 100%;
+      }
+      .media:not(:hover) {
+        width: 8%;
+        transition: all 1550ms linear;
+      }
+    }
+  }
+}

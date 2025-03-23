@@ -25,14 +25,16 @@
 
   .list {
     display: flex;
-    gap: 2em;
+    gap: 1em;
     flex-wrap: wrap;
     width: 90%;
     margin: 0 auto;
     // background: white;
     min-height: 900px;
+    flex-grow: 1;
+    justify-content: left;
     .media {
-      height: 250px;
+      height: 280px;
       width: auto;
     }
   }

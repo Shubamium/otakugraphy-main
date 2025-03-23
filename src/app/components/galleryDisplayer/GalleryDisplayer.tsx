@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import "./galleryDisplayer.scss";
 import Vertical from "./layout/vertical/Vertical";
 import Horizontal from "./layout/horizontal/Horizontal";
+import TwoColumns from "./layout/twoColumns/TwoColumns";
+import ExpandingColumns from "./layout/expandingColumns/ExpandingColumns";
 type Props = {};
 
 export default function GalleryDisplayer({ title, pages }: any) {
@@ -14,6 +16,10 @@ export default function GalleryDisplayer({ title, pages }: any) {
         return <Vertical ml={pageData.ml} />;
       case "horizontal":
         return <Horizontal ml={pageData.ml} />;
+      case "twoColumns":
+        return <TwoColumns ml={pageData.ml} />;
+      case "exCols":
+        return <ExpandingColumns ml={pageData.ml} />;
       default:
         return <Vertical ml={pageData.ml} />;
     }
