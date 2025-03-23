@@ -18,6 +18,15 @@
   &.h {
     transform: translateY(100%);
   }
+
+  .d-side {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 100%;
+    left: -19px;
+    right: 0%;
+  }
   .logo {
     background: #181717;
     display: flex;
