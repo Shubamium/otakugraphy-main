@@ -9,12 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "blurhash": "^2.0.5",
+    "exif-js": "^2.3.0",
     "lenis": "^1.2.3",
     "motion": "^12.5.0",
     "next": "15.2.3",
     "next-sanity": "^9.9.5",
     "nodemailer": "^6.10.0",
     "react": "^19.0.0",
+    "react-blurhash": "^0.3.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
     "react-use-measure": "^2.1.7",

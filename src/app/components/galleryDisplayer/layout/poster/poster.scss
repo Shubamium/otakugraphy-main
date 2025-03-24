@@ -1,0 +1,17 @@
+#poster {
+  .list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    max-width: 90%;
+    margin: 0 auto;
+    gap: 2em;
+    // align-items: center;
+    justify-content: center;
+    .media {
+      height: 400px;
+      .video {
+        object-fit: cover;
+      }
+    }
+  }
+}

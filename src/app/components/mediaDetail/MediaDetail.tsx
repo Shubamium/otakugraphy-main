@@ -2,6 +2,7 @@
 import { urlFor } from "@/app/db/sanity";
 import "./mediaDetail.scss";
 import React, { useEffect, useState } from "react";
+import { Blurhash } from "react-blurhash";
 
 type Props = {};
 
@@ -17,6 +18,7 @@ export default function MediaDetail({}: Props) {
     window.addEventListener("md", (data: any) => {
       console.log(data.detail);
       setV(true);
+
       setActiveMd(data.detail);
     });
   }, []);
@@ -35,6 +37,7 @@ export default function MediaDetail({}: Props) {
         {activeMd && activeMd.type == "image" && (
           <img
             src={urlFor(activeMd.image).auto("format").url()}
+            id="view"
             className="img"
           />
         )}

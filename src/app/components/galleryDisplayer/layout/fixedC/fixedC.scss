@@ -1,0 +1,23 @@
+#fixedC {
+  margin-bottom: 300px;
+  --gap: 1.8em;
+  .list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 600px;
+    max-width: 90%;
+    margin: 0 auto;
+    gap: var(--gap);
+    margin-top: 50px;
+
+    .media {
+      height: 100%;
+      width: 100%;
+    }
+    .c {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: var(--gap);
+    }
+  }
+}

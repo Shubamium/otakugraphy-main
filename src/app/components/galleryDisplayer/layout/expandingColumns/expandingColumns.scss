@@ -15,7 +15,7 @@
     }
     &:has(:hover) {
       .media:hover {
-        transition: all 350ms ease;
+        transition: all 350ms linear;
         width: 100%;
       }
       .media:not(:hover) {

@@ -11,6 +11,8 @@ import ReactLenis, { Lenis } from "lenis/react";
 import "lenis/dist/lenis.css";
 import Footer from "./components/footer/Footer";
 import SideContact from "./components/sideContact/SideContact";
+import Script from "next/script";
+import EXIF from "exif-js";
 const noto = Noto_Sans_JP({
   variable: "--fontM",
   subsets: ["latin"],

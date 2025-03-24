@@ -1,0 +1,30 @@
+#fixedA {
+  margin-bottom: 300px;
+  .list {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    height: 600px;
+    max-width: 90%;
+    margin: 0 auto;
+    gap: 1em;
+    margin-top: 50px;
+    .media {
+      height: 100%;
+      width: 100%;
+    }
+    .r {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      flex-grow: 1;
+      .t,
+      .b {
+        display: grid;
+        height: 100%;
+        width: 100%;
+        gap: 1em;
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+}

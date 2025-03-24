@@ -5,6 +5,11 @@ import Vertical from "./layout/vertical/Vertical";
 import Horizontal from "./layout/horizontal/Horizontal";
 import TwoColumns from "./layout/twoColumns/TwoColumns";
 import ExpandingColumns from "./layout/expandingColumns/ExpandingColumns";
+import Poster from "./layout/poster/Poster";
+import FixedA from "./layout/fixedA/FIxedA";
+import FixedB from "./layout/fixedB/FIxedB";
+import FixedC from "./layout/fixedC/FixedC";
+import FixedD from "./layout/fixedD/FixedD";
 type Props = {};
 
 export default function GalleryDisplayer({ title, pages }: any) {
@@ -17,9 +22,19 @@ export default function GalleryDisplayer({ title, pages }: any) {
       case "horizontal":
         return <Horizontal ml={pageData.ml} />;
       case "twoColumns":
-        return <TwoColumns ml={pageData.ml} />;
+        return <FixedD ml={pageData.ml} />;
       case "exCols":
         return <ExpandingColumns ml={pageData.ml} />;
+      case "34poster":
+        return <Poster ml={pageData.ml} />;
+      case "fixedA":
+        return <FixedA ml={pageData.ml} />;
+      case "fixedB":
+        return <FixedB ml={pageData.ml} />;
+      case "fixedC":
+        return <FixedC ml={pageData.ml} />;
+      case "fixedD":
+        return <FixedD ml={pageData.ml} />;
       default:
         return <Vertical ml={pageData.ml} />;
     }

@@ -19,7 +19,8 @@ export default async function Page({ params }: Props) {
 				...,
 				ml[] -> {
 					...,
-					'video': video.asset -> url
+					'video': video.asset -> url,
+					'metadata': image.asset -> metadata
 				}
 			}
 	}[0]
