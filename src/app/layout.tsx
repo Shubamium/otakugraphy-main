@@ -28,9 +28,47 @@ const zen = Zen_Kaku_Gothic_New({
   weight: ["400", "700"],
 });
 
+const title = "Otakugraphy";
+const description = "a";
+const banner = "";
+const url = "https://otakugraphy.com";
+
 export const metadata: Metadata = {
-  title: "Otakugraphy",
-  description: "aaaa",
+  title: title,
+
+  metadataBase: new URL(url),
+  openGraph: {
+    url: url,
+    title: title,
+    description: description,
+    authors: "shubamium",
+    images: [banner],
+  },
+  twitter: {
+    title: title,
+    card: "summary_large_image",
+    images: [banner],
+  },
+  keywords: [
+    "live2d",
+    "art",
+    "artist",
+    "illustrations",
+    "vtuber",
+    "vtubers",
+    "commission",
+    "commissions",
+    "rig",
+    "model",
+    "rigging",
+    "stream",
+    "design",
+  ],
+  description: description,
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+  },
 };
 
 export default function RootLayout({

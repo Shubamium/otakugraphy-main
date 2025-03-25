@@ -3,6 +3,9 @@ import { urlFor } from "@/app/db/sanity";
 import "./media.scss";
 import { useEffect, useState } from "react";
 import { Blurhash } from "react-blurhash";
+import { BiFullscreen } from "react-icons/bi";
+import { RxEnterFullScreen } from "react-icons/rx";
+import { HiInformationCircle } from "react-icons/hi";
 type Props = {
   data?: any;
 };
@@ -45,17 +48,23 @@ export default function Media({ data }: Props) {
             </>
           )}
           {data.type === "video" && data.video && (
-            <video
-              src={data.video}
-              className="video"
-              playsInline
-              disablePictureInPicture
-              disableRemotePlayback
-              autoPlay
-              muted
-              controls
-              loop
-            />
+            <>
+              <button className="btn btn-vfs">
+                {" "}
+                <HiInformationCircle />{" "}
+              </button>
+              <video
+                src={data.video}
+                className="video"
+                playsInline
+                disablePictureInPicture
+                disableRemotePlayback
+                autoPlay
+                muted
+                controls
+                loop
+              />
+            </>
           )}
         </>
       )}

@@ -58,7 +58,11 @@ export default function MediaDetail({}: Props) {
       <div className="detail-bar">
         <div className="warn">
           <p>Press anywhere to close . . .</p>
-          <p> © Copyright 2025 Otakugraphy All rights reserved</p>
+          <p>
+            {" "}
+            © 2024 Otakugrahy LLC. All images and trademarks are the property
+            of their respective owners.
+          </p>
         </div>
         <div className="detail">
           {activeMd && activeMd.gd && (
@@ -69,8 +73,16 @@ export default function MediaDetail({}: Props) {
               </div>
               <div className="col">
                 <h2>{activeMd.gd.e}</h2>
+                <p>{activeMd.gd.c}</p>
               </div>
-
+              {activeMd.gd.clink && (
+                <div className="col">
+                  <h2>Collections:</h2>
+                  <a href={activeMd.gd.clink} target="_blank">
+                    {activeMd.gd.clink}
+                  </a>
+                </div>
+              )}
               {/* AIL */}
               <div className="cb-l">
                 {activeMd.ail &&

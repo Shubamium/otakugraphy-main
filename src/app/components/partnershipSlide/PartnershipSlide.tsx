@@ -16,7 +16,7 @@ export default function PartnershipSlide({ p, reverse }: any) {
         x: reverse ? [-target, 0] : -target,
       },
       {
-        duration: p.length * 2.5,
+        duration: p.length * 5,
         repeat: Infinity,
         // repeatType: "loop",
         repeatDelay: 0,

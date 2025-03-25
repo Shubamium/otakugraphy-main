@@ -274,7 +274,7 @@ export default async function Home() {
 
       <section id="partnership">
         <div className="p-h">
-          <h2 className="h ol">PARTNERSHIP</h2>
+          <h2 className="h ol">PARTNERSHIPS</h2>
           <div className="arr"></div>
         </div>
         <div className="p-l">

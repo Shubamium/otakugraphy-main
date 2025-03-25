@@ -22,7 +22,7 @@ export default function GalleryDisplayer({ title, pages }: any) {
       case "horizontal":
         return <Horizontal ml={pageData.ml} />;
       case "twoColumns":
-        return <FixedD ml={pageData.ml} />;
+        return <TwoColumns ml={pageData.ml} />;
       case "exCols":
         return <ExpandingColumns ml={pageData.ml} />;
       case "34poster":

@@ -1,5 +1,11 @@
 import "./sideContact.scss";
-import { FaBluesky, FaDiscord, FaInstagram, FaYoutube } from "react-icons/fa6";
+import {
+  FaBluesky,
+  FaDiscord,
+  FaInstagram,
+  FaXTwitter,
+  FaYoutube,
+} from "react-icons/fa6";
 
 type Props = {};
 
@@ -10,8 +16,12 @@ export default function SideContact({}: Props) {
         <img src="/gfx/icon.png" alt="" />
       </div>
       <div className="lens-scl">
-        <a href="#" target="_blank" className="btn-lens">
-          <FaDiscord className="ic" />
+        <a
+          href="https://x.com/OTG_Otakugraphy"
+          target="_blank"
+          className="btn-lens"
+        >
+          <FaXTwitter className="ic" />
           <svg
             width="212"
             height="212"
@@ -27,7 +37,11 @@ export default function SideContact({}: Props) {
             />
           </svg>
         </a>
-        <a href="#" target="_blank" className="btn-lens">
+        <a
+          href="https://bsky.app/profile/otakugraphy.bsky.social"
+          target="_blank"
+          className="btn-lens"
+        >
           <FaBluesky className="ic" />
           <svg
             width="212"
@@ -44,7 +58,11 @@ export default function SideContact({}: Props) {
             />
           </svg>
         </a>
-        <a href="#" target="_blank" className="btn-lens">
+        <a
+          href="https://www.instagram.com/otg_otakugraphy/"
+          target="_blank"
+          className="btn-lens"
+        >
           <FaInstagram className="ic" />
           <svg
             width="212"
@@ -61,7 +79,11 @@ export default function SideContact({}: Props) {
             />
           </svg>
         </a>
-        <a href="#" target="_blank" className="btn-lens">
+        <a
+          href="https://www.youtube.com/@OTG-otakugraphy"
+          target="_blank"
+          className="btn-lens"
+        >
           <FaYoutube className="ic" />
           <svg
             width="212"
