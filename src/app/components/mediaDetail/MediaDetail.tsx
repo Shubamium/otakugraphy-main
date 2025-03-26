@@ -12,6 +12,7 @@ export default function MediaDetail({}: Props) {
 
   const close = () => {
     setV(false);
+    setActiveMd(null);
   };
 
   useEffect(() => {
@@ -60,7 +61,7 @@ export default function MediaDetail({}: Props) {
           <p>Press anywhere to close . . .</p>
           <p>
             {" "}
-            © 2024 Otakugrahy LLC. All images and trademarks are the property
+            © 2024 Otakugraphy LLC. All images and trademarks are the property
             of their respective owners.
           </p>
         </div>
@@ -68,27 +69,20 @@ export default function MediaDetail({}: Props) {
           {activeMd && activeMd.gd && (
             <div className="main">
               <div className="col">
-                <h2>{activeMd.gd.l}</h2>
-                <p>{activeMd.gd.d}</p>
+                <h2>{activeMd.gd.d}</h2>
+                <p>{activeMd.gd.l}</p>
               </div>
               <div className="col">
-                <h2>{activeMd.gd.e}</h2>
-                <p>{activeMd.gd.c}</p>
+                <h2>{activeMd.gd.c}</h2>
+                <p>{activeMd.gd.e}</p>
               </div>
-              {activeMd.gd.clink && (
-                <div className="col">
-                  <h2>Collections:</h2>
-                  <a href={activeMd.gd.clink} target="_blank">
-                    {activeMd.gd.clink}
-                  </a>
-                </div>
-              )}
+
               {/* AIL */}
               <div className="cb-l">
                 {activeMd.ail &&
                   activeMd.ail.map((ai: any, index: number) => {
                     return (
-                      <div className="cb" key={ai._key + " " + index}>
+                      <div className="col" key={ai._key + " " + index}>
                         <h2>{ai.title}</h2>
                         <p>{ai.desc}</p>
                       </div>
@@ -103,6 +97,14 @@ export default function MediaDetail({}: Props) {
           )}
         </div>
         <div className="watermark">
+          {activeMd && activeMd.gd && activeMd.gd.clink && (
+            <div className="col">
+              <h2>Full Collection</h2>
+              <a href={activeMd.gd.clink} target="_blank">
+                {activeMd.gd.clink}
+              </a>
+            </div>
+          )}
           <img src="/gfx/logo_present.png" alt="" />
         </div>
       </div>
