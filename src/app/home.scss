@@ -1,3 +1,5 @@
+@import "mixins";
+
 #page_home {
   margin-bottom: 200px;
   #banner-h {
@@ -15,8 +17,23 @@
     padding-block: 200px;
     box-shadow: 0px 0px 80px 14px rgba(0, 0, 0, 0.869);
     border-bottom: 2px solid var(--dgold);
+
+    @include mq(1024) {
+      .confine {
+        max-width: 90%;
+        margin: 0 auto;
+        object-position: center;
+      }
+    }
+
+    @include mq(550) {
+      min-height: 10vh;
+      padding-block: 150px;
+    }
     .main {
       filter: drop-shadow(0px 0px 12px black);
+      width: 100%;
+      height: 100%;
     }
   }
 
@@ -26,12 +43,18 @@
     .h-h {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-end;
+      margin-bottom: 1em;
       h2 {
         font-size: 5rem;
         color: transparent;
         -webkit-text-stroke: 1px white;
         text-stroke: 1px white;
+        line-height: 100%;
+
+        @include mq(468) {
+          font-size: clamp(1rem, 16vw, 4rem);
+        }
       }
 
       .arr {
@@ -43,11 +66,51 @@
     }
 
     .images {
-      height: 500px;
+      height: 600px;
 
       display: grid;
       grid-template-columns: 1fr 1.5fr 0.8fr;
       gap: 1em;
+
+      @include mq(1024) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        height: 900px;
+        .r {
+          grid-column: span 2;
+        }
+      }
+
+      @include mq(768) {
+        // grid-template-columns: 1fr;
+        grid-template-rows: 1.2fr 1fr;
+        height: 600px;
+        .c {
+          height: 100%;
+        }
+      }
+      @include mq(468) {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        .l {
+          width: 100%;
+        }
+        .c {
+          display: flex;
+          flex-direction: column;
+          height: auto;
+          .b {
+            .media {
+              aspect-ratio: 16/9;
+              height: 100%;
+            }
+          }
+        }
+        .r {
+          height: 250px;
+        }
+      }
       .media {
         width: 100%;
         height: 100%;
@@ -77,6 +140,26 @@
       margin-top: 3em;
       height: 360px;
       width: 100%;
+      @include mq(1024) {
+        height: 300px;
+      }
+
+      @include mq(768) {
+        height: 200px;
+        margin-top: 1em;
+      }
+      @include mq(468) {
+        height: 150px;
+      }
+      @include mq(360) {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        .media {
+          // height: 300px;
+          aspect-ratio: 16/9;
+        }
+      }
       // height: auto;
       // aspect-ratio: 16 / 9;
       gap: 1em;
@@ -90,6 +173,10 @@
     border-radius: 6em;
     overflow: hidden;
     background: rgb(22, 22, 21);
+
+    @include mq(768) {
+      height: 400px;
+    }
     &::before {
       content: "";
       position: absolute;
@@ -126,6 +213,18 @@
       color: var(--dgold);
       position: relative;
       width: max-content;
+      @include mq(1024) {
+        font-size: 6rem;
+      }
+
+      @include mq(768) {
+        font-size: 4rem;
+        letter-spacing: -5px;
+      }
+
+      @include mq(550) {
+        font-size: 3rem;
+      }
     }
     .lens {
       position: absolute;
@@ -156,14 +255,37 @@
           }
         }
       }
+      @include mq(768) {
+        width: 100px;
+        height: 100px;
+      }
+      @include mq(550) {
+        left: 100%;
+        bottom: 100%;
+      }
+      @include mq(420) {
+        left: 80%;
+      }
     }
     .h {
       line-height: 90%;
     }
     .second {
-      font-size: 5rem;
+      font-size: 4rem;
       margin-left: 20%;
       font-weight: bolder;
+      @include mq(1024) {
+        margin-left: 10%;
+      }
+      @include mq(768) {
+        font-size: 3rem;
+      }
+      @include mq(550) {
+        font-size: 2.5rem;
+      }
+      @include mq(420) {
+        font-size: clamp(2rem, 2.5vw, 3rem);
+      }
       .fill {
         color: white;
       }
@@ -182,14 +304,23 @@
     margin-block: 100px;
     flex-direction: column;
     gap: 2em;
+
+    @include mq(768) {
+      padding-left: 12%;
+    }
     .category-row {
       height: 180px;
       display: flex;
       width: 100%;
+
+      @include mq(768) {
+        height: 130px;
+      }
       &:hover {
         transform: translateX(-2%);
       }
       transition: all 500ms ease;
+
       .cr-h {
         height: auto;
         background: url("/bg/wave-sm.png") var(--dgold);
@@ -208,6 +339,10 @@
           padding: 0.2em;
           letter-spacing: 7px;
           color: #252323;
+          @include mq(768) {
+            font-size: 1rem;
+            letter-spacing: 1px;
+          }
         }
 
         &:hover {
@@ -243,6 +378,22 @@
           height: 100%;
         }
       }
+      @include mq(468) {
+        flex-direction: column;
+        height: auto;
+        align-items: flex-end;
+        .cr-l {
+          height: 130px;
+        }
+        .cr-h {
+          height: 80px;
+          aspect-ratio: initial !important;
+          h2 {
+            font-size: 2rem;
+            font-weight: bolder;
+          }
+        }
+      }
     }
   }
 
@@ -253,6 +404,10 @@
       grid-template-columns: 1fr 1fr;
       align-items: center;
 
+      @include mq(550) {
+        // flex-direction: row;
+        grid-template-columns: 1fr;
+      }
       .l {
         height: 80%;
         background: url("/bg/noise2.png") #232323;
@@ -262,14 +417,38 @@
         justify-content: center;
         padding: 0em 5em;
         transform: translateX(5%);
+
+        @include mq(1024) {
+          transform: translateX(25%);
+          padding: 3em;
+          p {
+            font-size: 0.9rem;
+          }
+        }
+
+        @include mq(768) {
+          transform: translateX(35%);
+        }
+
+        @include mq(550) {
+          transform: translateX(0%);
+          padding: 4em 2em;
+          h2 {
+            font-size: 2rem;
+          }
+        }
+
         h2 {
           font-size: 3rem;
           font-weight: bold;
           letter-spacing: -3px;
           color: var(--dgold);
           font-family: var(--fontM);
+          line-height: 90%;
+          margin-bottom: 0.2em;
         }
         p {
+          opacity: 0.7;
           color: white;
         }
         position: relative;
@@ -296,11 +475,16 @@
   }
   #mission {
     margin: 100px 0;
+
     .confine {
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
-
+      @include mq(550) {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 2em;
+      }
       .l {
         height: 80%;
         background: url("/bg/noise2.png") #232323;
@@ -319,8 +503,11 @@
           letter-spacing: -3px;
           color: var(--dgold);
           font-family: var(--fontM);
+          line-height: 90%;
+          margin-bottom: 0.2em;
         }
         p {
+          opacity: 0.7;
           color: white;
         }
         position: relative;
@@ -332,6 +519,26 @@
           height: 50px;
           background: var(--dgold);
           clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+        }
+
+        @include mq(1024) {
+          transform: translateX(-25%);
+          padding: 3em;
+          p {
+            font-size: 0.9rem;
+          }
+        }
+
+        @include mq(768) {
+          transform: translateX(-35%);
+        }
+
+        @include mq(550) {
+          padding: 2em;
+          transform: translateX(0%);
+          h2 {
+            font-size: 2.5rem;
+          }
         }
       }
       .r {
@@ -350,6 +557,7 @@
     margin-top: 400px;
     overflow: hidden;
     padding-bottom: 400px;
+
     .th {
       text-align: center;
       font-size: 5rem;
@@ -369,6 +577,10 @@
       border: 2px solid white;
       z-index: -2;
       scale: 1.2;
+
+      @include mq(1024) {
+        opacity: 0.14;
+      }
       &::before {
         content: "";
         position: absolute;
@@ -390,6 +602,10 @@
       border: 2px solid white;
       z-index: -2;
       scale: 1.2;
+
+      @include mq(1024) {
+        opacity: 0.14;
+      }
       &::before {
         content: "";
         position: absolute;
@@ -406,6 +622,27 @@
       grid-template-columns: 1fr 1fr 1fr;
       gap: 1.5em;
       max-width: 1100px;
+
+      @include mq(1280) {
+        gap: 1em;
+      }
+      @include mq(768) {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      @include mq(468) {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 120px 200px);
+        .cube {
+          width: 100%;
+          aspect-ratio: initial;
+        }
+      }
+
+      @include mq(380) {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 200px 200px);
+      }
       .cube {
         aspect-ratio: 1 / 1;
         background: url("/bg/diamond.png"), #202020;
@@ -413,6 +650,7 @@
         height: 100%;
 
         transition: all 100ms ease;
+
         &:hover {
           scale: 1.05;
         }
@@ -426,6 +664,9 @@
           // display: flex;
           padding: 3em;
           text-shadow: 0px 0px 4px black;
+          @include mq(550) {
+            padding: 1em;
+          }
           h2 {
             font-size: 3rem;
             color: var(--dgold);
@@ -435,6 +676,13 @@
             font-weight: 300;
             font-family: var(--fontM);
             margin-bottom: 0.5em;
+
+            @include mq(1024) {
+              font-size: 2rem;
+            }
+            @include mq(550) {
+              text-wrap: break-word;
+            }
             strong,
             b {
               font-weight: 800;
@@ -454,11 +702,16 @@
       justify-content: space-between;
       align-items: flex-end;
       padding: 0 0.8em;
+
       .h {
         font-size: 8rem;
         -webkit-text-stroke: 1px white;
         padding: 0 0.1em;
         text-stroke: 1px white;
+        @include mq(1024) {
+          line-height: 90%;
+          font-size: clamp(1rem, 13vw, 5rem);
+        }
       }
 
       .arr {
@@ -481,6 +734,7 @@
     .row {
       height: 190px;
       display: flex;
+
       .slider {
         height: 100%;
         display: flex;
@@ -498,13 +752,22 @@
           }
         }
         .partner {
-          height: 120px;
+          height: 140px;
           width: 100%;
           img {
             width: auto;
             object-fit: contain;
             height: 100%;
           }
+        }
+      }
+      @include mq(1024) {
+        height: 150px;
+      }
+      @include mq(468) {
+        height: 100px;
+        .partner {
+          height: 100%;
         }
       }
     }

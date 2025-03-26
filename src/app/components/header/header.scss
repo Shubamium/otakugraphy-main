@@ -66,6 +66,13 @@
 
     @include mq(768) {
       grid-template-columns: 1fr;
+      gap: 1em;
+      .btn-nav {
+        background: #2e2e2e;
+        filter: brightness(140%) drop-shadow(0px 0px 5px black);
+        padding: 0.55em 1em;
+        opacity: 1;
+      }
     }
     .btn-nav {
       opacity: 1;

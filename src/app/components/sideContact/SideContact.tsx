@@ -1,3 +1,4 @@
+import Link from "next/link";
 import "./sideContact.scss";
 import {
   FaBluesky,
@@ -12,9 +13,9 @@ type Props = {};
 export default function SideContact({}: Props) {
   return (
     <aside id="sidec">
-      <div className="logo">
+      <Link href={"/"} className="logo">
         <img src="/gfx/icon.png" alt="" />
-      </div>
+      </Link>
       <div className="lens-scl">
         <a
           href="https://x.com/OTG_Otakugraphy"
