@@ -1,15 +1,24 @@
+@import "mixins";
 #footer {
   height: 600px;
   background: linear-gradient(to bottom, #212121, #1a1a1a);
   border-top: 4px solid var(--dgold);
 
+  @include mq(768) {
+    height: auto;
+  }
   .confine {
     display: grid;
     grid-template-columns: 1fr 1.5fr 1fr;
     gap: 2em;
     height: 100%;
+    grid-template-areas: "nav title attrib";
+
+    @include mq(1024) {
+      grid-template-areas: "title attrib nav";
+    }
+
     .fh {
-      font-size: 2.5rem;
       color: var(--dgold);
       letter-spacing: -2px;
       font-family: var(--fontM);
@@ -19,6 +28,7 @@
       text-align: right;
       padding: 2em 0;
       padding-left: 3em;
+      grid-area: nav;
       .fn {
         display: flex;
         flex-direction: column;
@@ -53,6 +63,8 @@
       flex-direction: column;
       align-items: center;
       box-shadow: 0px 0px 42px 10px rgba(0, 0, 0, 0.254);
+      grid-area: title;
+
       .logo {
         width: 80%;
         margin: 0 auto;
@@ -64,6 +76,8 @@
 
     .r {
       padding: 4em 0;
+      grid-area: attrib;
+
       p {
         font-size: 0.9rem;
         color: rgba(255, 255, 255, 0.51);
@@ -89,6 +103,24 @@
         opacity: 0.8;
         margin-top: 2em;
       }
+    }
+    @include mq(768) {
+      grid-template-areas: "title title" "attrib nav";
+      width: 100%;
+      grid-template-columns: 1fr;
+      max-width: 100%;
+      padding-bottom: 100px;
+      .c {
+        padding-bottom: 100px;
+      }
+      .l,
+      .r {
+        padding: 0.5em;
+      }
+    }
+
+    @include mq(468) {
+      grid-template-areas: "title" "attrib" "nav";
     }
   }
 }

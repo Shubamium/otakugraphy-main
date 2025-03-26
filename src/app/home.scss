@@ -752,7 +752,7 @@
           }
         }
         .partner {
-          height: 140px;
+          height: 160px;
           width: 100%;
           img {
             width: auto;
@@ -764,10 +764,17 @@
       @include mq(1024) {
         height: 150px;
       }
-      @include mq(468) {
-        height: 100px;
+      @include mq(550) {
         .partner {
-          height: 100%;
+          height: 100px;
+        }
+      }
+      @include mq(468) {
+        .partner {
+          height: 100px;
+          img {
+            height: 100%;
+          }
         }
       }
     }
