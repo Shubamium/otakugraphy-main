@@ -37,11 +37,12 @@ export default function Media({ data }: Props) {
     >
       {data && (
         <>
+          <p className="alt">{data.gd.alt}</p>
           {data.type === "image" && data.image && (
             <>
               <img
                 src={urlFor(data.image).auto("format").height(700).url()}
-                alt=""
+                alt={data.gd.alt}
                 className="img"
               />
               {/* <Blurhash hash={data.metadata.blurHash} className="blur" /> */}
