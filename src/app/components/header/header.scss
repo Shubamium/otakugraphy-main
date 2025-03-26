@@ -1,3 +1,5 @@
+@import "mixins";
+
 #header {
   position: fixed;
   bottom: 0%;
@@ -12,6 +14,12 @@
 
   box-shadow: 0px 0px 70px 14px rgba(0, 0, 0, 0.782);
   transition: all 500ms ease;
+
+  @include mq(550) {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
   &.v {
     transform: translateY(0%);
   }
@@ -50,6 +58,15 @@
     padding: 0 2em;
     align-items: center;
 
+    @include mq(1024) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 2em;
+    }
+
+    @include mq(768) {
+      grid-template-columns: 1fr;
+    }
     .btn-nav {
       opacity: 1;
       filter: brightness(50%) drop-shadow(0px 0px 5px black);

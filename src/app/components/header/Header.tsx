@@ -1,18 +1,34 @@
 "use client";
 import Link from "next/link";
 import "./header.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsArrowUp } from "react-icons/bs";
 import { TiArrowDownThick, TiArrowUpThick } from "react-icons/ti";
 import { MdShutterSpeed } from "react-icons/md";
 import { BiCamera } from "react-icons/bi";
+import { useMediaQuery } from "react-responsive";
 
 type Props = {};
 
 export default function Header({}: Props) {
-  const [visible, setVisible] = useState(true);
+  const isMobile = useMediaQuery({
+    query: "(max-width:1024px)",
+  });
+  const [visible, setVisible] = useState(!isMobile);
+
+  useEffect(() => {
+    setVisible(!isMobile);
+  }, [isMobile]);
   return (
-    <header id="header" className={visible ? "v" : "h"}>
+    <header
+      id="header"
+      className={visible ? "v" : "h"}
+      onClick={() => {
+        if (isMobile) {
+          setVisible(false);
+        }
+      }}
+    >
       <svg
         width="172"
         height="49"
@@ -61,8 +77,9 @@ export default function Header({}: Props) {
 
       <button
         className="btn btn-toggle"
-        onClick={() => {
+        onClick={(e) => {
           setVisible(!visible);
+          e.stopPropagation();
         }}
       >
         {!visible ? <BiCamera /> : <TiArrowDownThick />}

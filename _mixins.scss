@@ -1,0 +1,9 @@
+@mixin mq($size, $type: max) {
+  @if type-of($size) == "number" {
+    $size: $size + px;
+  }
+
+  @media (#{$type}-width: $size) {
+    @content;
+  }
+}

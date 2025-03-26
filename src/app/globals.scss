@@ -1,3 +1,4 @@
+@import "mixins";
 :root {
   --dgold: #c7a654;
 }
@@ -7,6 +8,8 @@ body {
   // max-width: 100vw;
   // overflow-x: hidden;
   // background: linear-gradient(to bottom, #121211, #11100f);
+  position: relative;
+  overflow-x: clip;
 }
 
 main {
@@ -91,6 +94,15 @@ a {
   .btn-lens {
     width: 70px;
     height: 70px;
+
+    @include mq(1280) {
+      width: 60px;
+      height: 60px;
+    }
+    @include mq(1024) {
+      width: 50px;
+      height: 50px;
+    }
     color: var(--dgold);
     position: relative;
     scale: 0.7;

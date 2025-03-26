@@ -76,7 +76,10 @@ export default function MediaDetail({}: Props) {
                 <h2>{activeMd.gd.c}</h2>
                 <p>{activeMd.gd.e}</p>
               </div>
-
+              <div className="col">
+                <h2>{activeMd.gd.otgr}</h2>
+                <p>{activeMd.gd.otgn}</p>
+              </div>
               {/* AIL */}
               <div className="cb-l">
                 {activeMd.ail &&
