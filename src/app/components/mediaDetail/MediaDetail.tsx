@@ -3,6 +3,7 @@ import { urlFor } from "@/app/db/sanity";
 import "./mediaDetail.scss";
 import React, { useEffect, useState } from "react";
 import { Blurhash } from "react-blurhash";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 type Props = {};
 
@@ -21,6 +22,7 @@ export default function MediaDetail({}: Props) {
       setV(true);
 
       setActiveMd(data.detail);
+      console.log(data.detail);
     });
   }, []);
 
@@ -56,6 +58,31 @@ export default function MediaDetail({}: Props) {
           />
         )}
       </div>
+      {activeMd && activeMd.p && (
+        <button
+          className="btn btn-c l"
+          onClick={(e) => {
+            e.stopPropagation();
+            setActiveMd(activeMd.p);
+          }}
+        >
+          {" "}
+          <FaArrowLeft />
+        </button>
+      )}
+      {activeMd && activeMd.n && (
+        <button
+          className="btn btn-c r"
+          onClick={(e) => {
+            e.stopPropagation();
+
+            setActiveMd(activeMd.n);
+          }}
+        >
+          {" "}
+          <FaArrowRight />
+        </button>
+      )}
       <div className="detail-bar">
         <div className="warn">
           <p>Press anywhere to close . . .</p>

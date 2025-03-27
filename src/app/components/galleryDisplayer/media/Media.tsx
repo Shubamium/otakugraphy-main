@@ -8,9 +8,11 @@ import { RxEnterFullScreen } from "react-icons/rx";
 import { HiInformationCircle } from "react-icons/hi";
 type Props = {
   data?: any;
+  n?: any;
+  p?: any;
 };
 
-export default function Media({ data }: Props) {
+export default function Media({ data, n, p }: Props) {
   const [loaded, setLoaded] = useState(false);
   const [imageUrl, setImageUrl] = useState("empty");
 

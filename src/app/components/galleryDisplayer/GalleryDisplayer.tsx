@@ -17,28 +17,35 @@ export default function GalleryDisplayer({ title, pages }: any) {
 
   const renderPage = (pageData: any) => {
     if (!pageData.ml) return <></>;
-    //
+
+    pageData.ml.forEach((p: any, i: number, arr: any[]) => {
+      p.n = pageData.ml[i + 1] ?? null;
+      p.p = pageData.ml[i - 1] ?? null;
+    });
+
+    const linked = pageData.ml;
+
     switch (pageData.lt) {
       case "vertical":
-        return <Vertical ml={pageData.ml} />;
+        return <Vertical ml={linked} />;
       case "horizontal":
-        return <Horizontal ml={pageData.ml} />;
+        return <Horizontal ml={linked} />;
       case "twoColumns":
-        return <TwoColumns ml={pageData.ml} />;
+        return <TwoColumns ml={linked} />;
       case "exCols":
-        return <ExpandingColumns ml={pageData.ml} />;
+        return <ExpandingColumns ml={linked} />;
       case "34poster":
-        return <Poster ml={pageData.ml} />;
+        return <Poster ml={linked} />;
       case "fixedA":
-        return <FixedA ml={pageData.ml} />;
+        return <FixedA ml={linked} />;
       case "fixedB":
-        return <FixedB ml={pageData.ml} />;
+        return <FixedB ml={linked} />;
       case "fixedC":
-        return <FixedC ml={pageData.ml} />;
+        return <FixedC ml={linked} />;
       case "fixedD":
-        return <FixedD ml={pageData.ml} />;
+        return <FixedD ml={linked} />;
       default:
-        return <Vertical ml={pageData.ml} />;
+        return <Vertical ml={linked} />;
     }
   };
 
@@ -60,41 +67,43 @@ export default function GalleryDisplayer({ title, pages }: any) {
           <h1 className="h">{title}</h1>
         </div>
         <div className="r">
-          <div className="p-controls">
-            <svg
-              width="44"
-              height="52"
-              viewBox="0 0 44 52"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="btn btn-page"
-              onClick={prev}
-            >
-              <path
-                d="M43 50.2487L0.999998 26L43 1.7513L43 50.2487Z"
-                fill="#D9D9D9"
-                stroke="#D9D9D9"
-              />
-            </svg>
-            <p>
-              {p + 1}/{pages ? pages.length : 0}
-            </p>
-            <svg
-              width="44"
-              height="52"
-              viewBox="0 0 44 52"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="btn btn-page r"
-              onClick={next}
-            >
-              <path
-                d="M43 50.2487L0.999998 26L43 1.7513L43 50.2487Z"
-                fill="#D9D9D9"
-                stroke="#D9D9D9"
-              />
-            </svg>
-          </div>
+          {pages && pages.length > 1 && (
+            <div className="p-controls">
+              <svg
+                width="44"
+                height="52"
+                viewBox="0 0 44 52"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="btn btn-page"
+                onClick={prev}
+              >
+                <path
+                  d="M43 50.2487L0.999998 26L43 1.7513L43 50.2487Z"
+                  fill="#D9D9D9"
+                  stroke="#D9D9D9"
+                />
+              </svg>
+              <p>
+                {p + 1}/{pages ? pages.length : 0}
+              </p>
+              <svg
+                width="44"
+                height="52"
+                viewBox="0 0 44 52"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="btn btn-page r"
+                onClick={next}
+              >
+                <path
+                  d="M43 50.2487L0.999998 26L43 1.7513L43 50.2487Z"
+                  fill="#D9D9D9"
+                  stroke="#D9D9D9"
+                />
+              </svg>
+            </div>
+          )}
           <img src="/gfx/slogan.png" alt="" className="slogan" />
         </div>
       </section>

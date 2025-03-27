@@ -29,7 +29,9 @@ export default function Vertical({ ml }: any) {
           return (
             <div className="col l" key={"vertical-col" + index}>
               {c.map((md: any, j: number) => {
-                return <Media data={md} key={md._id + j} />;
+                return (
+                  <Media data={md} key={md._id + j} p={c[j - 1]} n={c[j + 1]} />
+                );
               })}
             </div>
           );
