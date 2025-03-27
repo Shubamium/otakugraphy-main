@@ -42,8 +42,6 @@ export default function GalleryDisplayer({ title, pages }: any) {
     }
   };
 
-  console.log(pages);
-
   const next = () => {
     if (pages && pages.length > 0) {
       setP(Math.min(p + 1, pages.length - 1));

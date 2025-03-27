@@ -38,8 +38,8 @@
     .img {
       width: auto;
       max-width: 100%;
-      object-fit: contain;
-      height: 100%;
+      max-height: 100%;
+      height: auto;
       box-shadow: 0px 0px 24px 14px black;
       border: 1px solid rgba(128, 128, 128, 0.439);
     }
@@ -56,15 +56,27 @@
     position: fixed;
     bottom: 0%;
     left: 0%;
-    height: 70px;
     width: 100%;
 
     border-top: 2px solid var(--dgold);
     background: #0f0e0e url("/bg/wave.png");
     box-shadow: 0px -14px 24px black;
-    display: flex;
-    justify-content: space-between;
-
+    .data {
+      display: flex;
+      justify-content: space-between;
+      height: 70px;
+    }
+    @include mq(1024) {
+      .data {
+        overflow-x: scroll;
+      }
+    }
+    @include mq(467) {
+      .data {
+        align-items: flex-start;
+        padding-top: 1em;
+      }
+    }
     .warn {
       position: absolute;
       bottom: 110%;
@@ -80,22 +92,40 @@
       display: flex;
       padding: 0.2em 1em;
       justify-content: space-between;
+      @include mq(1280) {
+        font-size: 0.8rem;
+      }
+      @include mq(768) {
+        flex-direction: column;
+        font-size: 0.6rem;
+        opacity: 0.2;
+      }
     }
     .col {
       display: flex;
       flex-direction: column;
       min-width: 200px;
+      @include mq(468) {
+        min-width: 140px;
+      }
       h2 {
         color: var(--dgold);
         font-size: 1rem;
         line-height: 90%;
         margin-bottom: 0.3em;
         font-family: var(--fontO);
+        @include mq(468) {
+          font-size: 0.8rem;
+        }
       }
       p {
         color: white;
         font-size: 0.8rem;
         font-family: var(--fontM);
+
+        @include mq(468) {
+          font-size: 0.6rem;
+        }
       }
       h2 {
       }
@@ -146,10 +176,28 @@
       .col {
         min-width: 150px;
       }
+
       img {
         height: 100%;
         object-fit: contain;
         width: 100%;
+      }
+      @include mq(550) {
+        width: auto;
+        flex-shrink: 0;
+        align-items: center;
+        .col {
+        }
+        img {
+          width: 200px;
+        }
+      }
+
+      @include mq(468) {
+        align-items: flex-start;
+        img {
+          transform: translateY(-20%);
+        }
       }
     }
   }

@@ -65,50 +65,56 @@ export default function MediaDetail({}: Props) {
             of their respective owners.
           </p>
         </div>
-        <div className="detail">
-          {activeMd && activeMd.gd && (
-            <div className="main">
-              <div className="col">
-                <h2>{activeMd.gd.d}</h2>
-                <p>{activeMd.gd.l}</p>
-              </div>
-              <div className="col">
-                <h2>{activeMd.gd.c}</h2>
-                <p>{activeMd.gd.e}</p>
-              </div>
-              <div className="col">
-                <h2>{activeMd.gd.otgr}</h2>
-                <p>{activeMd.gd.otgn}</p>
-              </div>
-              {/* AIL */}
-              <div className="cb-l">
-                {activeMd.ail &&
-                  activeMd.ail.map((ai: any, index: number) => {
-                    return (
-                      <div className="col" key={ai._key + " " + index}>
-                        <h2>{ai.title}</h2>
-                        <p>{ai.desc}</p>
-                      </div>
-                    );
-                  })}
-                {/* <div className="cb">
+        <div className="data">
+          <div className="detail">
+            {activeMd && activeMd.gd && (
+              <div className="main">
+                <div className="col">
+                  <h2>{activeMd.gd.d}</h2>
+                  <p>{activeMd.gd.l}</p>
+                </div>
+                {(activeMd.gd.c || activeMd.gd.e) && (
+                  <div className="col">
+                    <h2>{activeMd.gd.c}</h2>
+                    <p>{activeMd.gd.e}</p>
+                  </div>
+                )}
+                {(activeMd.gd.otgr || activeMd.gd.otgn) && (
+                  <div className="col">
+                    <h2>{activeMd.gd.otgr}</h2>
+                    <p>{activeMd.gd.otgn}</p>
+                  </div>
+                )}
+                {/* AIL */}
+                <div className="cb-l">
+                  {activeMd.ail &&
+                    activeMd.ail.map((ai: any, index: number) => {
+                      return (
+                        <div className="col" key={ai._key + " " + index}>
+                          <h2>{ai.title}</h2>
+                          <p>{ai.desc}</p>
+                        </div>
+                      );
+                    })}
+                  {/* <div className="cb">
                   <h2>Location here</h2>
                   <p>17 March 2025</p>
                 </div> */}
+                </div>
               </div>
-            </div>
-          )}
-        </div>
-        <div className="watermark">
-          {activeMd && activeMd.gd && activeMd.gd.clink && (
-            <div className="col">
-              <h2>Full Collection</h2>
-              <a href={activeMd.gd.clink} target="_blank">
-                {activeMd.gd.clink}
-              </a>
-            </div>
-          )}
-          <img src="/gfx/logo_present.png" alt="" />
+            )}
+          </div>
+          <div className="watermark">
+            {activeMd && activeMd.gd && activeMd.gd.clink && (
+              <div className="col">
+                <h2>Full Collection</h2>
+                <a href={activeMd.gd.clink} target="_blank">
+                  {activeMd.gd.clink}
+                </a>
+              </div>
+            )}
+            <img src="/gfx/logo_present.png" alt="" />
+          </div>
         </div>
       </div>
     </div>
