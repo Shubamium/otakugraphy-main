@@ -1,3 +1,4 @@
+@import "mixins";
 #gallery-displayer {
   padding-bottom: 30vh;
   #gd-head {
@@ -9,6 +10,9 @@
     align-items: flex-end;
 
     max-width: 90%;
+    @include mq(468) {
+      flex-direction: column;
+    }
     .h {
       font-size: 4rem;
       color: transparent;
@@ -17,6 +21,13 @@
       text-stroke: 1px white;
       line-height: 90%;
       margin-bottom: 0.09em;
+
+      @include mq(550) {
+        font-size: clamp(1.5rem, 15vw, 3.5rem);
+      }
+      @include mq(468) {
+        text-align: center;
+      }
     }
 
     .l {
@@ -29,6 +40,11 @@
       flex-direction: column;
       justify-content: flex-end;
       align-items: flex-end;
+
+      @include mq(468) {
+        justify-content: center;
+        align-items: center;
+      }
       .p-controls {
         display: flex;
         align-items: center;
@@ -39,11 +55,19 @@
           font-size: 2rem;
           font-weight: bold;
           font-family: var(--fontO);
+
+          @include mq(550) {
+            font-size: 1rem;
+          }
         }
 
         .btn-page {
           height: 50px;
           width: 50px;
+          @include mq(559) {
+            height: 35px;
+            width: 35px;
+          }
           path {
             fill: transparent;
           }

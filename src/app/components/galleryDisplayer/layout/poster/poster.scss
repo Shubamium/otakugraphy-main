@@ -1,3 +1,4 @@
+@import "mixins";
 #poster {
   .list {
     display: grid;
@@ -7,8 +8,19 @@
     gap: 2em;
     // align-items: center;
     justify-content: center;
+    @include mq(550) {
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      align-items: center;
+    }
+    @include mq(468) {
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
     .media {
       height: 400px;
+      @include mq(550) {
+        height: 200px;
+        aspect-ratio: 3/4;
+      }
       .video {
         object-fit: cover;
       }

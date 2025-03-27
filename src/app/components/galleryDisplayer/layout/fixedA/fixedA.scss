@@ -1,3 +1,4 @@
+@import "mixins";
 #fixedA {
   margin-bottom: 300px;
   .list {
@@ -8,6 +9,10 @@
     margin: 0 auto;
     gap: 1em;
     margin-top: 50px;
+
+    @include mq(768) {
+      grid-template-columns: 1fr;
+    }
     .media {
       height: 100%;
       width: 100%;

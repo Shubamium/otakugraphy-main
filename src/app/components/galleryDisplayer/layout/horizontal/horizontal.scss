@@ -1,31 +1,8 @@
+@import "mixins";
 #gd_horizontal {
-  // display: grid;
-  // grid-template-columns: repeat(4, 1fr);
-
-  // max-width: 90%;
-  // margin: 0 auto;
-  // display: flex;
-  // flex-direction: column;
-  // height: 900px;
-  // width: 90%;
-  // overflow-x: scroll;
-  // // background: red;
-  // gap: 1em;
-  // .col {
-  //   display: flex;
-  //   gap: 1vw;
-  //   height: 250px;
-
-  //   flex-wrap: wrap;
-  //   .media {
-  //     height: 100%;
-  //     width: auto;
-  //   }
-  // }
-
   .list {
     display: flex;
-    gap: 1em;
+    gap: 2em 0.8em;
     flex-wrap: wrap;
     width: 90%;
     margin: 0 auto;
@@ -33,8 +10,25 @@
     min-height: 900px;
     flex-grow: 1;
     justify-content: left;
+
+    @include mq(550) {
+      justify-content: center;
+      gap: 1.2em 0.8em;
+    }
+
+    @include mq(480) {
+    }
     .media {
       height: 280px;
+      @include mq(1280) {
+        height: 200px;
+      }
+      @include mq(768) {
+        height: 140px;
+      }
+      @include mq(550) {
+        height: 130px;
+      }
       width: auto;
     }
   }

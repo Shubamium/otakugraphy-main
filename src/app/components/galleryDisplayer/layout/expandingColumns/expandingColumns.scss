@@ -1,9 +1,11 @@
-#twoCol {
+@import "mixins";
+#exCol {
   .list {
     max-width: 90%;
     margin: 0 auto;
     display: flex;
     flex-shrink: 1;
+
     .media {
       height: 70vh;
       transition: all 450ms ease;
@@ -11,6 +13,18 @@
 
       .video {
         object-fit: cover;
+      }
+    }
+    @include mq(550) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      .media {
+        height: 50vh;
+      }
+    }
+    @include mq(468) {
+      .media {
+        height: 40vh;
       }
     }
     &:has(:hover) {

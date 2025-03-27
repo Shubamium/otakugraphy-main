@@ -1,6 +1,14 @@
+@import "mixins";
 #fixedC {
   margin-bottom: 300px;
   --gap: 1.8em;
+
+  @include mq(768) {
+    --gap: 1em;
+  }
+  @include mq(550) {
+    --gap: 0;
+  }
   .list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -10,6 +18,18 @@
     gap: var(--gap);
     margin-top: 50px;
 
+    @include mq(768) {
+      height: 400px;
+    }
+    @include mq(550) {
+      height: 300px;
+    }
+
+    @include mq(420) {
+      height: auto;
+      display: flex;
+      flex-direction: column;
+    }
     .media {
       height: 100%;
       width: 100%;

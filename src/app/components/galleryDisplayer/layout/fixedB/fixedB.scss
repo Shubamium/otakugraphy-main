@@ -1,6 +1,12 @@
+@import "mixins";
 #fixedB {
   margin-bottom: 300px;
   --gap: 1.8em;
+
+  @include mq(1024) {
+    --gap: 1em;
+  }
+
   .list {
     display: grid;
     grid-template-columns: 1.5fr 2fr 2fr;
@@ -9,6 +15,28 @@
     margin: 0 auto;
     gap: var(--gap);
     margin-top: 50px;
+
+    @include mq(768) {
+      grid-template-columns: 1fr 1fr;
+      .r {
+        grid-column: span 2;
+      }
+    }
+
+    @include mq(380) {
+      grid-template-columns: 1fr;
+      .l {
+        width: 100%;
+      }
+      .c {
+        display: flex;
+        flex-direction: column;
+      }
+      .r {
+        grid-column: initial;
+      }
+    }
+
     .media {
       height: 100%;
       width: 100%;

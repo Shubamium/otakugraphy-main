@@ -17,6 +17,7 @@ export default function GalleryDisplayer({ title, pages }: any) {
 
   const renderPage = (pageData: any) => {
     if (!pageData.ml) return <></>;
+    //
     switch (pageData.lt) {
       case "vertical":
         return <Vertical ml={pageData.ml} />;
