@@ -202,7 +202,7 @@ export default async function Home() {
           <div className="l">
             <h2>ABOUT US</h2>
             <p>
-              We are a professional LLC company of freelancer photographers and
+              We are a professional company of freelancer photographers and
               videographers, capturing the quirky spirit of Otaku culture
               through Conventions, Brands, VTubers, and Nightlife.
             </p>

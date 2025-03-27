@@ -131,7 +131,7 @@ export default function Footer({}: Props) {
         <div className="r">
           <h2 className="fh">ABOUT US</h2>
           <p>
-            We are a professional LLC company of freelancer photographers and
+            We are a professional company of freelancer photographers and
             videographers, capturing the quirky spirit of Otaku culture through
             Conventions, Brands, VTubers, and Nightlife.
           </p>
@@ -140,8 +140,8 @@ export default function Footer({}: Props) {
             <LuArrowUpToLine />
           </a>
           <p className="attribution">
-            © 2024 Otakugraphy LLC. All images and trademarks are the property
-            of their respective owners.
+            © 2024 Otakugraphy. All images and trademarks are the property of
+            their respective owners.
           </p>
         </div>
       </div>
