@@ -12,6 +12,7 @@ import {
   RiLoader5Fill,
   RiLoader5Line,
 } from "react-icons/ri";
+import { HiMiniArrowTopRightOnSquare } from "react-icons/hi2";
 
 type Props = {};
 
@@ -106,6 +107,13 @@ export default function MediaDetail({}: Props) {
           <FaArrowRight />
         </button>
       )}
+
+      {activeMd && activeMd.gd && activeMd.gd.clink && (
+        <a className="btn collections" target="_blank" href={activeMd.gd.clink}>
+          <h2>Full Collection</h2>
+          <HiMiniArrowTopRightOnSquare />
+        </a>
+      )}
       <div className="detail-bar">
         <div className="warn">
           <p>Press anywhere to close . . .</p>
@@ -154,15 +162,16 @@ export default function MediaDetail({}: Props) {
               </div>
             )}
           </div>
+
           <div className="watermark">
-            {activeMd && activeMd.gd && activeMd.gd.clink && (
+            {/* {activeMd && activeMd.gd && activeMd.gd.clink && (
               <div className="col">
                 <h2>Full Collection</h2>
                 <a href={activeMd.gd.clink} target="_blank">
                   {activeMd.gd.clink}
                 </a>
               </div>
-            )}
+            )} */}
             <img src="/gfx/logo_present.png" alt="" />
           </div>
         </div>

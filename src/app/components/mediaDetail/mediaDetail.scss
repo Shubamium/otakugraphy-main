@@ -88,6 +88,34 @@
       height: 100%;
     }
   }
+
+  .collections {
+    padding: 0.25em 1em;
+    background: var(--dgold);
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    font-family: var(--fontO);
+    font-weight: bold;
+    border-radius: 0 0 1em 0;
+    transform-origin: left top;
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    @include mq(550) {
+      font-size: 0.7rem;
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
   .detail-bar {
     position: fixed;
     bottom: 0%;
