@@ -43,6 +43,12 @@
       box-shadow: 0px 0px 24px 14px black;
       border: 1px solid rgba(128, 128, 128, 0.439);
     }
+    .loader-circ {
+      width: 150px;
+      height: 150px;
+      animation: speen 1s infinite linear;
+      color: white;
+    }
     .video {
       width: auto;
       height: 100%;
@@ -98,6 +104,7 @@
     }
     @include mq(1024) {
       .data {
+        overflow-y: hidden;
         overflow-x: scroll;
       }
     }

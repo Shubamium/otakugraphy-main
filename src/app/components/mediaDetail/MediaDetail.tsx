@@ -1,16 +1,27 @@
 "use client";
 import { urlFor } from "@/app/db/sanity";
 import "./mediaDetail.scss";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Blurhash } from "react-blurhash";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
+import { BiLoaderCircle } from "react-icons/bi";
+import {
+  RiLoader2Fill,
+  RiLoader3Fill,
+  RiLoader4Fill,
+  RiLoader5Fill,
+  RiLoader5Line,
+} from "react-icons/ri";
 
 type Props = {};
 
 export default function MediaDetail({}: Props) {
   const [v, setV] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [activeMd, setActiveMd] = useState<any>();
 
+  const imgref = useRef<HTMLImageElement>(null);
+  const [img, setImg] = useState<string | undefined>(undefined);
   const close = () => {
     setV(false);
     setActiveMd(null);
@@ -18,15 +29,26 @@ export default function MediaDetail({}: Props) {
 
   useEffect(() => {
     window.addEventListener("md", (data: any) => {
-      console.log(data.detail);
       setV(true);
 
       setActiveMd(data.detail);
-      console.log(data.detail);
     });
   }, []);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (activeMd && activeMd.type === "image" && imgref.current) {
+      setLoading(true);
+      const dv = new Image();
+      dv.src = urlFor(activeMd.image).format("webp").height(800).url();
+      dv.onload = () => {
+        if (imgref.current) {
+          // imgref.current.src = image.src;
+        }
+        setLoading(false);
+        setImg(dv.src);
+      };
+    }
+  }, [activeMd]);
 
   return (
     <div
@@ -38,19 +60,20 @@ export default function MediaDetail({}: Props) {
     >
       <div className="mc">
         {activeMd && activeMd.type == "image" && (
-          <img
-            src={urlFor(activeMd.image).auto("format").url()}
-            id="view"
-            className="img"
-          />
+          <>
+            {loading ? (
+              <RiLoader5Fill className="loader-circ" />
+            ) : (
+              <img id="view" ref={imgref} className="img" src={img} />
+            )}
+          </>
         )}
+        {/* <p>{img}</p> */}
         {activeMd && activeMd.type === "video" && activeMd.video && (
           <video
             src={activeMd.video}
             className="video"
             playsInline
-            disablePictureInPicture
-            disableRemotePlayback
             autoPlay
             muted
             controls

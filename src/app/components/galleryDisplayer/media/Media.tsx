@@ -43,7 +43,7 @@ export default function Media({ data, n, p }: Props) {
           {data.type === "image" && data.image && (
             <>
               <img
-                src={urlFor(data.image).auto("format").height(700).url()}
+                src={urlFor(data.image).auto("format").height(550).url()}
                 alt={data.gd.alt}
                 className="img"
               />
@@ -60,8 +60,8 @@ export default function Media({ data, n, p }: Props) {
                 src={data.video}
                 className="video"
                 playsInline
-                disablePictureInPicture
-                disableRemotePlayback
+                // disablePictureInPicture
+                // disableRemotePlayback
                 autoPlay
                 muted
                 controls
