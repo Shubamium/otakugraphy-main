@@ -34,6 +34,32 @@ const description =
 const banner = "https://i.ibb.co.com/Mx99HBYX/OTG-Oficial-Logo.png";
 const url = "https://otakugraphy.com";
 
+const keywords = [
+  "Professional anime photographers",
+  "Otaku coverage",
+  "Otaku convention",
+  "VTuber event videographers",
+  "VTuber Coverage",
+  "VTuber IRL",
+  "Convention coverage team",
+  "Anime Convention",
+  "Photography",
+  "Videography",
+  "VTuber Content Creation",
+  "Anime Brand Marketing",
+  "Event Coverage",
+  "Panels",
+  "Nightlife",
+  "Live Stream Production",
+  "Behind-the-Scenes Documentation",
+  "Energetic",
+  "Authentic",
+  "Cinematic",
+  "Candid",
+  "Neon-Otaku",
+  "Kawaii Aesthetic",
+];
+
 export const metadata: Metadata = {
   title: title,
 
@@ -50,21 +76,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: [banner],
   },
-  keywords: [
-    "live2d",
-    "art",
-    "artist",
-    "illustrations",
-    "vtuber",
-    "vtubers",
-    "commission",
-    "commissions",
-    "rig",
-    "model",
-    "rigging",
-    "stream",
-    "design",
-  ],
+  keywords: keywords,
   description: description,
   viewport: {
     width: "device-width",
