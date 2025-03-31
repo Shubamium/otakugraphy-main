@@ -94,7 +94,7 @@ a {
   .btn-lens {
     width: 70px;
     height: 70px;
-
+    filter: drop-shadow(0px 0px 4px black);
     @include mq(1280) {
       width: 60px;
       height: 60px;
@@ -111,12 +111,17 @@ a {
         stroke-width: 2px;
         transition: all 500ms ease;
       }
+      @include mq(550) {
+        path {
+          fill: var(--dgold);
+        }
+      }
     }
     &:hover {
       .lensi {
         rotate: -20deg;
         path {
-          stroke-width: 28px;
+          stroke-width: 29px;
         }
       }
       .ic {
@@ -124,6 +129,7 @@ a {
         position: relative;
         z-index: 20;
         padding: 0;
+        filter: drop-shadow(0px 4px 2px rgb(65, 46, 11));
       }
     }
     .lensi {

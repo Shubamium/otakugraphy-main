@@ -14,6 +14,7 @@ import {
 } from "react-icons/ri";
 import { HiMiniArrowTopRightOnSquare } from "react-icons/hi2";
 
+import { motion } from "motion/react";
 type Props = {};
 
 export default function MediaDetail({}: Props) {
@@ -51,6 +52,13 @@ export default function MediaDetail({}: Props) {
     }
   }, [activeMd]);
 
+  const callMdEvent = (data: any) => {
+    const ev = new CustomEvent("md", {
+      detail: data,
+    });
+
+    window.dispatchEvent(ev);
+  };
   return (
     <div
       id="media-detail"
@@ -65,7 +73,18 @@ export default function MediaDetail({}: Props) {
             {loading ? (
               <RiLoader5Fill className="loader-circ" />
             ) : (
-              <img id="view" ref={imgref} className="img" src={img} />
+              <img
+                id="view"
+                ref={imgref}
+                className="img"
+                src={img}
+                // key={activeMd._id}
+                // layout="preserve-aspect"
+                // layoutId={activeMd._id}
+                // transition={{
+                // duration: 0.05,
+                // }}
+              />
             )}
           </>
         )}
@@ -87,7 +106,7 @@ export default function MediaDetail({}: Props) {
           className="btn btn-c l"
           onClick={(e) => {
             e.stopPropagation();
-            setActiveMd(activeMd.p);
+            callMdEvent(activeMd.p);
           }}
         >
           {" "}
@@ -100,7 +119,8 @@ export default function MediaDetail({}: Props) {
           onClick={(e) => {
             e.stopPropagation();
 
-            setActiveMd(activeMd.n);
+            // setActiveMd(activeMd.n);
+            callMdEvent(activeMd.n);
           }}
         >
           {" "}

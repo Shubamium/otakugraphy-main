@@ -54,7 +54,10 @@ export default async function Home() {
 					'video': video.asset -> url
 				}
 			},
-			hlm[] ->
+			hlm[] -> {
+				...,
+				'video':video.asset -> url
+			}
 		}[0]
 	`);
 
@@ -221,8 +224,8 @@ export default async function Home() {
           <div className="l">
             <h2>OUR MISSION </h2>
             <p>
-              At Otakugraphy, We Are Storytellers. With each frame, we narrate
-              the untold stories, unseen moments, and unmatched energy.
+              With each frame, we narrate the untold stories, unseen moments,
+              and unmatched energy.
             </p>
             <div className="arr"></div>
           </div>
@@ -239,7 +242,7 @@ export default async function Home() {
               <b>Dedication To</b> Fandom
             </h2>
             <p>
-              We are driven by a <b>genuine love</b> for the Otaku universe
+              We are driven by a genuine<b> love</b> for otaku culture
             </p>
           </div>
           <div className="cube">
@@ -247,7 +250,7 @@ export default async function Home() {
           </div>
           <div className="cube txt">
             <h2>
-              <b>Community Driven</b> Creativity
+              <b>Community- Driven</b> Creativity
             </h2>
             <p>
               We collaborate with the <b>Otaku</b> community to craft
@@ -262,7 +265,7 @@ export default async function Home() {
               <b>Authentic Visual</b> Storytelling
             </h2>
             <p>
-              We create authentic, <strong>high-quality visual</strong> stories
+              We create authentic, high-quality visual <strong>stories</strong>{" "}
               that inspires, entertains, and connects fans worldwide
             </p>
           </div>

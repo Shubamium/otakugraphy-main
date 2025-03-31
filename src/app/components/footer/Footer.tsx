@@ -36,6 +36,10 @@ export default function Footer({}: Props) {
             <Link href={"/contact"} className="btn-fn">
               Contact us
             </Link>
+            <a href="#top" className="btn btn-scroll two">
+              <span> Scroll to the top</span>
+              <LuArrowUpToLine />
+            </a>
           </nav>
         </div>
         <div className="c">
@@ -135,7 +139,7 @@ export default function Footer({}: Props) {
             videographers, capturing the quirky spirit of Otaku culture through
             Conventions, Brands, VTubers, and Nightlife.
           </p>
-          <a href="#top" className="btn btn-scroll">
+          <a href="#top" className="btn btn-scroll one">
             <span> Scroll to the top</span>
             <LuArrowUpToLine />
           </a>

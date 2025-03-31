@@ -1,11 +1,13 @@
 "use client";
 import { urlFor } from "@/app/db/sanity";
 import "./media.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Blurhash } from "react-blurhash";
 import { BiFullscreen } from "react-icons/bi";
 import { RxEnterFullScreen } from "react-icons/rx";
 import { HiInformationCircle } from "react-icons/hi";
+
+import { motion } from "motion/react";
 type Props = {
   data?: any;
   n?: any;
@@ -15,7 +17,8 @@ type Props = {
 export default function Media({ data, n, p }: Props) {
   const [loaded, setLoaded] = useState(false);
   const [imageUrl, setImageUrl] = useState("empty");
-
+  const [z, setZ] = useState(1);
+  const vidRef = useRef<HTMLVideoElement>(null);
   useEffect(() => {
     // const src = urlFor(data.image).auto("format").height(700).url();
     // const img = new Image();
@@ -25,10 +28,22 @@ export default function Media({ data, n, p }: Props) {
     //   setLoaded(true);
     // };
   }, [data]);
+  useEffect(() => {
+    window.addEventListener("md", (newD: any) => {
+      if (vidRef.current) {
+        if (newD.detail && newD.detail._id === data._id) {
+          // console.log(newD.detail);
+          vidRef.current.pause();
+        } else {
+          vidRef.current.play();
+        }
+      }
+    });
+  }, []);
   return (
     <div
       className="media"
-      onClick={() => {
+      onClick={(e) => {
         const mdEvent = new CustomEvent("md", {
           detail: {
             ...data,
@@ -36,15 +51,29 @@ export default function Media({ data, n, p }: Props) {
         });
         window.dispatchEvent(mdEvent);
       }}
+      // key={data._id}
+      // layout="preserve-aspect"
+      // layoutId={data._id}
+      // transition={{
+      //   duration: 0.05,
+      // }}
+      // style={{
+      //   zIndex: z,
+      //   willChange: "transform,z-index",
+      // }}
+      // onUpdate={(latest) => {
+      //   if ((latest.scale as number) > 1) setZ(100);
+      //   else setZ(1);
+      // }}
     >
       {data && (
         <>
-          <p className="alt">{data.gd.alt}</p>
+          <p className="alt">{data.gd && data.gd.alt}</p>
           {data.type === "image" && data.image && (
             <>
               <img
                 src={urlFor(data.image).auto("format").height(550).url()}
-                alt={data.gd.alt}
+                alt={data.gd && data.gd.alt}
                 className="img"
               />
               {/* <Blurhash hash={data.metadata.blurHash} className="blur" /> */}
@@ -62,6 +91,7 @@ export default function Media({ data, n, p }: Props) {
                 playsInline
                 // disablePictureInPicture
                 // disableRemotePlayback
+                ref={vidRef}
                 autoPlay
                 muted
                 controls

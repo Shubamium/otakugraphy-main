@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import "./sideContact.scss";
 import {
@@ -7,16 +8,44 @@ import {
   FaXTwitter,
   FaYoutube,
 } from "react-icons/fa6";
-
+import { useState } from "react";
+import {
+  BsChevronDoubleDown,
+  BsChevronDoubleUp,
+  BsShareFill,
+} from "react-icons/bs";
+import { motion } from "motion/react";
+import { ImConnection } from "react-icons/im";
+import { SlSocialFoursqare } from "react-icons/sl";
+import { BiShare } from "react-icons/bi";
+import { useMediaQuery } from "react-responsive";
 type Props = {};
 
 export default function SideContact({}: Props) {
+  const isSmoll = useMediaQuery({
+    query: "(max-width:550px)",
+  });
+  const [open, setOpen] = useState(!isSmoll);
+
   return (
     <aside id="sidec">
       <Link href={"/"} className="logo">
         <img src="/gfx/icon.png" alt="" />
       </Link>
-      <div className="lens-scl">
+      <button
+        className="btn btn-drawer"
+        onClick={() => {
+          setOpen(!open);
+        }}
+      >
+        {!open ? <BsShareFill /> : <BsChevronDoubleUp />}
+      </button>
+      <motion.div
+        className="lens-scl"
+        animate={{
+          scaleY: open ? 1 : 0,
+        }}
+      >
         <a
           href="https://x.com/OTG_Otakugraphy"
           target="_blank"
@@ -101,7 +130,7 @@ export default function SideContact({}: Props) {
             />
           </svg>
         </a>
-      </div>
+      </motion.div>
     </aside>
   );
 }
