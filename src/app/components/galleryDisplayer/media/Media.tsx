@@ -43,18 +43,19 @@ export default function Media({ data, n, p }: Props) {
   }, []);
 
   useEffect(() => {
-    const fs = document.fullscreenElement;
+    const fstest = async () => {
+      document.addEventListener("fullscreenchange", () => {
+        const fs = document.fullscreenElement;
+        fs?.requestFullscreen();
 
-    if (fs) {
-      const el = fs.requestFullscreen();
-    }
-    document.addEventListener("fullscreenchange", () => {
-      if (vidRef.current && document.fullscreenElement === vidRef.current) {
-        vidRef.current.volume = 1.0;
-        vidRef.current.muted = false;
-        console.log("hi", vidRef.current);
-      }
-    });
+        if (vidRef.current && document.fullscreenElement === vidRef.current) {
+          vidRef.current.volume = 1.0;
+          vidRef.current.muted = false;
+          console.log("hi", vidRef.current);
+        }
+      });
+    };
+    fstest();
   }, []);
   const openMediaDetail = () => {
     const mdEvent = new CustomEvent("md", {
