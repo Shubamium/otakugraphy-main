@@ -34,7 +34,7 @@ export default function Media({ data, n, p }: Props) {
         if (newD.detail && newD.detail._id === data._id) {
           // console.log(newD.detail);
           vidRef.current.pause();
-        } else {
+        } else if (newD.detail && newD.detail._id !== data._id) {
           vidRef.current.play();
           vidRef.current.volume = 0;
         }
