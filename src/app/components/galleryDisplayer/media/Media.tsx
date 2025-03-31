@@ -41,16 +41,22 @@ export default function Media({ data, n, p }: Props) {
       }
     });
   }, []);
+
+  const openMediaDetail = () => {
+    const mdEvent = new CustomEvent("md", {
+      detail: {
+        ...data,
+      },
+    });
+    window.dispatchEvent(mdEvent);
+  };
   return (
     <div
       className="media"
       onClick={(e) => {
-        const mdEvent = new CustomEvent("md", {
-          detail: {
-            ...data,
-          },
-        });
-        window.dispatchEvent(mdEvent);
+        if (data && data.type !== "video") {
+          openMediaDetail();
+        }
       }}
       // key={data._id}
       // layout="preserve-aspect"
@@ -82,7 +88,12 @@ export default function Media({ data, n, p }: Props) {
           )}
           {data.type === "video" && data.video && (
             <>
-              <button className="btn btn-vfs">
+              <button
+                className="btn btn-vfs"
+                onClick={() => {
+                  openMediaDetail();
+                }}
+              >
                 {" "}
                 <HiInformationCircle />{" "}
               </button>
