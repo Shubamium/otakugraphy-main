@@ -35,7 +35,7 @@ export default function Media({ data, n, p }: Props) {
           // console.log(newD.detail);
           vidRef.current.pause();
         } else {
-          vidRef.current.play();
+          // vidRef.current.play();
         }
       }
     });
