@@ -28,7 +28,12 @@ export default function SideContact({}: Props) {
   const [open, setOpen] = useState(!isSmoll);
 
   return (
-    <aside id="sidec">
+    <aside
+      id="sidec"
+      style={{
+        height: !open ? "50px" : "auto",
+      }}
+    >
       <Link href={"/"} className="logo">
         <img src="/gfx/icon.png" alt="" />
       </Link>
@@ -44,6 +49,8 @@ export default function SideContact({}: Props) {
         className="lens-scl"
         animate={{
           scaleY: open ? 1 : 0,
+          opacity: open ? 1 : 0,
+          // height: open ? 0 : "50vh",
         }}
       >
         <a

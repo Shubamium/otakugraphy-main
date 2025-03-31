@@ -55,6 +55,12 @@
       box-shadow: 0px 0px 24px 14px black;
       background: black;
       border: 1px solid rgba(128, 128, 128, 0.439);
+      @include mq(1024) {
+        width: 100%;
+        height: auto;
+        max-height: 90%;
+        max-width: 90%;
+      }
     }
   }
 
