@@ -95,7 +95,7 @@ export default function MediaDetail({}: Props) {
             className="video"
             playsInline
             autoPlay
-            muted
+            // muted
             controls
             loop
           />

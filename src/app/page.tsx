@@ -3,7 +3,7 @@ import Media from "./components/galleryDisplayer/media/Media";
 import "./home.scss";
 import { FaArrowRightLong } from "react-icons/fa6";
 import PartnershipSlide from "./components/partnershipSlide/PartnershipSlide";
-import { fetchData } from "./db/sanity";
+import { fetchData, urlFor } from "./db/sanity";
 
 const conventionPartners = [
   "/gfx/p/c1.png",
@@ -145,6 +145,7 @@ export default async function Home() {
                 <div className="cr-l">
                   {cr.ml &&
                     cr.ml.map((md: any, i: number) => {
+                      if (!md) return null;
                       return <Media key={md._key + "id" + i} data={md} />;
                     })}
                 </div>
@@ -212,14 +213,29 @@ export default async function Home() {
             <div className="arr"></div>
           </div>
           <div className="r">
-            <img src="/gfx/about1.png" alt="" className="about" />
+            <img
+              src={
+                gd.abi
+                  ? urlFor(gd.abi).height(600).format("webp").url()
+                  : "/gfx/about1.png"
+              }
+              alt=""
+              className="about"
+            />
           </div>
         </div>
       </section>
       <section id="mission">
         <div className="confine">
           <div className="r">
-            <img src="/gfx/about2.png" alt="" className="about" />
+            <img
+              src={
+                gd.om
+                  ? urlFor(gd.om).height(600).format("webp").url()
+                  : "/gfx/about2.png"
+              }
+              className="about"
+            />
           </div>
           <div className="l">
             <h2>OUR MISSION </h2>
@@ -246,7 +262,15 @@ export default async function Home() {
             </p>
           </div>
           <div className="cube">
-            <img src="/gfx/cube1.png" alt="" className="mim" />
+            <img
+              src={
+                gd.v1
+                  ? urlFor(gd.v1).height(600).format("webp").url()
+                  : "/gfx/cube1.png"
+              }
+              alt=""
+              className="mim"
+            />
           </div>
           <div className="cube txt">
             <h2>
@@ -258,7 +282,15 @@ export default async function Home() {
             </p>
           </div>
           <div className="cube">
-            <img src="/gfx/cube2.png" alt="" className="mim" />
+            <img
+              src={
+                gd.v2
+                  ? urlFor(gd.v2).height(600).format("webp").url()
+                  : "/gfx/.png"
+              }
+              alt=""
+              className="mim"
+            />
           </div>
           <div className="cube txt">
             <h2>
@@ -270,7 +302,15 @@ export default async function Home() {
             </p>
           </div>
           <div className="cube">
-            <img src="/gfx/cube3.png" alt="" className="mim" />
+            <img
+              src={
+                gd.v3
+                  ? urlFor(gd.v3).height(600).format("webp").url()
+                  : "/gfx/cube3.png"
+              }
+              alt=""
+              className="mim"
+            />
           </div>
         </div>
       </section>
