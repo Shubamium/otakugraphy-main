@@ -19,6 +19,7 @@ export default function Header({}: Props) {
   useEffect(() => {
     setVisible(!isMobile);
   }, [isMobile]);
+  useEffect(() => {}, []);
   return (
     <header
       id="header"
