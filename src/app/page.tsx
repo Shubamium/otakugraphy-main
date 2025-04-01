@@ -4,6 +4,7 @@ import "./home.scss";
 import { FaArrowRightLong } from "react-icons/fa6";
 import PartnershipSlide from "./components/partnershipSlide/PartnershipSlide";
 import { fetchData, urlFor } from "./db/sanity";
+import Category from "./Category";
 
 const conventionPartners = [
   "/gfx/p/c1.png",
@@ -128,79 +129,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section id="category">
-        {gd &&
-          gd.cm &&
-          gd.cm.map((cr: any, i: number) => {
-            return (
-              <div className="category-row" key={cr._key + "" + i}>
-                <Link href={"/" + cr.name} className="cr-h">
-                  <h2> {cr.name} </h2>
-                  <p className="footer">
-                    <span>
-                      VIEW MORE <FaArrowRightLong />
-                    </span>
-                  </p>
-                </Link>
-                <div className="cr-l">
-                  {cr.ml &&
-                    cr.ml.map((md: any, i: number) => {
-                      if (!md) return null;
-                      return <Media key={md._key + "id" + i} data={md} />;
-                    })}
-                </div>
-              </div>
-            );
-          })}
-        {/* <div className="category-row">
-          <Link href={"/brands"} className="cr-h">
-            <h2> BRANDS</h2>
-            <p className="footer">
-              <span>
-                VIEW MORE <FaArrowRightLong />
-              </span>
-            </p>
-          </Link>
-          <div className="cr-l">
-            <Media />
-            <Media />
-            <Media />
-          </div>
-        </div>
-        <div className="category-row">
-          <Link href={"/vtubers"} className="cr-h">
-            <h2> VTUBERS</h2>
-            <p className="footer">
-              <span>
-                VIEW MORE <FaArrowRightLong />
-              </span>
-            </p>
-          </Link>
-          <div className="cr-l">
-            <Media />
-            <Media />
-            <Media />
-          </div>
-        </div>
-        <div className="category-row">
-          <Link href={"/conventions"} className="cr-h">
-            <h2> NIGHTLIFE</h2>
-            <p className="footer">
-              <span>
-                VIEW MORE <FaArrowRightLong />
-              </span>
-            </p>
-          </Link>
-          <div className="cr-l">
-            <Media />
-            <Media />
-            <Media />
-            <Media />
-            <Media />
-          </div>
-        </div> */}
-      </section>
-
+      <Category gd={gd} />
       <section id="about">
         <div className="confine">
           <div className="l">

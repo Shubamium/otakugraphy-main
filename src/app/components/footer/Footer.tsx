@@ -144,7 +144,7 @@ export default function Footer({}: Props) {
             <LuArrowUpToLine />
           </a>
           <p className="attribution">
-            © 2024 Otakugraphy. All images and trademarks are the property of
+            © 2025 Otakugraphy. All images and trademarks are the property of
             their respective owners.
           </p>
         </div>

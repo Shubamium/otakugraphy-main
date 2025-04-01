@@ -94,7 +94,7 @@ export default function Media({ data, n, p }: Props) {
           {data.type === "image" && data.image && (
             <>
               <img
-                src={urlFor(data.image).auto("format").height(550).url()}
+                src={urlFor(data.image).auto("format").height(800).url()}
                 alt={data.gd && data.gd.alt}
                 className="img"
               />

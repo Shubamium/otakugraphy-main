@@ -139,7 +139,7 @@ export default function MediaDetail({}: Props) {
           <p>Press anywhere to close . . .</p>
           <p>
             {" "}
-            © 2024 Otakugraphy. All images and trademarks are the property of
+            © 2025 Otakugraphy. All images and trademarks are the property of
             their respective owners.
           </p>
         </div>
