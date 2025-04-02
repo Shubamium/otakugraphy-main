@@ -28,9 +28,9 @@ const zen = Zen_Kaku_Gothic_New({
   weight: ["400", "700"],
 });
 
-const title = "Otakugraphy LLC";
+const title = "Otakugraphy";
 const description =
-  " We are a professional LLC company of freelancer photographers and videographers, capturing the quirky spirit of Otaku culture through Conventions, Brands, VTubers, and Nightlife. ";
+  " We are a professional company of freelancer photographers and videographers, capturing the quirky spirit of Otaku culture through Conventions, Brands, VTubers, and Nightlife. ";
 const banner = "https://i.ibb.co.com/Mx99HBYX/OTG-Oficial-Logo.png";
 const url = "https://otakugraphy.com";
 
