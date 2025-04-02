@@ -42,8 +42,8 @@ export function CatRow({ cr, i }: any) {
   const [scope, measure] = useMeasure();
   useEffect(() => {
     const target = measure.width;
-    animate(xpos, [0, -target], {
-      duration: cr.ml.length * 2,
+    animate(xpos, i % 2 ? [0, -target] : [-target, 0], {
+      duration: cr.ml.length * (i % 2 == 0 ? 10 : 5),
       ease: "linear",
       repeat: Infinity,
       repeatType: "loop",
