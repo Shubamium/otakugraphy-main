@@ -132,8 +132,15 @@
         .t {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          height: 100%;
+          // height: 100%;
           gap: 1em;
+          // background: red;
+          // overflow: visible;
+          height: auto;
+          @include mq(468) {
+            // margin-bottom: 10vh;
+            // gap: 2em;
+          }
           .media {
             height: 100%;
           }
