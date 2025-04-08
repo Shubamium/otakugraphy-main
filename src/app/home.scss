@@ -129,6 +129,9 @@
         flex-direction: column;
         gap: 1em;
         flex-grow: 1;
+        @include mq(550) {
+          height: 400px;
+        }
         .t {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -137,6 +140,7 @@
           // background: red;
           // overflow: visible;
           height: auto;
+
           @include mq(468) {
             // margin-bottom: 10vh;
             // gap: 2em;
