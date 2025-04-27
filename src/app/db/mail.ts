@@ -13,13 +13,14 @@ export async function sendMail(
   mail: string,
   phone: string | null,
   subject: string,
-  message: string
+  message: string,
+  dc: string | null
 ) {
   const mailOption = {
     from: "vicnet.video@gmail.com",
     to: process.env.SMTP_TARGET,
     subject: `[Contact Form]${subject}`,
-    text: `Hello, ${name} has submitted a message through the website contact form. \n \n Email: ${mail} \n Phone:${phone ? phone : "N/A"} \n Message: ${message} `,
+    text: `Hello, ${name} has submitted a message through the website contact form. \n \n Email: ${mail} \n Phone:${phone ? phone : "N/A"} \n Discord: ${dc ?? "N/A"} \n Message: ${message} `,
   };
 
   try {

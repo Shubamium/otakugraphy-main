@@ -26,7 +26,7 @@ export default function SideContact({}: Props) {
     query: "(max-width:550px)",
   });
   const [open, setOpen] = useState(!isSmoll);
-
+	
   return (
     <aside
       id="sidec"

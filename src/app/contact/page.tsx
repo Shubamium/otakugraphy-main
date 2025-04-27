@@ -13,6 +13,7 @@ export default function page({}: Props) {
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState<string | null>(null);
+  const [dc, setDc] = useState<string | null>(null);
   const [mail, setMail] = useState<string>("");
   const [subject, setSubject] = useState<string>("");
   const [message, setMessage] = useState<string>("");
@@ -91,6 +92,20 @@ export default function page({}: Props) {
                   value={phone ?? ""}
                   onChange={(e) => {
                     setPhone(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="ff">
+                <label htmlFor="dc">
+                  DISCORD <span className="op">(optional)</span>
+                </label>
+                <input
+                  type="text"
+                  name="dc"
+                  placeholder="Your Discord username. . ."
+                  value={dc ?? ""}
+                  onChange={(e) => {
+                    setDc(e.target.value);
                   }}
                 />
               </div>
