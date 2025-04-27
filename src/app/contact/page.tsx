@@ -20,7 +20,7 @@ export default function page({}: Props) {
 
   const submit = async () => {
     setL(true);
-    const res = await sendMail(name, mail, phone, subject, message);
+    const res = await sendMail(name, mail, phone, subject, message, dc);
 
     if (res) {
       alert("Your message has been submitted successfully!");
@@ -83,7 +83,7 @@ export default function page({}: Props) {
               </div>
               <div className="ff">
                 <label htmlFor="phone">
-                  PHONE NUMBER <span className="op">(optional)</span>
+                  PHONE <span className="op">(optional)</span>
                 </label>
                 <input
                   type="tel"
