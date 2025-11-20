@@ -10,9 +10,18 @@ import FixedA from "./layout/fixedA/FIxedA";
 import FixedB from "./layout/fixedB/FIxedB";
 import FixedC from "./layout/fixedC/FixedC";
 import FixedD from "./layout/fixedD/FixedD";
+import { urlFor } from "@/app/db/sanity";
+import Link from "next/link";
+import { FaPlayCircle } from "react-icons/fa";
 type Props = {};
 
-export default function GalleryDisplayer({ title, pages }: any) {
+export default function GalleryDisplayer({
+  title,
+  description,
+  side_images,
+  pages,
+  highlights,
+}: any) {
   const [p, setP] = useState(0);
 
   const renderPage = (pageData: any) => {
@@ -65,6 +74,7 @@ export default function GalleryDisplayer({ title, pages }: any) {
         <div className="l">
           {/* Title */}
           <h1 className="h">{title}</h1>
+          <p>{description}</p>
         </div>
         <div className="r">
           {pages && pages.length > 1 && (
@@ -104,12 +114,51 @@ export default function GalleryDisplayer({ title, pages }: any) {
               </svg>
             </div>
           )}
-          <img src="/gfx/slogan.png" alt="" className="slogan" />
+          {side_images && side_images.length > 0 && (
+            <div className="side-images">
+              {side_images.map((img: any, i: number) => (
+                <img
+                  src={urlFor(img).auto("format")?.url() ?? "/"}
+                  alt=""
+                  key={i}
+                />
+              ))}
+            </div>
+          )}
+          {/* <img src="/gfx/slogan.png" alt="" className="slogan" /> */}
         </div>
       </section>
 
       <section id="gallery">
         {pages && pages.length > 0 && renderPage(pages[p])}
+        {highlights &&
+          highlights.ht &&
+          highlights.thumbnail &&
+          highlights.link && (
+            <div className="highlights">
+              <div className="panel ">
+                <h2>HIGHLIGHTS</h2>
+                <Link
+                  href={highlights.link}
+                  target="_blank"
+                  className="link btn"
+                >
+                  <div className="thumb">
+                    <img
+                      src={
+                        urlFor(highlights.thumbnail)?.auto("format")?.url() ??
+                        undefined
+                      }
+                      className="thumbnail"
+                      alt=""
+                    />
+                    <FaPlayCircle />
+                  </div>
+                  <span className="title">{highlights.ht}</span>
+                </Link>
+              </div>
+            </div>
+          )}
       </section>
     </main>
   );

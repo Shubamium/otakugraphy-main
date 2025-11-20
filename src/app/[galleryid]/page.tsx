@@ -13,6 +13,7 @@ export default async function Page({ params }: Props) {
   const gid = (await params).galleryid;
   const gd = await fetchData<any>(`
 		*[_type == 'gallery' && s.current == '${gid}' ]{
+			...,
 			t,
 			s,
 			pages[]{
@@ -30,5 +31,13 @@ export default async function Page({ params }: Props) {
     redirect("/");
   }
   console.log(gd);
-  return <GalleryDisplayer title={gd.t} pages={gd.pages}></GalleryDisplayer>;
+  return (
+    <GalleryDisplayer
+      title={gd.t}
+      description={gd.description}
+      side_images={gd.side_images}
+      highlights={gd.highlights}
+      pages={gd.pages}
+    ></GalleryDisplayer>
+  );
 }

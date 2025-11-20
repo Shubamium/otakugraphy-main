@@ -55,10 +55,10 @@ export default function Header({}: Props) {
       </svg>
 
       <Link className="btn logo" href={"/"}>
-        <img src="/gfx/logo.png" alt="" />
+        <img src="/gfx/logo_only.png" alt="" />
       </Link>
       <nav id="main-nav">
-        <Link href={"/brands"} className="btn btn-nav">
+        <Link href={"/otg-rig"} className="btn btn-nav">
           {/* <img src="/gfx/brands.png" alt="" /> */}
           <span>OTG RIG</span>
         </Link>
@@ -70,6 +70,16 @@ export default function Header({}: Props) {
           {/* <img src="/gfx/nightlife.png" alt="" /> */}
           <span>The OTG Difference</span>
         </Link>
+        <Link href={"/conventions"} className="btn btn-nav btn-mobile">
+          conventions
+        </Link>
+        <Link href={"/nightlife"} className="btn btn-nav btn-mobile">
+          Nightlife
+        </Link>
+        <Link href={"/brands"} className="btn btn-nav btn-mobile">
+          Brands
+        </Link>
+
         <div className="btn btn-nav btn-popup">
           {/* <img src="/gfx/nightlife.png" alt="" /> */}
           <span>More</span>

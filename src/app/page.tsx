@@ -124,7 +124,7 @@ export default async function Home() {
       <section id="lens">
         <div className="text confine">
           <h2 className="h">
-            MODERN LENS
+            VTUBER-FOCUSED
             <svg
               width="212"
               height="212"
@@ -142,7 +142,7 @@ export default async function Home() {
           </h2>
 
           <p className="h second">
-            <span className="fill">ON</span> MODERN OTAKUS
+            <span className="fill">MEDIA</span> COMPANY
           </p>
         </div>
       </section>
@@ -163,7 +163,7 @@ export default async function Home() {
             <img
               src={
                 gd.abi
-                  ? urlFor(gd.abi).height(600).format("webp").url()
+                  ? urlFor(gd.abi).height(900).format("webp").url()
                   : "/gfx/about1.png"
               }
               alt=""
@@ -178,7 +178,7 @@ export default async function Home() {
             <img
               src={
                 gd.om
-                  ? urlFor(gd.om).height(600).format("webp").url()
+                  ? urlFor(gd.om).height(900).format("webp").url()
                   : "/gfx/about2.png"
               }
               className="about"
@@ -212,7 +212,7 @@ export default async function Home() {
             <img
               src={
                 gd.v1
-                  ? urlFor(gd.v1).height(600).format("webp").url()
+                  ? urlFor(gd.v1).height(900).format("webp").url()
                   : "/gfx/cube1.png"
               }
               alt=""
