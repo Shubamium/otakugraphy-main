@@ -95,19 +95,22 @@
     }
   }
 
+  .imgcont {
+    position: relative;
+  }
   .collections {
     padding: 0.25em 1em;
     background: var(--dgold);
-    position: fixed;
+    position: absolute;
     top: 0%;
-    left: 0%;
+    right: 0%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1em;
     font-family: var(--fontO);
     font-weight: bold;
-    border-radius: 0 0 1em 0;
+    border-radius: 0 0 0 1em;
     transform-origin: left top;
     svg {
       width: 30px;

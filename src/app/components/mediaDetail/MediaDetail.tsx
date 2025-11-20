@@ -70,35 +70,60 @@ export default function MediaDetail({}: Props) {
       <div className="mc">
         {activeMd && activeMd.type == "image" && (
           <>
-            {loading ? (
-              <RiLoader5Fill className="loader-circ" />
-            ) : (
-              <img
-                id="view"
-                ref={imgref}
-                className="img"
-                src={img}
-                // key={activeMd._id}
-                // layout="preserve-aspect"
-                // layoutId={activeMd._id}
-                // transition={{
-                // duration: 0.05,
-                // }}
-              />
-            )}
+            <div className="imgcont">
+              {loading ? (
+                <RiLoader5Fill className="loader-circ" />
+              ) : (
+                <img
+                  id="view"
+                  ref={imgref}
+                  className="img"
+                  src={img}
+                  // key={activeMd._id}
+                  // layout="preserve-aspect"
+                  // layoutId={activeMd._id}
+                  // transition={{
+                  // duration: 0.05,
+                  // }}
+                />
+              )}
+
+              {activeMd && activeMd.gd && activeMd.gd.clink && (
+                <a
+                  className="btn collections"
+                  target="_blank"
+                  href={activeMd.gd.clink}
+                >
+                  <h2>Full Collection</h2>
+                  <HiMiniArrowTopRightOnSquare />
+                </a>
+              )}
+            </div>
           </>
         )}
         {/* <p>{img}</p> */}
         {activeMd && activeMd.type === "video" && activeMd.video && (
-          <video
-            src={activeMd.video}
-            className="video"
-            playsInline
-            autoPlay
-            // muted
-            controls
-            loop
-          />
+          <div className="imgcont">
+            <video
+              src={activeMd.video}
+              className="video"
+              playsInline
+              autoPlay
+              // muted
+              controls
+              loop
+            />
+            {activeMd && activeMd.gd && activeMd.gd.clink && (
+              <a
+                className="btn collections"
+                target="_blank"
+                href={activeMd.gd.clink}
+              >
+                <h2>Full Collection</h2>
+                <HiMiniArrowTopRightOnSquare />
+              </a>
+            )}
+          </div>
         )}
       </div>
       {activeMd && activeMd.p && (
@@ -128,12 +153,6 @@ export default function MediaDetail({}: Props) {
         </button>
       )}
 
-      {activeMd && activeMd.gd && activeMd.gd.clink && (
-        <a className="btn collections" target="_blank" href={activeMd.gd.clink}>
-          <h2>Full Collection</h2>
-          <HiMiniArrowTopRightOnSquare />
-        </a>
-      )}
       <div className="detail-bar">
         <div className="warn">
           <p>Press anywhere to close . . .</p>
