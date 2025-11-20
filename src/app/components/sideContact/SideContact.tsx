@@ -5,6 +5,7 @@ import {
   FaBluesky,
   FaDiscord,
   FaInstagram,
+  FaLinkedin,
   FaXTwitter,
   FaYoutube,
 } from "react-icons/fa6";
@@ -26,7 +27,7 @@ export default function SideContact({}: Props) {
     query: "(max-width:550px)",
   });
   const [open, setOpen] = useState(!isSmoll);
-	
+
   return (
     <aside
       id="sidec"
@@ -75,11 +76,11 @@ export default function SideContact({}: Props) {
           </svg>
         </a>
         <a
-          href="https://bsky.app/profile/otakugraphy.bsky.social"
+          href="https://www.youtube.com/@OTG-otakugraphy"
           target="_blank"
           className="btn-lens"
         >
-          <FaBluesky className="ic" />
+          <FaYoutube className="ic" />
           <svg
             width="212"
             height="212"
@@ -117,11 +118,11 @@ export default function SideContact({}: Props) {
           </svg>
         </a>
         <a
-          href="https://www.youtube.com/@OTG-otakugraphy"
+          href="https://www.linkedin.com/company/otakugraphy/?viewAsMember=true"
           target="_blank"
           className="btn-lens"
         >
-          <FaYoutube className="ic" />
+          <FaLinkedin className="ic" />
           <svg
             width="212"
             height="212"

@@ -11,6 +11,7 @@ type Props = {
 };
 
 export default function Category({ gd }: Props) {
+  console.log(gd);
   return (
     // /<div>Category</div>
     <section id="category">
@@ -19,7 +20,7 @@ export default function Category({ gd }: Props) {
         gd.cm.map((cr: any, i: number) => {
           return (
             <div className="category-row" key={cr._key + "" + i}>
-              <Link href={"/" + cr.name} className="cr-h">
+              <Link href={cr.route_link ?? "/"} className="cr-h">
                 <h2> {cr.name} </h2>
                 <p className="footer">
                   <span>

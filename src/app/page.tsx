@@ -1,42 +1,42 @@
 import Link from "next/link";
 import Media from "./components/galleryDisplayer/media/Media";
 import "./home.scss";
-import { FaArrowRightLong } from "react-icons/fa6";
+import { FaArrowRightLong, FaQuoteLeft } from "react-icons/fa6";
 import PartnershipSlide from "./components/partnershipSlide/PartnershipSlide";
 import { fetchData, urlFor } from "./db/sanity";
 import Category from "./Category";
 
 const conventionPartners = [
-  "/gfx/p/c1.png",
+  // "/gfx/p/c1.png",
   "/gfx/p/c2.png",
-  "/gfx/p/c3.png",
-  "/gfx/p/c4.png",
-  "/gfx/p/c5.png",
-  "/gfx/p/c6.png",
+  // "/gfx/p/c3.png",
+  // "/gfx/p/c4.png",
+  // "/gfx/p/c5.png",
+  // "/gfx/p/c6.png",
   "/gfx/p/c7.png",
   "/gfx/p/c8.png",
   "/gfx/p/c10.png",
 ];
 
 const brandPartners = [
-  "/gfx/p/b1.png",
+  // "/gfx/p/b1.png",
   "/gfx/p/b2.png",
   "/gfx/p/b3.png",
   "/gfx/p/b4.png",
   "/gfx/p/b5.png",
   "/gfx/p/b6.png",
-  "/gfx/p/b7.png",
+  // "/gfx/p/b7.png",
   "/gfx/p/b8.png",
 ];
 
 const vtuberPartners = [
   "/gfx/p/v/v1.png",
-  "/gfx/p/v/v2.png",
+  // "/gfx/p/v/v2.png",
   "/gfx/p/v/v3.png",
-  "/gfx/p/v/v4.png",
+  // "/gfx/p/v/v4.png",
   "/gfx/p/v/v5.png",
   "/gfx/p/v/v6.png",
-  "/gfx/p/v/v7.png",
+  // "/gfx/p/v/v7.png",
 ];
 const nightlifePartners = [
   "/gfx/p/n/n1.png",
@@ -44,12 +44,27 @@ const nightlifePartners = [
   "/gfx/p/n/n3.png",
   "/gfx/p/n/n4.png",
 ];
+const newPartners = [
+  "/gfx/p/na/pt1.webp",
+  "/gfx/p/na/pt2.png",
+  "/gfx/p/na/pt3.webp",
+  "/gfx/p/na/pt4.png",
+  "/gfx/p/na/pt5.png",
+  "/gfx/p/na/pt6.png",
+  "/gfx/p/na/pt7.png",
+  "/gfx/p/na/pt8.png",
+  "/gfx/p/na/pt9.png",
+  "/gfx/p/na/pt10.png",
+  "/gfx/p/na/pt11.png",
+  "/gfx/p/na/pt12.png",
+];
 export default async function Home() {
   const gd = await fetchData<any>(`
 		*[_type == 'general' && preset == 'main']{
 			...,
 			cm[]{
 				name,
+				route_link,
 				ml[] ->{
 					...,
 					'video': video.asset -> url
@@ -68,7 +83,10 @@ export default async function Home() {
     <main id="page_home">
       <section id="banner-h">
         <div className="confine">
-          <img src="/gfx/logo.png" alt="" className="main" />
+          <img src="/gfx/logo_only.png" alt="" className="main" />
+          <p className="moto">
+            North America's 1st Vtuber-Focused Media Company
+          </p>
         </div>
       </section>
 
@@ -249,11 +267,40 @@ export default async function Home() {
           <h2 className="h ol">PARTNERSHIPS</h2>
           <div className="arr"></div>
         </div>
-        <div className="p-l">
-          <PartnershipSlide p={conventionPartners} />
-          <PartnershipSlide p={brandPartners} reverse={true} />
-          <PartnershipSlide p={vtuberPartners} />
-          <PartnershipSlide p={nightlifePartners} reverse={true} />
+        <div className="content">
+          <div className="p-l">
+            <PartnershipSlide p={conventionPartners} />
+            <PartnershipSlide p={brandPartners} reverse={true} />
+            <PartnershipSlide p={vtuberPartners} />
+            <PartnershipSlide p={nightlifePartners} reverse={true} />
+            <PartnershipSlide p={newPartners} />
+          </div>
+
+          <div className="testimonials">
+            <h2 className="ttitle">TESTIMONIALS</h2>
+
+            <div className="blocks">
+              {gd.testimonials?.map((tm: any, i: number) => {
+                return (
+                  <div className="testiblock" key={"testimonials" + tm._key}>
+                    <div className="person-info">
+                      <img
+                        src={urlFor(tm.pfp).auto("format").url()}
+                        alt=""
+                        className="img"
+                      />
+                      <h2>{tm.name}</h2>
+                      <p> {tm.role}</p>
+                    </div>
+                    <div className="testi-text">
+                      <FaQuoteLeft />
+                      <p>{tm.text}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
     </main>

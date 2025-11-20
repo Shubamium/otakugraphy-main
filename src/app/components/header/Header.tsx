@@ -58,21 +58,36 @@ export default function Header({}: Props) {
         <img src="/gfx/logo.png" alt="" />
       </Link>
       <nav id="main-nav">
-        <Link href={"/conventions"} className="btn btn-nav">
-          <img src="/gfx/conventions.png" alt="" />
-        </Link>
-
         <Link href={"/brands"} className="btn btn-nav">
-          <img src="/gfx/brands.png" alt="" />
+          {/* <img src="/gfx/brands.png" alt="" /> */}
+          <span>OTG RIG</span>
         </Link>
         <Link href={"/vtubers"} className="btn btn-nav">
-          <img src="/gfx/vtubers.png" alt="" />
+          {/* <img src="/gfx/vtubers.png" alt="" /> */}
+          <span>VTuber Events</span>
         </Link>
-        <Link href={"/nightlife"} className="btn btn-nav">
-          <img src="/gfx/nightlife.png" alt="" />
+        <Link href={"/otg-difference"} className="btn btn-nav">
+          {/* <img src="/gfx/nightlife.png" alt="" /> */}
+          <span>The OTG Difference</span>
         </Link>
+        <div className="btn btn-nav btn-popup">
+          {/* <img src="/gfx/nightlife.png" alt="" /> */}
+          <span>More</span>
+          <div className="popups">
+            <Link href={"/conventions"} className="btn btn-sub">
+              Conventions
+            </Link>
+            <Link href={"/nightlife"} className="btn btn-sub">
+              Nightlife
+            </Link>
+            <Link href={"/brands"} className="btn btn-sub">
+              Brands
+            </Link>
+          </div>
+        </div>
         <Link href={"/contact"} className="btn btn-nav">
-          <img src="/gfx/contactus.png" alt="" />
+          {/* <img src="/gfx/contactus.png" alt="" /> */}
+          <span>Contact us</span>
         </Link>
       </nav>
 

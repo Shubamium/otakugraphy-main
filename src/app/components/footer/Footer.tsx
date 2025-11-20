@@ -4,6 +4,7 @@ import {
   FaBluesky,
   FaDiscord,
   FaInstagram,
+  FaLinkedin,
   FaXTwitter,
   FaYoutube,
 } from "react-icons/fa6";
@@ -22,16 +23,24 @@ export default function Footer({}: Props) {
               Home
             </Link>
             <Link href={"/conventions"} className="btn-fn">
+              OTG RIG
+            </Link>
+
+            <Link href={"/vtubers"} className="btn-fn">
+              Vtuber Events
+            </Link>
+            <Link href={"/otg-difference "} className="btn-fn">
+              OTG DIFFERENCE
+            </Link>
+            <Link href={"/conventions"} className="btn-fn">
               Conventions
+            </Link>
+
+            <Link href={"/nightlife"} className="btn-fn">
+              Nightlife
             </Link>
             <Link href={"/brands"} className="btn-fn">
               Brands
-            </Link>
-            <Link href={"/vtubers"} className="btn-fn">
-              Vtubers
-            </Link>
-            <Link href={"/nightlife"} className="btn-fn">
-              Nightlife
             </Link>
             <Link href={"/contact"} className="btn-fn">
               Contact us
@@ -43,7 +52,7 @@ export default function Footer({}: Props) {
           </nav>
         </div>
         <div className="c">
-          <img src="/gfx/logo.png" alt="" className="logo" />
+          <img src="/gfx/logo_only.png" alt="" className="logo" />
 
           <div className="lens-scl">
             <a
@@ -68,11 +77,11 @@ export default function Footer({}: Props) {
               </svg>
             </a>
             <a
-              href="https://bsky.app/profile/otakugraphy.bsky.social"
+              href="https://www.youtube.com/@OTG-otakugraphy"
               target="_blank"
               className="btn-lens"
             >
-              <FaBluesky className="ic" />
+              <FaYoutube className="ic" />
               <svg
                 width="212"
                 height="212"
@@ -110,11 +119,11 @@ export default function Footer({}: Props) {
               </svg>
             </a>
             <a
-              href="https://www.youtube.com/@OTG-otakugraphy"
+              href="https://www.linkedin.com/company/otakugraphy/?viewAsMember=true"
               target="_blank"
               className="btn-lens"
             >
-              <FaYoutube className="ic" />
+              <FaLinkedin className="ic" />
               <svg
                 width="212"
                 height="212"
@@ -134,11 +143,7 @@ export default function Footer({}: Props) {
         </div>
         <div className="r">
           <h2 className="fh">ABOUT US</h2>
-          <p>
-            We are a professional company of freelancer photographers and
-            videographers, capturing the quirky spirit of Otaku culture through
-            Conventions, Brands, VTubers, and Nightlife.
-          </p>
+          <p>North America's 1st Vtuber-Focused Media Company</p>
           <a href="#top" className="btn btn-scroll one">
             <span> Scroll to the top</span>
             <LuArrowUpToLine />

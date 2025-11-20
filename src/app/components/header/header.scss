@@ -76,26 +76,79 @@
     }
     .btn-nav {
       opacity: 1;
-      filter: brightness(50%) drop-shadow(0px 0px 5px black);
+      // filter: brightness(50%) drop-shadow(0px 0px 5px black);
       transition: all 200ms ease;
       width: 100%;
-      img {
-        height: 23px;
-        width: auto;
-        // object-fit: cover;
-        align-items: center;
-        // image-rendering: optimizeQuality;
-        image-resolution: 250px;
-      }
+      // img {
+      //   height: 23px;
+      //   width: auto;
+      //   // object-fit: cover;
+      //   align-items: center;
+      //   // image-rendering: optimizeQuality;
+      //   image-resolution: 250px;
+      // }
+      color: var(--dgold);
+      font-family: var(--fontM);
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 2rem;
+      white-space: nowrap;
+      opacity: 0.6;
+
       &:hover,
       &.active {
         opacity: 1;
         scale: 1.02;
-        filter: brightness(100%) drop-shadow(0px 0px 5px var(--dgold));
+        // filter: brightness(100%) drop-shadow(0px 0px 5px var(--dgold));
       }
       &:active {
         opacity: 1;
         scale: 0.9;
+      }
+
+      &:not(.btn-popup) {
+        &:hover {
+          filter: brightness(100%) drop-shadow(0px 0px 5px var(--dgold));
+        }
+      }
+      &.btn-popup {
+        position: relative;
+        opacity: 1;
+        span {
+          opacity: 0.6;
+        }
+        &:hover {
+          .popups {
+            opacity: 1;
+            scale: 1 1;
+          }
+        }
+        .popups {
+          position: absolute;
+          bottom: 100%;
+          // width: 100%;
+          display: flex;
+          flex-direction: column;
+          padding: 1em;
+          background: url("/bg/wave.png"), #0f0e0e;
+          background-blend-mode: screen;
+          opacity: 0.4;
+          // transform: translateX(0%);
+          left: -100%;
+          border-top: 20px solid var(--dgold);
+          border-left: 5px solid var(--dgold);
+          border-right: 5px solid var(--dgold);
+          scale: 1 0;
+          transform-origin: bottom;
+          transition: all 500ms ease;
+          .btn-sub {
+            opacity: 0.7;
+            &:hover {
+              filter: brightness(100%) drop-shadow(0px 0px 5px var(--dgold));
+              opacity: 1;
+            }
+          }
+        }
       }
     }
   }
