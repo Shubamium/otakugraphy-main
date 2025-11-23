@@ -13,6 +13,7 @@ import Footer from "./components/footer/Footer";
 import SideContact from "./components/sideContact/SideContact";
 import Script from "next/script";
 import EXIF from "exif-js";
+import PasswordGate from "./components/passwordGate/PasswordGate";
 const noto = Noto_Sans_JP({
   variable: "--fontM",
   subsets: ["latin"],
@@ -100,14 +101,16 @@ export default function RootLayout({
           } as CSSProperties
         }
       >
-        <ReactLenis options={{ autoRaf: true }} root>
-          <div id="top"></div>
-          <SideContact />
-          {children}
-          <Header />
-          <MediaDetail />
-          <Footer />
-        </ReactLenis>
+        <PasswordGate>
+          <ReactLenis options={{ autoRaf: true }} root>
+            <div id="top"></div>
+            <SideContact />
+            {children}
+            <Header />
+            <MediaDetail />
+            <Footer />
+          </ReactLenis>
+        </PasswordGate>
       </body>
     </html>
   );

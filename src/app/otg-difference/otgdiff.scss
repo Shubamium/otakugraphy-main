@@ -1,20 +1,2 @@
 #p_otgdiff {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 5rem;
-  color: var(--dgold);
-  // background: black;
-  flex-direction: column;
-  .const {
-    display: flex;
-    gap: 1em;
-    text-transform: uppercase;
-    font-weight: bolder;
-  }
-  .desc {
-    color: rgb(137, 136, 136);
-    font-size: 3rem;
-  }
 }
