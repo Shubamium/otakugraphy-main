@@ -7,15 +7,33 @@
   color: var(--dgold);
   // background: black;
   flex-direction: column;
+  @media screen and (max-width: 768px) {
+    font-size: 2rem;
+    max-width: 90%;
+    margin: 0 auto;
+    @media screen and (max-width: 420px) {
+      font-size: 1.2rem;
+    }
+  }
   .const {
     display: flex;
     gap: 1em;
     text-transform: uppercase;
     font-weight: bolder;
+    text-align: center;
+    align-items: center;
   }
   .desc {
     color: rgb(137, 136, 136);
     font-size: 3rem;
+
+    @media screen and (max-width: 768px) {
+      font-size: 1.5rem;
+    }
+    text-align: center;
+    @media screen and (max-width: 420px) {
+      font-size: 1rem;
+    }
   }
 
   .btn {
@@ -26,5 +44,8 @@
     padding: 0.25em 1em;
     margin: 1em;
     border-radius: 1em;
+    @media screen and (max-width: 768px) {
+      font-size: 1rem;
+    }
   }
 }

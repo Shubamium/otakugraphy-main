@@ -16,7 +16,7 @@ export default async function PasswordGate({ children }: Props) {
 	`);
   return (
     <div>
-      {hd.gated ? (
+      {hd.gated === true ? (
         <Suspense fallback={<UnderConstruction />}>
           <GateClient gated_pass={hd.gated_pass}>{children}</GateClient>
         </Suspense>
