@@ -55,7 +55,7 @@ export default function Header({}: Props) {
       </svg>
 
       <Link className="btn logo" href={"/"}>
-        <img src="/gfx/logo_only.png" alt="" />
+        <img src="/gfx/logo_only2.png" alt="" />
       </Link>
       <nav id="main-nav">
         <Link href={"/otg-rig"} className="btn btn-nav">

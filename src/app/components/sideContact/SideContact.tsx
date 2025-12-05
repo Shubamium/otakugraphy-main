@@ -36,7 +36,7 @@ export default function SideContact({}: Props) {
       }}
     >
       <Link href={"/"} className="logo">
-        <img src="/gfx/icon.png" alt="" />
+        <img src="/gfx/icon2.png" alt="" />
       </Link>
       <button
         className="btn btn-drawer"

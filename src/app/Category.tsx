@@ -5,13 +5,15 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import Link from "next/link";
 import { animate, useMotionValue, motion } from "motion/react";
 import useMeasure from "react-use-measure";
+import { useRouter } from "next/navigation";
 
 type Props = {
   gd: any;
 };
 
 export default function Category({ gd }: Props) {
-  console.log(gd);
+  // console.log(gd);
+  const router = useRouter();
   return (
     // /<div>Category</div>
     <section id="category">
@@ -28,7 +30,13 @@ export default function Category({ gd }: Props) {
                   </span>
                 </p>
               </Link>
-              <div className="cr-l">
+              <div
+                className="cr-l"
+                onClick={() => {
+                  router.push(cr.route_link ?? "/");
+                }}
+              >
+                <h2 className="hover-title">{cr.name}</h2>
                 <CatRow cr={cr} i={i} />
               </div>
             </div>
@@ -56,21 +64,21 @@ export function CatRow({ cr, i }: any) {
         {cr.ml &&
           cr.ml.map((md: any, i: number) => {
             if (!md) return null;
-            return <Media key={md._key + "id" + i} data={md} />;
+            return <Media key={md._key + "id" + i} data={md} disabled />;
           })}
       </div>
       <div className="pt">
         {cr.ml &&
           cr.ml.map((md: any, i: number) => {
             if (!md) return null;
-            return <Media key={md._key + "id2" + i} data={md} />;
+            return <Media key={md._key + "id2" + i} data={md} disabled />;
           })}
       </div>
       <div className="pt">
         {cr.ml &&
           cr.ml.map((md: any, i: number) => {
             if (!md) return null;
-            return <Media key={md._key + "id3" + i} data={md} />;
+            return <Media key={md._key + "id3" + i} data={md} disabled />;
           })}
       </div>
     </motion.div>

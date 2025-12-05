@@ -7,16 +7,19 @@ type Props = {};
 
 export default function PartnershipSlide({ p, reverse }: any) {
   const [scope, animate] = useAnimate();
-  const [ref, bounds] = useMeasure();
+  const [ref, bounds] = useMeasure({
+    debounce: 0.5,
+  });
   useEffect(() => {
     const target = bounds.width;
+
     animate(
-      scope.current,
+      ".slider",
       {
-        x: reverse ? [-target, 0] : -target,
+        x: reverse ? [-target, 0] : [0, -target],
       },
       {
-        duration: p.length * 5,
+        duration: p.length * 3 * 1.5,
         repeat: Infinity,
         // repeatType: "loop",
         repeatDelay: 0,

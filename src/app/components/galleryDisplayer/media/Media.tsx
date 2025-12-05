@@ -12,9 +12,10 @@ type Props = {
   data?: any;
   n?: any;
   p?: any;
+  disabled?: boolean;
 };
 
-export default function Media({ data, n, p }: Props) {
+export default function Media({ data, n, p, disabled }: Props) {
   const [loaded, setLoaded] = useState(false);
   const [imageUrl, setImageUrl] = useState("empty");
   const [z, setZ] = useState(1);
@@ -69,6 +70,7 @@ export default function Media({ data, n, p }: Props) {
     <div
       className="media"
       onClick={(e) => {
+        if (disabled) return;
         if (data && data.type !== "video") {
           openMediaDetail();
         }

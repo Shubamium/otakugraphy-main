@@ -52,7 +52,7 @@ export default function Footer({}: Props) {
           </nav>
         </div>
         <div className="c">
-          <img src="/gfx/logo_only.png" alt="" className="logo" />
+          <img src="/gfx/logo_only2.png" alt="" className="logo" />
 
           <div className="lens-scl">
             <a

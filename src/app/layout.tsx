@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP } from "next/font/google";
+import { Noto_Sans_JP, Roboto_Slab } from "next/font/google";
 import { BIZ_UDPGothic } from "next/font/google";
 import { Zen_Kaku_Gothic_New } from "next/font/google";
 import "./globals.scss";
@@ -23,15 +23,19 @@ const biz = BIZ_UDPGothic({
   subsets: ["latin"],
   weight: ["400", "700"],
 });
-const zen = Zen_Kaku_Gothic_New({
+// const zen = Zen_Kaku_Gothic_New({
+//   variable: "--fontM",
+//   subsets: ["latin"],
+//   weight: ["400", "700"],
+// });
+const roboto = Roboto_Slab({
   variable: "--fontM",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "500", "600", "700"],
 });
-
-const title = "Otakugraphy";
+const title = "Otakugraphy - North America's 1st Vtuber-Focused Media Company";
 const description =
-  " We are a professional company of freelancer photographers and videographers, capturing the quirky spirit of Otaku culture through Conventions, Brands, VTubers, and Nightlife. ";
+  " Based out of the San Francisco Bay Area, our focus is connecting fans with virtual creators and globally growing the VTubing community by raising the industry standards for media quality. ";
 const banner = "https://i.ibb.co.com/Mx99HBYX/OTG-Oficial-Logo.png";
 const url = "https://otakugraphy.com";
 
@@ -96,8 +100,8 @@ export default function RootLayout({
         className={`body`}
         style={
           {
-            "--fontO": zen.style.fontFamily,
-            "--fontM": noto.style.fontFamily,
+            "--fontO": roboto.style.fontFamily,
+            "--fontM": roboto.style.fontFamily,
           } as CSSProperties
         }
       >

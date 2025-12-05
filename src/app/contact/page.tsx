@@ -37,7 +37,7 @@ export default function page({}: Props) {
         <LuLoaderPinwheel />
       </div>
       <section className="ct-heading">
-        <img src="/gfx/logo.png" alt="" className="logo" />
+        <img src="/gfx/logo2.png" alt="" className="logo" />
       </section>
 
       <section className="ct-form">

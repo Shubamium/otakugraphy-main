@@ -5,6 +5,7 @@ import { FaArrowRightLong, FaQuoteLeft } from "react-icons/fa6";
 import PartnershipSlide from "./components/partnershipSlide/PartnershipSlide";
 import { fetchData, urlFor } from "./db/sanity";
 import Category from "./Category";
+import TestimonialSlide from "./components/TestimonialSlide";
 
 const conventionPartners = [
   // "/gfx/p/c1.png",
@@ -15,7 +16,13 @@ const conventionPartners = [
   // "/gfx/p/c6.png",
   "/gfx/p/c7.png",
   "/gfx/p/c8.png",
-  "/gfx/p/c10.png",
+  // "/gfx/p/c10.png",
+  "/gfx/p/na/pt7.png",
+  "/gfx/p/na/pt8.png",
+  "/gfx/p/na/pt9.png",
+  "/gfx/p/na/pt10.png",
+  "/gfx/p/na/pt11.png",
+  "/gfx/p/na/pt12.png",
 ];
 
 const brandPartners = [
@@ -23,40 +30,41 @@ const brandPartners = [
   "/gfx/p/b2.png",
   "/gfx/p/b3.png",
   "/gfx/p/b4.png",
-  "/gfx/p/b5.png",
+  // "/gfx/p/b5.png",
   "/gfx/p/b6.png",
   // "/gfx/p/b7.png",
   "/gfx/p/b8.png",
 ];
 
 const vtuberPartners = [
-  "/gfx/p/v/v1.png",
+  // "/gfx/p/v/v1.png",
   // "/gfx/p/v/v2.png",
   "/gfx/p/v/v3.png",
   // "/gfx/p/v/v4.png",
-  "/gfx/p/v/v5.png",
+  "/gfx/p/v/lucid.png",
   "/gfx/p/v/v6.png",
   // "/gfx/p/v/v7.png",
+  "/gfx/p/nb/ala.png",
+  "/gfx/p/nb/aotb.png",
+
+  "/gfx/p/nb/vfe.png",
 ];
 const nightlifePartners = [
-  "/gfx/p/n/n1.png",
+  // "/gfx/p/n/n1.png",
   "/gfx/p/n/n2.png",
   "/gfx/p/n/n3.png",
   "/gfx/p/n/n4.png",
+  "/gfx/p/nb/AX.png",
+  "/gfx/p/nb/bw.png",
+  "/gfx/p/nb/cc.png",
 ];
 const newPartners = [
   "/gfx/p/na/pt1.webp",
   "/gfx/p/na/pt2.png",
-  "/gfx/p/na/pt3.webp",
+  "/gfx/p/na/chromashift.svg",
   "/gfx/p/na/pt4.png",
-  "/gfx/p/na/pt5.png",
-  "/gfx/p/na/pt6.png",
-  "/gfx/p/na/pt7.png",
-  "/gfx/p/na/pt8.png",
-  "/gfx/p/na/pt9.png",
-  "/gfx/p/na/pt10.png",
-  "/gfx/p/na/pt11.png",
-  "/gfx/p/na/pt12.png",
+  // "/gfx/p/na/pt5.png",
+  "/gfx/p/na/oshiondeck.png",
 ];
 export default async function Home() {
   const gd = await fetchData<any>(`
@@ -83,7 +91,7 @@ export default async function Home() {
     <main id="page_home">
       <section id="banner-h">
         <div className="confine">
-          <img src="/gfx/logo_only.png" alt="" className="main" />
+          <img src="/gfx/logo_only2.png" alt="" className="main" />
           <p className="moto">
             North America's 1st Vtuber-Focused Media Company
           </p>
@@ -120,58 +128,6 @@ export default async function Home() {
           </div>
         </div>
       </section>
-
-      <section id="lens">
-        <div className="text confine">
-          <h2 className="h">
-            VTUBER-FOCUSED
-            <svg
-              width="212"
-              height="212"
-              viewBox="0 0 212 212"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="lens"
-            >
-              <path
-                d="M43.3408 56.6579L67.8585 107.422L67.8662 107.438L70.3209 112.548L26.2158 109.279C25.7959 99.0275 27.3641 88.7691 30.8577 79.0763C33.7859 70.9521 38.0092 63.3849 43.3408 56.6579ZM31.8722 135.602L89.7885 139.895L65.9413 174.937C50.5388 165.986 38.5022 152.09 31.8722 135.602ZM126.309 138.338L127.233 136.989L145.679 175.284C137.329 180.072 128.164 183.318 118.62 184.843C110.635 186.119 102.524 186.169 94.5669 185.009L126.294 138.361L126.309 138.338ZM168.675 155.359L141.717 99.4563L185.77 102.722C185.892 105.741 185.846 108.79 185.615 111.902L185.614 111.91L185.614 111.918C184.463 127.864 178.509 142.986 168.675 155.359ZM180.128 76.3992L122.211 72.1063L146.059 37.0641C161.461 46.0149 173.498 59.9113 180.128 76.3992ZM117.427 26.9911L84.7547 74.9867L66.3214 36.7176C74.6705 31.9293 83.8363 28.6836 93.3795 27.1583C101.363 25.8823 109.472 25.8329 117.427 26.9911Z"
-                stroke="#C7A654"
-                strokeWidth="0"
-              />
-            </svg>
-          </h2>
-
-          <p className="h second">
-            <span className="fill">MEDIA</span> COMPANY
-          </p>
-        </div>
-      </section>
-
-      <Category gd={gd} />
-      <section id="about">
-        <div className="confine">
-          <div className="l">
-            <h2>ABOUT US</h2>
-            <p>
-              We are a professional company of freelancer photographers and
-              videographers, capturing the quirky spirit of Otaku culture
-              through Conventions, Brands, VTubers, and Nightlife.
-            </p>
-            <div className="arr"></div>
-          </div>
-          <div className="r">
-            <img
-              src={
-                gd.abi
-                  ? urlFor(gd.abi).height(900).format("webp").url()
-                  : "/gfx/about1.png"
-              }
-              alt=""
-              className="about"
-            />
-          </div>
-        </div>
-      </section>
       <section id="mission">
         <div className="confine">
           <div className="r">
@@ -194,6 +150,32 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      <section id="about">
+        <div className="confine">
+          <div className="l">
+            <h2>ABOUT US</h2>
+            <p>
+              We are North America's first VTuber-Focused Media Company. Based
+              out of the San Francisco Bay Area, our focus is connecting fans
+              with virtual creators and globally growing the VTubing community
+              by raising the industry standards for media quality.
+            </p>
+            <div className="arr"></div>
+          </div>
+          <div className="r">
+            <img
+              src={
+                gd.abi
+                  ? urlFor(gd.abi).height(900).format("webp").url()
+                  : "/gfx/about1.png"
+              }
+              alt=""
+              className="about"
+            />
+          </div>
+        </div>
+      </section>
+
       <section id="values">
         <h2 className="th">VALUES</h2>
 
@@ -261,7 +243,38 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      <TestimonialSlide gd={gd} />
 
+      <section id="lens">
+        <div className="text confine">
+          <h2 className="h">
+            VTUBER-FOCUSED
+            <svg
+              width="212"
+              height="212"
+              viewBox="0 0 212 212"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="lens"
+            >
+              <path
+                d="M43.3408 56.6579L67.8585 107.422L67.8662 107.438L70.3209 112.548L26.2158 109.279C25.7959 99.0275 27.3641 88.7691 30.8577 79.0763C33.7859 70.9521 38.0092 63.3849 43.3408 56.6579ZM31.8722 135.602L89.7885 139.895L65.9413 174.937C50.5388 165.986 38.5022 152.09 31.8722 135.602ZM126.309 138.338L127.233 136.989L145.679 175.284C137.329 180.072 128.164 183.318 118.62 184.843C110.635 186.119 102.524 186.169 94.5669 185.009L126.294 138.361L126.309 138.338ZM168.675 155.359L141.717 99.4563L185.77 102.722C185.892 105.741 185.846 108.79 185.615 111.902L185.614 111.91L185.614 111.918C184.463 127.864 178.509 142.986 168.675 155.359ZM180.128 76.3992L122.211 72.1063L146.059 37.0641C161.461 46.0149 173.498 59.9113 180.128 76.3992ZM117.427 26.9911L84.7547 74.9867L66.3214 36.7176C74.6705 31.9293 83.8363 28.6836 93.3795 27.1583C101.363 25.8823 109.472 25.8329 117.427 26.9911Z"
+                stroke="#C7A654"
+                strokeWidth="0"
+              />
+            </svg>
+          </h2>
+
+          <p className="h second">
+            <span className="fill">MEDIA</span> COMPANY
+          </p>
+        </div>
+      </section>
+
+      <section id="ourframe">
+        <h2 className="title">OUR FRAMES</h2>
+        <Category gd={gd} />
+      </section>
       <section id="partnership">
         <div className="p-h">
           <h2 className="h ol">PARTNERSHIPS</h2>
@@ -276,7 +289,7 @@ export default async function Home() {
             <PartnershipSlide p={newPartners} />
           </div>
 
-          <div className="testimonials">
+          {/* <div className="testimonials">
             <h2 className="ttitle">TESTIMONIALS</h2>
 
             <div className="blocks">
@@ -300,7 +313,7 @@ export default async function Home() {
                 );
               })}
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </main>
