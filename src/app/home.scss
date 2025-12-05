@@ -474,6 +474,7 @@
             width: 100%;
             height: 100%;
             color: var(--dgold);
+            font-weight: 500;
           }
         }
         // Vertical Scroll
@@ -695,9 +696,9 @@
   }
 
   #values {
-    margin-top: 400px;
+    margin-top: 200px;
     overflow: hidden;
-    padding-bottom: 400px;
+    padding-bottom: 200px;
 
     .th {
       text-align: center;
@@ -856,9 +857,11 @@
 
       .h {
         font-size: 8rem;
-        -webkit-text-stroke: 1px white;
+        // -webkit-text-stroke: 1px white;
         padding: 0 0.1em;
-        text-stroke: 1px white;
+        font-weight: bolder;
+        // text-stroke: 1px white;
+        color: var(--dgold);
         @include mq(1024) {
           line-height: 90%;
           font-size: clamp(1rem, 13vw, 5rem);

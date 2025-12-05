@@ -9,6 +9,7 @@ import {
   FaYoutube,
 } from "react-icons/fa6";
 import { LuArrowUpToLine } from "react-icons/lu";
+import { CSSProperties } from "react";
 
 type Props = {};
 
@@ -56,7 +57,7 @@ export default function Footer({}: Props) {
 
           <div className="lens-scl">
             <a
-              href="https://x.com/OTG_Otakugraphy"
+              href="https://x.com/otg_Otakugraphy"
               target="_blank"
               className="btn-lens"
             >
@@ -77,7 +78,7 @@ export default function Footer({}: Props) {
               </svg>
             </a>
             <a
-              href="https://www.youtube.com/@OTG-otakugraphy"
+              href="https://www.youtube.com/@otg_otakugraphy"
               target="_blank"
               className="btn-lens"
             >
@@ -119,11 +120,34 @@ export default function Footer({}: Props) {
               </svg>
             </a>
             <a
-              href="https://www.linkedin.com/company/otakugraphy/?viewAsMember=true"
+              href="https://otakugraphy.carrd.co/"
               target="_blank"
               className="btn-lens"
             >
-              <FaLinkedin className="ic" />
+              {/* <FaLinkedin className="ic" /> */}
+              <svg
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                // xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                className="ic"
+                viewBox="0 0 896 896"
+                style={
+                  {
+                    "enable-background": "new 0 0 896 896",
+                  } as CSSProperties
+                }
+                // xml:space="preserve"
+              >
+                <path
+                  fill="currentColor"
+                  fillRule="evenodd"
+                  d="M661.2,613.1L401.1,738c-1.6,0.8-3.4,1.2-5.2,1.2c-2.2,0-4.4-0.6-6.4-1.8c-3.5-2.2-5.6-6-5.6-10.2V603.5 l-140.5-58.8c-4.5-1.9-7.4-6.2-7.4-11.1V208.8c0-4.1,2.1-8,5.6-10.2c3.5-2.2,7.9-2.4,11.6-0.7l270.4,129.8l127.3-61.1 c3.7-1.8,8.1-1.5,11.6,0.7c3.5,2.2,5.6,6,5.6,10.2v324.8C668,606.9,665.4,611.1,661.2,613.1z M260,227.9v297.7l123.9,51.9v-59.8 L306,486.3c-6.1-2.5-9.1-9.5-6.7-15.6c2.5-6.2,9.5-9.1,15.6-6.7l69,27.8v-49.1L306,411.3c-6.1-2.5-9.1-9.5-6.7-15.6 c2.5-6.2,9.5-9.1,15.6-6.7l69,27.8v-14.3c0-4.6,2.6-8.8,6.8-10.8l17.8-8.6l-103.1-46.9c-6-2.7-8.7-9.9-6-15.9s9.9-8.7,15.9-6 l121.3,55.3l59.1-28.4L260,227.9z M644,296.6L407.9,410v24.3c0,0,0,0,0,0.1v74.9c0,0,0,0,0,0.1v198.8L644,594.7V296.6z M453,451.8 l135.3-65.4c6-2.9,13.1-0.4,16,5.6s0.4,13.2-5.6,16l-135.3,65.4c-1.7,0.8-3.5,1.2-5.2,1.2c-4.5,0-8.7-2.5-10.8-6.8 C444.6,461.9,447.1,454.7,453,451.8z M453,526.8l135.3-65.4c6-2.9,13.1-0.4,16,5.6s0.4,13.2-5.6,16l-135.3,65.4 c-1.7,0.8-3.5,1.2-5.2,1.2c-4.5,0-8.7-2.5-10.8-6.8C444.6,536.8,447.1,529.7,453,526.8z M453,601.7l135.3-65.4 c6-2.9,13.1-0.4,16,5.6s0.4,13.2-5.6,16l-135.3,65.4c-1.7,0.8-3.5,1.2-5.2,1.2c-4.5,0-8.7-2.5-10.8-6.8 C444.6,611.8,447.1,604.6,453,601.7z M448,881.3c-239.4,0-433.4-194-433.4-433.3S208.6,14.7,448,14.7s433.4,194,433.4,433.3S687.4,881.3,448,881.3z"
+                />
+              </svg>
+              {/* <img src="/gfx/" alt="" /> */}
+
               <svg
                 width="212"
                 height="212"
@@ -143,13 +167,18 @@ export default function Footer({}: Props) {
         </div>
         <div className="r">
           <h2 className="fh">ABOUT US</h2>
-          <p>North America's 1st Vtuber-Focused Media Company</p>
+          <p>
+            We are North America's first VTuber-Focused Media Company. Based out
+            of the San Francisco Bay Area, our focus is connecting fans with
+            virtual creators and globally growing the VTubing community by
+            raising the industry standards for media quality.
+          </p>
           <a href="#top" className="btn btn-scroll one">
             <span> Scroll to the top</span>
             <LuArrowUpToLine />
           </a>
           <p className="attribution">
-            © 2025 Otakugraphy. All images and trademarks are the property of
+            © 2026 Otakugraphy. All images and trademarks are the property of
             their respective owners.
           </p>
         </div>

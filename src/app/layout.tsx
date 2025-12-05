@@ -31,7 +31,7 @@ const biz = BIZ_UDPGothic({
 const roboto = Roboto_Slab({
   variable: "--fontM",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["200", "300", "400", "500", "600", "700"],
 });
 const title = "Otakugraphy - North America's 1st Vtuber-Focused Media Company";
 const description =

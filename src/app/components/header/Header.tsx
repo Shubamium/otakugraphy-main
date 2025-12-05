@@ -3,7 +3,7 @@ import Link from "next/link";
 import "./header.scss";
 import { useEffect, useState } from "react";
 import { BsArrowUp } from "react-icons/bs";
-import { TiArrowDownThick, TiArrowUpThick } from "react-icons/ti";
+import { TiArrowDownThick, TiArrowUp, TiArrowUpThick } from "react-icons/ti";
 import { MdShutterSpeed } from "react-icons/md";
 import { BiCamera } from "react-icons/bi";
 import { useMediaQuery } from "react-responsive";
@@ -58,9 +58,9 @@ export default function Header({}: Props) {
         <img src="/gfx/logo_only2.png" alt="" />
       </Link>
       <nav id="main-nav">
-        <Link href={"/otg-rig"} className="btn btn-nav">
+        <Link href={"/rigs"} className="btn btn-nav">
           {/* <img src="/gfx/brands.png" alt="" /> */}
-          <span>OTG RIG</span>
+          <span>Rigs</span>
         </Link>
         <Link href={"/vtubers"} className="btn btn-nav">
           {/* <img src="/gfx/vtubers.png" alt="" /> */}
@@ -108,7 +108,7 @@ export default function Header({}: Props) {
           e.stopPropagation();
         }}
       >
-        {!visible ? <BiCamera /> : <TiArrowDownThick />}
+        {!visible ? <TiArrowUpThick /> : <TiArrowDownThick />}
 
         <svg
           width="114"

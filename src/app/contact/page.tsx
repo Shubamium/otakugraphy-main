@@ -50,7 +50,7 @@ export default function page({}: Props) {
             }}
           >
             <div className="l">
-              <img src="/bg/about-side.png" alt="" />
+              <img src="/gfx/contact-left.webp" alt="" />
             </div>
             <div className="r">
               <h2 className="h"> WORK WITH US</h2>
@@ -109,7 +109,7 @@ export default function page({}: Props) {
                   }}
                 />
               </div>
-              <div className="ff">
+              {/* <div className="ff">
                 <label htmlFor="sub">Subject</label>
                 <input
                   type="text"
@@ -121,7 +121,7 @@ export default function page({}: Props) {
                   }}
                   placeholder="Write the subject here..."
                 />
-              </div>
+              </div> */}
               <div className="ff">
                 <label htmlFor="message">Message</label>
                 <textarea

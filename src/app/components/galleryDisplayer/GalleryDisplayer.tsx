@@ -146,11 +146,13 @@ export default function GalleryDisplayer({
                   <div className="thumb">
                     <img
                       src={
-                        urlFor(highlights.thumbnail)?.auto("format")?.url() ??
-                        undefined
+                        urlFor(highlights.thumbnail)
+                          ?.height(600)
+                          .auto("format")
+                          ?.url() ?? undefined
                       }
                       className="thumbnail"
-                      alt=""
+                      alt={urlFor(highlights.thumbnail)?.auto("format")?.url()}
                     />
                     <FaPlayCircle />
                   </div>

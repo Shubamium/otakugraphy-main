@@ -19,7 +19,7 @@ export async function sendMail(
   const mailOption = {
     from: "vicnet.video@gmail.com",
     to: process.env.SMTP_TARGET,
-    subject: `[Contact Form]${subject}`,
+    subject: `[Contact Form] New message from ${name}`,
     text: `Hello, ${name} has submitted a message through the website contact form. \n \n Email: ${mail} \n Phone:${phone ? phone : "N/A"} \n Discord: ${dc ?? "N/A"} \n Message: ${message} `,
   };
 

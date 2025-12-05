@@ -9,19 +9,21 @@
     flex-grow: 1;
     align-items: flex-end;
 
-    max-width: 90%;
+    max-width: 88%;
     @include mq(468) {
       flex-direction: column;
     }
     .h {
       font-size: 4rem;
       color: transparent;
-      text-transform: uppercase;
-      -webkit-text-stroke: 1px white;
-      text-stroke: 1px white;
+      // text-transform: uppercase;
+      // -webkit-text-stroke: 1px white;
+      // text-stroke: 1px white;
+      color: var(--dgold);
       line-height: 90%;
       margin-bottom: 0.09em;
-
+      font-weight: bolder;
+      letter-spacing: 0px;
       @include mq(550) {
         font-size: clamp(1.5rem, 15vw, 3.5rem);
       }
@@ -35,6 +37,7 @@
       p {
         color: white;
         font-size: 1.4rem;
+        font-weight: 200;
       }
     }
     .r {
@@ -115,9 +118,23 @@
       display: grid;
       grid-template-columns: 70vw 20vw;
       gap: 0;
+      padding-left: 2%;
       @media screen and (max-width: 1024px) {
         display: flex;
         flex-direction: column-reverse;
+      }
+
+      @media screen and (min-width: 1024px) {
+        #gd_vertical {
+          // display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media screen and (min-width: 1280px) {
+        #gd_vertical {
+          // display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+        }
       }
     }
 
@@ -149,6 +166,7 @@
         .title {
           color: white;
           font-size: 1.2rem;
+          font-weight: 200;
           @media screen and (max-width: 550px) {
             font-size: 0.9rem;
           }
