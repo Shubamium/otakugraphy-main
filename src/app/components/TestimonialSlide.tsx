@@ -21,7 +21,10 @@ type Props = {
 
 const useCarousel = (length: number, blockClass: string, reverse?: boolean) => {
   const [offset, setOffset] = useState(0);
-  const [ref, bounds] = useMeasure();
+  const [ref, bounds] = useMeasure({
+    debounce: 2,
+    scroll: false,
+  });
   const [anim, setAnim] = useState<Animation[] | null>(null);
 
   const pause = () => {

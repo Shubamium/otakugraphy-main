@@ -143,8 +143,8 @@ export default async function Home() {
           <div className="l">
             <h2>OUR MISSION </h2>
             <p>
-              With each frame, we narrate the untold stories, unseen moments,
-              and unmatched energy.
+              Raising the industry standard for immersive multimedia experiences
+              through connecting virtual creators and their communities
             </p>
             <div className="arr"></div>
           </div>
@@ -155,10 +155,8 @@ export default async function Home() {
           <div className="l">
             <h2>ABOUT US</h2>
             <p>
-              We are North America's first VTuber-Focused Media Company. Based
-              out of the San Francisco Bay Area, our focus is connecting fans
-              with virtual creators and globally growing the VTubing community
-              by raising the industry standards for media quality.
+              Empowering virtual creators through interactive rigs to concert
+              capturing
             </p>
             <div className="arr"></div>
           </div>

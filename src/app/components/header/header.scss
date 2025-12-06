@@ -54,13 +54,13 @@
 
   #main-nav {
     display: flex;
-    gap: 1.5em;
+    gap: 2em;
     padding: 0 2em;
     // align-items: center;
     // height: 100%;
 
     @media screen and (max-width: 1280px) {
-      gap: 1em;
+      gap: 1.3em;
     }
     // justify-items: center;
     @include mq(1024) {

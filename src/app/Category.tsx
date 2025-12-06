@@ -48,7 +48,10 @@ export default function Category({ gd }: Props) {
 
 export function CatRow({ cr, i }: any) {
   const xpos = useMotionValue(0);
-  const [scope, measure] = useMeasure();
+  const [scope, measure] = useMeasure({
+    scroll: false,
+    debounce: 5000,
+  });
   useEffect(() => {
     const target = measure.width;
     animate(xpos, i % 2 ? [0, -target] : [-target, 0], {
@@ -57,7 +60,7 @@ export function CatRow({ cr, i }: any) {
       repeat: Infinity,
       repeatType: "loop",
     });
-  }, [xpos, measure]);
+  }, [xpos, measure.width]);
   return (
     <motion.div className="slide" style={{ x: xpos }}>
       <div className="pt" ref={scope}>

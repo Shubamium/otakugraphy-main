@@ -16,21 +16,21 @@ type Props = {
 };
 
 export default function Media({ data, n, p, disabled }: Props) {
-  const [loaded, setLoaded] = useState(false);
-  const [imageUrl, setImageUrl] = useState("empty");
-  const [z, setZ] = useState(1);
+  // const [loaded, setLoaded] = useState(false);
+  // const [imageUrl, setImageUrl] = useState("empty");
+  // const [z, setZ] = useState(1);
   const vidRef = useRef<HTMLVideoElement>(null);
+  // useEffect(() => {
+  //   // const src = urlFor(data.image).auto("format").height(700).url();
+  //   // const img = new Image();
+  //   // img.src = src;
+  //   // img.onload = (ev) => {
+  //   //   setImageUrl(img.src);
+  //   //   setLoaded(true);
+  //   // };
+  // }, [data]);
   useEffect(() => {
-    // const src = urlFor(data.image).auto("format").height(700).url();
-    // const img = new Image();
-    // img.src = src;
-    // img.onload = (ev) => {
-    //   setImageUrl(img.src);
-    //   setLoaded(true);
-    // };
-  }, [data]);
-  useEffect(() => {
-    window.addEventListener("md", (newD: any) => {
+    const playVid = (newD: any) => {
       if (vidRef.current) {
         if (newD.detail && newD.detail._id === data._id) {
           // console.log(newD.detail);
@@ -40,7 +40,12 @@ export default function Media({ data, n, p, disabled }: Props) {
           vidRef.current.volume = 0;
         }
       }
-    });
+    };
+    window.addEventListener("md", playVid);
+
+    return () => {
+      window.removeEventListener("md", playVid);
+    };
   }, []);
 
   useEffect(() => {

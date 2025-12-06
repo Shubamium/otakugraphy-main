@@ -129,7 +129,7 @@ export default function SideContact({}: Props) {
             viewBox="0 0 896 896"
             style={
               {
-                "enable-background": "new 0 0 896 896",
+                enableBackground: "new 0 0 896 896",
               } as CSSProperties
             }
             // xml:space="preserve"

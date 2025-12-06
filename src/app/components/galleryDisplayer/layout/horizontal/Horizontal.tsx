@@ -5,18 +5,18 @@ import Media from "../../media/Media";
 type Props = {};
 
 export default function Horizontal({ ml }: any) {
-  const [cols, setCols] = useState<any[]>([[], [], []]);
+  // const [cols, setCols] = useState<any[]>([[], [], []]);
 
-  useEffect(() => {
-    const chop = [...ml];
-    let newCols: any[] = [[], [], []];
-    for (let i = 0; i < chop.length; i++) {
-      newCols[i % 3].push(chop[i]);
+  // useEffect(() => {
+  //   const chop = [...ml];
+  //   let newCols: any[] = [[], [], []];
+  //   for (let i = 0; i < chop.length; i++) {
+  //     newCols[i % 3].push(chop[i]);
 
-      setCols(newCols);
-    }
-    console.log("chopping");
-  }, [ml]);
+  //     setCols(newCols);
+  //   }
+  //   console.log("chopping");
+  // }, [ml]);
 
   return (
     <div id="gd_horizontal">

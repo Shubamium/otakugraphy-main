@@ -8,7 +8,8 @@ type Props = {};
 export default function PartnershipSlide({ p, reverse }: any) {
   const [scope, animate] = useAnimate();
   const [ref, bounds] = useMeasure({
-    debounce: 0.5,
+    debounce: 2000,
+    scroll: false,
   });
   useEffect(() => {
     const target = bounds.width;
@@ -26,7 +27,7 @@ export default function PartnershipSlide({ p, reverse }: any) {
         ease: "linear",
       }
     );
-  }, [p, bounds, ref]);
+  }, [p, bounds.width]);
 
   return (
     <div className="row" ref={scope}>

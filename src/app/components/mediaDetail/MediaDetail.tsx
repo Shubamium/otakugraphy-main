@@ -30,11 +30,16 @@ export default function MediaDetail({}: Props) {
   };
 
   useEffect(() => {
-    window.addEventListener("md", (data: any) => {
+    const changeMD = (data: any) => {
       setV(true);
 
       setActiveMd(data.detail);
-    });
+    };
+    window.addEventListener("md", changeMD);
+
+    return () => {
+      window.removeEventListener("md", changeMD);
+    };
   }, []);
 
   useEffect(() => {
