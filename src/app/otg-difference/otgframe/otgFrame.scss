@@ -1,0 +1,96 @@
+.otgframe {
+  max-width: 1450px;
+  margin: 0 auto;
+
+  background: #1f1f1f url("/bg/diamond.png");
+  color: white;
+  margin-block: 50px 0;
+
+  padding: 80px;
+
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2em;
+  grid-template-areas: "a b";
+  box-shadow: 0px 0px 14px 5px rgba(0, 0, 0, 0.185);
+  position: relative;
+  .triangle {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: var(--dgold);
+    left: 0%;
+    bottom: 0%;
+    clip-path: polygon(0 0, 0% 100%, 100% 100%);
+  }
+  &.reverse {
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-areas: "b a";
+    .triangle {
+      left: initial;
+      right: 0%;
+      clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    }
+  }
+  .detail {
+    grid-area: a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .top {
+      .extra-videos {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1em;
+        margin: 0.5em 0;
+        iframe {
+          height: 130px;
+          border: none;
+          border-bottom: 2px solid var(--dgold);
+          aspect-ratio: 16 / 9;
+        }
+      }
+    }
+    .bottom {
+      h2 {
+        font-size: 0.9rem;
+      }
+    }
+  }
+  .frames {
+    grid-area: b;
+
+    .frame {
+      background: #2d2d2d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 16 / 9;
+      text-align: center;
+      border-bottom: 4px solid var(--dgold);
+      width: 100%;
+      box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.171);
+      .empty {
+        svg {
+          width: 80px;
+          height: 80px;
+        }
+        p {
+          font-size: 1.7rem;
+          font-weight: lighter;
+        }
+      }
+
+      .iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+      .img {
+        object-fit: contain;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

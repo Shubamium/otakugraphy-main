@@ -1,2 +1,66 @@
-#p_otgdiff {
+#p_otg-diff {
+  padding-bottom: 200px;
+  .head-bg {
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
+    mask-image: linear-gradient(to top, transparent, white 130%);
+    opacity: 0.5;
+
+    // margin-bottom: -300px;
+    z-index: -1;
+    position: absolute;
+    top: 0%;
+  }
+
+  .od-head {
+    text-align: center;
+    color: var(--dgold);
+    padding-top: 150px;
+    text-shadow: 0px 0px 4px black;
+    h1 {
+      font-size: 5rem;
+      font-weight: 800;
+    }
+    p {
+      font-size: 1.42rem;
+    }
+  }
+
+  #inside-look {
+    background: #121212;
+    margin: 100px 0;
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.327);
+
+    .confine {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4em;
+      .r {
+        img {
+          height: 80%;
+          margin: 2em 0;
+          max-width: 100%;
+        }
+      }
+      .l {
+        padding: 1em;
+        h2 {
+          color: var(--dgold);
+          font-size: 2.2rem;
+          margin-bottom: 0.5em;
+        }
+        p {
+          color: white;
+          opacity: 0.7;
+          font-weight: lighter;
+        }
+      }
+    }
+  }
+
+  #new-testimonials {
+    padding-top: 100px;
+  }
 }

@@ -14,7 +14,7 @@ import { CgBrowser, CgWebsite } from "react-icons/cg";
 import { LiaLinkSolid } from "react-icons/lia";
 import { FaInternetExplorer } from "react-icons/fa";
 import { BiLinkExternal } from "react-icons/bi";
-
+import "./testimonialSlide.scss";
 type Props = {
   gd: any;
 };
