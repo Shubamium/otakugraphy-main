@@ -17,7 +17,7 @@ export function urlFor(source: any) {
 
 const config = {
   next: {
-    revalidate: 0,
+    revalidate: 100,
   },
 };
 export function fetchData<T>(grocQuery: string) {

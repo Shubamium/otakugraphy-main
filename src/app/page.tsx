@@ -66,6 +66,7 @@ const newPartners = [
   // "/gfx/p/na/pt5.png",
   "/gfx/p/na/oshiondeck.png",
 ];
+
 export default async function Home() {
   const gd = await fetchData<any>(`
 		*[_type == 'general' && preset == 'main']{
@@ -84,8 +85,25 @@ export default async function Home() {
 			}
 		}[0]
 	`);
+  const pt = await fetchData<any>(`
+		*[_type == 'partner' ]{
+			name,
+			partners
+		}
+	`);
 
-  console.log(gd);
+  let rowList: {
+    name: string;
+    partners: string[];
+  }[] = pt.map((p: any) => {
+    return {
+      name: p.name,
+      partners: p.partners.map((p: any) => {
+        return urlFor(p)?.height(700).format("webp").url();
+      }),
+    };
+  });
+
   const hlm = gd?.hlm ?? null;
   return (
     <main id="page_home">
@@ -274,11 +292,19 @@ export default async function Home() {
         </div>
         <div className="content">
           <div className="p-l">
-            <PartnershipSlide p={conventionPartners} />
+            {/* <PartnershipSlide p={conventionPartners} />
             <PartnershipSlide p={brandPartners} reverse={true} />
             <PartnershipSlide p={vtuberPartners} />
             <PartnershipSlide p={nightlifePartners} reverse={true} />
-            <PartnershipSlide p={newPartners} />
+            <PartnershipSlide p={newPartners} /> */}
+            {rowList?.map((p: any, i: number) => {
+              return (
+                <PartnershipSlide
+                  p={p.partners}
+                  key={"partners" + i + p.name}
+                />
+              );
+            })}
           </div>
 
           {/* <div className="testimonials">
