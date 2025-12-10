@@ -13,7 +13,7 @@ export async function getExifFromUrl(imageUrl: string) {
     img.onload = function () {
       EXIF.getData(img as any, function (this: any) {
         const allMetadata = EXIF.getAllTags(this);
-        console.log(allMetadata);
+        // console.log(allMetadata);
       });
 
       // Cleanup object URL after loading

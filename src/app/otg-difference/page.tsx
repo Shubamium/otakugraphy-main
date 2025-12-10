@@ -4,7 +4,7 @@ type Props = {};
 import "./otgdiff.scss";
 import OTGFrame from "./otgframe/OTGFrame";
 import TestimonialSlide from "../components/TestimonialSlide";
-import { fetchData } from "../db/sanity";
+import { fetchData, urlFor } from "../db/sanity";
 // import UnderConstruction from "../components/underConstuction/UnderConstruction";
 export default async function Page({}: Props) {
   const gd = await fetchData<any>(`
@@ -12,6 +12,16 @@ export default async function Page({}: Props) {
 				testimonials,
 			}[0]
 		`);
+
+  const otgdiff = await fetchData<any>(`
+			*[_type == 'otg-diff' && preset == 'main']{
+				...,
+				frames,
+			}[0]
+		`);
+  const frameList = otgdiff?.frames ? (otgdiff.frames as any[]) : [];
+  const top = frameList?.slice(0, 3);
+  const bottom = frameList?.slice(3);
   return (
     <main id="p_otg-diff">
       <img src="/gfx/herobg.webp" alt="" className="head-bg" />
@@ -19,11 +29,29 @@ export default async function Page({}: Props) {
         <h1>The OTG Difference</h1>
         <p>Our History of Capturing Historical VTubing Events</p>
       </div>
-
+      {top?.map((f: any, i: number) => {
+        return (
+          <OTGFrame
+            options={{
+              title: f.title,
+              type: f.type,
+              reverse: i % 2 == 0,
+              videoID: f.ytvid,
+              extraVID: f.extraVideos,
+              imageURL: f.image
+                ? urlFor(f.image).auto("format").url()
+                : undefined,
+            }}
+            key={i + "frames" + f._key}
+          />
+        );
+      })}
+      {/* 	
       <OTGFrame
         options={{
           title: "VTubers Diving Into Aquarium of the Pacific",
           type: "video",
+          videoID: "qTr2x78_u4k",
         }}
       />
       <OTGFrame
@@ -40,7 +68,7 @@ export default async function Page({}: Props) {
           type: "video",
           videoID: "Du4unKMbR2Q",
         }}
-      />
+      /> */}
 
       <section id="inside-look">
         <div className="confine">
@@ -60,7 +88,24 @@ export default async function Page({}: Props) {
         </div>
         p
       </section>
-      <OTGFrame
+      {bottom?.map((f: any, i: number) => {
+        return (
+          <OTGFrame
+            options={{
+              title: f.title,
+              type: f.type,
+              reverse: i % 2 == 0,
+              videoID: f.ytvid,
+              extraVID: f.extraVideos,
+              imageURL: f.image
+                ? urlFor(f.image).auto("format").url()
+                : undefined,
+            }}
+            key={i + "frames" + f._key}
+          />
+        );
+      })}
+      {/* <OTGFrame
         options={{
           title: "1st VTubers at Ripley’s ‘Believe Or Not’ Museum",
           type: "video",
@@ -74,7 +119,7 @@ export default async function Page({}: Props) {
           reverse: true,
           videoID: "Faxp1cwhP-4",
         }}
-      />
+      /> */}
 
       <TestimonialSlide gd={gd} />
     </main>

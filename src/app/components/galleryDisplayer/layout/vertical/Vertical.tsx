@@ -19,7 +19,7 @@ export default function Vertical({ ml }: any) {
 
       setCols(newCols);
     }
-    console.log("chopping");
+    // console.log("chopping");
   }, [ml]);
 
   return (

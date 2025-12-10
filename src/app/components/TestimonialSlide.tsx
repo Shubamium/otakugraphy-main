@@ -59,7 +59,7 @@ const useCarousel = (length: number, blockClass: string, reverse?: boolean) => {
           direction: reverse ? "reverse" : "normal",
         }
       );
-      console.log(animation);
+      // console.log(animation);
       anims.push(animation);
     });
     setAnim(anims);

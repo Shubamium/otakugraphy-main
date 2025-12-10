@@ -142,10 +142,7 @@ export default async function Home() {
           </div>
           <div className="l">
             <h2>OUR MISSION </h2>
-            <p>
-              Raising the industry standard for immersive multimedia experiences
-              through connecting virtual creators and their communities
-            </p>
+            <p>{gd.omdesc}</p>
             <div className="arr"></div>
           </div>
         </div>
@@ -154,10 +151,7 @@ export default async function Home() {
         <div className="confine">
           <div className="l">
             <h2>ABOUT US</h2>
-            <p>
-              Empowering virtual creators through interactive rigs to concert
-              capturing
-            </p>
+            <p>{gd.audesc}</p>
             <div className="arr"></div>
           </div>
           <div className="r">

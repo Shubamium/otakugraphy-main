@@ -1,0 +1,217 @@
+#p_featured {
+  .featured-h {
+    padding-top: 150px;
+    // display: grid;
+    // grid-template-columns: 1fr 1fr;
+    max-width: 1400px;
+
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+
+    .text {
+      h2 {
+        font-size: 4rem;
+        color: var(--dgold);
+        font-weight: 800;
+      }
+      p {
+        color: white;
+        opacity: 0.7;
+      }
+    }
+
+    .controls {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.5em;
+      input {
+        background: #171717;
+        color: white;
+        opacity: 0.8;
+        font-family: var(--fontM);
+        font-size: 1.5rem;
+        padding: 0.25em 1em;
+        border-radius: 3em;
+        border: 3px solid var(--dgold);
+        font-weight: lighter;
+      }
+      .btn-control {
+        background: var(--dgold);
+        color: #171717;
+        font-family: var(--fontM);
+        font-size: 1.5rem;
+        padding: 0.25em;
+        // border-radius: 3em;
+        border: 3px solid var(--dgold);
+        font-weight: lighter;
+        svg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .creator-list {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3em 0;
+    .creator {
+      height: 700px;
+      width: 250px;
+      background: url("/bg/wave.png") #0f0e0e;
+      border: 3px solid var(--dgold);
+      position: relative;
+      border-radius: 5em 0 0 0;
+      cursor: pointer;
+      overflow: hidden;
+      .panel {
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        // background: red;
+
+        .name {
+          color: #2a2a2a;
+          font-size: 3rem;
+          rotate: 90deg;
+          transform-origin: left bottom;
+          white-space: nowrap;
+          position: absolute;
+          left: 0%;
+          top: -20px;
+          font-weight: bolder;
+          text-shadow: 0px 0px 4px black;
+
+          transition: all 500ms ease;
+        }
+        .creator-art {
+          height: 100%;
+          position: absolute;
+          transition: all 500ms ease;
+          left: 80%;
+          transform: translateX(-50%);
+          scale: 1;
+        }
+      }
+      .bottom-info {
+        position: absolute;
+        bottom: 0%;
+        background: var(--dgold);
+        min-height: 20%;
+        width: 100%;
+        left: 0%;
+        border-radius: 0 2em 0 0;
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        transition: all 500ms ease;
+        justify-content: space-between;
+        .a {
+          font-weight: lighter;
+        }
+        .btn-play {
+          background: #0f0e0e;
+          color: #ffffff33;
+          border-radius: 50%;
+          width: 30px;
+          height: 30px;
+          padding: 0.5em;
+          align-self: flex-end;
+          justify-content: flex-end;
+          svg {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        opacity: 0;
+        transform: translateY(100%);
+      }
+      &:hover {
+        .bottom-info {
+          transform: translateY(0%);
+          opacity: 1;
+        }
+        .panel {
+          .name {
+            opacity: 0;
+          }
+          .creator-art {
+            left: 50%;
+
+            scale: 1.05;
+          }
+        }
+      }
+    }
+  }
+}
+
+#filter-popup {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  background: #17171798;
+  backdrop-filter: blur(5px);
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  transition: all 1500ms ease;
+  &.closed {
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+  }
+  .panel {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #1f1f1f url("/bg/noise2.png");
+    background-blend-mode: multiply;
+    border: 10px solid var(--dgold);
+    padding: 1em;
+    .mt {
+      text-align: center;
+      font-size: 3rem;
+      color: var(--dgold);
+      padding-bottom: 0.5em;
+    }
+
+    .ig {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1em;
+      .ff {
+        display: flex;
+        flex-direction: column;
+        select {
+          background: none;
+          color: white;
+          font-family: var(--fontM);
+          border: none;
+          font-size: 1.2rem;
+          option {
+            background: #171717;
+          }
+        }
+      }
+    }
+  }
+}
+
+#video-popup {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  background: #17171798;
+  backdrop-filter: blur(5px);
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}

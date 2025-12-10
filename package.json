@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@googleapis/youtube": "^29.0.0",
     "blurhash": "^2.0.5",
     "exif-js": "^2.3.0",
     "lenis": "^1.2.3",

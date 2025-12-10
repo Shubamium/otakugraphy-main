@@ -149,3 +149,57 @@ a {
     }
   }
 }
+
+.ff {
+  width: 100%;
+  background: #151414;
+  padding: 0.5em 1.5em;
+  border-bottom: 1px solid var(--dgold);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.381);
+  label {
+    font-family: var(--fontM);
+    color: var(--dgold);
+    font-size: 1rem;
+    text-transform: uppercase;
+    line-height: 90%;
+    font-weight: bolder;
+    @include mq(468) {
+      font-size: 0.8rem;
+    }
+    .op {
+      font-size: 0.8rem;
+      @include mq(468) {
+        font-size: 0.7rem;
+      }
+      text-transform: none;
+      opacity: 0.5;
+    }
+  }
+  input,
+  textarea {
+    background: none;
+    outline: none;
+    border: none;
+    width: 100%;
+    color: white;
+    font-family: var(--fontM);
+    padding: 0;
+    margin-bottom: 0.2em;
+    font-size: 1.3rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+
+    @include mq(468) {
+      font-size: 1rem;
+    }
+
+    &::placeholder {
+      opacity: 0.4;
+      font-weight: 200;
+    }
+  }
+  textarea {
+    resize: none;
+    min-height: 300px;
+  }
+}

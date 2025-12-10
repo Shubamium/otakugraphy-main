@@ -78,7 +78,9 @@ export default function Header({}: Props) {
         <Link href={"/brands"} className="btn btn-nav btn-mobile">
           Brands
         </Link>
-
+        <Link href={"/featured"} className="btn btn-nav btn-mobile">
+          Brands
+        </Link>
         <div className="btn btn-nav btn-popup">
           {/* <img src="/gfx/nightlife.png" alt="" /> */}
           <span>More</span>
@@ -91,6 +93,9 @@ export default function Header({}: Props) {
             </Link>
             <Link href={"/brands"} className="btn btn-sub">
               Brands
+            </Link>
+            <Link href={"/featured"} className="btn btn-sub">
+              Featured Creators
             </Link>
           </div>
         </div>
