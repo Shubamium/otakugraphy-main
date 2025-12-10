@@ -30,9 +30,7 @@ export default async function page({}: Props) {
               <div className="panel">
                 <p className="name">{creator.name}</p>
                 <img
-                  src={
-                    creator.image && urlFor(creator.image).auto("format").url()
-                  }
+                  src={creator.art && urlFor(creator.art).auto("format").url()}
                   alt=""
                   className="creator-art"
                 />
