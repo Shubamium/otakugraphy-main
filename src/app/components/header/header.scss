@@ -13,7 +13,7 @@
   padding: 0 2em;
 
   box-shadow: 0px 0px 70px 14px rgba(0, 0, 0, 0.782);
-  transition: all 500ms ease;
+  transition: all 5500ms ease;
 
   @include mq(550) {
     display: flex;
@@ -57,7 +57,7 @@
 
   #main-nav {
     display: flex;
-    gap: 2em;
+    gap: 1.5em;
     padding: 0 2em;
     // align-items: center;
     // height: 100%;
@@ -78,7 +78,7 @@
       padding: 1em;
       .btn-nav {
         background: #2e2e2e;
-        filter: brightness(140%) drop-shadow(0px 0px 5px black);
+        filter: brightness(100%) drop-shadow(0px 0px 5px black);
         padding: 0.55em 1em;
         opacity: 1;
       }
@@ -112,11 +112,14 @@
       align-items: center;
       @media screen and (max-width: 1280px) {
         font-size: 1.4rem;
+        font-weight: bolder;
       }
       @media screen and (max-width: 768px) {
         font-size: 1.2rem;
         opacity: 1;
-        font-weight: bolder;
+      }
+      @media screen and (max-width: 550px) {
+        font-size: 5vw;
       }
 
       &:not(.btn-popup) {
@@ -187,6 +190,7 @@
       .btn-popup {
         display: none;
       }
+      letter-spacing: 0px;
     }
   }
 
