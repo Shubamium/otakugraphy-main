@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { urlFor } from "../db/sanity";
 import {
   FaChevronLeft,
@@ -86,7 +86,7 @@ const useCarousel = (length: number, blockClass: string, reverse?: boolean) => {
     bounds,
   };
 };
-export default function TestimonialSlide({ gd }: Props) {
+export function TestimonialSlide({ gd }: Props) {
   // const [posA, setPosA] = useState(0);
   const [offsetA, setOffsetA] = useState(0);
   const [offsetB, setOffsetB] = useState(0);
@@ -151,7 +151,7 @@ export default function TestimonialSlide({ gd }: Props) {
             );
           })}
         </div>
-        <div className="blocks blockA" ref={ca.ref}>
+        <div className="blocks blockA">
           {left?.map((t: any, i: number) => {
             const l = left.length;
             const index = (((i + offsetA) % l) + l) % l;
@@ -257,7 +257,7 @@ export default function TestimonialSlide({ gd }: Props) {
             );
           })}
         </div>
-        <div className="blocks blockB" ref={cb.ref}>
+        <div className="blocks blockB">
           {right?.map((t: any, i: number) => {
             const l = right.length;
             const index = (((i + offsetB) % l) + l) % l;
@@ -316,3 +316,5 @@ export default function TestimonialSlide({ gd }: Props) {
     </section>
   );
 }
+
+export default memo(TestimonialSlide);
