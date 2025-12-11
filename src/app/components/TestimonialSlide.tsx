@@ -15,6 +15,7 @@ import { LiaLinkSolid } from "react-icons/lia";
 import { FaInternetExplorer } from "react-icons/fa";
 import { BiLinkExternal } from "react-icons/bi";
 import "./testimonialSlide.scss";
+import { useMediaQuery } from "react-responsive";
 type Props = {
   gd: any;
 };
@@ -42,13 +43,17 @@ const useCarousel = (length: number, blockClass: string, reverse?: boolean) => {
       });
     }
   };
+
+  const mobile = useMediaQuery({
+    query: "(max-width: 550px)",
+  });
   useEffect(() => {
     const el = document.querySelectorAll("." + blockClass);
 
     let anims = [] as Animation[];
     el.forEach((e: Element) => {
-      const durationPerSlide = 5000;
-
+      let durationPerSlide = 5000;
+      if (mobile) durationPerSlide *= 2;
       const animation = e.animate(
         {
           transform: ["translateX(0px)", `translateX(-${bounds.width}px)`],

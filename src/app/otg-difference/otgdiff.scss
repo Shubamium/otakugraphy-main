@@ -21,6 +21,12 @@
     h1 {
       font-size: 5rem;
       font-weight: 800;
+      @media screen and (max-width: 1024px) {
+        font-size: 3rem;
+      }
+      @media screen and (max-width: 550px) {
+        font-size: 2rem;
+      }
     }
     p {
       font-size: 1.42rem;

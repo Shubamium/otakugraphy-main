@@ -4,6 +4,12 @@
     color: var(--dgold);
     font-size: 5rem;
     text-align: center;
+    @media screen and (max-width: 768px) {
+      font-size: 3rem;
+    }
+    @media screen and (max-width: 420px) {
+      font-size: 2rem;
+    }
   }
 
   max-width: 1280px;
@@ -36,11 +42,18 @@
         min-height: 300px;
         // flex-shrink: 0;
         // sflex-basis: 31%;
+        @media screen and (max-width: 550px) {
+          width: 90vw;
+          min-height: 200px;
+        }
         .person-info {
           display: grid;
           grid-template-columns: 90px 1fr;
           gap: 1em;
           align-items: center;
+          @media screen and (max-width: 550px) {
+            grid-template-columns: 1fr 3fr;
+          }
           .img {
             max-width: 100%;
             border-radius: 50%;
@@ -51,6 +64,9 @@
               font-size: 1.5rem;
               color: var(--dgold);
               font-weight: bold;
+              @media screen and (max-width: 550px) {
+                font-size: 1rem;
+              }
             }
             .socials {
               display: flex;
@@ -65,6 +81,9 @@
             p {
               color: white;
               opacity: 0.8;
+              @media screen and (max-width: 550px) {
+                font-size: 0.7rem;
+              }
               font-size: 0.85rem;
             }
           }
@@ -72,8 +91,14 @@
         .testi-text {
           color: rgba(255, 255, 255, 0.682);
           padding: 1em;
+          @media screen and (max-width: 550px) {
+            padding: 0.5em;
+          }
           p {
             font-size: 0.75rem;
+            @media screen and (max-width: 550px) {
+              font-size: 0.6rem;
+            }
           }
         }
       }
@@ -90,6 +115,10 @@
       transform: translateY(-20px);
       border-radius: 50%;
       box-shadow: 0px 0px 15px black;
+      @media screen and (max-width: 768px) {
+        top: initial;
+        bottom: 0%;
+      }
       svg {
         color: var(--dgold);
         width: 100%;

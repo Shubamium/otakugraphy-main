@@ -40,7 +40,10 @@
     display: flex;
     justify-content: center;
     padding: 0.6em 1em;
-
+    @media screen and (max-width: 420px) {
+      padding-bottom: 0;
+      padding-top: 2em;
+    }
     &:hover {
       transform: translateY(-4%);
     }
@@ -72,6 +75,7 @@
     @include mq(768) {
       grid-template-columns: 1fr;
       gap: 1em;
+      padding: 1em;
       .btn-nav {
         background: #2e2e2e;
         filter: brightness(140%) drop-shadow(0px 0px 5px black);
@@ -100,6 +104,7 @@
       font-family: var(--fontM);
       text-transform: uppercase;
       font-weight: 300;
+
       font-size: 2rem;
       white-space: nowrap;
       opacity: 0.6;
@@ -111,6 +116,7 @@
       @media screen and (max-width: 768px) {
         font-size: 1.2rem;
         opacity: 1;
+        font-weight: bolder;
       }
 
       &:not(.btn-popup) {

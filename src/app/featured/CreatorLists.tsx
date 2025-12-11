@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import CreatorCard from "./CreatorCard";
 import { createPortal } from "react-dom";
-
+import "./creatorList.scss";
 type Props = { creators: any };
 
 type VideoData = {
@@ -17,11 +17,11 @@ export default function CreatorLists({ creators }: Props) {
   }, []);
   return (
     <>
-      <div className="creator-list">
-        {creators.map((creator: any) => {
+      <div id="creator-list">
+        {creators?.map((creator: any, i: number) => {
           return (
             <CreatorCard
-              key={creator._id}
+              key={creator._id + "creator-card" + i}
               creator={creator}
               onClick={() => {
                 setCurrVid({ name: creator.name, vid: creator.Video });

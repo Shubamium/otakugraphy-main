@@ -6,6 +6,8 @@ import PartnershipSlide from "./components/partnershipSlide/PartnershipSlide";
 import { fetchData, urlFor } from "./db/sanity";
 import Category from "./Category";
 import TestimonialSlide from "./components/TestimonialSlide";
+import { BsRecord } from "react-icons/bs";
+import CreatorLists from "./featured/CreatorLists";
 
 const conventionPartners = [
   // "/gfx/p/c1.png",
@@ -82,7 +84,8 @@ export default async function Home() {
 			hlm[] -> {
 				...,
 				'video':video.asset -> url
-			}
+			},
+			currentlyLive[] -> {...},
 		}[0]
 	`);
   const pt = await fetchData<any>(`
@@ -168,7 +171,7 @@ export default async function Home() {
       <section id="about">
         <div className="confine">
           <div className="l">
-            <h2>ABOUT US</h2>
+            <h2>Our Services</h2>
             <p>{gd.audesc}</p>
             <div className="arr"></div>
           </div>
@@ -284,6 +287,19 @@ export default async function Home() {
       <section id="ourframe">
         <h2 className="title">OUR FRAMES</h2>
         <Category gd={gd} />
+      </section>
+      <section id="cls">
+        <h2 className="mt">Currently Live STREAMING</h2>
+        {gd.currentlyLive && gd.currentlyLive.length > 0 ? (
+          <CreatorLists creators={gd.currentlyLive} />
+        ) : (
+          <div className="nolive">
+            <p>
+              Currently No Live Talent Guests. Please check our socials for our
+              next event!
+            </p>
+          </div>
+        )}
       </section>
       <section id="partnership">
         <div className="p-h">

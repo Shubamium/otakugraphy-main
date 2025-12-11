@@ -79,7 +79,7 @@ export default function Header({}: Props) {
           Brands
         </Link>
         <Link href={"/featured"} className="btn btn-nav btn-mobile">
-          Brands
+          Featured Creators
         </Link>
         <div className="btn btn-nav btn-popup">
           {/* <img src="/gfx/nightlife.png" alt="" /> */}

@@ -6,6 +6,9 @@ import Link from "next/link";
 import { animate, useMotionValue, motion } from "motion/react";
 import useMeasure from "react-use-measure";
 import { useRouter } from "next/navigation";
+import { BiLink } from "react-icons/bi";
+import { CiLink } from "react-icons/ci";
+import { HiArrowTopRightOnSquare } from "react-icons/hi2";
 
 type Props = {
   gd: any;
@@ -36,7 +39,10 @@ export default function Category({ gd }: Props) {
                   router.push(cr.route_link ?? "/");
                 }}
               >
-                <h2 className="hover-title">{cr.name}</h2>
+                <h2 className="hover-title">
+                  {cr.name}
+                  <HiArrowTopRightOnSquare />
+                </h2>
                 <CatRow cr={cr} i={i} />
               </div>
             </div>

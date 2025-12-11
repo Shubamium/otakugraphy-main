@@ -64,6 +64,9 @@
         line-height: 100%;
         font-weight: 700;
         letter-spacing: normal;
+        @media screen and (max-width: 768px) {
+          font-size: 3rem;
+        }
         @include mq(468) {
           font-size: clamp(1rem, 16vw, 4rem);
         }
@@ -343,6 +346,12 @@
       font-size: 5rem;
       color: var(--dgold);
       margin-bottom: 0.5em;
+      @media screen and (max-width: 768px) {
+        font-size: 3rem;
+      }
+      @media screen and (max-width: 420px) {
+        font-size: 2rem;
+      }
     }
     #category {
       display: flex;
@@ -473,8 +482,23 @@
             left: 0%;
             width: 100%;
             height: 100%;
-            color: var(--dgold);
-            font-weight: 500;
+            // color: var(--dgold);
+            color: white;
+            font-weight: 800;
+
+            flex-direction: column;
+            @media screen and (max-width: 768px) {
+              font-size: 2rem;
+            }
+            @media screen and (max-width: 768px) {
+              opacity: 1;
+              background: none;
+              backdrop-filter: initial;
+              align-items: flex-start;
+              justify-content: flex-start;
+              text-shadow: 0px 0px 14px black;
+              padding: 0.25em;
+            }
           }
         }
         // Vertical Scroll
@@ -703,6 +727,9 @@
     .th {
       text-align: center;
       font-size: 5rem;
+      @media screen and (max-width: 550px) {
+        font-size: 3rem;
+      }
       // letter-spacing: -4px;
       // color: transparent;
       // text-stroke: 2px white;
@@ -848,6 +875,41 @@
     }
   }
 
+  #cls {
+    background: #232323 url("/bg/noise.png");
+    background-blend-mode: multiply;
+    padding: 100px;
+    margin: 200px 0;
+    @media screen and (max-width: 1280px) {
+      padding: 50px;
+    }
+    .mt {
+      font-size: 5rem;
+      color: var(--dgold);
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 800;
+      @media screen and (max-width: 1280px) {
+        font-size: 4rem;
+      }
+      @media screen and (max-width: 768px) {
+        font-size: 2rem;
+        background: var(--dgold);
+        color: #202020;
+        padding: 0.5em;
+        text-align: left;
+        line-height: 0.8;
+      }
+    }
+    .nolive {
+      p {
+        text-align: center;
+        color: white;
+        opacity: 0.7;
+        font-size: 1.2rem;
+      }
+    }
+  }
   #partnership {
     .p-h {
       display: flex;
@@ -860,11 +922,12 @@
         // -webkit-text-stroke: 1px white;
         padding: 0 0.1em;
         font-weight: bolder;
+
         // text-stroke: 1px white;
         color: var(--dgold);
         @include mq(1024) {
           line-height: 90%;
-          font-size: clamp(1rem, 13vw, 5rem);
+          font-size: clamp(1rem, 10vw, 5rem);
         }
       }
 
@@ -872,6 +935,10 @@
         width: 50px;
         height: 50px;
         background: var(--dgold);
+        @media screen and (max-width: 1024px) {
+          width: 30px;
+          height: 30px;
+        }
         clip-path: polygon(100% 0, 0% 100%, 100% 100%);
       }
     }
