@@ -67,7 +67,14 @@ const useCarousel = (length: number, blockClass: string, reverse?: boolean) => {
       // console.log(animation);
       anims.push(animation);
     });
+
     setAnim(anims);
+
+    return () => {
+      anims.forEach((a) => {
+        a.cancel();
+      });
+    };
   }, [bounds.width]);
 
   return {

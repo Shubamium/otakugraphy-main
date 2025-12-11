@@ -13,9 +13,10 @@ type Props = {
   n?: any;
   p?: any;
   disabled?: boolean;
+  imageHeight?: number;
 };
 
-export default function Media({ data, n, p, disabled }: Props) {
+export default function Media({ data, n, p, disabled, imageHeight }: Props) {
   // const [loaded, setLoaded] = useState(false);
   // const [imageUrl, setImageUrl] = useState("empty");
   // const [z, setZ] = useState(1);
@@ -30,6 +31,7 @@ export default function Media({ data, n, p, disabled }: Props) {
   //   // };
   // }, [data]);
   useEffect(() => {
+    if (disabled) return;
     const playVid = (newD: any) => {
       if (vidRef.current) {
         if (newD.detail && newD.detail._id === data._id) {
@@ -49,6 +51,8 @@ export default function Media({ data, n, p, disabled }: Props) {
   }, []);
 
   useEffect(() => {
+    if (disabled) return;
+
     const fstest = async () => {
       document.addEventListener("fullscreenchange", () => {
         const fs = document.fullscreenElement;
@@ -101,8 +105,12 @@ export default function Media({ data, n, p, disabled }: Props) {
           {data.type === "image" && data.image && (
             <>
               <img
-                src={urlFor(data.image).auto("format").height(1080).url()}
+                src={urlFor(data.image)
+                  .auto("format")
+                  .height(imageHeight ?? 1080)
+                  .url()}
                 alt={data.gd && data.gd.alt}
+                key={data.image}
                 className="img"
               />
               {/* <Blurhash hash={data.metadata.blurHash} className="blur" /> */}

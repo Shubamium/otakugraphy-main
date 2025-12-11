@@ -8,7 +8,7 @@ type Props = {};
 
 export default function FeaturedAction({}: Props) {
   const [mounted, setMounted] = React.useState(false);
-  const [openFilter, setOpenFilter] = React.useState(false);
+  const [openFilter, setOpenFilter] = React.useState(true);
   React.useEffect(() => {
     setMounted(true);
   }, []);
@@ -119,7 +119,23 @@ export default function FeaturedAction({}: Props) {
               <div className="selection">
                 <p>Event:</p>
                 <div className="list">
-                  <button className={`btn btn-red`}></button>
+                  <button className={`btn btn-red selected`}>Tsumi Con</button>
+                  <button className={`btn btn-red`}>Carrier Con</button>
+                  <button className={`btn btn-red`}>Carrier Con</button>
+                  <button className={`btn btn-red`}>Carrier Con</button>
+                  <button className={`btn btn-red`}>Carrier Con</button>
+                  <button className={`btn btn-red`}>Carrier Con</button>
+                </div>
+              </div>
+              <div className="selection">
+                <p>Agency:</p>
+                <div className="list">
+                  <button className={`btn btn-red selected`}>Tsumi Con</button>
+                  <button className={`btn btn-red`}>Carrier Con</button>
+                  <button className={`btn btn-red`}>Carrier Con</button>
+                  <button className={`btn btn-red`}>Carrier Con</button>
+                  <button className={`btn btn-red`}>Carrier Con</button>
+                  <button className={`btn btn-red`}>Carrier Con</button>
                 </div>
               </div>
             </div>

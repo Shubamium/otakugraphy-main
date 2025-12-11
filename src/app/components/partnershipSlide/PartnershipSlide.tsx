@@ -14,7 +14,7 @@ export default function PartnershipSlide({ p, reverse }: any) {
   useEffect(() => {
     const target = bounds.width;
 
-    animate(
+    const anim = animate(
       ".slider",
       {
         x: reverse ? [-target, 0] : [0, -target],
@@ -27,6 +27,8 @@ export default function PartnershipSlide({ p, reverse }: any) {
         ease: "linear",
       }
     );
+
+    return () => anim.cancel();
   }, [p, bounds.width]);
 
   return (

@@ -1,13 +1,10 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Media from "./components/galleryDisplayer/media/Media";
 import { FaArrowRightLong } from "react-icons/fa6";
 import Link from "next/link";
-import { animate, useMotionValue, motion } from "motion/react";
 import useMeasure from "react-use-measure";
 import { useRouter } from "next/navigation";
-import { BiLink } from "react-icons/bi";
-import { CiLink } from "react-icons/ci";
 import { HiArrowTopRightOnSquare } from "react-icons/hi2";
 
 type Props = {
@@ -15,7 +12,6 @@ type Props = {
 };
 
 export default function Category({ gd }: Props) {
-  // console.log(gd);
   const router = useRouter();
   return (
     // /<div>Category</div>
@@ -53,43 +49,107 @@ export default function Category({ gd }: Props) {
 }
 
 export function CatRow({ cr, i }: any) {
-  const xpos = useMotionValue(0);
+  // const xpos = useMotionValue(0);
   const [scope, measure] = useMeasure({
     scroll: false,
-    debounce: 5000,
+    debounce: 2000,
   });
+  const aniscope = useRef<HTMLDivElement>(null);
+  // const [aniscope, animate] = useAnimate();
+  // useEffect(() => {
+  //   const target = measure.width;
+  //   animate(xpos, i % 2 ? [0, -target] : [-target, 0], {
+  //     duration: cr.ml.length * (i % 2 == 0 ? 10 : 5),
+  //     ease: "linear",
+  //     repeat: Infinity,
+  //     repeatType: "loop",
+  //   });
+  // }, [measure.width]);
   useEffect(() => {
-    const target = measure.width;
-    animate(xpos, i % 2 ? [0, -target] : [-target, 0], {
-      duration: cr.ml.length * (i % 2 == 0 ? 10 : 5),
-      ease: "linear",
-      repeat: Infinity,
-      repeatType: "loop",
-    });
-  }, [xpos, measure.width]);
+    // const asTarget = aniscope.current?.;
+
+    // asTarget?.forEach((el) => {
+    //   el.animate(
+    //     {
+    //       transform: ["translateX(0%)", `translateX(${-100}%)`],
+    //     },
+    //     {
+    //       duration: cr.ml.length * 4 * 1000,
+    //       iterations: Infinity,
+    //       easing: "linear",
+    //       direction: i % 2 == 0 ? "normal" : "reverse",
+    //     }
+    //   );
+    // });
+    const animate = aniscope.current?.animate(
+      {
+        transform: ["translateX(0px)", `translateX(${-measure.width}px)`],
+      },
+      {
+        duration: cr.ml.length * 5 * 1000,
+        iterations: Infinity,
+        easing: "linear",
+        direction: i % 2 == 0 ? "normal" : "reverse",
+      }
+    );
+    // animate(
+    //   ".pt",
+    //   {
+    //     x: i % 2 ? [0, -measure.width * 3] : [-measure.width * 3, 0],
+    //   },
+    //   {
+    //     duration: cr.ml.length * 5,
+    //     ease: "linear",
+    //     repeat: Infinity,
+    //     repeatType: "loop",
+    //   }
+    // );
+    return () => animate?.cancel();
+  }, [measure.width]);
   return (
-    <motion.div className="slide" style={{ x: xpos }}>
+    <div className="slide" ref={aniscope}>
       <div className="pt" ref={scope}>
         {cr.ml &&
           cr.ml.map((md: any, i: number) => {
-            if (!md) return null;
-            return <Media key={md._key + "id" + i} data={md} disabled />;
+            if (!md) return <></>;
+            return (
+              <Media
+                key={md._key + "id" + i}
+                data={md}
+                disabled
+                imageHeight={300}
+              />
+            );
           })}
       </div>
       <div className="pt">
         {cr.ml &&
           cr.ml.map((md: any, i: number) => {
-            if (!md) return null;
-            return <Media key={md._key + "id2" + i} data={md} disabled />;
+            if (!md) return <></>;
+            return (
+              <Media
+                key={md._key + "id2" + i}
+                data={md}
+                disabled
+                imageHeight={300}
+              />
+            );
           })}
       </div>
       <div className="pt">
         {cr.ml &&
           cr.ml.map((md: any, i: number) => {
-            if (!md) return null;
-            return <Media key={md._key + "id3" + i} data={md} disabled />;
+            if (!md) return <></>;
+            return (
+              <Media
+                key={md._key + "id3" + i}
+                data={md}
+                disabled
+                imageHeight={300}
+              />
+            );
           })}
       </div>
-    </motion.div>
+    </div>
   );
 }

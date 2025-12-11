@@ -110,6 +110,7 @@
     background-blend-mode: multiply;
     border: 10px solid var(--dgold);
     padding: 1em;
+    width: 100%;
     .mt {
       text-align: center;
       font-size: 3rem;
@@ -132,6 +133,33 @@
           font-size: 1.2rem;
           option {
             background: #171717;
+          }
+        }
+      }
+    }
+    .selection {
+      padding: 1em 0;
+      p {
+        font-size: 1.4rem;
+        color: var(--dgold);
+        font-weight: bolder;
+      }
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5em;
+        .btn-red {
+          background: #202020;
+          border: 2px solid var(--dgold);
+          color: var(--dgold);
+          font-weight: bolder;
+          font-family: var(--fontM);
+          font-size: 1.2rem;
+          padding: 0.25em 0.5em;
+          &.selected,
+          &:hover {
+            background: var(--dgold);
+            color: #202020;
           }
         }
       }
