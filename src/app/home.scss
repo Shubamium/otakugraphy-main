@@ -15,8 +15,11 @@
     width: 100%;
     padding: 1em;
     padding-block: 200px;
-    box-shadow: 0px 0px 80px 14px rgba(0, 0, 0, 0.869);
+    box-shadow: 0px 15px 50px 0px rgba(0, 0, 0, 0.869);
     border-bottom: 2px solid var(--dgold);
+    @media screen and (max-width: 1200px) {
+      box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.869);
+    }
 
     @include mq(1024) {
       .confine {
@@ -672,6 +675,12 @@
 
         text-align: right;
         box-shadow: 0px 0px 24px 10px rgba(0, 0, 0, 0.469);
+        @media screen and (max-width: 1024px) {
+          box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.469);
+        }
+        @media screen and (max-width: 768px) {
+          box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.469);
+        }
         h2 {
           font-size: 3rem;
           font-weight: bolder;
@@ -954,6 +963,12 @@
     .content {
       background: #121111 url("/bg/wave.png");
       box-shadow: 0px 0px 24px 14px black;
+      @media screen and (max-width: 1024px) {
+        box-shadow: 0px 0px 12px 6px black;
+      }
+      @media screen and (max-width: 768px) {
+        box-shadow: none;
+      }
     }
     .p-l {
       // background-blend-mode: multiply;
@@ -1044,6 +1059,9 @@
       .testiblock {
         background: #232323;
         box-shadow: 0px 0px 15px 2px black;
+        @media screen and (max-width: 768px) {
+          box-shadow: 0px 0px 5px 2px black;
+        }
         display: flex;
         align-items: center;
         flex-direction: column;

@@ -12,8 +12,13 @@
   display: flex;
   padding: 0 2em;
 
-  box-shadow: 0px 0px 70px 14px rgba(0, 0, 0, 0.782);
-  transition: all 5500ms ease;
+  box-shadow: 0px 0px 30px 16px rgba(0, 0, 0, 0.402);
+  @media screen and (max-width: 1024px) {
+    box-shadow: none;
+  }
+  transition:
+    all 800ms ease,
+    letter-spacing 0ms;
 
   @include mq(550) {
     display: flex;
@@ -35,6 +40,15 @@
     left: -19px;
     right: 0%;
   }
+  .btn-logo {
+    width: 200px;
+    @media screen and (max-width: 768px) {
+      padding: 0.25em 0;
+    }
+    @media screen and (max-width: 1024px) {
+      width: 100%;
+    }
+  }
   .logo {
     // background: #181717;
     display: flex;
@@ -43,6 +57,9 @@
     @media screen and (max-width: 420px) {
       padding-bottom: 0;
       padding-top: 2em;
+    }
+    @media screen and (max-width: 1024px) {
+      width: 100%;
     }
     &:hover {
       transform: translateY(-4%);
@@ -58,7 +75,7 @@
   #main-nav {
     display: flex;
     gap: 1.5em;
-    padding: 0 2em;
+    padding: 0 1em;
     // align-items: center;
     // height: 100%;
 
@@ -91,7 +108,7 @@
       // filter: brightness(50%) drop-shadow(0px 0px 5px black);
       transition: all 200ms ease;
       width: 100%;
-      height: 100%;
+      // height: 100%;
       // img {
       //   height: 23px;
       //   width: auto;
@@ -104,6 +121,7 @@
       font-family: var(--fontM);
       text-transform: uppercase;
       font-weight: 300;
+      letter-spacing: 0px !important;
 
       font-size: 2rem;
       white-space: nowrap;
@@ -190,7 +208,6 @@
       .btn-popup {
         display: none;
       }
-      letter-spacing: 0px;
     }
   }
 

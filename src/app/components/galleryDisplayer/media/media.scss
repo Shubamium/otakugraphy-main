@@ -4,7 +4,15 @@
   border-bottom: 3px solid var(--dgold);
   box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.304);
   // overflow: hidden;
-
+  @media screen and (max-width: 1024px) {
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.304);
+  }
+  @media screen and (max-width: 768px) {
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.304);
+  }
+  @media screen and (max-width: 550px) {
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.304);
+  }
   transition: all 500ms ease;
   cursor: pointer;
   position: relative;
@@ -12,6 +20,15 @@
   overflow: hidden;
   &:hover {
     box-shadow: 0px 0px 25px 0px black;
+    @media screen and (max-width: 1024px) {
+      box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.304);
+    }
+    @media screen and (max-width: 768px) {
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.304);
+    }
+    @media screen and (max-width: 550px) {
+      box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.304);
+    }
     .alt {
       opacity: 1;
     }
