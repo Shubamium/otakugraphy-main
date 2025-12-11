@@ -13,6 +13,15 @@ export default async function page({}: Props) {
 			*[_type == 'creator']{
 			...}
 	`);
+  const eventList = await fetchData<any>(`
+			*[_type == 'creator-event']{
+			...}
+	`);
+
+  const agency = await fetchData<any>(`
+			*[_type == 'creator-agency']{
+			...}
+	`);
   return (
     <main id="p_featured">
       <div className="featured-h">
@@ -22,7 +31,7 @@ export default async function page({}: Props) {
             (placeholder) Our History of Capturing Historical VTubing Events
           </p>
         </div>
-        <FeaturedAction />
+        <FeaturedAction events={eventList} agencies={agency} />
       </div>
 
       <CreatorLists creators={creators} />
