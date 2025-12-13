@@ -43,6 +43,9 @@ export default function Footer({}: Props) {
             <Link href={"/brands"} className="btn-fn">
               Brands
             </Link>
+            <Link href={"/featured"} className="btn-fn">
+              Featured Creator
+            </Link>
             <Link href={"/contact"} className="btn-fn">
               Contact us
             </Link>
