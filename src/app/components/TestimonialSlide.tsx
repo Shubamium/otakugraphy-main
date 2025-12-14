@@ -7,7 +7,9 @@ import {
   FaLink,
   FaQuoteLeft,
   FaShare,
+  FaTwitch,
   FaXTwitter,
+  FaYoutube,
 } from "react-icons/fa6";
 import useMeasure from "react-use-measure";
 import { CgBrowser, CgWebsite } from "react-icons/cg";
@@ -130,13 +132,39 @@ export function TestimonialSlide({ gd }: Props) {
                     <p> {tm.role}</p>
                     <div className="socials">
                       {tm.x && (
-                        <a href={tm.x} className="btn btn-contact">
+                        <a
+                          href={tm.x}
+                          target="_blank"
+                          className="btn btn-contact"
+                        >
                           <FaXTwitter />
                         </a>
                       )}
                       {tm.website && (
-                        <a href={tm.website} className="btn btn-contact">
+                        <a
+                          href={tm.website}
+                          target="_blank"
+                          className="btn btn-contact"
+                        >
                           <BiLinkExternal />
+                        </a>
+                      )}
+                      {tm.twitch && (
+                        <a
+                          href={tm.twitch}
+                          target="_blank"
+                          className="btn btn-contact"
+                        >
+                          <FaTwitch />
+                        </a>
+                      )}
+                      {tm.youtube && (
+                        <a
+                          href={tm.youtube}
+                          target="_blank"
+                          className="btn btn-contact"
+                        >
+                          <FaYoutube />
                         </a>
                       )}
                     </div>
@@ -169,13 +197,39 @@ export function TestimonialSlide({ gd }: Props) {
                     <p> {tm.role}</p>
                     <div className="socials">
                       {tm.x && (
-                        <a href={tm.x} className="btn btn-contact">
+                        <a
+                          href={tm.x}
+                          target="_blank"
+                          className="btn btn-contact"
+                        >
                           <FaXTwitter />
                         </a>
                       )}
                       {tm.website && (
-                        <a href={tm.website} className="btn btn-contact">
+                        <a
+                          href={tm.website}
+                          target="_blank"
+                          className="btn btn-contact"
+                        >
                           <BiLinkExternal />
+                        </a>
+                      )}
+                      {tm.twitch && (
+                        <a
+                          href={tm.twitch}
+                          target="_blank"
+                          className="btn btn-contact"
+                        >
+                          <FaTwitch />
+                        </a>
+                      )}
+                      {tm.youtube && (
+                        <a
+                          href={tm.youtube}
+                          target="_blank"
+                          className="btn btn-contact"
+                        >
+                          <FaYoutube />
                         </a>
                       )}
                     </div>
@@ -236,13 +290,39 @@ export function TestimonialSlide({ gd }: Props) {
                     <p> {tm.role}</p>
                     <div className="socials">
                       {tm.x && (
-                        <a href={tm.x} className="btn btn-contact">
+                        <a
+                          href={tm.x}
+                          target="_blank"
+                          className="btn btn-contact"
+                        >
                           <FaXTwitter />
                         </a>
                       )}
                       {tm.website && (
-                        <a href={tm.website} className="btn btn-contact">
+                        <a
+                          href={tm.website}
+                          target="_blank"
+                          className="btn btn-contact"
+                        >
                           <BiLinkExternal />
+                        </a>
+                      )}
+                      {tm.twitch && (
+                        <a
+                          href={tm.twitch}
+                          target="_blank"
+                          className="btn btn-contact"
+                        >
+                          <FaTwitch />
+                        </a>
+                      )}
+                      {tm.youtube && (
+                        <a
+                          href={tm.youtube}
+                          target="_blank"
+                          className="btn btn-contact"
+                        >
+                          <FaYoutube />
                         </a>
                       )}
                     </div>
@@ -275,13 +355,39 @@ export function TestimonialSlide({ gd }: Props) {
                     <p> {tm.role}</p>
                     <div className="socials">
                       {tm.x && (
-                        <a href={tm.x} className="btn btn-contact">
+                        <a
+                          href={tm.x}
+                          target="_blank"
+                          className="btn btn-contact"
+                        >
                           <FaXTwitter />
                         </a>
                       )}
                       {tm.website && (
-                        <a href={tm.website} className="btn btn-contact">
+                        <a
+                          href={tm.website}
+                          target="_blank"
+                          className="btn btn-contact"
+                        >
                           <BiLinkExternal />
+                        </a>
+                      )}
+                      {tm.twitch && (
+                        <a
+                          href={tm.twitch}
+                          target="_blank"
+                          className="btn btn-contact"
+                        >
+                          <FaTwitch />
+                        </a>
+                      )}
+                      {tm.youtube && (
+                        <a
+                          href={tm.youtube}
+                          target="_blank"
+                          className="btn btn-contact"
+                        >
+                          <FaYoutube />
                         </a>
                       )}
                     </div>
