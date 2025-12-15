@@ -64,13 +64,21 @@ export default async function page({ searchParams }: Props) {
 			*[_type == 'creator-agency']{
 			...}
 	`);
+
+  const featured = await fetchData<any>(
+    `*[_type == 'general' && preset == 'main'][0]{
+			fc_t,
+			fc_d
+		}`
+  );
   return (
     <main id="p_featured">
       <div className="featured-h">
         <div className="text">
-          <h2>Featured Creators</h2>
+          <h2>{featured?.fc_t}</h2>
           <p>
-            (placeholder) Our History of Capturing Historical VTubing Events
+            {featured?.fc_d}
+            {/* (placeholder) Our History of Capturing Historical VTubing Events */}
           </p>
         </div>
         <FeaturedAction

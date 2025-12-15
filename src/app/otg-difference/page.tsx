@@ -26,8 +26,8 @@ export default async function Page({}: Props) {
     <main id="p_otg-diff">
       <img src="/gfx/herobg.webp" alt="" className="head-bg" />
       <div className="od-head">
-        <h1>The OTG Difference</h1>
-        <p>Our History of Capturing Historical VTubing Events</p>
+        <h1>{otgdiff.otg_t}e</h1>
+        <p>{otgdiff.otg_d}</p>
       </div>
       {top?.map((f: any, i: number) => {
         return (

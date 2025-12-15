@@ -1,5 +1,6 @@
 "use server";
 import { createTransport } from "nodemailer";
+import { MailOptions } from "nodemailer/lib/json-transport";
 const transporter = createTransport({
   service: "gmail",
   auth: {
@@ -16,9 +17,10 @@ export async function sendMail(
   message: string,
   dc: string | null
 ) {
-  const mailOption = {
+  const mailOption: MailOptions = {
     from: "vicnet.video@gmail.com",
     to: process.env.SMTP_TARGET,
+    replyTo: [mail],
     subject: `[Contact Form] New message from ${name}`,
     text: `Hello, ${name} has submitted a message through the website contact form. \n \n Email: ${mail} \n Phone:${phone ? phone : "N/A"} \n Discord: ${dc ?? "N/A"} \n Message: ${message} `,
   };

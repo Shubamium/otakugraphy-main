@@ -9,6 +9,7 @@ import TestimonialSlide from "./components/TestimonialSlide";
 import { BsRecord } from "react-icons/bs";
 import CreatorLists from "./featured/CreatorLists";
 import { PortableText } from "next-sanity";
+import { CSSProperties } from "react";
 
 const conventionPartners = [
   // "/gfx/p/c1.png",
@@ -340,9 +341,20 @@ export default async function Home() {
   };
   return (
     <main id="page_home">
-      <section id="banner-h">
+      <section
+        id="banner-h"
+        style={
+          {
+            "--bg": `url(${gd.ti_bg && urlFor(gd.ti_bg).height(1080).format("webp").url()})`,
+          } as CSSProperties
+        }
+      >
         <div className="confine">
-          <img src="/gfx/logo2.png" alt="" className="main" />
+          <img
+            src={gd.ti_ml && urlFor(gd.ti_ml).height(1080).auto("format").url()}
+            alt=""
+            className="main"
+          />
           {/* <p className="moto">
             North America's 1st Vtuber-Focused Media Company
           </p> */}

@@ -15,6 +15,7 @@ export async function getYoutubeViews(id: string) {
     const vstat = data.items;
     if (vstat) {
       const target = vstat[0].statistics?.viewCount;
+      // vstat[0].snippet?.publishedAt; Get date
       return {
         status: "Success",
         vwc: target,

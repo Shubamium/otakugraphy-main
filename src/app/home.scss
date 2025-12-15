@@ -6,7 +6,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url("/gfx/herobgblur.webp") rgba(0, 0, 0, 0.956);
+    --bg: url("/gfx/herobgblur.webp");
+    background: var(--bg) rgba(0, 0, 0, 0.956);
     background-size: cover;
     min-height: 94vh;
     background-blend-mode: difference;

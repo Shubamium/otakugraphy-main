@@ -108,6 +108,7 @@
     }
   }
   .panel {
+    position: relative;
     transition: all 500ms ease;
     max-width: 800px;
     margin: 0 auto;

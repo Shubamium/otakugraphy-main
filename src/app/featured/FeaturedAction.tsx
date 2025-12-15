@@ -1,10 +1,13 @@
 "use client";
 import React, { CSSProperties, useEffect, useState } from "react";
 import { RiFilterFill } from "react-icons/ri";
-import { CgSearch } from "react-icons/cg";
+import { CgCross, CgSearch } from "react-icons/cg";
 import { createPortal } from "react-dom";
 import { GiCrossMark } from "react-icons/gi";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { FaCross } from "react-icons/fa";
+import { ImCross } from "react-icons/im";
+import { FaXmark } from "react-icons/fa6";
 
 type Props = {
   agencies: any[];
@@ -203,6 +206,15 @@ export default function FeaturedAction({
                 e.stopPropagation();
               }}
             >
+              <button
+                className="btn btn-popclose"
+                onClick={() => {
+                  setOpenFilter(false);
+                }}
+              >
+                {" "}
+                <FaXmark />
+              </button>
               <h2 className="mt">FILTER</h2>
               <div className="ig">
                 <div className="ff">
@@ -464,7 +476,7 @@ export default function FeaturedAction({
                   CLEAR
                 </button>
                 <button className="btn btn-apply" onClick={applyFilter}>
-                  APPLY
+                  SAVE
                 </button>
               </div>
             </div>

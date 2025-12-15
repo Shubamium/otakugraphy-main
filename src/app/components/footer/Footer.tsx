@@ -10,10 +10,18 @@ import {
 } from "react-icons/fa6";
 import { LuArrowUpToLine } from "react-icons/lu";
 import { CSSProperties } from "react";
+import { fetchData, urlFor } from "@/app/db/sanity";
 
 type Props = {};
 
-export default function Footer({}: Props) {
+export default async function Footer({}: Props) {
+  const gd = await fetchData<any>(`
+		*[_type == 'general' && preset == 'main'][0]{
+				ft_bg,
+				ft_title,
+				ft_desc,
+		}
+		`);
   return (
     <div id="footer">
       <div className="confine">
@@ -55,7 +63,14 @@ export default function Footer({}: Props) {
             </a>
           </nav>
         </div>
-        <div className="c">
+        <div
+          className="c"
+          style={
+            {
+              "--bg": `url(${gd.ft_bg && urlFor(gd.ft_bg).height(800).format("webp").url()})`,
+            } as CSSProperties
+          }
+        >
           <img src="/gfx/logo_only2.png" alt="" className="logo" />
 
           <div className="lens-scl">
@@ -169,13 +184,8 @@ export default function Footer({}: Props) {
           </div>
         </div>
         <div className="r">
-          <h2 className="fh">ABOUT US</h2>
-          <p>
-            We are North America's first VTuber-Focused Media Company. Based out
-            of the San Francisco Bay Area, our focus is connecting fans with
-            virtual creators and globally growing the VTubing community by
-            raising the industry standards for media quality.
-          </p>
+          <h2 className="fh">{gd.ft_title}</h2>
+          <p>{gd.ft_desc}</p>
           <a href="#top" className="btn btn-scroll one">
             <span> Scroll to the top</span>
             <LuArrowUpToLine />
