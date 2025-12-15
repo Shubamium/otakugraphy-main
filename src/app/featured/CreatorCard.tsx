@@ -26,8 +26,10 @@ export default function CreatorCard({ creator, onClick }: Props) {
         }}
       >
         <div className="top">
-          <p className="a">Agency</p>
-          <h2 className="n">Creator Name</h2>
+          {creator?.agency && creator.agency && (
+            <p className="a">{creator.agency}</p>
+          )}
+          <h2 className="n">{creator.name}</h2>
         </div>
         <button className="btn btn-play">
           <FaPlay />

@@ -53,7 +53,10 @@ export default async function page({ searchParams }: Props) {
   ].join("");
   const creators = await fetchData<any>(`
 			*[_type == 'creator' ${conditions} ]{
-			...}
+			...,
+			'agency': agency->name,
+			'event': event ->name,
+	}
 	`);
   const eventList = await fetchData<any>(`
 			*[_type == 'creator-event']{
