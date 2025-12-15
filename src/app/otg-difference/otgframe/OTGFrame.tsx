@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 
 import "./otgFrame.scss";
 import { getCachedYTViews, getYoutubeViews } from "@/app/db/youtube";
+import { FaXmark } from "react-icons/fa6";
 type Props = {
   options: {
     title: string;

@@ -3,18 +3,44 @@ import React, { useEffect, useState } from "react";
 import CreatorCard from "./CreatorCard";
 import { createPortal } from "react-dom";
 import "./creatorList.scss";
+import { FaXmark } from "react-icons/fa6";
+import { getCachedYoutubeDate } from "../db/youtube";
 type Props = { creators: any };
 
 type VideoData = {
   name: string;
   vid: string;
+  date: string;
+  fields?: {
+    _key: string;
+    title: string;
+    value: string;
+  }[];
 };
 export default function CreatorLists({ creators }: Props) {
   const [currVid, setCurrVid] = useState<VideoData | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [activeDate, setActiveDate] = useState(new Date());
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    async function getDate() {
+      if (currVid && currVid.vid) {
+        const youtubeDate = await getCachedYoutubeDate(currVid.vid);
+        if (youtubeDate.success && youtubeDate.date) {
+          setActiveDate(new Date(youtubeDate.date));
+        } else {
+          setActiveDate(new Date(currVid.date));
+        }
+      } else if (currVid && currVid.date) {
+        setActiveDate(new Date(currVid.date));
+      }
+    }
+    getDate();
+  }, [currVid]);
+
   return (
     <>
       <div id="creator-list">
@@ -24,7 +50,12 @@ export default function CreatorLists({ creators }: Props) {
               key={creator._id + "creator-card" + i}
               creator={creator}
               onClick={() => {
-                setCurrVid({ name: creator.name, vid: creator.Video });
+                setCurrVid({
+                  name: creator.name,
+                  vid: creator.Video,
+                  date: creator.date,
+                  fields: creator.fields,
+                });
               }}
             />
           );
@@ -42,6 +73,15 @@ export default function CreatorLists({ creators }: Props) {
           >
             {currVid && (
               <div className="panel">
+                <button
+                  className="btn btn-popclose"
+                  onClick={() => {
+                    setCurrVid(null);
+                  }}
+                >
+                  {" "}
+                  <FaXmark />
+                </button>
                 <iframe
                   src={`https://www.youtube.com/embed/${currVid?.vid}?autoplay=1`}
                   title="YouTube video player"
@@ -51,6 +91,20 @@ export default function CreatorLists({ creators }: Props) {
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
                 ></iframe>
+                <div className="info-rows">
+                  <div className="if">
+                    <h3>Date</h3>
+                    <p>{activeDate.toDateString()}</p>
+                  </div>
+                  {currVid?.fields?.map((field: any, i: number) => {
+                    return (
+                      <div className="if" key={i + field._key}>
+                        <h3>{field.title}</h3>
+                        <p>{field.value}</p>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             )}
           </div>,

@@ -99,6 +99,11 @@
   .imgcont {
     position: relative;
   }
+  .iframe {
+    height: 80vh;
+    border: none;
+    max-width: 80vw;
+  }
   .collections {
     padding: 0.25em 1em;
     background: var(--dgold);

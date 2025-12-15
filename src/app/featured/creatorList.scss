@@ -38,7 +38,6 @@
       top: 0%;
       left: 0%;
       // background: red;
-
       .name {
         color: #2a2a2a;
         font-size: 3rem;
@@ -156,17 +155,38 @@
   justify-content: center;
   .panel {
     // max-width: 1280px;
-    aspect-ratio: 16 / 9;
+    position: relative;
     margin: 0 auto;
-    background: #1f1f1f url("/bg/noise2.png");
+    background: #151515 url("/bg/noise2.png");
     background-blend-mode: multiply;
     border: 10px solid var(--dgold);
     padding: 2em;
-    height: 80vh;
+    width: 70vw;
+    .info-rows {
+      display: flex;
+      padding-top: 1em;
+      gap: 1em;
+      .if {
+        background: #202020;
+        padding: 0.55em 1em;
+        border-bottom: 2px solid var(--dgold);
+        padding-right: 3em;
+      }
+      h3 {
+        color: var(--dgold);
+        font-size: 1.1rem;
+      }
+      p {
+        color: white;
+        font-size: 0.9rem;
+      }
+    }
     iframe {
+      aspect-ratio: 16 / 9;
       width: 100%;
+      height: auto;
+      // min-height: 80vh;
       border: none;
-      height: 100%;
     }
   }
 }

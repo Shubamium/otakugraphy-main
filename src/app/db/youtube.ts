@@ -38,3 +38,33 @@ export async function getCachedYTViews(id: string) {
     }
   )();
 }
+async function getYoutubeDate(id: string) {
+  const ytapi = youtube("v3");
+  const res = await ytapi.videos.list({
+    key: process.env.GOOGLE_APIKEY,
+    id: [id],
+    part: ["snippet"],
+  });
+
+  const data = res.data;
+  if (res.data) {
+    const vstat = data.items;
+    if (vstat) {
+      // const target = vstat[0].statistics?.viewCount;
+      const date = vstat[0].snippet?.publishedAt;
+      return {
+        success: true,
+        date: date,
+      };
+    }
+  }
+
+  return {
+    success: false,
+  };
+}
+export async function getCachedYoutubeDate(id: string) {
+  return unstable_cache(async () => await getYoutubeDate(id), ["ytdate", id], {
+    revalidate: 86000,
+  })();
+}

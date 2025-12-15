@@ -1,7 +1,7 @@
 "use client";
 import { urlFor } from "@/app/db/sanity";
 import "./mediaDetail.scss";
-import React, { useEffect, useRef, useState } from "react";
+import React, { CSSProperties, useEffect, useRef, useState } from "react";
 import { Blurhash } from "react-blurhash";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import { BiLoaderCircle } from "react-icons/bi";
@@ -129,6 +129,23 @@ export default function MediaDetail({}: Props) {
               </a>
             )}
           </div>
+        )}
+        {activeMd && activeMd.type === "video_yt" && activeMd.video_id && (
+          <iframe
+            src={`https://www.youtube.com/embed/${activeMd.video_id}?autoplay=1&muted=0&loop=1`}
+            title="YouTube video player"
+            style={
+              {
+                aspectRatio: activeMd.video_aspect
+                  ? activeMd.video_aspect
+                  : "16 / 9",
+              } as CSSProperties
+            }
+            className="iframe"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          ></iframe>
         )}
       </div>
       {activeMd && activeMd.p && (

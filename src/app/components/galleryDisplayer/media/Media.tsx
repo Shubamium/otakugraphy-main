@@ -1,13 +1,10 @@
 "use client";
 import { urlFor } from "@/app/db/sanity";
 import "./media.scss";
-import { useEffect, useRef, useState } from "react";
-import { Blurhash } from "react-blurhash";
-import { BiFullscreen } from "react-icons/bi";
-import { RxEnterFullScreen } from "react-icons/rx";
+import { CSSProperties, useEffect, useRef, useState } from "react";
+
 import { HiInformationCircle } from "react-icons/hi";
 
-import { motion } from "motion/react";
 type Props = {
   data?: any;
   n?: any;
@@ -139,6 +136,34 @@ export default function Media({ data, n, p, disabled, imageHeight }: Props) {
                 controls
                 loop
               />
+            </>
+          )}
+          {data.type === "video_yt" && data.video_id && (
+            <>
+              <button
+                className="btn btn-vfs"
+                onClick={() => {
+                  openMediaDetail();
+                }}
+              >
+                {" "}
+                <HiInformationCircle />{" "}
+              </button>
+              <iframe
+                src={`https://www.youtube.com/embed/${data.video_id}?autoplay=1&muted=1&loop=1`}
+                title="YouTube video player"
+                style={
+                  {
+                    aspectRatio: data.video_aspect
+                      ? data.video_aspect
+                      : "16 / 9",
+                  } as CSSProperties
+                }
+                className="iframe"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
             </>
           )}
         </>
