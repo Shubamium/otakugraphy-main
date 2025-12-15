@@ -87,7 +87,8 @@ export default async function Home() {
 				...,
 				'video':video.asset -> url
 			},
-			currentlyLive[] -> {...},
+			currentlyLive[] -> {...,'agency': agency->name,
+			'event': event ->name,},
 		}[0]
 	`);
   const pt = await fetchData<any>(`
@@ -111,9 +112,10 @@ export default async function Home() {
 
   const hlm = gd?.hlm ?? null;
 
+  console.log(gd.currentlyLive);
   const sections: { [key: string]: React.ReactNode } = {
     highlights: (
-      <section id="highlights">
+      <section id="highlights" key={"highlights"}>
         <div className="confine">
           <div className="h-h h">
             <h2>HIGHLIGHTS</h2>
@@ -145,7 +147,7 @@ export default async function Home() {
       </section>
     ),
     mission: (
-      <section id="mission">
+      <section id="mission" key={"mission"}>
         <div className="confine">
           <div className="r">
             <img
@@ -166,7 +168,7 @@ export default async function Home() {
       </section>
     ),
     services: (
-      <section id="about">
+      <section id="about" key={"services"}>
         <div className="confine">
           <div className="l">
             <h2>{gd.autitle}</h2>
@@ -188,7 +190,7 @@ export default async function Home() {
       </section>
     ),
     values: (
-      <section id="values">
+      <section id="values" key={"values"}>
         <h2 className="th">VALUES</h2>
 
         <div className="left-box"></div>
@@ -266,7 +268,7 @@ export default async function Home() {
       </section>
     ),
     "currently-live-streaming": (
-      <section id="cls">
+      <section id="cls" key={"cls"}>
         <h2 className="mt">Currently Live STREAMING</h2>
         {gd.currentlyLive && gd.currentlyLive.length > 0 ? (
           <CreatorLists creators={gd.currentlyLive} />
@@ -280,13 +282,13 @@ export default async function Home() {
       </section>
     ),
     "our-frames": (
-      <section id="ourframe">
+      <section id="ourframe" key={"frames"}>
         <h2 className="title">OUR FRAMES</h2>
         <Category gd={gd} />
       </section>
     ),
     partnerships: (
-      <section id="partnership">
+      <section id="partnership" key={"partnerships"}>
         <div className="p-h">
           <h2 className="h ol">PARTNERSHIPS</h2>
           <div className="arr"></div>
@@ -337,7 +339,7 @@ export default async function Home() {
         </div>
       </section>
     ),
-    testimonials: <TestimonialSlide gd={gd} />,
+    testimonials: <TestimonialSlide gd={gd} key={"testimonials"} />,
   };
   return (
     <main id="page_home">

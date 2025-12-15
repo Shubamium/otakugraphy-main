@@ -161,24 +161,43 @@
     background-blend-mode: multiply;
     border: 10px solid var(--dgold);
     padding: 2em;
+    @media screen and (max-width: 1024px) {
+      border-width: 2px;
+    }
+
     width: 70vw;
+    @media screen and (max-width: 1280px) {
+      width: 90vw;
+    }
+    @media screen and (max-width: 420px) {
+      width: 98vw;
+      padding-inline: 0.5em;
+    }
     .info-rows {
       display: flex;
       padding-top: 1em;
       gap: 1em;
+      overflow-x: scroll;
       .if {
         background: #202020;
         padding: 0.55em 1em;
         border-bottom: 2px solid var(--dgold);
         padding-right: 3em;
+        flex-shrink: 0;
       }
       h3 {
         color: var(--dgold);
         font-size: 1.1rem;
+        @media screen and (max-width: 1024px) {
+          font-size: 0.9rem;
+        }
       }
       p {
         color: white;
         font-size: 0.9rem;
+        @media screen and (max-width: 1024px) {
+          font-size: 0.8rem;
+        }
       }
     }
     iframe {

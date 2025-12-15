@@ -101,7 +101,7 @@ export function TestimonialSlide({ gd }: Props) {
   const cb = useCarousel(right.length, "blockB", true);
 
   return (
-    <section id="new-testimonials">
+    <section id="new-testimonials" key={"new-testimonials"}>
       <h2 className="ttitle">TESTIMONIALS</h2>
 
       {/* Carousel A */}
