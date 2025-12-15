@@ -385,7 +385,7 @@ export default function FeaturedAction({
                   {events?.map((e: any, i: number) => {
                     return (
                       <button
-                        className={`btn btn-red ${e.slug?.current === sEvent && "selected"} `}
+                        className={`btn btn-red ${(e.slug?.current === sEvent || sEvent == null) && "selected"} `}
                         key={i + e.name}
                         onClick={() => {
                           setSEvent(e.slug?.current);
@@ -422,7 +422,7 @@ export default function FeaturedAction({
                   {agencies?.map((e: any, i: number) => {
                     return (
                       <button
-                        className={`btn btn-red ${e.slug?.current === sAgency && "selected"}`}
+                        className={`btn btn-red ${(e.slug?.current === sAgency || sAgency == null) && "selected"}`}
                         key={i + e.name}
                         onClick={() => {
                           setSAgency(e.slug?.current);

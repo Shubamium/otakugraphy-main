@@ -98,7 +98,11 @@
   display: flex;
   align-items: center;
   transition: all 800ms ease;
-
+  @media screen and (max-width: 1280px) {
+    align-items: flex-start;
+    overflow-y: scroll;
+    padding-top: 1em;
+  }
   &.closed {
     opacity: 0;
     user-select: none;
@@ -117,6 +121,9 @@
     border: 10px solid var(--dgold);
     padding: 1em;
     width: 100%;
+    @media screen and (max-width: 420px) {
+      border: 4px;
+    }
     .mt {
       text-align: center;
       font-size: 3rem;
@@ -128,6 +135,9 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1em;
+      @media screen and (max-width: 420px) {
+        grid-template-columns: 1fr;
+      }
       .ff {
         display: flex;
         flex-direction: column;
@@ -137,6 +147,10 @@
           font-family: var(--fontM);
           border: none;
           font-size: 1.2rem;
+          @media screen and (max-width: 1280px) {
+            font-size: 1rem;
+          }
+
           option {
             background: #171717;
           }
@@ -150,6 +164,9 @@
         color: var(--dgold);
         font-weight: bolder;
         padding-bottom: 0.5em;
+        @media screen and (max-width: 1280px) {
+          font-size: 1rem;
+        }
       }
       .list {
         display: flex;
@@ -163,6 +180,9 @@
           font-family: var(--fontM);
           font-size: 1.2rem;
           padding: 0.25em 0.5em;
+          @media screen and (max-width: 1280px) {
+            font-size: 1rem;
+          }
           &.selected,
           &:hover {
             background: var(--dgold);
@@ -184,13 +204,19 @@
         display: flex;
         gap: 1em;
         flex-wrap: wrap;
+        @media screen and (max-width: 1280px) {
+          gap: 0.5em;
+        }
         .btn-color {
           width: 60px;
           height: 60px;
           background: var(--col);
           border: 2px solid #151414;
           box-shadow: 0px 0px 4px black;
-
+          @media screen and (max-width: 1280px) {
+            width: 40px;
+            height: 40px;
+          }
           &.initial {
             // rainbow
             background: linear-gradient(
@@ -236,6 +262,11 @@
       &:hover {
         background: var(--dgold);
         color: #151414;
+      }
+      @media screen and (max-width: 420px) {
+        font-size: 1.2rem;
+        background: var(--dgold) !important;
+        color: #151414 !important;
       }
     }
   }
