@@ -31,7 +31,7 @@ export default async function Footer({}: Props) {
             <Link href={"/"} className="btn-fn">
               Home
             </Link>
-            <Link href={"/conventions"} className="btn-fn">
+            <Link href={"/rigs"} className="btn-fn">
               OTG RIG
             </Link>
 
