@@ -52,7 +52,7 @@ export default async function Footer({}: Props) {
               Brands
             </Link>
             <Link href={"/featured"} className="btn-fn">
-              Featured Creator
+              Featured Creators
             </Link>
             <Link href={"/contact"} className="btn-fn">
               Contact us

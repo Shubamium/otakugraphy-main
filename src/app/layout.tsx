@@ -35,7 +35,7 @@ const roboto = Roboto_Slab({
 });
 const title = "Otakugraphy - North America's 1st Vtuber-Focused Media Company";
 const description =
-  " Based out of the San Francisco Bay Area, our focus is connecting fans with virtual creators and globally growing the VTubing community by raising the industry standards for media quality. ";
+  " Raising the industry standard for immersive multimedia experiences through connecting virtual creators and their communities ";
 const banner = "https://i.ibb.co.com/Mx99HBYX/OTG-Oficial-Logo.png";
 const url = "https://otakugraphy.com";
 
@@ -81,6 +81,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: [banner],
   },
+  icons: ["./favicon.ico"],
+
   keywords: keywords,
   description: description,
   viewport: {

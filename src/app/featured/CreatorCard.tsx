@@ -22,7 +22,11 @@ export default function CreatorCard({ creator, onClick }: Props) {
       <div
         className="bottom-info"
         onClick={() => {
-          onClick();
+          if (creator.Video) {
+            onClick();
+          } else {
+            window.open(creator.channel_link, "_blank");
+          }
         }}
       >
         <div className="top">

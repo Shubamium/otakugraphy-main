@@ -70,24 +70,26 @@ export default async function Page({}: Props) {
         }}
       /> */}
 
-      <section id="inside-look">
-        <div className="confine">
-          <div className="l">
-            <h2>Inside Look Into The OTG Rigs</h2>
-            <p>
-              Our production rig utilizes top tier modern equipment to produce
-              the highest quality live streams. The rig's portability and
-              lightweight in a carry-on suitcase allows it to be taken globally.
-              We are instituting the media industry-standard that all virtual
-              creators deserve.
-            </p>
+      {otgdiff?.cs && (
+        <section id="inside-look">
+          <div className="confine">
+            <div className="l">
+              <h2>{otgdiff.cs?.title}</h2>
+              <p>{otgdiff.cs?.desc}</p>
+            </div>
+            <div className="r">
+              <img
+                src={
+                  otgdiff?.cs?.image &&
+                  urlFor(otgdiff.cs.image)?.format("webp").height(900).url()
+                }
+                alt=""
+              />
+            </div>
           </div>
-          <div className="r">
-            <img src="/gfx/otgriginside.png" alt="" />
-          </div>
-        </div>
-        p
-      </section>
+          p
+        </section>
+      )}
       {bottom?.map((f: any, i: number) => {
         return (
           <OTGFrame

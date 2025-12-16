@@ -454,6 +454,8 @@ export default function FeaturedAction({
                     "blue",
                     "purple",
                     "pink",
+                    "grey",
+                    "brown",
                     "white",
                     "black",
                   ].map((e: any, i: number) => {

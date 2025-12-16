@@ -233,7 +233,7 @@ export default function MediaDetail({}: Props) {
                 </a>
               </div>
             )} */}
-            <img src="/gfx/logo_present.png" alt="" />
+            <img src="/gfx/icon.png" alt="" />
           </div>
         </div>
       </div>

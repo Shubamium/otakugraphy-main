@@ -253,6 +253,7 @@
       display: flex;
       align-items: center;
       gap: 1em;
+      padding: 0.25em;
       .col {
         min-width: 150px;
       }
@@ -277,6 +278,12 @@
         align-items: flex-start;
         img {
           transform: translateY(-20%);
+        }
+      }
+      @media screen and (max-width: 550px) {
+        img {
+          height: 100%;
+          width: 50px;
         }
       }
     }

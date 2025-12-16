@@ -16,6 +16,7 @@ type VideoData = {
     title: string;
     value: string;
   }[];
+  extra_vids?: string[];
 };
 export default function CreatorLists({ creators }: Props) {
   const [currVid, setCurrVid] = useState<VideoData | null>(null);
@@ -55,6 +56,7 @@ export default function CreatorLists({ creators }: Props) {
                   vid: creator.Video,
                   date: creator.date,
                   fields: creator.fields,
+                  extra_vids: creator.extra_vids,
                 });
               }}
             />
@@ -82,15 +84,36 @@ export default function CreatorLists({ creators }: Props) {
                   {" "}
                   <FaXmark />
                 </button>
-                <iframe
-                  src={`https://www.youtube.com/embed/${currVid?.vid}?autoplay=1`}
-                  title="YouTube video player"
-                  className="iframe"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  key={"extra-video " + currVid?.vid}
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                ></iframe>
+                <div
+                  className={`content ${currVid?.extra_vids?.length && currVid?.extra_vids?.length > 0 ? "hasExtra" : ""}`}
+                >
+                  <div className="main">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${currVid?.vid}?autoplay=1`}
+                      title="YouTube video player"
+                      className="iframe"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      key={"main-video " + currVid?.vid}
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                  <div className="side">
+                    {currVid?.extra_vids?.map((vid: string, i: number) => {
+                      return (
+                        <iframe
+                          src={`https://www.youtube.com/embed/${vid}?autoplay=0&muted=1`}
+                          title="YouTube video player"
+                          className="iframe"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          key={"extra-vids" + i + vid}
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          allowFullScreen
+                        ></iframe>
+                      );
+                    })}
+                  </div>
+                </div>
                 <div className="info-rows">
                   <div className="if">
                     <h3>Date</h3>

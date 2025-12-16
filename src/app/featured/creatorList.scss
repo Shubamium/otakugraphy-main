@@ -6,12 +6,16 @@
   flex-wrap: wrap;
   gap: 1em;
   justify-content: flex-start;
+  // justify-items: center;
   @media screen and (max-width: 1024px) {
+    align-items: center;
+  }
+  @media screen and (max-width: 600px) {
     justify-content: center;
   }
   .creator {
     position: relative;
-    height: 600px;
+    height: 400px;
     width: 200px;
     background: url("/bg/wave.png") #0f0e0e;
     border: 3px solid var(--dgold);
@@ -21,12 +25,12 @@
 
     @media screen and (max-width: 1280px) {
       width: 200px;
-      height: 600px;
+      height: 400px;
     }
     @media screen and (max-width: 600px) {
-      width: 100%;
+      width: 45%;
       // width: 140px;
-      height: 400px;
+      height: 300px;
       border-radius: 2em 0 0 0;
     }
 
@@ -81,6 +85,15 @@
 
       .a {
         font-weight: lighter;
+        @media screen and (max-width: 550px) {
+          font-size: 0.8rem;
+        }
+      }
+      .n {
+        @media screen and (max-width: 550px) {
+          font-size: 1rem;
+          padding-bottom: 0.25em;
+        }
       }
       .btn-play {
         background: #0f0e0e;
@@ -165,6 +178,8 @@
       border-width: 2px;
     }
 
+    max-height: 90vh;
+    overflow-y: auto;
     width: 70vw;
     @media screen and (max-width: 1280px) {
       width: 90vw;
@@ -206,6 +221,33 @@
       height: auto;
       // min-height: 80vh;
       border: none;
+    }
+
+    .content {
+      display: grid;
+      &.hasExtra {
+        gap: 1em;
+        grid-template-columns: 1fr 1fr;
+        @media screen and (max-width: 1280px) {
+          grid-template-columns: 2fr 1fr;
+        }
+        @media screen and (max-width: 1024px) {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+
+    .side {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-content: flex-start;
+      @media screen and (max-width: 350px) {
+        grid-template-columns: 1fr;
+      }
+      align-items: flex-start;
+      justify-items: flex-start;
+      align-content: flex-start;
+      gap: 1em;
     }
   }
 }

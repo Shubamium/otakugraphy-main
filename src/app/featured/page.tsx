@@ -43,7 +43,10 @@ export default async function page({ searchParams }: Props) {
     : "";
 
   const colorCondition = sp.cc ? `&& color == "${sp.cc}"` : "";
-  const eventCondition = sp.e ? `&& event->slug.current == "${sp.e}"` : "";
+  // const eventCondition = sp.e ? `&& event->slug.current == "${sp.e}"` : "";
+  const eventCondition = sp.e
+    ? `&&  "${sp.e}" in events[] -> slug.current`
+    : "";
   const conditions = [
     nameCondition,
     dateFromCondition,
