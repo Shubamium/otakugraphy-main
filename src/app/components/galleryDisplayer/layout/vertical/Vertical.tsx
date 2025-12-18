@@ -10,7 +10,7 @@ type Props = {
 
 export default function Vertical({ ml, hasHighlights }: Props) {
   const [cols, setCols] = useState<any[]>([[], [], [], []]);
-
+  const [currColCount, setCurrColCount] = useState(0);
   const isMobile = useMediaQuery({
     query: "(max-width:550px)",
   });
@@ -22,6 +22,9 @@ export default function Vertical({ ml, hasHighlights }: Props) {
     query: "(max-width:420px)",
   });
   let colCount = isDesktop && hasHighlights ? 3 : 4;
+  if (!isDesktop) {
+    colCount = 3;
+  }
   if (isMobile) {
     colCount = 3;
   }
@@ -29,26 +32,29 @@ export default function Vertical({ ml, hasHighlights }: Props) {
     colCount = 2;
   }
   useEffect(() => {
-    const chop = [...ml];
-
     // let newCols: any[] = [...new Array(colCount).fill([])];
     // const filling = new Array(colCount).fill(new Array(0));
-    let newCols: any[] = [];
+    // newCols[i % colCount].push(chop[i]);
     // console.log("chopping", newCols);
 
-    for (let i = 0; i < chop.length; i++) {
-      // newCols[i % colCount].push(chop[i]);
-      const currentRowToFill = i % colCount;
-      if (newCols[currentRowToFill]) {
-        newCols[currentRowToFill].push(chop[i]);
-      } else {
-        newCols[currentRowToFill] = [chop[i]];
+    if (colCount !== currColCount) {
+      const chop = [...ml];
+      let newCols: any[] = [];
+      for (let i = 0; i < chop.length; i++) {
+        const currentRowToFill = i % colCount;
+        if (newCols[currentRowToFill]) {
+          newCols[currentRowToFill].push(chop[i]);
+        } else {
+          newCols[currentRowToFill] = [chop[i]];
+        }
       }
-      // console.log(i % colCount, i);
+      setCols(newCols);
+      setCurrColCount(colCount);
+    } else {
+      console.log("same column count");
     }
-    setCols(newCols);
     // console.log("chopping", newCols);
-  }, [ml]);
+  }, [ml, colCount]);
 
   return (
     <div
