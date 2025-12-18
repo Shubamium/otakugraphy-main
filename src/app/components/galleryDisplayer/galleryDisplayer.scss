@@ -119,22 +119,22 @@
       grid-template-columns: 70vw 20vw;
       gap: 0;
       padding-left: 2%;
-      @media screen and (max-width: 1024px) {
-        display: flex;
-        flex-direction: column-reverse;
-      }
 
       @media screen and (min-width: 1024px) {
         #gd_vertical {
           // display: grid;
-          grid-template-columns: 1fr 1fr;
+          // grid-template-columns: 1fr 1fr;
         }
       }
       @media screen and (min-width: 1280px) {
         #gd_vertical {
           // display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
+          // grid-template-columns: 1fr 1fr 1fr;
         }
+      }
+      @media screen and (max-width: 1024px) {
+        display: flex;
+        flex-direction: column-reverse;
       }
     }
 

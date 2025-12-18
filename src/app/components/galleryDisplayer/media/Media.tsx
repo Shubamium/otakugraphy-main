@@ -150,7 +150,7 @@ export default function Media({ data, n, p, disabled, imageHeight }: Props) {
                 <HiInformationCircle />{" "}
               </button>
               <iframe
-                src={`https://www.youtube.com/embed/${data.video_id}?autoplay=1&muted=1&loop=1`}
+                src={`https://www.youtube.com/embed/${data.video_id}?autoplay=1&mute=1&loop=1`}
                 title="YouTube video player"
                 style={
                   {

@@ -3,27 +3,60 @@ import React, { useEffect, useState } from "react";
 import "./vertical.scss";
 import Media from "../../media/Media";
 import { useMediaQuery } from "react-responsive";
-type Props = {};
+type Props = {
+  ml: any[];
+  hasHighlights?: boolean;
+};
 
-export default function Vertical({ ml }: any) {
+export default function Vertical({ ml, hasHighlights }: Props) {
   const [cols, setCols] = useState<any[]>([[], [], [], []]);
 
   const isMobile = useMediaQuery({
     query: "(max-width:550px)",
   });
+
+  const isDesktop = useMediaQuery({
+    query: "(min-width:1024px)",
+  });
+  const isSM = useMediaQuery({
+    query: "(max-width:420px)",
+  });
+  let colCount = isDesktop && hasHighlights ? 3 : 4;
+  if (isMobile) {
+    colCount = 3;
+  }
+  if (isSM) {
+    colCount = 2;
+  }
   useEffect(() => {
     const chop = [...ml];
-    let newCols: any[] = [[], [], [], []];
-    for (let i = 0; i < chop.length; i++) {
-      newCols[i % 4].push(chop[i]);
 
-      setCols(newCols);
+    // let newCols: any[] = [...new Array(colCount).fill([])];
+    // const filling = new Array(colCount).fill(new Array(0));
+    let newCols: any[] = [];
+    // console.log("chopping", newCols);
+
+    for (let i = 0; i < chop.length; i++) {
+      // newCols[i % colCount].push(chop[i]);
+      const currentRowToFill = i % colCount;
+      if (newCols[currentRowToFill]) {
+        newCols[currentRowToFill].push(chop[i]);
+      } else {
+        newCols[currentRowToFill] = [chop[i]];
+      }
+      // console.log(i % colCount, i);
     }
-    // console.log("chopping");
+    setCols(newCols);
+    // console.log("chopping", newCols);
   }, [ml]);
 
   return (
-    <div id="gd_vertical">
+    <div
+      id="gd_vertical"
+      style={{
+        gridTemplateColumns: `repeat(${colCount},1fr)`,
+      }}
+    >
       {!isMobile &&
         cols.map((c, index) => {
           return (

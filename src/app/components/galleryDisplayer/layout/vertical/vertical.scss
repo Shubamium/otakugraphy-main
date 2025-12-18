@@ -2,7 +2,7 @@
 
 #gd_vertical {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  // grid-template-columns: repeat(4, 1fr);
 
   max-width: 90%;
   margin: 0 auto;
@@ -19,8 +19,8 @@
     }
   }
 
-  @include mq(550) {
-    grid-template-columns: 1fr 1fr;
+  @include mq(768) {
+    // grid-template-columns: 1fr 1fr;
     .media {
       width: 100%;
       height: auto;

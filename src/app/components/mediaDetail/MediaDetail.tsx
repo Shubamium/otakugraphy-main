@@ -132,7 +132,7 @@ export default function MediaDetail({}: Props) {
         )}
         {activeMd && activeMd.type === "video_yt" && activeMd.video_id && (
           <iframe
-            src={`https://www.youtube.com/embed/${activeMd.video_id}?autoplay=1&muted=0&loop=1`}
+            src={`https://www.youtube.com/embed/${activeMd.video_id}?autoplay=1&mute=0&loop=1`}
             title="YouTube video player"
             style={
               {

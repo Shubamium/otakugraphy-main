@@ -24,6 +24,8 @@ export default function GalleryDisplayer({
 }: any) {
   const [p, setP] = useState(0);
 
+  const showHighlights =
+    highlights && highlights.ht && highlights.thumbnail && highlights.link;
   const renderPage = (pageData: any) => {
     if (!pageData.ml) return <></>;
 
@@ -36,7 +38,7 @@ export default function GalleryDisplayer({
 
     switch (pageData.lt) {
       case "vertical":
-        return <Vertical ml={linked} />;
+        return <Vertical ml={linked} hasHighlights={showHighlights} />;
       case "horizontal":
         return <Horizontal ml={linked} />;
       case "twoColumns":

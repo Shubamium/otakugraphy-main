@@ -102,7 +102,7 @@ export default function CreatorLists({ creators }: Props) {
                     {currVid?.extra_vids?.map((vid: string, i: number) => {
                       return (
                         <iframe
-                          src={`https://www.youtube.com/embed/${vid}?autoplay=0&muted=1`}
+                          src={`https://www.youtube.com/embed/${vid}?autoplay=0&mute=1`}
                           title="YouTube video player"
                           className="iframe"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
