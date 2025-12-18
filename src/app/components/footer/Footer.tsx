@@ -41,19 +41,20 @@ export default async function Footer({}: Props) {
             <Link href={"/otg-difference "} className="btn-fn">
               OTG DIFFERENCE
             </Link>
+
+            <Link href={"/featured"} className="btn-fn">
+              Featured Creators
+            </Link>
             <Link href={"/conventions"} className="btn-fn">
               Conventions
             </Link>
-
             <Link href={"/nightlife"} className="btn-fn">
               Nightlife
             </Link>
             <Link href={"/brands"} className="btn-fn">
               Brands
             </Link>
-            <Link href={"/featured"} className="btn-fn">
-              Featured Creators
-            </Link>
+
             <Link href={"/contact"} className="btn-fn">
               Contact us
             </Link>

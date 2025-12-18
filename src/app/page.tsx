@@ -274,9 +274,7 @@ export default async function Home() {
           <CreatorLists creators={gd.currentlyLive} />
         ) : (
           <div className="nolive">
-            <p>
-              No Current Live Creators. Check Our Socials For The Next Event!
-            </p>
+            <p>Check Our Socials For The Next Event!</p>
           </div>
         )}
       </section>
