@@ -25,6 +25,8 @@
     flex-direction: column;
     padding: 0;
   }
+  transform: translateY(100%);
+
   &.v {
     transform: translateY(0%);
   }

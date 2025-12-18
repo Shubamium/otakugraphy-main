@@ -14,8 +14,16 @@ export default function Header({}: Props) {
   const isMobile = useMediaQuery({
     query: "(max-width:1024px)",
   });
-  const [visible, setVisible] = useState(!isMobile);
+  const isDesktop = useMediaQuery({
+    query: "(min-width:1024px)",
+  });
+  const [visible, setVisible] = useState(false);
 
+  useEffect(() => {
+    if (isDesktop) {
+      setVisible(true);
+    }
+  }, []);
   useEffect(() => {
     setVisible(!isMobile);
   }, [isMobile]);

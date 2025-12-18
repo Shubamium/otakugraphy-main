@@ -11,9 +11,17 @@ type Props = {
   p?: any;
   disabled?: boolean;
   imageHeight?: number;
+  forceYoutubeHD?: boolean;
 };
 
-export default function Media({ data, n, p, disabled, imageHeight }: Props) {
+export default function Media({
+  data,
+  n,
+  p,
+  disabled,
+  imageHeight,
+  forceYoutubeHD,
+}: Props) {
   // const [loaded, setLoaded] = useState(false);
   // const [imageUrl, setImageUrl] = useState("empty");
   // const [z, setZ] = useState(1);
@@ -150,7 +158,7 @@ export default function Media({ data, n, p, disabled, imageHeight }: Props) {
                 <HiInformationCircle />{" "}
               </button>
               <iframe
-                src={`https://www.youtube.com/embed/${data.video_id}?autoplay=1&mute=1&loop=1`}
+                src={`https://www.youtube.com/embed/${data.video_id}?autoplay=1&mute=1&loop=1&vq=hd1080`}
                 title="YouTube video player"
                 style={
                   {
