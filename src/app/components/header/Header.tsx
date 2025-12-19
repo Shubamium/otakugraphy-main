@@ -103,9 +103,6 @@ export default function Header({ navlist }: Props) {
                 >
                   <span>{item.name}</span>
                   <div className="popups">
-                    <Link href={"/featured"} className="btn btn-sub">
-                      Featured Creators
-                    </Link>
                     {item.dr_list?.map((dr_item, index) => {
                       return (
                         <Link
