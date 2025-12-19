@@ -598,6 +598,8 @@
       .l {
         height: 80%;
         background: url("/bg/noise2.png"), #232323;
+        background-size: cover;
+        background-repeat: no-repeat;
         background-blend-mode: multiply;
         display: flex;
         flex-direction: column;
@@ -675,7 +677,9 @@
       .l {
         height: 80%;
         background: url("/bg/noise2.png"), #232323;
+        background-repeat: no-repeat;
         background-blend-mode: multiply;
+        background-size: cover;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -830,6 +834,8 @@
       .cube {
         aspect-ratio: 1 / 1;
         background: url("/bg/diamond.png"), #202020;
+        // background-repeat: no-repeat;
+        // background-blend-mode: multiply;
         // width: 100%;
         height: 100%;
 
@@ -905,7 +911,10 @@
   }
 
   #cls {
-    background: url("/bg/noise.png"), #232323;
+    background: #232323;
+
+    background-size: cover;
+    background-repeat: no-repeat;
     background-blend-mode: multiply;
     padding: 100px;
     margin: 200px 0;
