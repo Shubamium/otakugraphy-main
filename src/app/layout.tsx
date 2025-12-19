@@ -14,6 +14,7 @@ import SideContact from "./components/sideContact/SideContact";
 import Script from "next/script";
 import EXIF from "exif-js";
 import PasswordGate from "./components/passwordGate/PasswordGate";
+import HeaderData from "./components/header/HeaderData";
 const noto = Noto_Sans_JP({
   variable: "--fontM",
   subsets: ["latin"],
@@ -33,7 +34,7 @@ const roboto = Roboto_Slab({
   subsets: ["latin"],
   weight: ["200", "300", "400", "500", "600", "700"],
 });
-const title = "Otakugraphy - North America's 1st Vtuber-Focused Media Company";
+const title = "Otakugraphy - North America's Vtuber-Focused Media Company";
 const description =
   " Raising the industry standard for immersive multimedia experiences through connecting virtual creators and their communities ";
 const banner = "https://i.ibb.co.com/Mx99HBYX/OTG-Oficial-Logo.png";
@@ -112,7 +113,7 @@ export default function RootLayout({
             <div id="top"></div>
             <SideContact />
             {children}
-            <Header />
+            <HeaderData />
             <MediaDetail />
             <Footer />
           </ReactLenis>

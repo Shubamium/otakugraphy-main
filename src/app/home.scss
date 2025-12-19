@@ -597,7 +597,7 @@
       }
       .l {
         height: 80%;
-        background: url("/bg/noise2.png") #232323;
+        background: #232323 url("/bg/noise2.png");
         background-blend-mode: multiply;
         display: flex;
         flex-direction: column;
@@ -674,7 +674,7 @@
       }
       .l {
         height: 80%;
-        background: url("/bg/noise2.png") #232323;
+        background: #232323 url("/bg/noise2.png");
         background-blend-mode: multiply;
         display: flex;
         flex-direction: column;
@@ -829,7 +829,7 @@
 
       .cube {
         aspect-ratio: 1 / 1;
-        background: url("/bg/diamond.png"), #202020;
+        background: #202020 url("/bg/diamond.png");
         // width: 100%;
         height: 100%;
 
@@ -905,7 +905,7 @@
   }
 
   #cls {
-    background: #232323 url("/bg/noise.png");
+    background: url("/bg/noise.png") #232323;
     background-blend-mode: multiply;
     padding: 100px;
     margin: 200px 0;

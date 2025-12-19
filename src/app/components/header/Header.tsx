@@ -8,9 +8,17 @@ import { MdShutterSpeed } from "react-icons/md";
 import { BiCamera } from "react-icons/bi";
 import { useMediaQuery } from "react-responsive";
 
-type Props = {};
+export type NavList = {
+  name: string;
+  rl: string;
+  is_dropdown: string;
+  dr_list: { name: string; rl: string }[];
+};
+type Props = {
+  navlist: NavList[];
+};
 
-export default function Header({}: Props) {
+export default function Header({ navlist }: Props) {
   const isMobile = useMediaQuery({
     query: "(max-width:1024px)",
   });
@@ -65,56 +73,60 @@ export default function Header({}: Props) {
         <img src="/gfx/logo_only2.png" alt="" />
       </Link>
       <nav id="main-nav">
-        <Link href={"/rigs"} className="btn btn-nav">
-          {/* <img src="/gfx/brands.png" alt="" /> */}
-          <span>Rigs</span>
-        </Link>
-        <Link href={"/vtubers"} className="btn btn-nav">
-          {/* <img src="/gfx/vtubers.png" alt="" /> */}
-          <span>VTuber Events</span>
-        </Link>
-        <Link href={"/otg-difference"} className="btn btn-nav">
-          {/* <img src="/gfx/nightlife.png" alt="" /> */}
-          <span>The OTG Difference</span>
-        </Link>
-        <Link href={"/featured"} className="btn btn-nav btn-mobile">
-          Featured Creators
-        </Link>
-        <Link href={"/conventions"} className="btn btn-nav btn-mobile">
-          conventions
-        </Link>
+        {/* Mobile Menu Render */}
+        {isMobile &&
+          navlist.map((item, index) => {
+            if (item.is_dropdown) {
+              return item.dr_list.map((dr_item, index) => {
+                return (
+                  <Link href={dr_item.rl} key={index} className="btn btn-nav">
+                    {dr_item.name}
+                  </Link>
+                );
+              });
+            }
+            return (
+              <Link href={item.rl} key={index} className="btn btn-nav">
+                {item.name}
+              </Link>
+            );
+          })}
 
-        <Link href={"/nightlife"} className="btn btn-nav btn-mobile">
-          Nightlife
-        </Link>
-        <Link href={"/brands"} className="btn btn-nav btn-mobile">
-          Brands
-        </Link>
-        <Link href={"/featured"} className="btn btn-nav btn-mobile">
-          Featured Creators
-        </Link>
-        <div className="btn btn-nav btn-popup">
-          {/* <img src="/gfx/nightlife.png" alt="" /> */}
-          <span>More</span>
-          <div className="popups">
-            <Link href={"/featured"} className="btn btn-sub">
-              Featured Creators
-            </Link>
-            <Link href={"/conventions"} className="btn btn-sub">
-              Conventions
-            </Link>
-            <Link href={"/nightlife"} className="btn btn-sub">
-              Nightlife
-            </Link>
-            <Link href={"/brands"} className="btn btn-sub">
-              Brands
-            </Link>
-          </div>
-        </div>
-        <Link href={"/contact"} className="btn btn-nav">
-          {/* <img src="/gfx/contactus.png" alt="" /> */}
-          <span>Contact us</span>
-        </Link>
+        {/* Desktop Menu Render */}
+        {!isMobile &&
+          navlist.map((item, index) => {
+            if (item.is_dropdown) {
+              return (
+                <div
+                  className="btn btn-nav btn-popup"
+                  key={"dropdown-btn" + item.name}
+                >
+                  <span>{item.name}</span>
+                  <div className="popups">
+                    <Link href={"/featured"} className="btn btn-sub">
+                      Featured Creators
+                    </Link>
+                    {item.dr_list?.map((dr_item, index) => {
+                      return (
+                        <Link
+                          href={dr_item.rl}
+                          key={index}
+                          className="btn btn-sub"
+                        >
+                          {dr_item.name}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            }
+            return (
+              <Link href={item.rl} key={index} className="btn btn-nav">
+                {item.name}
+              </Link>
+            );
+          })}
       </nav>
 
       <button
@@ -156,3 +168,56 @@ export default function Header({}: Props) {
     </header>
   );
 }
+
+// (
+// 	    <Link href={"/rigs"} className="btn btn-nav">
+//           {/* <img src="/gfx/brands.png" alt="" /> */}
+//           <span>Rigs</span>
+//         </Link>
+//         <Link href={"/vtubers"} className="btn btn-nav">
+//           {/* <img src="/gfx/vtubers.png" alt="" /> */}
+//           <span>VTuber Events</span>
+//         </Link>
+//         <Link href={"/otg-difference"} className="btn btn-nav">
+//           {/* <img src="/gfx/nightlife.png" alt="" /> */}
+//           <span>The OTG Difference</span>
+//         </Link>
+//         <Link href={"/featured"} className="btn btn-nav btn-mobile">
+//           Featured Creators
+//         </Link>
+//         <Link href={"/conventions"} className="btn btn-nav btn-mobile">
+//           conventions
+//         </Link>
+
+//         <Link href={"/nightlife"} className="btn btn-nav btn-mobile">
+//           Nightlife
+//         </Link>
+//         <Link href={"/brands"} className="btn btn-nav btn-mobile">
+//           Brands
+//         </Link>
+//         <Link href={"/featured"} className="btn btn-nav btn-mobile">
+//           Featured Creators
+//         </Link>
+//         <div className="btn btn-nav btn-popup">
+//           {/* <img src="/gfx/nightlife.png" alt="" /> */}
+//           <span>More</span>
+//           <div className="popups">
+//             <Link href={"/featured"} className="btn btn-sub">
+//               Featured Creators
+//             </Link>
+//             <Link href={"/conventions"} className="btn btn-sub">
+//               Conventions
+//             </Link>
+//             <Link href={"/nightlife"} className="btn btn-sub">
+//               Nightlife
+//             </Link>
+//             <Link href={"/brands"} className="btn btn-sub">
+//               Brands
+//             </Link>
+//           </div>
+//         </div>
+//         <Link href={"/contact"} className="btn btn-nav">
+//           {/* <img src="/gfx/contactus.png" alt="" /> */}
+//           <span>Contact us</span>
+//         </Link>
+// )

@@ -11,6 +11,7 @@ import {
 import { LuArrowUpToLine } from "react-icons/lu";
 import { CSSProperties } from "react";
 import { fetchData, urlFor } from "@/app/db/sanity";
+import { NavList } from "../header/Header";
 
 type Props = {};
 
@@ -20,8 +21,9 @@ export default async function Footer({}: Props) {
 				ft_bg,
 				ft_title,
 				ft_desc,
+				navlist,
 		}
-		`);
+	`);
   return (
     <div id="footer">
       <div className="confine">
@@ -29,6 +31,25 @@ export default async function Footer({}: Props) {
           <h2 className="fh">NAVIGATION</h2>
           <nav className="fn">
             <Link href={"/"} className="btn-fn">
+              Home
+            </Link>
+            {gd?.navlist?.map((item: NavList, index: number) => {
+              if (item.is_dropdown) {
+                return item.dr_list.map((dr_item, index) => {
+                  return (
+                    <Link href={dr_item.rl} key={index} className="btn-fn">
+                      {dr_item.name}
+                    </Link>
+                  );
+                });
+              }
+              return (
+                <Link href={item.rl} key={index} className="btn-fn">
+                  {item.name}
+                </Link>
+              );
+            })}
+            {/* <Link href={"/"} className="btn-fn">
               Home
             </Link>
             <Link href={"/rigs"} className="btn-fn">
@@ -57,7 +78,7 @@ export default async function Footer({}: Props) {
 
             <Link href={"/contact"} className="btn-fn">
               Contact us
-            </Link>
+            </Link> */}
             <a href="#top" className="btn btn-scroll two">
               <span> Scroll to the top</span>
               <LuArrowUpToLine />
