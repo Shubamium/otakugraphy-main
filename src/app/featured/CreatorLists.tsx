@@ -115,10 +115,12 @@ export default function CreatorLists({ creators }: Props) {
                   </div>
                 </div>
                 <div className="info-rows">
-                  <div className="if">
-                    <h3>Date</h3>
-                    <p>{activeDate.toDateString()}</p>
-                  </div>
+                  {activeDate && (
+                    <div className="if">
+                      <h3>Date</h3>
+                      <p>{activeDate.toDateString()}</p>
+                    </div>
+                  )}
                   {currVid?.fields?.map((field: any, i: number) => {
                     return (
                       <div className="if" key={i + field._key}>
