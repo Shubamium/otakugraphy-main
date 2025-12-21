@@ -21,7 +21,7 @@ export default function OTGFrame({ options }: Props) {
     "Loading views . . ."
   );
   const fetchViewCount = async (vid: string) => {
-    const vwc = await getCachedYTViews(vid);
+    const vwc = await getYoutubeViews(vid);
     // console.log(vwc);
 
     if (vwc.vwc) {

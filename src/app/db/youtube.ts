@@ -38,7 +38,7 @@ export async function getCachedYTViews(id: string) {
     }
   )();
 }
-async function getYoutubeDate(id: string) {
+export async function getYoutubeDate(id: string) {
   const ytapi = youtube("v3");
   const res = await ytapi.videos.list({
     key: process.env.GOOGLE_APIKEY,

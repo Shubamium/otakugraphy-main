@@ -4,7 +4,7 @@ import CreatorCard from "./CreatorCard";
 import { createPortal } from "react-dom";
 import "./creatorList.scss";
 import { FaXmark } from "react-icons/fa6";
-import { getCachedYoutubeDate } from "../db/youtube";
+import { getCachedYoutubeDate, getYoutubeDate } from "../db/youtube";
 type Props = { creators: any };
 
 type VideoData = {
@@ -21,7 +21,7 @@ type VideoData = {
 export default function CreatorLists({ creators }: Props) {
   const [currVid, setCurrVid] = useState<VideoData | null>(null);
   const [mounted, setMounted] = useState(false);
-  const [activeDate, setActiveDate] = useState(new Date());
+  const [activeDate, setActiveDate] = useState<Date | null>(null);
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -29,7 +29,7 @@ export default function CreatorLists({ creators }: Props) {
   useEffect(() => {
     async function getDate() {
       if (currVid && currVid.vid) {
-        const youtubeDate = await getCachedYoutubeDate(currVid.vid);
+        const youtubeDate = await getYoutubeDate(currVid.vid);
         if (youtubeDate.success && youtubeDate.date) {
           setActiveDate(new Date(youtubeDate.date));
         } else {
