@@ -13,9 +13,12 @@
     background: var(--bg) rgba(0, 0, 0, 0.956);
     background-size: cover;
     min-height: 94vh;
-    background-blend-mode: difference;
-    background-attachment: fixed;
-    background-position: 50%;
+
+    @media screen and (min-width: 1280px) {
+      background-blend-mode: difference;
+      background-attachment: fixed;
+      background-position: 50%;
+    }
     width: 100%;
     padding: 1em;
     padding-block: 200px;

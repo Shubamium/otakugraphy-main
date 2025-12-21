@@ -34,7 +34,7 @@ const roboto = Roboto_Slab({
   subsets: ["latin"],
   weight: ["200", "300", "400", "500", "600", "700"],
 });
-const title = "Otakugraphy - North America's Vtuber-Focused Media Company";
+const title = "Otakugraphy - VTuber-Focused Media Company";
 const description =
   " Raising the industry standard for immersive multimedia experiences through connecting virtual creators and their communities ";
 const banner = "https://i.ibb.co.com/Mx99HBYX/OTG-Oficial-Logo.png";

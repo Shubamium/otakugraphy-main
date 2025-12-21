@@ -24,6 +24,7 @@ export default async function Footer({}: Props) {
 				navlist,
 		}
 	`);
+  // console.log(gd.navlist);
   return (
     <div id="footer">
       <div className="confine">
