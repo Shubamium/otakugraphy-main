@@ -17,10 +17,10 @@ export async function sendMail(
   message: string,
   dc: string | null,
   socials: string | null,
-  honeypot: string | null
+  honeypot: string
 ) {
   // Honeypot Anti Spam
-  if (honeypot !== "" || honeypot !== null) return true;
+  if (honeypot !== "") return true;
 
   const mailOption: MailOptions = {
     from: "vicnet.video@gmail.com",
