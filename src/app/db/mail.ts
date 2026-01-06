@@ -30,9 +30,9 @@ export async function sendMail(
     text: `Hello, ${name} has submitted a message through the website contact form. \n 
 		\n Email: ${mail} 
 		\n Phone:${phone ? phone : "N/A"}
+  	\n ${socials ? `Socials: ${socials}` : ""}
 		\n Discord: ${dc ?? "N/A"} 
 		\n Message: ${message} 
-  	\n ${socials ? `Socials: ${socials}` : ""}
 		
 		
 		`,
