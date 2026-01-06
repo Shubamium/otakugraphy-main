@@ -112,7 +112,6 @@ export default async function Home() {
 
   const hlm = gd?.hlm ?? null;
 
-  console.log(gd.currentlyLive);
   const sections: { [key: string]: React.ReactNode } = {
     highlights: (
       <section id="highlights" key={"highlights"}>

@@ -175,6 +175,16 @@ a {
       opacity: 0.5;
     }
   }
+
+  // Ohnohoney
+  &.hp {
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+  }
   input,
   textarea {
     background: none;
@@ -201,6 +211,9 @@ a {
   textarea {
     resize: none;
     min-height: 300px;
+    &.socials {
+      min-height: 170px;
+    }
   }
 }
 .btn-popclose {

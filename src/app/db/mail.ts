@@ -15,19 +15,32 @@ export async function sendMail(
   phone: string | null,
   subject: string,
   message: string,
-  dc: string | null
+  dc: string | null,
+  socials: string | null,
+  honeypot: string | null
 ) {
+  // Honeypot Anti Spam
+  if (honeypot !== "" || honeypot !== null) return true;
+
   const mailOption: MailOptions = {
     from: "vicnet.video@gmail.com",
     to: process.env.SMTP_TARGET,
     replyTo: [mail],
     subject: `[Contact Form] New message from ${name}`,
-    text: `Hello, ${name} has submitted a message through the website contact form. \n \n Email: ${mail} \n Phone:${phone ? phone : "N/A"} \n Discord: ${dc ?? "N/A"} \n Message: ${message} `,
+    text: `Hello, ${name} has submitted a message through the website contact form. \n 
+		\n Email: ${mail} 
+		\n Phone:${phone ? phone : "N/A"}
+		\n Discord: ${dc ?? "N/A"} 
+		\n Message: ${message} 
+  	\n ${socials ? `Socials: ${socials}` : ""}
+		
+		
+		`,
   };
 
   try {
     const res = await transporter.sendMail(mailOption);
-    console.log(res);
+    console.log(res, "mail info");
     if (res.accepted && res.accepted.length > 0) {
       return true;
     } else {

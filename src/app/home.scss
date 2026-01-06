@@ -492,6 +492,8 @@
           .hover-title {
             transition: all 500ms ease;
             opacity: 0;
+            user-select: none;
+            pointer-events: none;
             position: absolute;
             text-align: center;
             font-size: 4rem;

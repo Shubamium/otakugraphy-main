@@ -29,7 +29,7 @@ export default function CreatorLists({ creators }: Props) {
   useEffect(() => {
     async function getDate() {
       if (currVid && currVid.vid) {
-        const youtubeDate = await getYoutubeDate(currVid.vid);
+        const youtubeDate = await getCachedYoutubeDate(currVid.vid);
         if (youtubeDate.success && youtubeDate.date) {
           setActiveDate(new Date(youtubeDate.date));
         } else {

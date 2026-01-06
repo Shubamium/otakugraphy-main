@@ -30,10 +30,14 @@
     justify-content: center;
     align-items: center;
     color: white;
+    flex-direction: column;
+
+    transition: all 1500ms ease;
     svg {
       width: 90px;
       height: 90px;
-
+    }
+    .spin {
       animation: speen 1s infinite linear;
       @keyframes speen {
         from {
@@ -43,6 +47,11 @@
           rotate: 360deg;
         }
       }
+    }
+    p {
+      font-size: 2rem;
+      color: white;
+      font-weight: bold;
     }
 
     &.v {

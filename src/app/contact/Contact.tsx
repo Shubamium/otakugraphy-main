@@ -6,6 +6,8 @@ import { LuLoaderPinwheel } from "react-icons/lu";
 import { CSSProperties, useState } from "react";
 import { sendMail } from "../db/mail";
 import { urlFor } from "../db/sanity";
+import { BiCheckCircle } from "react-icons/bi";
+import { FaXmark } from "react-icons/fa6";
 
 type Props = {
   gd: any;
@@ -20,18 +22,54 @@ export default function Contact({ gd }: Props) {
   const [mail, setMail] = useState<string>("");
   const [subject, setSubject] = useState<string>("");
   const [message, setMessage] = useState<string>("");
+  const [socials, setSocials] = useState<string>("");
+
+  // Honeypot Anti Spam
+  const [information, setInformation] = useState<string>("");
+  const [submitResult, setSubmitResult] = useState<string | null>(null);
+  const [success, setSuccess] = useState<boolean>(false);
 
   const submit = async () => {
     setL(true);
-    const res = await sendMail(name, mail, phone, subject, message, dc);
+    setSubmitResult(null);
+    const res = await sendMail(
+      name,
+      mail,
+      phone,
+      subject,
+      message,
+      dc,
+      socials,
+      information
+    );
 
-    if (res) {
-      alert("Your message has been submitted successfully!");
-    } else {
-      alert("Error, something went wrong");
-    }
+    setTimeout(() => {
+      if (res) {
+        // alert("Your message has been submitted successfully!");
+        setSuccess(true);
+        setSubmitResult("Your message has been submitted successfully!");
+      } else {
+        // alert("Error, something went wrong");
+        setSuccess(false);
+        setSubmitResult("Error, something went wrong...");
+      }
+      setTimeout(() => {
+        clearForm();
+        setL(false);
+      }, 3000);
+    }, 2500);
+  };
+  const clearForm = () => {
+    setName("");
+    setPhone(null);
+    setDc(null);
+    setMail("");
+    setSubject("");
+    setMessage("");
+    setSocials("");
 
-    setL(false);
+    setSubmitResult(null);
+    setSuccess(false);
   };
   return (
     <main id="page_contact">
@@ -44,7 +82,12 @@ export default function Contact({ gd }: Props) {
         }
       ></div>
       <div className={"ct-loading " + (l ? "v" : " h")}>
-        <LuLoaderPinwheel />
+        {!submitResult ? (
+          <LuLoaderPinwheel className="spin" />
+        ) : (
+          <>{success ? <BiCheckCircle /> : <FaXmark />}</>
+        )}
+        <p>{submitResult}</p>
       </div>
       <section className="ct-heading">
         <img src="/gfx/logo2.png" alt="" className="logo" />
@@ -139,14 +182,42 @@ export default function Contact({ gd }: Props) {
                 />
               </div> */}
               <div className="ff">
+                <label htmlFor="socialLinks">Social Links</label>
+                <textarea
+                  name="socialLinks"
+                  id="socialLinks"
+                  placeholder="Write your socials here. . ."
+                  value={socials}
+                  className="socials"
+                  required
+                  onChange={(e) => {
+                    setSocials(e.target.value);
+                  }}
+                ></textarea>
+              </div>
+              <div className="ff">
                 <label htmlFor="message">Message</label>
                 <textarea
                   name="message"
                   id="message"
                   placeholder="Write your message here. . ."
+                  required
                   value={message}
                   onChange={(e) => {
                     setMessage(e.target.value);
+                  }}
+                ></textarea>
+              </div>
+              <div className="ff hp">
+                <label htmlFor="address">Address</label>
+                <textarea
+                  name="adddress"
+                  id="address"
+                  placeholder="Write your Address here. . ."
+                  value={information}
+                  tabIndex={-1}
+                  onChange={(e) => {
+                    setInformation(e.target.value);
                   }}
                 ></textarea>
               </div>
