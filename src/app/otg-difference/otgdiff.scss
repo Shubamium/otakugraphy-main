@@ -31,6 +31,29 @@
     p {
       font-size: 1.42rem;
     }
+
+    .controls {
+      font-family: var(--fontM);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      justify-content: center;
+      margin: 1em 0;
+      .btn {
+        background: #141414;
+        padding: 0.25em 1em;
+        color: white;
+        font-size: 1.4rem;
+        border: 2px solid var(--dgold);
+        &.active {
+          color: var(--dgold);
+          background: var(--dgold);
+          color: #141414;
+          scale: 1.1;
+          cursor: initial;
+        }
+      }
+    }
   }
 
   #inside-look {
