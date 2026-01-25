@@ -35,7 +35,7 @@ export async function getCachedYTViews(id: string) {
     ["ytviews", id],
     {
       revalidate: 3600,
-    }
+    },
   )();
 }
 export async function getYoutubeDate(id: string) {
@@ -51,7 +51,7 @@ export async function getYoutubeDate(id: string) {
     const vstat = data.items;
     if (vstat) {
       // const target = vstat[0].statistics?.viewCount;
-      const date = vstat[0].snippet?.publishedAt;
+      const date = vstat[0]?.snippet?.publishedAt;
       return {
         success: true,
         date: date,

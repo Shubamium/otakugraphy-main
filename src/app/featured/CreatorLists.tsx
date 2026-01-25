@@ -19,7 +19,7 @@ type VideoData = {
   extra_vids?: string[];
 };
 
-function groupByAgency(creators: any) {
+function groupByAgency(creators: any[]) {
   const groupedMap = new Map();
   for (let i = 0; i < creators.length; i++) {
     if (groupedMap.has(creators[i].agency)) {
@@ -45,6 +45,26 @@ function groupByAgency(creators: any) {
   }
   return toRender;
 }
+
+async function groupByYoutubeDate(creators: any[]) {
+  const datedCreators = [];
+  for (let i = 0; i < creators.length; i++) {
+    const currCreator = creators[i];
+    // If the current creator has a video link then look up the youtube
+    if (currCreator.Video) {
+      const youtubeDate = await getCachedYoutubeDate(currCreator.Video);
+      if (youtubeDate.success && youtubeDate.date) {
+        currCreator.date = new Date(youtubeDate.date);
+      }
+    }
+    datedCreators.push(currCreator);
+  }
+  // Sort by date
+  datedCreators.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  );
+  return datedCreators;
+}
 export default function CreatorLists({ creators, view }: Props) {
   const [currVid, setCurrVid] = useState<VideoData | null>(null);
   const [mounted, setMounted] = useState(false);
@@ -56,6 +76,7 @@ export default function CreatorLists({ creators, view }: Props) {
       creators: any[];
     }[]
   >();
+  const [dateRender, setDateRender] = useState<any[]>([]);
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -83,12 +104,18 @@ export default function CreatorLists({ creators, view }: Props) {
     if (view == "agency") {
       setGroupRender(groupByAgency(creators));
     }
+    if (view == "date") {
+      // Replace All date with new youtube date
+      groupByYoutubeDate(creators).then((res) => {
+        setDateRender(res);
+      });
+    }
   }, [view]);
 
   return (
     <>
       <div id="creator-list">
-        {view !== "agency" &&
+        {(view === "default" || view === "name") &&
           creators?.map((creator: any, i: number) => {
             return (
               <CreatorCard
@@ -106,7 +133,25 @@ export default function CreatorLists({ creators, view }: Props) {
               />
             );
           })}
-
+        {/* Sort By Date */}
+        {view === "date" &&
+          dateRender?.map((creator: any, i: number) => {
+            return (
+              <CreatorCard
+                key={creator._id + "creator-card" + i}
+                creator={creator}
+                onClick={() => {
+                  setCurrVid({
+                    name: creator.name,
+                    vid: creator.Video,
+                    date: creator.date,
+                    fields: creator.fields,
+                    extra_vids: creator.extra_vids,
+                  });
+                }}
+              />
+            );
+          })}
         {/* Group by Agency */}
         {view === "agency" &&
           groupRender &&
