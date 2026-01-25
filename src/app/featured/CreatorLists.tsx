@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import "./creatorList.scss";
 import { FaXmark } from "react-icons/fa6";
 import { getCachedYoutubeDate, getYoutubeDate } from "../db/youtube";
-type Props = { creators: any };
+type Props = { creators: any; view?: string };
 
 type VideoData = {
   name: string;
@@ -18,10 +18,44 @@ type VideoData = {
   }[];
   extra_vids?: string[];
 };
-export default function CreatorLists({ creators }: Props) {
+
+function groupByAgency(creators: any) {
+  const groupedMap = new Map();
+  for (let i = 0; i < creators.length; i++) {
+    if (groupedMap.has(creators[i].agency)) {
+      groupedMap.get(creators[i].agency)?.push(creators[i]);
+    } else {
+      groupedMap.set(creators[i].agency, [creators[i]]);
+    }
+  }
+  console.log("grouped result", groupedMap);
+  // Remove independent and sort the rest by getting the keys
+  const indipendent = groupedMap.get("Independent");
+  const toRender = [{ name: "Independent", creators: indipendent }];
+
+  const sortedKeys = Array.from(groupedMap.keys()).sort();
+
+  for (let i = 0; i < sortedKeys.length; i++) {
+    if (sortedKeys[i] !== "Independent") {
+      toRender.push({
+        name: sortedKeys[i],
+        creators: groupedMap.get(sortedKeys[i]),
+      });
+    }
+  }
+  return toRender;
+}
+export default function CreatorLists({ creators, view }: Props) {
   const [currVid, setCurrVid] = useState<VideoData | null>(null);
   const [mounted, setMounted] = useState(false);
   const [activeDate, setActiveDate] = useState<Date | null>(null);
+
+  const [groupRender, setGroupRender] = useState<
+    {
+      name: string;
+      creators: any[];
+    }[]
+  >();
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -42,26 +76,70 @@ export default function CreatorLists({ creators }: Props) {
     getDate();
   }, [currVid]);
 
+  useEffect(() => {
+    // Sorting ================================
+    // Group By Agency
+
+    if (view == "agency") {
+      setGroupRender(groupByAgency(creators));
+    }
+  }, [view]);
+
   return (
     <>
       <div id="creator-list">
-        {creators?.map((creator: any, i: number) => {
-          return (
-            <CreatorCard
-              key={creator._id + "creator-card" + i}
-              creator={creator}
-              onClick={() => {
-                setCurrVid({
-                  name: creator.name,
-                  vid: creator.Video,
-                  date: creator.date,
-                  fields: creator.fields,
-                  extra_vids: creator.extra_vids,
-                });
-              }}
-            />
-          );
-        })}
+        {view !== "agency" &&
+          creators?.map((creator: any, i: number) => {
+            return (
+              <CreatorCard
+                key={creator._id + "creator-card" + i}
+                creator={creator}
+                onClick={() => {
+                  setCurrVid({
+                    name: creator.name,
+                    vid: creator.Video,
+                    date: creator.date,
+                    fields: creator.fields,
+                    extra_vids: creator.extra_vids,
+                  });
+                }}
+              />
+            );
+          })}
+
+        {/* Group by Agency */}
+        {view === "agency" &&
+          groupRender &&
+          groupRender?.length > 0 &&
+          groupRender?.map((group: any, i: number) => {
+            return (
+              <div key={group.name} className="groups">
+                <h2 className="gn">{group.name}</h2>
+                <div className="creator-list">
+                  {group.creators?.map((creator: any, i: number) => {
+                    return (
+                      <CreatorCard
+                        key={creator._id + "creator-card" + i}
+                        creator={creator}
+                        onClick={() => {
+                          setCurrVid({
+                            name: creator.name,
+                            vid: creator.Video,
+                            date: creator.date,
+                            fields: creator.fields,
+                            extra_vids: creator.extra_vids,
+                          });
+                        }}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        {/* <div className="grouped">
+          <p>Group Name</p>
+        </div> */}
       </div>
 
       {mounted &&
@@ -133,7 +211,7 @@ export default function CreatorLists({ creators }: Props) {
               </div>
             )}
           </div>,
-          document.body
+          document.body,
         )}
     </>
   );

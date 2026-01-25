@@ -16,6 +16,7 @@ type Props = {
     cc?: string;
     a?: string;
     e?: string;
+    view?: string;
   }>;
 };
 
@@ -35,6 +36,23 @@ export default async function page({ searchParams }: Props) {
 
   const beforeDate = fbd ? new Date(Number(fbd[0]), Number(fbd[1])) : null;
   const afterDate = tbd ? new Date(Number(tbd[0]), Number(tbd[1])) : null;
+  const view = sp.view ? sp.view : "default";
+
+  let ordering = " | order(ordering asc)";
+  if (view === "name") {
+    ordering = " | order(name asc)";
+  }
+  // switch (view) {
+  //   case "name":
+  //     ordering = "order(name asc)";
+  //     break;
+  //   case "date":
+  //     ordering = "";
+  //     break;
+  //   default:
+  //     ordering = "";
+  //     break;
+  // }
   const dateFromCondition = beforeDate
     ? `&& date >= "${beforeDate.toISOString()}"`
     : "";
@@ -55,7 +73,7 @@ export default async function page({ searchParams }: Props) {
     eventCondition,
   ].join("");
   const creators = await fetchData<any>(`
-			*[_type == 'creator' ${conditions} ]{
+			*[_type == 'creator' ${conditions}] ${ordering}{
 			...,
 			'agency': agency->name,
 			'event': event ->name,
@@ -75,7 +93,7 @@ export default async function page({ searchParams }: Props) {
     `*[_type == 'general' && preset == 'main'][0]{
 			fc_t,
 			fc_d
-		}`
+		}`,
   );
   return (
     <main id="p_featured">
@@ -96,11 +114,12 @@ export default async function page({ searchParams }: Props) {
             from: sp.from,
             q: sp.q,
             to: sp.to,
+            view: sp.view,
           }}
         />
       </div>
 
-      <CreatorLists creators={creators} />
+      <CreatorLists creators={creators} view={view} />
     </main>
   );
 }

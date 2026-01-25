@@ -38,10 +38,13 @@
     }
 
     .controls {
-      display: flex;
-      align-items: flex-end;
+      // display: flex;
+      // align-items: flex-end;
+      // gap: 0.5em;
+      // flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr 40px;
       gap: 0.5em;
-      flex-wrap: wrap;
       @media screen and (max-width: 1024px) {
         justify-content: flex-end;
       }
@@ -81,6 +84,17 @@
           width: 100%;
           height: 100%;
         }
+      }
+
+      .sort-select {
+        background: #171717;
+        font-family: var(--fontM);
+        border: 3px solid var(--dgold);
+        font-size: 1.5rem;
+        font-weight: lighter;
+        padding: 0.25em 1em;
+        border-radius: 2rem;
+        color: rgba(255, 255, 255, 0.815);
       }
     }
   }

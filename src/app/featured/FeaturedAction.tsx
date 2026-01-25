@@ -19,6 +19,7 @@ type Props = {
     cc?: string;
     a?: string;
     e?: string;
+    view?: string;
   };
 };
 
@@ -82,16 +83,24 @@ export default function FeaturedAction({
   const [from, setFrom] = useState<Month | null>(defaultFrom);
   const [to, setTo] = useState<Month | null>(defaultTo);
   const [q, setQ] = useState<string | null>(null);
+  const [view, setView] = useState<string | null>(
+    paramDefaultValue.view ?? null,
+  );
 
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
 
+  const selectRef = React.useRef<HTMLSelectElement>(null);
   const [filter, setFilter] = useState("");
   React.useEffect(() => {
     setMounted(true);
   }, []);
-
+  useEffect(() => {
+    if (view) {
+      updateURLState({ view: view }, true);
+    }
+  }, [view]);
   useEffect(() => {
     console.log(from);
   }, [from]);
@@ -114,9 +123,15 @@ export default function FeaturedAction({
         year: split[0],
       });
     }
+    if (view) {
+      setView(view);
+    }
   }, [paramDefaultValue]);
 
-  function updateURLState(update: { [key: string]: string | null }) {
+  function updateURLState(
+    update: { [key: string]: string | null },
+    applyDirectly?: boolean,
+  ) {
     const params = new URLSearchParams(searchParams.toString());
 
     Object.entries(update).forEach(([key, value]) => {
@@ -128,6 +143,10 @@ export default function FeaturedAction({
     });
     const newUrl = `${pathname}?${params.toString()}`;
     setFilter(newUrl);
+    if (applyDirectly) {
+      applyFilterDirectly(newUrl);
+    }
+
     // router.replace(newUrl);
     // Map through the key and object of the input
     // If value is null then delete the key
@@ -137,6 +156,11 @@ export default function FeaturedAction({
     if (filter !== "") {
       router.replace(filter);
       setOpenFilter(false);
+    }
+  }
+  function applyFilterDirectly(filter: string) {
+    if (filter !== "") {
+      router.replace(filter);
     }
   }
   function clearFilter() {
@@ -181,6 +205,23 @@ export default function FeaturedAction({
         >
           <CgSearch />
         </button>
+        <select
+          name="view"
+          id="view"
+          className="sort-select"
+          onChange={(e) => {
+            // updateURLState({ view: e.target.value });
+            setView(e.target.value);
+            // console.log(e.target.value);
+          }}
+          value={view ?? ""}
+          // ref={selectRef}
+        >
+          <option value="default">Default View</option>
+          <option value="name">Sort by Name {`(A - Z)`}</option>
+          <option value="date">Sort by Date {`(Newest - Oldest)`}</option>
+          <option value="agency">Group By Agency</option>
+        </select>
         <button
           className="btn btn-control"
           onClick={() => {
@@ -483,7 +524,7 @@ export default function FeaturedAction({
               </div>
             </div>
           </div>,
-          document.body
+          document.body,
         )}
     </>
   );
