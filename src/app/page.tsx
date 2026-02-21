@@ -87,8 +87,12 @@ export default async function Home() {
 				...,
 				'video':video.asset -> url
 			},
-			currentlyLive[] -> {...,'agency': agency->name,
-			'event': event ->name,},
+			currentlyLive[] -> {
+				...,
+				'agency': agency->name,
+				'event': event ->name,
+			}
+		
 		}[0]
 	`);
   const pt = await fetchData<any>(`
@@ -112,6 +116,7 @@ export default async function Home() {
 
   const hlm = gd?.hlm ?? null;
 
+  console.log(gd.currentlyLive);
   const sections: { [key: string]: React.ReactNode } = {
     highlights: (
       <section id="highlights" key={"highlights"}>
@@ -270,7 +275,7 @@ export default async function Home() {
       <section id="cls" key={"cls"}>
         <h2 className="mt">Currently Live STREAMING</h2>
         {gd.currentlyLive && gd.currentlyLive.length > 0 ? (
-          <CreatorLists creators={gd.currentlyLive} />
+          <CreatorLists creators={gd.currentlyLive} view="default" />
         ) : (
           <div className="nolive">
             <p>Check Our Socials For The Next Event!</p>

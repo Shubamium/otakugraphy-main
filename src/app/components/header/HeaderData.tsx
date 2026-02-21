@@ -9,6 +9,5 @@ export default async function HeaderData({}: Props) {
 		*[_type == "general" && preset == "main"][0]{
 			navlist,
 		}`);
-  console.log(hd, hd.navlist);
   return <Header navlist={hd.navlist} />;
 }
