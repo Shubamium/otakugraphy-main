@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@googleapis/youtube": "^29.0.0",
+    "@upstash/redis": "^1.36.2",
     "blurhash": "^2.0.5",
     "exif-js": "^2.3.0",
     "lenis": "^1.2.3",

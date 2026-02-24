@@ -104,16 +104,14 @@ export default function RootLayout({
           } as CSSProperties
         }
       >
-        <PasswordGate>
-          <ReactLenis options={{ autoRaf: true }} root>
-            <div id="top"></div>
-            <SideContact />
-            {children}
-            <HeaderData />
-            <MediaDetail />
-            <Footer />
-          </ReactLenis>
-        </PasswordGate>
+        <ReactLenis options={{ autoRaf: true }} root>
+          <div id="top"></div>
+          <SideContact />
+          {children}
+          <HeaderData />
+          <MediaDetail />
+          <Footer />
+        </ReactLenis>
       </body>
     </html>
   );
