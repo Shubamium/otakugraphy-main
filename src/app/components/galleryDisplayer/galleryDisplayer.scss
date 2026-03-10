@@ -171,6 +171,11 @@
             font-size: 0.9rem;
           }
         }
+        .iframe {
+          border: var(--dgold);
+          width: 100%;
+          aspect-ratio: 16/9;
+        }
         &:hover {
         }
         .link {

@@ -117,6 +117,7 @@ export default function Media({
                 alt={data.gd && data.gd.alt}
                 key={data.image}
                 className="img"
+                loading="lazy"
               />
               {/* <Blurhash hash={data.metadata.blurHash} className="blur" /> */}
             </>

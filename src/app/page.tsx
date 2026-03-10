@@ -109,7 +109,7 @@ export default async function Home() {
     return {
       name: p.name,
       partners: p.partners.map((p: any) => {
-        return urlFor(p)?.height(700).format("webp").url();
+        return urlFor(p)?.height(300).format("webp").url();
       }),
     };
   });

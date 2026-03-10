@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import "./creatorList.scss";
 import { FaXmark } from "react-icons/fa6";
 import { getCachedYoutubeDate, getYoutubeDate } from "../db/youtube";
+import { AnimatePresence } from "motion/react";
 type Props = { creators: any; view?: string };
 
 type VideoData = {
@@ -30,8 +31,9 @@ function groupByAgency(creators: any[]) {
   }
   console.log("grouped result", groupedMap);
   // Remove independent and sort the rest by getting the keys
-  const indipendent = groupedMap.get("Independent");
-  const toRender = [{ name: "Independent", creators: indipendent }];
+  const indie = groupedMap.get("Independent");
+  const toRender =
+    indie?.length > 0 ? [{ name: "Independent", creators: indie }] : [];
 
   const sortedKeys = Array.from(groupedMap.keys()).sort();
 
@@ -110,81 +112,87 @@ export default function CreatorLists({ creators, view }: Props) {
         setDateRender(res);
       });
     }
-  }, [view]);
+  }, [view, creators ?? "nothing"]);
 
   return (
     <>
-      <div id="creator-list">
-        {(view === "default" || view === "name") &&
-          creators?.map((creator: any, i: number) => {
-            return (
-              <CreatorCard
-                key={creator._id + "creator-card" + i}
-                creator={creator}
-                onClick={() => {
-                  setCurrVid({
-                    name: creator.name,
-                    vid: creator.Video,
-                    date: creator.date,
-                    fields: creator.fields,
-                    extra_vids: creator.extra_vids,
-                  });
-                }}
-              />
-            );
-          })}
-        {/* Sort By Date */}
-        {view === "date" &&
-          dateRender?.map((creator: any, i: number) => {
-            return (
-              <CreatorCard
-                key={creator._id + "creator-card" + i}
-                creator={creator}
-                onClick={() => {
-                  setCurrVid({
-                    name: creator.name,
-                    vid: creator.Video,
-                    date: creator.date,
-                    fields: creator.fields,
-                    extra_vids: creator.extra_vids,
-                  });
-                }}
-              />
-            );
-          })}
-        {/* Group by Agency */}
-        {view === "agency" &&
-          groupRender &&
-          groupRender?.length > 0 &&
-          groupRender?.map((group: any, i: number) => {
-            return (
-              <div key={group.name} className="groups">
-                <h2 className="gn">{group.name}</h2>
-                <div className="creator-list">
-                  {group.creators?.map((creator: any, i: number) => {
-                    return (
-                      <CreatorCard
-                        key={creator._id + "creator-card" + i}
-                        creator={creator}
-                        onClick={() => {
-                          setCurrVid({
-                            name: creator.name,
-                            vid: creator.Video,
-                            date: creator.date,
-                            fields: creator.fields,
-                            extra_vids: creator.extra_vids,
-                          });
-                        }}
-                      />
-                    );
-                  })}
+      <div id="creator-list" data-status={view}>
+        {creators.length === 0 && view !== "agency" && (
+          <h2 className="notfound">No Creators Found!</h2>
+        )}
+
+        <AnimatePresence mode="popLayout">
+          {(view === "default" || view === "name") &&
+            creators?.map((creator: any, i: number) => {
+              return (
+                <CreatorCard
+                  key={creator._id + "creator-card" + i + view}
+                  creator={creator}
+                  delay={i * 0.05}
+                  onClick={() => {
+                    setCurrVid({
+                      name: creator.name,
+                      vid: creator.Video,
+                      date: creator.date,
+                      fields: creator.fields,
+                      extra_vids: creator.extra_vids,
+                    });
+                  }}
+                />
+              );
+            })}
+          {/* Sort By Date */}
+          {view === "date" &&
+            dateRender?.map((creator: any, i: number) => {
+              return (
+                <CreatorCard
+                  key={creator._id + "creator-card" + i}
+                  creator={creator}
+                  delay={i * 0.05}
+                  onClick={() => {
+                    setCurrVid({
+                      name: creator.name,
+                      vid: creator.Video,
+                      date: creator.date,
+                      fields: creator.fields,
+                      extra_vids: creator.extra_vids,
+                    });
+                  }}
+                />
+              );
+            })}
+          {/* Group by Agency */}
+          {view === "agency" &&
+            groupRender &&
+            groupRender?.length > 0 &&
+            groupRender?.map((group: any, i: number) => {
+              return (
+                <div key={group.name} className="groups">
+                  <h2 className="gn">{group.name}</h2>
+                  <div className="creator-list">
+                    {group.creators?.map((creator: any, i: number) => {
+                      return (
+                        <CreatorCard
+                          key={creator._id + "creator-card" + i}
+                          creator={creator}
+                          delay={i * 0.05}
+                          onClick={() => {
+                            setCurrVid({
+                              name: creator.name,
+                              vid: creator.Video,
+                              date: creator.date,
+                              fields: creator.fields,
+                              extra_vids: creator.extra_vids,
+                            });
+                          }}
+                        />
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        {/* <div className="grouped">
-          <p>Group Name</p>
-        </div> */}
+              );
+            })}
+        </AnimatePresence>
       </div>
 
       {mounted &&

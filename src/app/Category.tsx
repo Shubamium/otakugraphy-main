@@ -37,7 +37,10 @@ export default function Category({ gd }: Props) {
               >
                 <h2 className="hover-title">
                   {cr.name}
-                  <HiArrowTopRightOnSquare />
+                  <div className="r">
+                    <span>Explore</span>
+                    <HiArrowTopRightOnSquare />
+                  </div>
                 </h2>
                 <CatRow cr={cr} i={i} />
               </div>
@@ -90,7 +93,7 @@ export function CatRow({ cr, i }: any) {
         iterations: Infinity,
         easing: "linear",
         direction: i % 2 == 0 ? "normal" : "reverse",
-      }
+      },
     );
     // animate(
     //   ".pt",

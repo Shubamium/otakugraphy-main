@@ -2,10 +2,10 @@
 .media {
   background: #292929;
   border-bottom: 3px solid var(--dgold);
-  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.304);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.304);
   // overflow: hidden;
   @media screen and (max-width: 1024px) {
-    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.304);
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.304);
   }
   @media screen and (max-width: 768px) {
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.304);
@@ -19,9 +19,9 @@
   z-index: 10;
   overflow: hidden;
   &:hover {
-    box-shadow: 0px 0px 25px 0px black;
+    box-shadow: 0px 0px 5px 0px black;
     @media screen and (max-width: 1024px) {
-      box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.304);
+      box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.304);
     }
     @media screen and (max-width: 768px) {
       box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.304);

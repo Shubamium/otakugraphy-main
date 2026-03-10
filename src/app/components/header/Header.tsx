@@ -26,8 +26,11 @@ export default function Header({ navlist }: Props) {
     query: "(min-width:1024px)",
   });
   const [visible, setVisible] = useState(false);
-
+  const [load, setLoad] = useState(false);
   useEffect(() => {
+    if (!window) return;
+
+    setLoad(true);
     if (isDesktop) {
       setVisible(true);
     }
@@ -103,17 +106,18 @@ export default function Header({ navlist }: Props) {
                 >
                   <span>{item.name}</span>
                   <div className="popups">
-                    {item.dr_list?.map((dr_item, index) => {
-                      return (
-                        <Link
-                          href={dr_item.rl}
-                          key={index}
-                          className="btn btn-sub"
-                        >
-                          {dr_item.name}
-                        </Link>
-                      );
-                    })}
+                    {load &&
+                      item.dr_list?.map((dr_item, index) => {
+                        return (
+                          <Link
+                            href={dr_item.rl}
+                            key={index}
+                            className="btn btn-sub"
+                          >
+                            {dr_item.name}
+                          </Link>
+                        );
+                      })}
                   </div>
                 </div>
               );

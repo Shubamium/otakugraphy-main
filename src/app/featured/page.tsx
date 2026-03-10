@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 
 import "./featured.scss";
 
-import { FaPlay } from "react-icons/fa6";
+import { FaPlay, FaSpinner } from "react-icons/fa6";
 import FeaturedAction from "./FeaturedAction";
 import { fetchData, urlFor } from "../db/sanity";
 import CreatorCard from "./CreatorCard";
@@ -65,13 +65,17 @@ export default async function page({ searchParams }: Props) {
   const eventCondition = sp.e
     ? `&&  "${sp.e}" in events[] -> slug.current`
     : "";
+
+  const agencyCondition = sp.a ? `&&  agency -> slug.current == "${sp.a}"` : "";
   const conditions = [
     nameCondition,
     dateFromCondition,
     dateToCondition,
     colorCondition,
     eventCondition,
+    agencyCondition,
   ].join("");
+
   const creators = await fetchData<any>(`
 			*[_type == 'creator' ${conditions}] ${ordering}{
 			...,
@@ -119,7 +123,17 @@ export default async function page({ searchParams }: Props) {
         />
       </div>
 
-      <CreatorLists creators={creators} view={view} />
+      {/* <CreatorLists creators={creators} view={view} /> */}
+      <Suspense
+        fallback={
+          <div className="fc-loader">
+            <FaSpinner />
+            <p>Loading...</p>
+          </div>
+        }
+      >
+        <CreatorLists creators={creators} view={view} />
+      </Suspense>
     </main>
   );
 }

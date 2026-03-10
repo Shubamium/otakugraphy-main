@@ -72,10 +72,14 @@ export default function FeaturedAction({
   events,
   paramDefaultValue,
 }: Props) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+
   const [mounted, setMounted] = React.useState(false);
   const [openFilter, setOpenFilter] = React.useState(false);
 
-  const [sEvent, setSEvent] = useState<string | null>(null);
+  const [sEvent, setSEvent] = useState<string | null>(searchParams.get("e"));
   const [sAgency, setSAgency] = useState<string | null>(null);
 
   const [sColor, setSColor] = useState<string | null>(null);
@@ -86,10 +90,6 @@ export default function FeaturedAction({
   const [view, setView] = useState<string | null>(
     paramDefaultValue.view ?? null,
   );
-
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
 
   const selectRef = React.useRef<HTMLSelectElement>(null);
   const [filter, setFilter] = useState("");
@@ -147,14 +147,14 @@ export default function FeaturedAction({
       applyFilterDirectly(newUrl);
     }
 
-    // router.replace(newUrl);
+    // router.push(newUrl);
     // Map through the key and object of the input
     // If value is null then delete the key
   }
 
   function applyFilter() {
     if (filter !== "") {
-      router.replace(filter);
+      router.push(filter);
       setOpenFilter(false);
     }
   }
@@ -181,55 +181,62 @@ export default function FeaturedAction({
   return (
     <>
       <div className="controls">
-        <input
-          type="search"
-          name="name"
-          id="name"
-          placeholder="Search for a creator here"
-          onChange={(e) => {
-            setQ(e.target.value);
-            updateURLState({ q: q });
-            if (e.target.value === "") {
-              updateURLState({ q: null });
-            } else {
-              updateURLState({ q: e.target.value });
-            }
-          }}
-          value={q ?? ""}
-        />
-        <button
-          className="btn btn-control"
-          onClick={() => {
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
             applyFilter();
           }}
         >
-          <CgSearch />
-        </button>
-        <select
-          name="view"
-          id="view"
-          className="sort-select"
-          onChange={(e) => {
-            // updateURLState({ view: e.target.value });
-            setView(e.target.value);
-            // console.log(e.target.value);
-          }}
-          value={view ?? ""}
-          // ref={selectRef}
-        >
-          <option value="default">Default View</option>
-          <option value="name">Sort by Name {`(A - Z)`}</option>
-          <option value="date">Sort by Date {`(Newest - Oldest)`}</option>
-          <option value="agency">Group By Agency</option>
-        </select>
-        <button
-          className="btn btn-control"
-          onClick={() => {
-            setOpenFilter(true);
-          }}
-        >
-          <RiFilterFill />
-        </button>
+          <input
+            type="search"
+            name="name"
+            id="name"
+            placeholder="Search for a creator here"
+            onChange={(e) => {
+              setQ(e.target.value);
+              updateURLState({ q: q });
+              if (e.target.value === "") {
+                updateURLState({ q: null });
+              } else {
+                updateURLState({ q: e.target.value });
+              }
+            }}
+            value={q ?? ""}
+            onSubmit={() => {
+              applyFilter();
+            }}
+          />
+          <button className="btn btn-control" type="submit">
+            <CgSearch />
+          </button>
+        </form>
+        <div className="bottom">
+          <select
+            name="view"
+            id="view"
+            className="sort-select"
+            onChange={(e) => {
+              // updateURLState({ view: e.target.value });
+              setView(e.target.value);
+              // console.log(e.target.value);
+            }}
+            value={view ?? ""}
+            // ref={selectRef}
+          >
+            <option value="default">Default View</option>
+            <option value="name">Sort by Name {`(A - Z)`}</option>
+            <option value="date">Sort by Date {`(Newest - Oldest)`}</option>
+            <option value="agency">Group By Agency</option>
+          </select>
+          <button
+            className="btn btn-control"
+            onClick={() => {
+              setOpenFilter(true);
+            }}
+          >
+            <RiFilterFill />
+          </button>
+        </div>
       </div>
 
       {mounted &&

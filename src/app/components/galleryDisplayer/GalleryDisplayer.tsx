@@ -140,7 +140,18 @@ export default function GalleryDisplayer({
             <div className="highlights">
               <div className="panel ">
                 <h2>HIGHLIGHTS</h2>
-                <Link
+                <iframe
+                  src={`https://www.youtube.com/embed/${highlights.link}?autoplay=0`}
+                  title="YouTube video player"
+                  className="iframe"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                ></iframe>
+                <p>
+                  <span className="title">{highlights.ht}</span>
+                </p>
+                {/* <Link
                   href={highlights.link}
                   target="_blank"
                   className="link btn"
@@ -159,7 +170,7 @@ export default function GalleryDisplayer({
                     <FaPlayCircle />
                   </div>
                   <span className="title">{highlights.ht}</span>
-                </Link>
+                </Link> */}
               </div>
             </div>
           )}

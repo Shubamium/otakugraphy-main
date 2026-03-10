@@ -22,7 +22,7 @@
     width: 100%;
     padding: 1em;
     padding-block: 200px;
-    box-shadow: 0px 15px 50px 0px rgba(0, 0, 0, 0.869);
+    box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.869);
     border-bottom: 2px solid var(--dgold);
     @media screen and (max-width: 1200px) {
       box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.869);
@@ -513,6 +513,21 @@
             font-weight: 800;
 
             flex-direction: column;
+            span {
+              display: none;
+            }
+
+            @media screen and (max-width: 768px) {
+              .r {
+                display: flex;
+                align-items: flex-end;
+                opacity: 0.6;
+              }
+              span {
+                display: block;
+                font-size: 0.8rem;
+              }
+            }
             @media screen and (max-width: 768px) {
               font-size: 2rem;
             }
@@ -520,10 +535,19 @@
               opacity: 1;
               background: none;
               backdrop-filter: initial;
-              align-items: flex-start;
-              justify-content: flex-start;
-              text-shadow: 0px 0px 14px black;
+              // align-items: flex-start;
+              // justify-content: flex-start;
+              text-shadow: none;
               padding: 0.25em;
+              background: var(--dgold);
+              color: black;
+              height: 20%;
+              top: -10%;
+              display: flex;
+              justify-content: space-between;
+              flex-direction: row;
+              font-size: 1.4rem;
+              box-shadow: 0px 10px 10px 5px rgba(0, 0, 0, 0.769);
             }
           }
         }
@@ -692,7 +716,7 @@
         transform: translateX(-5%);
 
         text-align: right;
-        box-shadow: 0px 0px 24px 10px rgba(0, 0, 0, 0.469);
+        box-shadow: 0px 0px 14px 5px rgba(0, 0, 0, 0.469);
         @media screen and (max-width: 1024px) {
           box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.469);
         }
@@ -862,7 +886,7 @@
           @include mq(550) {
             padding: 1em;
           }
-          text-align: center;
+          text-align: left;
           h2 {
             font-size: 2.8rem;
             color: var(--dgold);
@@ -887,6 +911,7 @@
           p {
             color: white;
             opacity: 0.7;
+            font-size: 0.9rem;
           }
         }
       }

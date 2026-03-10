@@ -18,7 +18,7 @@ type Props = {
 export default function OTGFrame({ options }: Props) {
   const { reverse, type, title, imageURL, videoID, extraVID } = options;
   const [viewCount, setViewCount] = React.useState<string | number>(
-    "Loading views . . ."
+    "Loading views . . .",
   );
   const fetchViewCount = async (vid: string) => {
     const vwc = await getCachedYTViews(vid);
@@ -90,7 +90,12 @@ export default function OTGFrame({ options }: Props) {
           ) : (
             <React.Fragment>
               {imageURL ? (
-                <img src={options.imageURL} alt="" className="img" />
+                <img
+                  src={options.imageURL}
+                  alt=""
+                  className="img"
+                  loading="lazy"
+                />
               ) : (
                 <EmptyFrame />
               )}

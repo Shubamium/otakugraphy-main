@@ -25,7 +25,7 @@ export default function PartnershipSlide({ p, reverse }: any) {
         // repeatType: "loop",
         repeatDelay: 0,
         ease: "linear",
-      }
+      },
     );
 
     return () => anim.cancel();
@@ -48,7 +48,7 @@ export default function PartnershipSlide({ p, reverse }: any) {
           p.map((p: any, index: number) => {
             return (
               <div className="partner" key={p + index}>
-                <img src={p} alt="" className="img" />
+                <img src={p} alt="" className="img" loading="lazy" />
               </div>
             );
           })}
