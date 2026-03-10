@@ -229,7 +229,14 @@ export default function CreatorLists({ creators, view }: Props) {
                       allowFullScreen
                     ></iframe>
                   </div>
-                  <div className="side">
+                  <div
+                    className="side"
+                    style={
+                      currVid?.extra_vids?.length === 1
+                        ? { gridTemplateColumns: "1fr" }
+                        : {}
+                    }
+                  >
                     {currVid?.extra_vids?.map((vid: string, i: number) => {
                       return (
                         <iframe

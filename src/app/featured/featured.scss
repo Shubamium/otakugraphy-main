@@ -54,7 +54,7 @@
       }
       form {
         width: 100%;
-        margin-bottom: 0.25em;
+        margin-bottom: 0.55em;
       }
       input {
         background: #171717;
@@ -103,6 +103,16 @@
         padding: 0.25em 1em;
         border-radius: 2rem;
         color: rgba(255, 255, 255, 0.815);
+
+        @media screen and (max-width: 1280px) {
+          font-size: 1.3rem;
+        }
+        @media screen and (max-width: 1024px) {
+          min-width: 0%;
+        }
+        @media screen and (max-width: 550px) {
+          font-size: 1rem;
+        }
       }
     }
   }

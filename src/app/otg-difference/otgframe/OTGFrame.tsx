@@ -55,6 +55,7 @@ export default function OTGFrame({ options }: Props) {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     key={"extra-video " + vid}
                     referrerPolicy="strict-origin-when-cross-origin"
+                    loading="lazy"
                     allowFullScreen
                   ></iframe>
                 );
@@ -77,6 +78,7 @@ export default function OTGFrame({ options }: Props) {
               {videoID ? (
                 <iframe
                   src={`https://www.youtube.com/embed/${videoID}`}
+                  loading="lazy"
                   title="YouTube video player"
                   className="iframe"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

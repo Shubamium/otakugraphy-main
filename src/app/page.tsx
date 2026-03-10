@@ -127,25 +127,25 @@ export default async function Home() {
           </div>
           <div className="images">
             <div className="l">
-              <Media data={hlm[0]} forceYoutubeHD={true} />
+              <Media data={hlm[0]} imageHeight={800} forceYoutubeHD={true} />
             </div>
             <div className="c">
               <div className="t">
-                <Media data={hlm[1]} forceYoutubeHD={true} />
-                <Media data={hlm[2]} forceYoutubeHD={true} />
+                <Media data={hlm[1]} imageHeight={400} forceYoutubeHD={true} />
+                <Media data={hlm[2]} imageHeight={400} forceYoutubeHD={true} />
               </div>
               <div className="b">
-                <Media data={hlm[3]} forceYoutubeHD={true} />
+                <Media data={hlm[3]} imageHeight={800} forceYoutubeHD={true} />
               </div>
             </div>
             <div className="r">
-              <Media data={hlm[4]} forceYoutubeHD={true} />
+              <Media data={hlm[4]} imageHeight={800} forceYoutubeHD={true} />
             </div>
           </div>
 
           <div className="videos">
-            <Media data={hlm[5]} forceYoutubeHD={true} />
-            <Media data={hlm[6]} forceYoutubeHD={true} />
+            <Media data={hlm[5]} imageHeight={400} forceYoutubeHD={true} />
+            <Media data={hlm[6]} imageHeight={400} forceYoutubeHD={true} />
           </div>
         </div>
       </section>
@@ -345,6 +345,11 @@ export default async function Home() {
   };
   return (
     <main id="page_home">
+      <link
+        rel="preload"
+        as="image"
+        href={urlFor(gd.ti_bg).height(1080).format("webp").url()}
+      ></link>
       <section
         id="banner-h"
         style={
