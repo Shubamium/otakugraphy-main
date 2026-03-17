@@ -3,7 +3,7 @@ import { HiPaperAirplane } from "react-icons/hi";
 import "./contact.scss";
 import { GoPaperAirplane } from "react-icons/go";
 import { LuLoaderPinwheel } from "react-icons/lu";
-import { CSSProperties, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { sendMail } from "../db/mail";
 import { urlFor } from "../db/sanity";
 import { BiCheckCircle } from "react-icons/bi";
@@ -40,7 +40,7 @@ export default function Contact({ gd }: Props) {
       message,
       dc,
       socials,
-      information
+      information,
     );
 
     setTimeout(() => {
@@ -71,6 +71,23 @@ export default function Contact({ gd }: Props) {
     setSubmitResult(null);
     setSuccess(false);
   };
+
+  function setFocusOnInput(e: MouseEvent) {
+    const container = e.target as HTMLElement;
+    const closest = container.closest(".ff");
+    if (!closest) return;
+
+    const input = container.querySelector(
+      "input, textarea",
+    ) as HTMLInputElement;
+    if (!input) return;
+    input.focus();
+  }
+  useEffect(() => {
+    document.addEventListener("click", setFocusOnInput);
+
+    return () => document.removeEventListener("click", setFocusOnInput);
+  }, []);
   return (
     <main id="page_contact">
       <div
@@ -127,73 +144,64 @@ export default function Contact({ gd }: Props) {
                   }}
                 />
               </div>
-              <div className="ff">
-                <label htmlFor="email">EMAIL</label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="your_email@mail.com"
-                  value={mail}
-                  onChange={(e) => {
-                    setMail(e.target.value);
-                  }}
-                />
+              <div className="fg">
+                <div className="ff">
+                  <label htmlFor="email">EMAIL</label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="your_email@mail.com"
+                    value={mail}
+                    onChange={(e) => {
+                      setMail(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="ff">
+                  <label htmlFor="phone">
+                    PHONE <span className="op">(optional)</span>
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="+1 (123) 456 789"
+                    value={phone ?? ""}
+                    onChange={(e) => {
+                      setPhone(e.target.value);
+                    }}
+                  />
+                </div>
               </div>
-              <div className="ff">
-                <label htmlFor="phone">
-                  PHONE <span className="op">(optional)</span>
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="+1 (123) 456 789"
-                  value={phone ?? ""}
-                  onChange={(e) => {
-                    setPhone(e.target.value);
-                  }}
-                />
-              </div>
-              <div className="ff">
-                <label htmlFor="dc">
-                  DISCORD <span className="op">(optional)</span>
-                </label>
-                <input
-                  type="text"
-                  name="dc"
-                  placeholder="Your Discord username. . ."
-                  value={dc ?? ""}
-                  onChange={(e) => {
-                    setDc(e.target.value);
-                  }}
-                />
-              </div>
-              {/* <div className="ff">
-                <label htmlFor="sub">Subject</label>
-                <input
-                  type="text"
-                  name="sub"
-                  required
-                  value={subject}
-                  onChange={(e) => {
-                    setSubject(e.target.value);
-                  }}
-                  placeholder="Write the subject here..."
-                />
-              </div> */}
-              <div className="ff">
-                <label htmlFor="socialLinks">Social Links</label>
-                <textarea
-                  name="socialLinks"
-                  id="socialLinks"
-                  placeholder="Write your socials here. . ."
-                  value={socials}
-                  className="socials"
-                  required
-                  onChange={(e) => {
-                    setSocials(e.target.value);
-                  }}
-                ></textarea>
+              <div className="fg">
+                <div className="ff">
+                  <label htmlFor="socialLinks">Social Links</label>
+                  <input
+                    name="socialLinks"
+                    id="socialLinks"
+                    placeholder="Write your socials here. . ."
+                    value={socials}
+                    className="socials"
+                    required
+                    onChange={(e) => {
+                      setSocials(e.target.value);
+                    }}
+                  ></input>
+                </div>
+                <div className="ff">
+                  <label htmlFor="dc">
+                    DISCORD <span className="op">(optional)</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="dc"
+                    placeholder="Your Discord username. . ."
+                    value={dc ?? ""}
+                    onChange={(e) => {
+                      setDc(e.target.value);
+                    }}
+                  />
+                </div>
               </div>
               <div className="ff">
                 <label htmlFor="message">Message</label>

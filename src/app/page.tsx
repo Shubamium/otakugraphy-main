@@ -1,12 +1,9 @@
-import Link from "next/link";
 import Media from "./components/galleryDisplayer/media/Media";
 import "./home.scss";
-import { FaArrowRightLong, FaQuoteLeft } from "react-icons/fa6";
 import PartnershipSlide from "./components/partnershipSlide/PartnershipSlide";
 import { fetchData, urlFor } from "./db/sanity";
 import Category from "./Category";
 import TestimonialSlide from "./components/TestimonialSlide";
-import { BsRecord } from "react-icons/bs";
 import CreatorLists from "./featured/CreatorLists";
 import { PortableText } from "next-sanity";
 import { CSSProperties } from "react";

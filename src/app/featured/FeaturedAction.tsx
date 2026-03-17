@@ -43,6 +43,20 @@ const monthMap: { [key: string]: string } = {
   december: "12",
 };
 
+const intToMonth = [
+  "january",
+  "february",
+  "march",
+  "april",
+  "may",
+  "june",
+  "july",
+  "august",
+  "september",
+  "october",
+  "november",
+  "december",
+];
 const monthNumMap: { [key: string]: string } = {
   "01": "january",
   "02": "february",
@@ -57,16 +71,22 @@ const monthNumMap: { [key: string]: string } = {
   "11": "november",
   "12": "december",
 };
+
 const currDate = new Date();
 
 const defaultFrom = {
-  month: "january",
-  year: currDate.getFullYear().toString(),
+  month: intToMonth[currDate.getMonth()],
+  year: (currDate.getFullYear() - 1).toString(),
 };
 const defaultTo = {
-  month: "january",
-  year: (currDate.getFullYear() + 1).toString(),
+  month: intToMonth[currDate.getMonth()],
+  year: currDate.getFullYear().toString(),
 };
+
+const backYearList: number[] = [];
+for (let i = 0; i < 6; i++) {
+  backYearList.push(currDate.getFullYear() - i);
+}
 export default function FeaturedAction({
   agencies,
   events,
@@ -321,22 +341,13 @@ export default function FeaturedAction({
                       }}
                       value={from?.year}
                     >
-                      <option value="2020">2020</option>
-                      <option value="2021">2021</option>
-                      <option value="2022">2022</option>
-                      <option value="2023">2023</option>
-                      <option value="2024">2024</option>
-                      <option value="2025">2025</option>
-                      <option value="2026">2026</option>
-                      <option value="2026">2027</option>
-                      <option value="2026">2028</option>
-                      <option value="2026">2029</option>
-                      <option value="2026">2030</option>
-                      <option value="2026">2031</option>
-                      <option value="2026">2032</option>
-                      <option value="2026">2033</option>
-                      <option value="2026">2034</option>
-                      <option value="2026">2035</option>
+                      {backYearList.map((year) => {
+                        return (
+                          <option value={year} key={"from-" + year}>
+                            {year}
+                          </option>
+                        );
+                      })}
                     </select>
                   </div>
                 </div>
@@ -397,22 +408,13 @@ export default function FeaturedAction({
                       }}
                       value={to?.year}
                     >
-                      <option value="2020">2020</option>
-                      <option value="2021">2021</option>
-                      <option value="2022">2022</option>
-                      <option value="2023">2023</option>
-                      <option value="2024">2024</option>
-                      <option value="2025">2025</option>
-                      <option value="2026">2026</option>
-                      <option value="2027">2027</option>
-                      <option value="2028">2028</option>
-                      <option value="2029">2029</option>
-                      <option value="2030">2030</option>
-                      <option value="2031">2031</option>
-                      <option value="2032">2032</option>
-                      <option value="2033">2033</option>
-                      <option value="2034">2034</option>
-                      <option value="2035">2035</option>
+                      {backYearList.map((year) => {
+                        return (
+                          <option value={year} key={"to-" + year}>
+                            {year}
+                          </option>
+                        );
+                      })}
                     </select>
                   </div>
                 </div>

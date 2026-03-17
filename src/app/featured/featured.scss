@@ -163,7 +163,7 @@
     transition: all 500ms ease;
     max-width: 800px;
     margin: 0 auto;
-    background: url("/bg/noise2.png"), #1f1f1f;
+    background: url("/bg/noise2.webp"), #1f1f1f;
     background-blend-mode: multiply;
     background-size: cover;
     background-repeat: no-repeat;
@@ -191,13 +191,15 @@
         display: flex;
         flex-direction: column;
         select {
+          padding-top: 0.5em;
           background: none;
           color: white;
           font-family: var(--fontM);
           border: none;
-          font-size: 1.2rem;
+          font-size: 1.4rem;
+          font-weight: bolder;
           @media screen and (max-width: 1280px) {
-            font-size: 1rem;
+            font-size: 1.2rem;
           }
 
           option {

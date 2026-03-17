@@ -1,29 +1,14 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP, Roboto_Slab } from "next/font/google";
-import { BIZ_UDPGothic } from "next/font/google";
-import { Zen_Kaku_Gothic_New } from "next/font/google";
-import "./globals.scss";
+import { Roboto_Slab } from "next/font/google";
 import { CSSProperties } from "react";
-import Header from "./components/header/Header";
 import MediaDetail from "./components/mediaDetail/MediaDetail";
-import Scroll from "./Scroll";
 import ReactLenis, { Lenis } from "lenis/react";
 import "lenis/dist/lenis.css";
 import Footer from "./components/footer/Footer";
 import SideContact from "./components/sideContact/SideContact";
-import Script from "next/script";
-import EXIF from "exif-js";
-import PasswordGate from "./components/passwordGate/PasswordGate";
 import HeaderData from "./components/header/HeaderData";
-const noto = Noto_Sans_JP({
-  variable: "--fontM",
-  subsets: ["latin"],
-});
-const biz = BIZ_UDPGothic({
-  variable: "--fontM",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
+import "./globals.scss";
+
 // const zen = Zen_Kaku_Gothic_New({
 //   variable: "--fontM",
 //   subsets: ["latin"],
