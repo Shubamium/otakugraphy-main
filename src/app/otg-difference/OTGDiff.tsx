@@ -24,13 +24,13 @@ export default function OTGDiff({ otgdiff, fl, gd }: Props) {
     <main id="p_otg-diff">
       <img src="/gfx/herobg.webp" alt="" className="head-bg" />
       <div className="od-head">
-        <h1>{otgdiff.otg_t}e</h1>
+        <h1>{otgdiff.otg_t}</h1>
         <p>{otgdiff.otg_d}</p>
         <div className="controls">
           {fl?.map((f: any, i: number) => {
             return (
               <button
-                className={`btn cat ${activeCat == f.categoryName ? "active" : ""}`}
+                className={`btn cat ${activeCat == f.categoryName ? "active" : ""} ${f.categoryName.length > 20 ? "long" : ""}`}
                 onClick={() => {
                   setActiveCat(f.categoryName);
                 }}

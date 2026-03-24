@@ -159,11 +159,11 @@ export default function Contact({ gd }: Props) {
                   />
                 </div>
                 <div className="ff">
-                  <label htmlFor="socialLinks">Social Links</label>
+                  <label htmlFor="socialLinks">Social Link</label>
                   <input
                     name="socialLinks"
                     id="socialLinks"
-                    placeholder="Write your socials here. . ."
+                    placeholder="Write your link here. . ."
                     value={socials}
                     className="socials"
                     required
