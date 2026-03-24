@@ -24,7 +24,7 @@ export async function sendMail(
 
   const messageBody = `\n Email: ${mail} 
 		\n Phone:${phone ? phone : "N/A"}
-  	\n ${socials ? `Socials: ${socials}` : ""}
+  	\n ${socials ? `Socials: ${socials                     }` : ""}
 		\n Discord: ${dc ?? "N/A"} 
 		\n Message: ${message} 
 		`;

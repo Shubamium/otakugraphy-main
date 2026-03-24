@@ -159,22 +159,6 @@ export default function Contact({ gd }: Props) {
                   />
                 </div>
                 <div className="ff">
-                  <label htmlFor="phone">
-                    PHONE <span className="op">(optional)</span>
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="+1 (123) 456 789"
-                    value={phone ?? ""}
-                    onChange={(e) => {
-                      setPhone(e.target.value);
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="fg">
-                <div className="ff">
                   <label htmlFor="socialLinks">Social Links</label>
                   <input
                     name="socialLinks"
@@ -188,6 +172,8 @@ export default function Contact({ gd }: Props) {
                     }}
                   ></input>
                 </div>
+              </div>
+              <div className="fg">
                 <div className="ff">
                   <label htmlFor="dc">
                     DISCORD <span className="op">(optional)</span>
@@ -199,6 +185,21 @@ export default function Contact({ gd }: Props) {
                     value={dc ?? ""}
                     onChange={(e) => {
                       setDc(e.target.value);
+                    }}
+                  />
+                </div>
+
+                <div className="ff">
+                  <label htmlFor="phone">
+                    PHONE <span className="op">(optional)</span>
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="+1 (123) 456 789"
+                    value={phone ?? ""}
+                    onChange={(e) => {
+                      setPhone(e.target.value);
                     }}
                   />
                 </div>
