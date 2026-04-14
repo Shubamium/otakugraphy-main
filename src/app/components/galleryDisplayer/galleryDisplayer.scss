@@ -158,10 +158,21 @@
           color: var(--dgold);
           font-weight: bold;
           font-size: 3rem;
-          padding-bottom: 0.5em;
+          display: flex;
+          align-items: center;
+          gap: 1em;
           @media screen and (max-width: 1280px) {
             font-size: 2.4rem;
           }
+        }
+
+        .hlist {
+          max-height: 80vh;
+          overflow-y: auto;
+          padding-bottom: 20vh;
+          display: flex;
+          flex-direction: column;
+          gap: 1em;
         }
         .title {
           color: white;
@@ -213,6 +224,16 @@
               padding: 0;
               scale: 0.7;
             }
+          }
+        }
+
+        .hpanel {
+          background: #1c1c1c;
+          padding: 1em;
+          border-bottom: 3px solid var(--dgold);
+
+          iframe {
+            border: 3px solid var(--dgold);
           }
         }
       }

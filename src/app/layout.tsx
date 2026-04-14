@@ -9,6 +9,8 @@ import SideContact from "./components/sideContact/SideContact";
 import HeaderData from "./components/header/HeaderData";
 import "./globals.scss";
 
+import Script from "next/script";
+
 // const zen = Zen_Kaku_Gothic_New({
 //   variable: "--fontM",
 //   subsets: ["latin"],
@@ -89,6 +91,7 @@ export default function RootLayout({
           } as CSSProperties
         }
       >
+        <Script src="https://unpkg.com/lenis@v1.0.1/lenis.min.js" />
         <ReactLenis options={{ autoRaf: true }} root>
           <div id="top"></div>
           <SideContact />

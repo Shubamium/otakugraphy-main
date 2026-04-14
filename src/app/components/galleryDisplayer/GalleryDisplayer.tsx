@@ -12,7 +12,12 @@ import FixedC from "./layout/fixedC/FixedC";
 import FixedD from "./layout/fixedD/FixedD";
 import { urlFor } from "@/app/db/sanity";
 import Link from "next/link";
-import { FaPlayCircle } from "react-icons/fa";
+import { FaPlayCircle, FaSave } from "react-icons/fa";
+import { FaStar } from "react-icons/fa6";
+import { BiCamera, BiStar } from "react-icons/bi";
+import { CgStark } from "react-icons/cg";
+import { FcStart } from "react-icons/fc";
+import { BsFillStarFill } from "react-icons/bs";
 type Props = {};
 
 export default function GalleryDisplayer({
@@ -24,8 +29,9 @@ export default function GalleryDisplayer({
 }: any) {
   const [p, setP] = useState(0);
 
-  const showHighlights =
-    highlights && highlights.ht && highlights.thumbnail && highlights.link;
+  // const showHighlights =
+  //   highlights && highlights.ht && highlights.thumbnail && highlights.link;
+  const showHighlights = highlights && highlights.length > 1;
   const renderPage = (pageData: any) => {
     if (!pageData.ml) return <></>;
 
@@ -56,7 +62,7 @@ export default function GalleryDisplayer({
       case "fixedD":
         return <FixedD ml={linked} />;
       default:
-        return <Vertical ml={linked} />;
+        return <Vertical ml={linked} hasHighlights={showHighlights} />;
     }
   };
 
@@ -133,26 +139,34 @@ export default function GalleryDisplayer({
 
       <section id="gallery">
         {pages && pages.length > 0 && renderPage(pages[p])}
-        {highlights &&
-          highlights.ht &&
-          highlights.thumbnail &&
-          highlights.link && (
-            <div className="highlights">
-              <div className="panel ">
-                <h2>HIGHLIGHTS</h2>
-                <iframe
-                  src={`https://www.youtube.com/embed/${highlights.link}?autoplay=0`}
-                  title="YouTube video player"
-                  className="iframe"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                  loading="lazy"
-                ></iframe>
-                <p>
-                  <span className="title">{highlights.ht}</span>
-                </p>
-                {/* <Link
+        {showHighlights && (
+          <div className="highlights">
+            <div className="panel ">
+              <h2>
+                HIGHLIGHTS <BsFillStarFill />
+              </h2>
+              <div className="hlist">
+                {showHighlights &&
+                  highlights.map((h: any, i: number) => {
+                    return (
+                      <div className="hpanel" key={"hpanel" + h._key + i}>
+                        <iframe
+                          src={`https://www.youtube.com/embed/${h.link}?autoplay=0`}
+                          title="YouTube video player"
+                          className="iframe"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          allowFullScreen
+                          loading="lazy"
+                        ></iframe>
+                        <p>
+                          <span className="title">{h.ht}</span>
+                        </p>
+                      </div>
+                    );
+                  })}
+              </div>
+              {/* <Link
                   href={highlights.link}
                   target="_blank"
                   className="link btn"
@@ -172,9 +186,9 @@ export default function GalleryDisplayer({
                   </div>
                   <span className="title">{highlights.ht}</span>
                 </Link> */}
-              </div>
             </div>
-          )}
+          </div>
+        )}
       </section>
     </main>
   );

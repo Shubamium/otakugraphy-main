@@ -1,7 +1,4 @@
 @import "mixins";
-:root {
-  --dgold: #c7a654;
-}
 
 html,
 body {
@@ -12,6 +9,14 @@ body {
   overflow-x: clip;
 }
 
+* {
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+:root {
+  --dgold: #c7a654;
+  scrollbar-width: auto;
+}
 main {
   min-height: 100vh;
   position: relative;

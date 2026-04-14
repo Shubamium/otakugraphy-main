@@ -15,15 +15,19 @@ export default async function Page({}: Props) {
   const otgdiff = await fetchData<any>(`
 			*[_type == 'otg-diff' && preset == 'main']{
 				...,
+				tab_order[] -> {
+					...
+				}
 			}[0]
 		`);
-  const framesList = await fetchData<any>(`
-			*[_type == 'otg-frames']{
-				...,
-			}
-	`);
+  // const framesList = await fetchData<any>(`
+  // 		*[_type == 'otg-frames']{
+  // 			...,
 
-  return <OTGDiff otgdiff={otgdiff} fl={framesList} gd={gd}></OTGDiff>;
+  // 		}
+  // `);
+
+  return <OTGDiff otgdiff={otgdiff} fl={otgdiff.tab_order} gd={gd}></OTGDiff>;
 }
 
 // otgdiff.gated === true && otgdiff.gated_pass ? (

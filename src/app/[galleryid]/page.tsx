@@ -23,7 +23,8 @@ export default async function Page({ params }: Props) {
 					'video': video.asset -> url,
 					'metadata': image.asset -> metadata
 				}
-			}
+			},
+			highlight_list,
 	}[0]
 	`);
 
@@ -36,7 +37,7 @@ export default async function Page({ params }: Props) {
       title={gd.t}
       description={gd.description}
       side_images={gd.side_images}
-      highlights={gd.highlights}
+      highlights={gd.highlight_list}
       pages={gd.pages}
     ></GalleryDisplayer>
   );

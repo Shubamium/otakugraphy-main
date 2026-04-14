@@ -92,6 +92,7 @@ export default async function page({ searchParams }: Props) {
 			*[_type == 'creator-agency']{
 			...}
 	`);
+  console.log("alist", agency);
 
   const featured = await fetchData<any>(
     `*[_type == 'general' && preset == 'main'][0]{

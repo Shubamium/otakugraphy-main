@@ -36,7 +36,6 @@ export default function OTGDiff({ otgdiff, fl, gd }: Props) {
                 }}
                 key={f.categoryName}
               >
-                {" "}
                 {f.categoryName}
               </button>
             );
