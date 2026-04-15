@@ -1,5 +1,5 @@
 "use client";
-import { urlFor } from "@/app/db/sanity";
+import { urlFor } from "@/app/(otakugraphy)/otakugraphy/db/sanity";
 import "./media.scss";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 

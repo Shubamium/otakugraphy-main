@@ -1,5 +1,5 @@
 // DEPRECATED
-import { fetchData } from "@/app/db/sanity";
+import { fetchData } from "@/app/(otakugraphy)/otakugraphy/db/sanity";
 
 import React, { Suspense } from "react";
 import GateClient from "./GateClient";

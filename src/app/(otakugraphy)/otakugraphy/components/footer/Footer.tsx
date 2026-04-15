@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa6";
 import { LuArrowUpToLine } from "react-icons/lu";
 import { CSSProperties } from "react";
-import { fetchData, urlFor } from "@/app/db/sanity";
+import { fetchData, urlFor } from "@/app/(otakugraphy)/otakugraphy/db/sanity";
 import { NavList } from "../header/Header";
 
 type Props = {};

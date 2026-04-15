@@ -10,7 +10,7 @@ import FixedA from "./layout/fixedA/FIxedA";
 import FixedB from "./layout/fixedB/FIxedB";
 import FixedC from "./layout/fixedC/FixedC";
 import FixedD from "./layout/fixedD/FixedD";
-import { urlFor } from "@/app/db/sanity";
+import { urlFor } from "@/app/(otakugraphy)/otakugraphy/db/sanity";
 import Link from "next/link";
 import { FaPlayCircle, FaSave } from "react-icons/fa";
 import { FaStar } from "react-icons/fa6";

@@ -4,8 +4,7 @@ import { Redis } from "@upstash/redis";
 import { cookies } from "next/headers";
 
 export async function middleware(req: NextRequest) {
-  console.log("Page is gated");
-
+  // Authentication
   let cookie = await cookies();
   if (cookie.get("admin")?.value === "true") {
     console.log("Admin Mode");
@@ -20,7 +19,19 @@ export async function middleware(req: NextRequest) {
     console.log("Page is gated");
     return NextResponse.redirect(new URL("/unavailable", req.url));
   }
-  return NextResponse.next();
+  // Handle Redirect
+  const host = req.headers.get("host");
+  if (req.nextUrl.pathname.startsWith("/admin")) {
+    return NextResponse.next();
+  } else if (host?.includes("vps")) {
+    return NextResponse.rewrite(
+      new URL("/vps" + req.nextUrl.pathname, req.url),
+    );
+  } else {
+    return NextResponse.rewrite(
+      new URL("/otakugraphy" + req.nextUrl.pathname, req.url),
+    );
+  }
 }
 export const config = {
   matcher: ["/((?!_next|favicon.ico|unavailable|api|.*\\..*).*)"],

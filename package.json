@@ -6,32 +6,42 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "map": "payload generate:importmap",
+    "types": "payload generate:types"
   },
   "dependencies": {
     "@googleapis/youtube": "^29.0.0",
+    "@payloadcms/db-mongodb": "^3.82.1",
+    "@payloadcms/next": "^3.82.1",
+    "@payloadcms/richtext-lexical": "^3.82.1",
+    "@payloadcms/storage-s3": "^3.82.1",
     "@upstash/redis": "^1.36.2",
     "blurhash": "^2.0.5",
     "exif-js": "^2.3.0",
+    "graphql": "^16.13.2",
     "lenis": "^1.2.3",
     "lite-youtube-embed": "^0.3.4",
     "motion": "^12.5.0",
-    "next": "15.2.8",
+    "next": "15.2.9",
     "next-sanity": "^9.9.5",
     "nodemailer": "^6.10.0",
+    "payload": "^3.82.1",
     "react": "^19.0.0",
     "react-blurhash": "^0.3.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
     "react-responsive": "^10.0.1",
     "react-use-measure": "^2.1.7",
-    "sass": "^1.86.0"
+    "sass": "^1.86.0",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^20.19.39",
     "@types/nodemailer": "^6.4.17",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "typescript": "^5"
-  }
+  },
+  "type": "module"
 }

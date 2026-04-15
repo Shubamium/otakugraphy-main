@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Header";
-import { fetchData } from "@/app/db/sanity";
+import { fetchData } from "@/app/(otakugraphy)/otakugraphy/db/sanity";
 
 type Props = {};
 

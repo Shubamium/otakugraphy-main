@@ -2,7 +2,10 @@
 import React, { useEffect } from "react";
 
 import "./otgFrame.scss";
-import { getCachedYTViews, getYoutubeViews } from "@/app/db/youtube";
+import {
+  getCachedYTViews,
+  getYoutubeViews,
+} from "@/app/(otakugraphy)/otakugraphy/db/youtube";
 import { FaXmark } from "react-icons/fa6";
 type Props = {
   options: {
