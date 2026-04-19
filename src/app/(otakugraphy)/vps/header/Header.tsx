@@ -3,15 +3,28 @@ import React from "react";
 type Props = {};
 import "./header.scss";
 import Link from "next/link";
+import { getPayload } from "payload";
+import payloadConfig from "@/payload.config";
 
-export default function Header({}: Props) {
+export default async function Header({}: Props) {
+  const p = await getPayload({
+    config: await payloadConfig,
+  });
+  const vpsg = await p.findGlobal({
+    slug: "vpsGeneral",
+  });
+  const hd = vpsg.header;
   return (
     <header id="header">
       <div className="side">
-        <Link href={"/"} className="btn btn-nav">
-          About
-        </Link>
-
+        {hd?.navigation?.map((n) => {
+          return (
+            <Link href={n.routeLink ?? "#"} className="btn btn-nav">
+              {n.name}
+            </Link>
+          );
+        })}
+        {/* 
         <Link href={"#overview"} className="btn btn-nav">
           Overview
         </Link>
@@ -26,7 +39,7 @@ export default function Header({}: Props) {
 
         <Link href={"/jobs"} className="btn btn-nav">
           Jobs
-        </Link>
+        </Link> */}
       </div>
     </header>
   );
