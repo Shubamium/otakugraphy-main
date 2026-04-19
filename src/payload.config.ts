@@ -13,6 +13,7 @@ import vpsHome from "./collections/vps/g/vpsHome";
 import vpsGeneral from "./collections/vps/g/vpsGeneral";
 import vpsJobs from "./collections/vps/c/vpsJobs";
 import { Portal } from "./collections/portal/g/PortalGeneral";
+import { vpsJobsPage } from "./collections/vps/g/vpsJobsPage";
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
@@ -28,7 +29,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, vpsJobs],
-  globals: [vpsGeneral, vpsHome, Portal],
+  globals: [vpsGeneral, vpsHome, Portal, vpsJobsPage],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {

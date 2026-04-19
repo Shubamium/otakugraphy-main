@@ -1,15 +1,27 @@
 import type { Metadata } from "next";
 import { Roboto_Slab } from "next/font/google";
 import { CSSProperties } from "react";
-import Header from "./header/Header";
-import Footer from "./footer/Footer";
-import "./global.scss";
+import MediaDetail from "./components/mediaDetail/MediaDetail";
+import ReactLenis, { Lenis } from "lenis/react";
+import "lenis/dist/lenis.css";
+import Footer from "./components/footer/Footer";
+import SideContact from "./components/sideContact/SideContact";
+import HeaderData from "./components/header/HeaderData";
+import ".././globals.scss";
+
+import Script from "next/script";
+
+// const zen = Zen_Kaku_Gothic_New({
+//   variable: "--fontM",
+//   subsets: ["latin"],
+//   weight: ["400", "700"],
+// });
 const roboto = Roboto_Slab({
   variable: "--fontM",
   subsets: ["latin"],
   weight: ["200", "300", "400", "500", "600", "700"],
 });
-const title = "Otakugraphy - VPS";
+const title = "Otakugraphy - VTuber-Focused Media Company";
 const description =
   " Raising the industry standard for immersive multimedia experiences through connecting virtual creators and their communities ";
 const banner = "https://shubastore.venmiart.com/api/public/dl/f-AgfGlA";
@@ -79,9 +91,15 @@ export default function RootLayout({
           } as CSSProperties
         }
       >
-        <Header />
-        {children}
-        <Footer />
+        <Script src="https://unpkg.com/lenis@v1.0.1/lenis.min.js" />
+        <ReactLenis options={{ autoRaf: true }} root>
+          <div id="top"></div>
+          <SideContact />
+          {children}
+          <HeaderData />
+          <MediaDetail />
+          <Footer />
+        </ReactLenis>
       </body>
     </html>
   );

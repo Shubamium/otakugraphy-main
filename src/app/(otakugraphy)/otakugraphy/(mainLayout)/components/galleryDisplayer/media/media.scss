@@ -1,0 +1,111 @@
+@import "mixins";
+.media {
+  background: #292929;
+  border-bottom: 3px solid var(--dgold);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.304);
+  // overflow: hidden;
+  @media screen and (max-width: 1024px) {
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.304);
+  }
+  @media screen and (max-width: 768px) {
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.304);
+  }
+  @media screen and (max-width: 550px) {
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.304);
+  }
+  transition: all 500ms ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  &:hover {
+    box-shadow: 0px 0px 5px 0px black;
+    @media screen and (max-width: 1024px) {
+      box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.304);
+    }
+    @media screen and (max-width: 768px) {
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.304);
+    }
+    @media screen and (max-width: 550px) {
+      box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.304);
+    }
+    .alt {
+      opacity: 1;
+    }
+  }
+  .alt {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    color: #a6a5a5;
+    z-index: 10;
+    opacity: 0;
+    transition: all 500ms ease;
+    background: #292929;
+    padding: 0.1em 1em;
+    border-radius: 0 1em 0 0;
+    font-size: 0.8rem;
+  }
+
+  &:has(.video) {
+    .alt {
+      bottom: initial;
+      top: 0%;
+      right: 0%;
+      left: initial;
+      text-align: right;
+      max-width: 90%;
+      border-radius: 0 0 0 1em;
+    }
+  }
+  .img {
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(128, 128, 128, 0.439);
+    object-fit: cover;
+    transition: all 500ms ease;
+    filter: brightness(90%) saturate(90%);
+    &:hover {
+      filter: brightness(100%) saturate(100%);
+      scale: 1.05;
+    }
+  }
+
+  .blur {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .btn-vfs {
+    width: 50px;
+    height: 50px;
+    background: var(--dgold);
+    padding: 0.5em;
+    position: absolute;
+    color: #292929;
+    border-radius: 0 0 2em 0;
+    box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.563);
+    z-index: 10;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+    @include mq(550) {
+      width: 35px;
+      height: 35px;
+    }
+  }
+  .video {
+    width: 100%;
+    height: 100%;
+    // user-select: none;
+    // pointer-events: none;
+    object-fit: contain;
+  }
+  .iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+}

@@ -1,0 +1,13 @@
+import React from "react";
+import Header from "./Header";
+import { fetchData } from "@/app/(otakugraphy)/otakugraphy/(mainLayout)//db/sanity";
+
+type Props = {};
+
+export default async function HeaderData({}: Props) {
+  const hd = await fetchData<any>(`
+		*[_type == "general" && preset == "main"][0]{
+			navlist,
+		}`);
+  return <Header navlist={hd.navlist} />;
+}

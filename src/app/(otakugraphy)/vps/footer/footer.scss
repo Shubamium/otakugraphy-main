@@ -1,0 +1,30 @@
+#footer {
+  background: url("/bg/diamond.png");
+  border-top: 2px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 100px 1em;
+  margin-top: 100px;
+  .logo {
+    max-width: 400px;
+    margin-bottom: 1em;
+  }
+
+  .copy {
+    color: #cfcfcf31;
+  }
+
+  .attrib {
+    color: #cfcfcf7c;
+    font-size: 0.9rem;
+  }
+
+  .btn-mix {
+    background: var(--dgold);
+    color: #292929;
+    padding: 0.25em 1em;
+    margin: 1em;
+  }
+}

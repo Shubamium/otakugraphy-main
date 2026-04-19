@@ -1,0 +1,221 @@
+:root {
+  scroll-behavior: smooth;
+}
+#p_portal {
+  #portal-hero {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid grey;
+    position: relative;
+    .background {
+      background: var(--bg);
+      background-attachment: fixed;
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      z-index: -1;
+    }
+
+    .logo {
+      max-width: 80%;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 0%;
+      padding-bottom: 50px;
+      width: 100%;
+
+      left: 0%;
+      color: #c7a654;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      font-size: 1rem;
+      background: linear-gradient(to top, black, transparent);
+      svg {
+        width: 50px;
+        height: 50px;
+        color: rgb(211, 211, 211);
+        animation: arrdownups 1s infinite linear forwards alternate;
+        @keyframes arrdownups {
+          from {
+            transform: translateY(30%);
+          }
+          to {
+            transform: translateY(-10%);
+          }
+        }
+      }
+    }
+  }
+  .divider {
+    height: 100px;
+    width: 100%;
+    background: linear-gradient(to bottom, black, #171717);
+  }
+
+  #portal-link {
+    height: 100vh;
+    display: flex;
+    .portal {
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(to bottom, #4d37003f, black);
+      flex-grow: 1;
+      overflow: hidden;
+      border-right: 4px solid var(--dgold);
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+
+      .main {
+        text-align: center;
+        width: 100%;
+        font-size: 5rem;
+        line-height: 90%;
+        color: var(--dgold);
+        font-weight: bold;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        padding-block: 10%;
+        padding-bottom: 12vh;
+        transition: all 800ms ease;
+        transform: translateY(0%);
+        position: relative;
+        z-index: 10;
+        filter: drop-shadow(0px 0px 10px black);
+        p {
+          margin-bottom: 0.25em;
+          max-width: min-content;
+        }
+        img {
+          width: 190px;
+        }
+      }
+      .explore {
+        background: url("/bg/grunge12.png"), black;
+
+        display: flex;
+        justify-content: space-between;
+        padding: 1em;
+        width: 100%;
+        cursor: pointer;
+        align-items: center;
+        border-top: 2px solid white;
+        position: absolute;
+        z-index: 10;
+        user-select: none;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(100%);
+        transition: all 500ms ease;
+        transition-delay: 100ms;
+        box-shadow: 0px 10px 20px 40px rgba(0, 0, 0, 0.438);
+        p {
+          color: rgba(255, 255, 255, 0.315);
+          font-size: 3rem;
+          font-weight: bold;
+        }
+        .icon {
+          user-select: none;
+          scale: 1;
+          img {
+            user-select: none;
+            transition: all 500ms ease;
+          }
+        }
+      }
+      &:hover,
+      .active {
+        cursor: pointer;
+        .main {
+          transform: translateY(10%);
+          opacity: 0;
+          user-select: none;
+          pointer-events: none;
+        }
+
+        .bg-container {
+          .background {
+            filter: saturate(100%) brightness(100%);
+            animation: panout 20s linear forwards alternate;
+            @keyframes panout {
+              from {
+                scale: 1;
+              }
+              to {
+                scale: 1.1;
+              }
+            }
+          }
+          &::after {
+            opacity: 0.4;
+          }
+        }
+        .explore {
+          opacity: 1;
+          transform: translateY(0%);
+
+          &:hover {
+            .icon {
+              overflow: hidden;
+              img {
+                animation: arrslide 1s infinite linear forwards;
+              }
+              @keyframes arrslide {
+                0% {
+                  transform: translateX(-100%);
+                }
+                100% {
+                  transform: translateX(100%);
+                }
+              }
+            }
+          }
+        }
+      }
+      .bg-container {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        background: black;
+
+        .background {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          opacity: 10;
+          object-fit: cover;
+          z-index: 5;
+          filter: saturate(0) brightness(60%);
+          transition: all 500ms ease;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0%;
+          left: 0%;
+          width: 100%;
+          height: 100%;
+          transition: all 500ms ease;
+          opacity: 1;
+          background:
+            url("/bg/diamond10.png"),
+            linear-gradient(to bottom, #4d37003f, black);
+          z-index: 10;
+        }
+      }
+    }
+  }
+}

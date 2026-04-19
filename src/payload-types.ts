@@ -93,11 +93,13 @@ export interface Config {
     vpsGeneral: VpsGeneral;
     vpsHome: VpsHome;
     portalGeneral: PortalGeneral;
+    vpsJobsPage: VpsJobsPage;
   };
   globalsSelect: {
     vpsGeneral: VpsGeneralSelect<false> | VpsGeneralSelect<true>;
     vpsHome: VpsHomeSelect<false> | VpsHomeSelect<true>;
     portalGeneral: PortalGeneralSelect<false> | PortalGeneralSelect<true>;
+    vpsJobsPage: VpsJobsPageSelect<false> | VpsJobsPageSelect<true>;
   };
   locale: null;
   widgets: {
@@ -450,7 +452,7 @@ export interface VpsHome {
       callToActionLink?: string | null;
     };
   };
-  'Pro Shot'?: {
+  ProShot?: {
     proSection?: {
       title?: string | null;
       media?: {
@@ -534,6 +536,39 @@ export interface PortalGeneral {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "vpsJobsPage".
+ */
+export interface VpsJobsPage {
+  id: string;
+  banner?: (string | null) | Media;
+  subtitle?: string | null;
+  title?: string | null;
+  aboutImage?: (string | null) | Media;
+  cta?: {
+    buttonText?: string | null;
+    buttonLink?: string | null;
+  };
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  jobList?: (string | null) | Media;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "vpsGeneral_select".
  */
 export interface VpsGeneralSelect<T extends boolean = true> {
@@ -581,7 +616,7 @@ export interface VpsHomeSelect<T extends boolean = true> {
               callToActionLink?: T;
             };
       };
-  'Pro Shot'?:
+  ProShot?:
     | T
     | {
         proSection?:
@@ -666,6 +701,27 @@ export interface PortalGeneralSelect<T extends boolean = true> {
         background?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "vpsJobsPage_select".
+ */
+export interface VpsJobsPageSelect<T extends boolean = true> {
+  banner?: T;
+  subtitle?: T;
+  title?: T;
+  aboutImage?: T;
+  cta?:
+    | T
+    | {
+        buttonText?: T;
+        buttonLink?: T;
+      };
+  description?: T;
+  jobList?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

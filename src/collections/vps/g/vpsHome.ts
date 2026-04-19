@@ -129,7 +129,8 @@ const vpsHome: GlobalConfig = {
           fields: [HeroSectionFields],
         },
         {
-          name: "Pro Shot",
+          name: "ProShot",
+          label: "ProShot Section",
           fields: [ProSectionFields],
         },
         {

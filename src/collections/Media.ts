@@ -26,7 +26,6 @@ export const Media: CollectionConfig = {
     imageSizes: [
       {
         name: "small",
-        width: 400,
         height: 400,
       },
       {
