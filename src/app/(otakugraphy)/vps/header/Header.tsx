@@ -19,7 +19,7 @@ export default async function Header({}: Props) {
       <div className="side">
         {hd?.navigation?.map((n) => {
           return (
-            <Link href={n.routeLink ?? "#"} className="btn btn-nav">
+            <Link href={n.routeLink ?? "#"} key={n.id} className="btn btn-nav">
               {n.name}
             </Link>
           );
