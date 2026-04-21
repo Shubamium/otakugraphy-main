@@ -46,9 +46,7 @@ export default async function page({}: Props) {
               )}
             </div>
             <div className="description">
-              <RichText
-                data={jd.description as SerializedEditorState}
-              ></RichText>
+              <RichText data={jd.description as any}></RichText>
             </div>
           </div>
           <div className="r">
