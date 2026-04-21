@@ -93,12 +93,14 @@ export default async function page({}: Props) {
               >
                 <div className="confine">
                   <div className="l">
-                    <h2>{n.title}</h2>
+                    <h2>
+                      <Link href={n.routeLink ?? "#"}>{n.title}</Link>
+                    </h2>
                     <p className="subtitle">{n.subtitle}</p>
                     <div className="tags">
                       {n.tags?.map((t, i) => {
                         return (
-                          <p className="t" key={t + i}>
+                          <p className="t btn" key={t + i}>
                             {t}
                           </p>
                         );

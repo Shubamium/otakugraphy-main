@@ -173,6 +173,11 @@
           .t {
             padding: 0.2em 1em;
             border: 1px solid white;
+
+            &:hover {
+              background: white;
+              color: black;
+            }
           }
         }
         .btn-arr {
