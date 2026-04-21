@@ -5,6 +5,9 @@ export const Portal: GlobalConfig = {
   label: "General",
   admin: {
     group: "Portal",
+    livePreview: {
+      url: `https://${process.env.NEXT_PUBLIC_ROOT_URL}/`,
+    },
   },
   fields: [
     {

@@ -9,7 +9,6 @@ import { getPayload } from "payload";
 import payloadConfig from "@/payload.config";
 import { Media } from "@/payload-types";
 import { RichText } from "@payloadcms/richtext-lexical/react";
-import { SerializedEditorState } from "lexical";
 import PayloadRefreshRouteOnSave from "@/app/globalComponent/refreshRoute/PayloadRefreshRouteOnSave";
 
 export default async function page({}: Props) {
@@ -68,11 +67,7 @@ export default async function page({}: Props) {
               <PayloadMedia media={vpsd.About?.aboutSection?.media as any} />
             </div>
             <div className="r">
-              <RichText
-                data={
-                  vpsd.About?.aboutSection?.description as SerializedEditorState
-                }
-              />
+              <RichText data={vpsd.About?.aboutSection?.description as any} />
             </div>
           </div>
         </section>

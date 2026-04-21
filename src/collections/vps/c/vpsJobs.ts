@@ -8,6 +8,9 @@ const vpsJobs: CollectionConfig = {
   },
   admin: {
     group: "Virtual Production Studio",
+    livePreview: {
+      url: `http://vps.${process.env.NEXT_PUBLIC_ROOT_URL}/`,
+    },
   },
   fields: [
     {

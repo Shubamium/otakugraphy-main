@@ -5,6 +5,9 @@ const vpsGeneral: GlobalConfig = {
   label: "General",
   admin: {
     group: "Virtual Production Studio",
+    livePreview: {
+      url: `http://vps.${process.env.NEXT_PUBLIC_ROOT_URL}/`,
+    },
   },
   fields: [
     {

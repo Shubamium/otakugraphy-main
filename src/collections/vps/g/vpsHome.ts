@@ -117,7 +117,7 @@ const vpsHome: GlobalConfig = {
   admin: {
     group: "Virtual Production Studio",
     livePreview: {
-      url: "http://vps.localhost:3000/",
+      url: `http://vps.${process.env.NEXT_PUBLIC_ROOT_URL}/`,
     },
   },
   fields: [

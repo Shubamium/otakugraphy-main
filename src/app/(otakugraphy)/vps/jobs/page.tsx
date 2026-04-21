@@ -8,7 +8,6 @@ import payloadConfig from "@/payload.config";
 import { Media } from "@/payload-types";
 import PayloadRefreshRouteOnSave from "@/app/globalComponent/refreshRoute/PayloadRefreshRouteOnSave";
 import { RichText } from "@payloadcms/richtext-lexical/react";
-import { SerializedEditorState } from "lexical";
 export default async function page({}: Props) {
   const p = await getPayload({
     config: await payloadConfig,
@@ -77,9 +76,7 @@ export default async function page({}: Props) {
                     <h3>{j.title}</h3>
                     <hr />
                     <div className="description">
-                      <RichText
-                        data={j.description as SerializedEditorState}
-                      ></RichText>
+                      <RichText data={j.description as any}></RichText>
                     </div>
                   </div>
                   <div className="action">
