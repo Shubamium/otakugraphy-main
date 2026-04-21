@@ -6,8 +6,10 @@ const vpsJobs: CollectionConfig = {
     plural: "Job List",
     singular: "Job",
   },
+  orderable: true,
   admin: {
     group: "Virtual Production Studio",
+
     livePreview: {
       url: `http://vps.${process.env.NEXT_PUBLIC_ROOT_URL}/`,
     },

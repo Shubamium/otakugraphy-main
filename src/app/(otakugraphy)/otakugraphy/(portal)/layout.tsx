@@ -20,7 +20,7 @@ const roboto = Roboto_Slab({
 });
 const title = "Otakugraphy - VTuber-Focused Media Company";
 const description =
-  " Raising the industry standard for immersive multimedia experiences through connecting virtual creators and their communities ";
+  "Raising the industry standard for immersive multimedia experiences through connecting virtual creators and their communities ";
 const banner = "https://shubastore.venmiart.com/api/public/dl/f-AgfGlA";
 const url = "https://otakugraphy.com";
 

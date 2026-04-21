@@ -197,6 +197,7 @@ export interface Media {
  */
 export interface VpsJob {
   id: string;
+  _order?: string | null;
   title?: string | null;
   description?: {
     root: {
@@ -365,6 +366,7 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "vpsJobs_select".
  */
 export interface VpsJobsSelect<T extends boolean = true> {
+  _order?: T;
   title?: T;
   description?: T;
   icon?: T;

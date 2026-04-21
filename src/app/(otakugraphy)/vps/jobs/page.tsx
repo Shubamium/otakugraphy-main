@@ -19,6 +19,8 @@ export default async function page({}: Props) {
 
   const jl = await p.find({
     collection: "vpsJobs",
+    limit: 0,
+    sort: ["_order"],
   });
   return (
     <main id="p_jobs">
@@ -69,7 +71,11 @@ export default async function page({}: Props) {
             {jl.docs?.map((j, i: number) => {
               return (
                 <div className="job" key={j.id}>
-                  <img src="/g/" alt="" className="icon" />
+                  <img
+                    src={(j.icon as Media)?.url ?? undefined}
+                    alt=""
+                    className="icon"
+                  />
                   <div className="content">
                     <h3>{j.title}</h3>
                     <hr />
