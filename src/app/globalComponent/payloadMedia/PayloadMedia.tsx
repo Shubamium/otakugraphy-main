@@ -56,14 +56,16 @@ export function StatelesMedia({
     <div className="pmedia">
       {type === "Image" && <img src={imageLink} />}
 
-      {type === "Video" && <video controls src={videoLink} autoPlay muted />}
+      {type === "Video" && (
+        <video controls src={videoLink} autoPlay muted loop />
+      )}
       {type === "Youtube Embed" && (
         <iframe
-          src={`https://www.youtube.com/embed/${videoId}`}
+          src={`https://www.youtube.com/embed/${videoId}?loop=1`}
           loading="lazy"
           title="YouTube video player"
           className="iframe"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;loop"
           referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
         ></iframe>
