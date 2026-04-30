@@ -11,6 +11,9 @@
 
   #jobs-hero {
     padding: 100px 0;
+    @media screen and (max-width: 1024px) {
+      padding: 50px 0;
+    }
     .confine {
       display: grid;
       grid-template-columns: 1.5fr 500px;
@@ -20,6 +23,9 @@
       max-width: min(1440px, 95%);
       gap: 2em;
       padding: 2em;
+      @media screen and (max-width: 1024px) {
+        grid-template-columns: 1fr;
+      }
       .l {
         .subtitle {
           color: #575757;
@@ -27,6 +33,9 @@
           display: flex;
           align-items: center;
           gap: 1em;
+          @media screen and (max-width: 1024px) {
+            font-size: 1rem;
+          }
           p {
             white-space: nowrap;
           }
@@ -41,6 +50,9 @@
         h2 {
           font-size: 5rem;
           letter-spacing: 2px;
+          @media screen and (max-width: 1024px) {
+            font-size: 2.5rem;
+          }
           line-height: 80%;
         }
 
@@ -57,6 +69,9 @@
         }
         .description {
           max-width: 400px;
+          @media screen and (max-width: 1024px) {
+            font-size: 0.9rem;
+          }
           p {
             margin-bottom: 1em;
           }
@@ -104,8 +119,15 @@
           text-align: center;
           font-size: 3rem;
           letter-spacing: 2px;
-          line-height: 80%;
           white-space: nowrap;
+          line-height: 80%;
+          @media screen and (max-width: 1024px) {
+            font-size: 2rem;
+            white-space: initial;
+          }
+          @media screen and (max-width: 550px) {
+            font-size: 1.5rem;
+          }
         }
         hr {
           height: 1px;
@@ -121,6 +143,20 @@
         padding: 2em 0;
         max-width: min(12800px, 80%);
         margin: 0 auto;
+        @media screen and (max-width: 1024px) {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          padding: 1em;
+        }
+        @media screen and (max-width: 768px) {
+          padding: 0.5em;
+          gap: 1em;
+          max-width: 95%;
+        }
+        @media screen and (max-width: 560px) {
+          grid-template-columns: 1fr;
+          gap: 2em 0;
+        }
         .job {
           background: url("/bg/text-grid.png"), #202020;
           border-top: 5px solid var(--dgold);
@@ -129,9 +165,13 @@
           display: flex;
           flex-direction: column;
           .content {
-            padding: 2em 2em;
+            padding: 2em;
             filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.586));
             flex-grow: 1;
+            @media screen and (max-width: 550px) {
+              padding: 1em;
+              padding-top: 2em;
+            }
           }
           .icon {
             content: "";
@@ -154,10 +194,16 @@
 
           h3 {
             font-size: 1.4rem;
+            @media screen and (max-width: 550px) {
+              font-size: 1.2rem;
+            }
           }
           hr {
             background: white;
             height: 2px;
+            @media screen and (max-width: 550px) {
+              margin: 0.25em 0;
+            }
             margin: 1em 0;
             opacity: 0.4;
           }

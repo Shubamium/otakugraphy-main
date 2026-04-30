@@ -13,16 +13,27 @@
   margin-top: 100px;
   .logo {
     max-width: 400px;
+    @media screen and (max-width: 580px) {
+      max-width: 70%;
+    }
     margin-bottom: 1em;
   }
 
   .copy {
     color: #cfcfcf31;
+    text-align: center;
+    @media screen and (max-width: 420px) {
+      font-size: 0.8rem;
+    }
   }
 
   .attrib {
     color: #cfcfcf7c;
     font-size: 0.9rem;
+    text-align: center;
+    @media screen and (max-width: 420px) {
+      font-size: 0.8rem;
+    }
   }
 
   .btn-mix {
