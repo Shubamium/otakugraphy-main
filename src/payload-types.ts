@@ -515,6 +515,66 @@ export interface VpsHome {
         | null;
     };
   };
+  'Our Work'?: {
+    ourwork?: {
+      headingBanner?: (string | null) | Media;
+      titleTop?: string | null;
+      titleCenter?: string | null;
+      titleBottom?: string | null;
+      worksList?:
+        | {
+            title?: string | null;
+            thumbnail?: (string | null) | Media;
+            fullPreview?: (string | null) | Media;
+            id?: string | null;
+          }[]
+        | null;
+    };
+  };
+  Team?: {
+    team?: {
+      subtitle?: string | null;
+      title?: string | null;
+      description?: {
+        root: {
+          type: string;
+          children: {
+            type: any;
+            version: number;
+            [k: string]: unknown;
+          }[];
+          direction: ('ltr' | 'rtl') | null;
+          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+          indent: number;
+          version: number;
+        };
+        [k: string]: unknown;
+      } | null;
+      teamList?:
+        | {
+            name?: string | null;
+            pfp?: (string | null) | Media;
+            role?: string | null;
+            description?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -681,6 +741,46 @@ export interface VpsHomeSelect<T extends boolean = true> {
                     routeLink?: T;
                     background?: T;
                     tags?: T;
+                    id?: T;
+                  };
+            };
+      };
+  'Our Work'?:
+    | T
+    | {
+        ourwork?:
+          | T
+          | {
+              headingBanner?: T;
+              titleTop?: T;
+              titleCenter?: T;
+              titleBottom?: T;
+              worksList?:
+                | T
+                | {
+                    title?: T;
+                    thumbnail?: T;
+                    fullPreview?: T;
+                    id?: T;
+                  };
+            };
+      };
+  Team?:
+    | T
+    | {
+        team?:
+          | T
+          | {
+              subtitle?: T;
+              title?: T;
+              description?: T;
+              teamList?:
+                | T
+                | {
+                    name?: T;
+                    pfp?: T;
+                    role?: T;
+                    description?: T;
                     id?: T;
                   };
             };

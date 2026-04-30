@@ -10,6 +10,8 @@ import payloadConfig from "@/payload.config";
 import { Media } from "@/payload-types";
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import PayloadRefreshRouteOnSave from "@/app/globalComponent/refreshRoute/PayloadRefreshRouteOnSave";
+import OurWorkSection from "./vps/ourWork/OurWorkSection";
+import { SerializedEditorState } from "lexical";
 
 export default async function page({}: Props) {
   const p = await getPayload({
@@ -135,6 +137,60 @@ export default async function page({}: Props) {
             </div>
           </div>
         </div> */}
+      </section>
+      <OurWorkSection data={vpsd["Our Work"]} />
+      <section id="meet-the-team">
+        <div className="heading">
+          <p className="sub">{vpsd["Team"]?.team?.subtitle}</p>
+          <h2>{vpsd["Team"]?.team?.title}</h2>
+          <RichText
+            className="desc"
+            data={vpsd["Team"]?.team?.description as SerializedEditorState}
+          ></RichText>
+        </div>
+        <img src="/gfx/pilldecor.svg" alt="" className="pilldecor r" />
+        <img src="/gfx/pilldecor.svg" alt="" className="pilldecor l" />
+        <div className="person-list">
+          {vpsd["Team"]?.team?.teamList?.map((p) => {
+            return (
+              <div className="person" key={p.id}>
+                <div className="data">
+                  <h2 className="n">{p.name}</h2>
+                  <p className="r">{p.role}</p>
+                  <RichText
+                    className="desc"
+                    data={p.description as SerializedEditorState}
+                  ></RichText>
+                </div>
+                <img src="/gfx/about2.png" alt="" className="pfp" />
+              </div>
+            );
+          })}
+          {/* <div className="person">
+            <div className="data">
+              <h2 className="n">Person Name</h2>
+              <p className="r">CHIEF EXECUTING OFFICER</p>
+              <p className="desc">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud
+              </p>
+            </div>
+            <img src="/gfx/about2.png" alt="" className="pfp" />
+          </div>
+          <div className="person">
+            <div className="data">
+              <h2 className="n">Person Name</h2>
+              <p className="r">CHIEF EXECUTING OFFICER</p>
+              <p className="desc">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud
+              </p>
+            </div>
+            <img src="/gfx/about2.png" alt="" className="pfp" />
+          </div> */}
+        </div>
       </section>
     </main>
   );

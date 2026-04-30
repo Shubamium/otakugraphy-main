@@ -2,7 +2,7 @@
 import { createTransport } from "nodemailer";
 import { MailOptions } from "nodemailer/lib/json-transport";
 const transporter = createTransport({
-  service: "gmail",
+  service: "yahoo",
   auth: {
     user: "vicnet.video@gmail.com",
     pass: process.env.SMTP_PASS,
@@ -24,7 +24,7 @@ export async function sendMail(
 
   const messageBody = `\n Email: ${mail} 
 		\n Phone:${phone ? phone : "N/A"}
-  	\n ${socials ? `Socials: ${socials                     }` : ""}
+  	\n ${socials ? `Socials: ${socials}` : ""}
 		\n Discord: ${dc ?? "N/A"} 
 		\n Message: ${message} 
 		`;

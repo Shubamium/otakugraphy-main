@@ -13,7 +13,7 @@
   "dependencies": {
     "@googleapis/youtube": "^29.0.0",
     "@payloadcms/db-mongodb": "^3.82.1",
-    "@payloadcms/live-preview-react": "^3.83.0",
+    "@payloadcms/live-preview-react": "^3.82.1",
     "@payloadcms/next": "^3.82.1",
     "@payloadcms/richtext-lexical": "^3.82.1",
     "@payloadcms/storage-s3": "^3.82.1",
@@ -36,7 +36,8 @@
     "react-responsive": "^10.0.1",
     "react-use-measure": "^2.1.7",
     "sass": "^1.86.0",
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "tldts": "^7.0.29"
   },
   "devDependencies": {
     "@types/node": "^20.19.39",

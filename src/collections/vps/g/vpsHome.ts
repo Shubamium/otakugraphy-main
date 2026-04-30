@@ -111,6 +111,98 @@ const BottomNavSectionFields: Field = {
     },
   ],
 };
+const OurWorkSectionFields: Field = {
+  name: "ourwork",
+  label: "Our Work Section",
+  type: "group",
+  fields: [
+    {
+      name: "headingBanner",
+      label: "Heading Banner Background",
+      type: "upload",
+      relationTo: "media",
+    },
+    {
+      name: "titleTop",
+      label: "Title Top",
+      type: "text",
+    },
+    {
+      name: "titleCenter",
+      label: "Title Center",
+      type: "text",
+    },
+    {
+      name: "titleBottom",
+      label: "Title Bottom",
+      type: "text",
+    },
+    {
+      name: "worksList",
+      type: "array",
+      fields: [
+        {
+          name: "title",
+          type: "text",
+        },
+        {
+          name: "thumbnail",
+          type: "upload",
+          relationTo: "media",
+        },
+        {
+          name: "fullPreview",
+          type: "upload",
+          relationTo: "media",
+        },
+      ],
+    },
+  ],
+};
+const TeamSectionFields: Field = {
+  name: "team",
+  label: "Team Section",
+  type: "group",
+  fields: [
+    {
+      name: "subtitle",
+      type: "text",
+    },
+    {
+      name: "title",
+      type: "text",
+    },
+    {
+      name: "description",
+      label: "Description",
+      type: "richText",
+    },
+    {
+      name: "teamList",
+      type: "array",
+      fields: [
+        {
+          name: "name",
+          type: "text",
+        },
+        {
+          name: "pfp",
+          label: "Profile Picture",
+          type: "upload",
+          relationTo: "media",
+        },
+        {
+          name: "role",
+          type: "text",
+        },
+        {
+          name: "description",
+          type: "richText",
+        },
+      ],
+    },
+  ],
+};
 const vpsHome: GlobalConfig = {
   slug: "vpsHome",
   label: "Home Page",
@@ -144,6 +236,14 @@ const vpsHome: GlobalConfig = {
         {
           name: "Bottom Navigation",
           fields: [BottomNavSectionFields],
+        },
+        {
+          name: "Our Work",
+          fields: [OurWorkSectionFields],
+        },
+        {
+          name: "Team",
+          fields: [TeamSectionFields],
         },
       ],
     },

@@ -1,11 +1,15 @@
 #footer {
-  background: url("/bg/diamond.png");
+  background:
+    url("/bg/diamond.png"), linear-gradient(to bottom, #0d0c0c, #141414);
+  background-blend-mode: multiply;
   border-top: 2px solid white;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   padding: 100px 1em;
+  position: relative;
+  z-index: 1;
   margin-top: 100px;
   .logo {
     max-width: 400px;

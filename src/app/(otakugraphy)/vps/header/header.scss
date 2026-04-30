@@ -21,37 +21,90 @@
     flex-wrap: wrap;
     @media screen and (max-width: 1440px) {
     }
-    .btn-nav {
-      text-transform: uppercase;
-      font-size: 1.3rem;
-      color: #696969;
-      letter-spacing: 1px;
-      padding: 0.25em 1em;
-      font-weight: 500;
-      &:hover {
-        scale: 1.1;
-        color: white;
+    @media screen and (max-width: 1024px) {
+      padding-top: 1em;
+    }
 
-        &::before {
-          transform: translateY(0px);
-          scale: 0.5 1;
-          opacity: 1;
-        }
+    @media screen and (max-width: 1024px) {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  .btn-nav {
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    color: #696969;
+    letter-spacing: 1px;
+    padding: 0.25em 1em;
+    font-weight: 500;
+
+    @media screen and (max-width: 1024px) {
+      &:not(.menu) {
+        padding: 0.25em 0.4em;
+        font-size: 1rem;
       }
-      position: relative;
+    }
+    &:hover {
+      scale: 1.1;
+      color: white;
+
       &::before {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 0%;
-        width: 100%;
-        height: 2px;
-        scale: 0.3 1;
-        background: var(--dgold);
-        opacity: 0;
-        transition: all 500ms ease;
-        transform: translateY(20px);
+        transform: translateY(0px);
+        scale: 0.5 1;
+        opacity: 1;
       }
+    }
+    &.menu {
+      color: black;
+      background: var(--dgold);
+      @media screen and (min-width: 1024px) {
+        display: none;
+      }
+    }
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 0%;
+      width: 100%;
+      height: 2px;
+      scale: 0.3 1;
+      background: var(--dgold);
+      opacity: 0;
+      transition: all 500ms ease;
+      transform: translateY(20px);
+      @media screen and (max-width: 1024px) {
+        transform-origin: left;
+      }
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    justify-content: flex-start;
+  }
+
+  @media screen and (max-width: 1024px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1em;
+    &.open {
+      width: 100%;
+      .side {
+        width: 100%;
+        background: linear-gradient(to right, black 30%, transparent 130%);
+      }
+    }
+    &.closed {
+      // .side {
+      //   .btn-nav:not(.menu) {
+      //     opacity: 0;
+      //     user-select: none;
+      //     transform: translateX(-150px);
+      //     pointer-events: none;
+      //   }
+      // }
     }
   }
 }
