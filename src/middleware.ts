@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Redis } from "@upstash/redis";
 import { cookies } from "next/headers";
 import { parse } from "tldts";
+import { GiTargetArrows } from "react-icons/gi";
 
 function breakdownHostCheck(host: string, checker: string) {
   const [subdomain, path] = checker.split("~");
@@ -55,13 +56,13 @@ export async function middleware(req: NextRequest) {
   if (req.nextUrl.pathname.startsWith("/admin")) {
     return NextResponse.next();
   } else if (host?.includes("vps")) {
-    return NextResponse.rewrite(
-      new URL("/vps" + req.nextUrl.pathname, req.url),
-    );
+    const target = new URL("/vps" + req.nextUrl.pathname, req.url);
+    target.search = req.nextUrl.search;
+    return NextResponse.rewrite(target);
   } else {
-    return NextResponse.rewrite(
-      new URL("/otakugraphy" + req.nextUrl.pathname, req.url),
-    );
+    const target = new URL("/otakugraphy" + req.nextUrl.pathname, req.url);
+    target.search = req.nextUrl.search;
+    return NextResponse.rewrite(target);
   }
 }
 export const config = {

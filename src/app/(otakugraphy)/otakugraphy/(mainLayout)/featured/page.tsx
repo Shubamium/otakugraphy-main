@@ -42,6 +42,7 @@ export default async function page({ searchParams }: Props) {
   if (view === "name") {
     ordering = " | order(name asc)";
   }
+  console.log("refetch", view);
   // switch (view) {
   //   case "name":
   //     ordering = "order(name asc)";
