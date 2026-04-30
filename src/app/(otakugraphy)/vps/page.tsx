@@ -162,7 +162,11 @@ export default async function page({}: Props) {
                     data={p.description as SerializedEditorState}
                   ></RichText>
                 </div>
-                <img src="/gfx/about2.png" alt="" className="pfp" />
+                <img
+                  src={(p.pfp as Media)?.sizes?.medium?.url ?? undefined}
+                  alt=""
+                  className="pfp"
+                />
               </div>
             );
           })}
