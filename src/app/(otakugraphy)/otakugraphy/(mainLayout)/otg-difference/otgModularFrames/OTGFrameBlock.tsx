@@ -1,21 +1,29 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-import "./otgFrame.scss";
+import "./otgFrameBlock.scss";
 import { getMultipleYTViews } from "@/app/(otakugraphy)/otakugraphy/(mainLayout)//db/youtube";
 import LiteYoutubeEmbed from "react-lite-youtube-embed";
 import { FaEye } from "react-icons/fa6";
 
 import { PortableText, PortableTextReactComponents } from "@portabletext/react";
+import { h2 } from "motion/react-client";
+import { urlFor } from "../../db/sanity";
+
+type FrameBlock = {
+  type: "image" | "video" | "text" | "videoList" | "title" | "empty";
+  title?: string;
+  _key?: string;
+  image?: string;
+  videoList?: string[];
+  text?: any[];
+  ytvid?: string;
+};
 type Props = {
   options: {
-    title: string;
-    type: "image" | "video" | "text";
-    reverse?: boolean;
-    videoID?: string; // YT Video ID
-    imageURL?: string;
-    extraVID?: string[];
-    text?: any[];
+    reverse: boolean;
+    mainBlocks: FrameBlock[];
+    secondaryBlocks: FrameBlock[];
   };
 };
 
@@ -24,87 +32,25 @@ function formatNumber(num: number) {
   return count;
 }
 
-export default function OTGFrame({ options }: Props) {
-  const { reverse, type, title, imageURL, videoID, extraVID } = options;
-  const [viewCount, setViewCount] = React.useState<number>(0);
+export default function OTGFrameBlock({ options }: Props) {
+  const { reverse, mainBlocks, secondaryBlocks } = options;
+  // const [viewCount, setViewCount] = React.useState<number>(0);
 
   return (
-    <section className={`otgframe ${reverse ? "reverse" : ""}`}>
+    <section className={`otgframeblock ${reverse ? "reverse" : ""}`}>
       <NoteDecor />
       <div className="triangle"></div>
-      <div className="detail">
-        <div className="top">
-          <h2>{title}</h2>
-          <div className="extra-videos">
-            {extraVID &&
-              extraVID?.map((vid, i) => {
-                return (
-                  <LiteYoutubeEmbed
-                    // src={`https://www.youtube.com/embed/${vid}`}
-                    id={vid}
-                    title="YouTube video player"
-                    // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    // loading="lazy"
-                    key={"extra-video " + vid}
-                    playerClass="iframe"
-                    lazyLoad
-                    activatedClass="active"
-                    // allowFullScreen
-                  ></LiteYoutubeEmbed>
-                );
-              })}
-          </div>
-        </div>
-        {viewCount > 0 && (
-          <div className="bottom">
-            <div className="views">
-              <h2>VIEWS</h2>
-              <p>
-                <FaEye /> {formatNumber(viewCount)}
-              </p>
-            </div>
-          </div>
-        )}
+      <div className="block main">
+        {mainBlocks?.map((block, i) => {
+          return (
+            <RenderBlock block={block} key={"mainblock" + i + block._key} />
+          );
+        })}
       </div>
-      <div className="frames">
-        {type === "text" && <FBText val={options.text} />}
-
-        {type !== "text" && (
-          <div className="frame">
-            {type === "video" && (
-              <React.Fragment>
-                {videoID ? (
-                  <iframe
-                    src={`https://www.youtube.com/embed/${videoID}`}
-                    loading="lazy"
-                    title="YouTube video player"
-                    className="iframe"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  ></iframe>
-                ) : (
-                  <EmptyFrame />
-                )}
-              </React.Fragment>
-            )}
-            {type === "image" && (
-              <React.Fragment>
-                {imageURL ? (
-                  <img
-                    src={options.imageURL}
-                    alt=""
-                    className="img"
-                    loading="lazy"
-                  />
-                ) : (
-                  <EmptyFrame />
-                )}
-              </React.Fragment>
-            )}
-          </div>
-        )}
+      <div className="block secondary">
+        {secondaryBlocks?.map((block, i) => {
+          return <RenderBlock block={block} key={"secondaryblock" + i} />;
+        })}
       </div>
     </section>
   );
@@ -134,15 +80,19 @@ const EmptyFrame = () => {
 };
 
 // Frame Block Components
+// ====================================================================
 function FBText({ val }: { val: any }) {
   return (
     <article className="fb-text">
       <PortableText value={val} />
     </article>
   );
+} // Frame Block Components
+function FBTitle({ title }: { title?: string }) {
+  return <h2 className="fb-title">{title}</h2>;
 }
 
-function FBImage({ img }: { img: string }) {
+function FBImage({ img }: { img?: string }) {
   return (
     <div className="fb-image">
       {img ? (
@@ -153,7 +103,7 @@ function FBImage({ img }: { img: string }) {
     </div>
   );
 }
-function FBVideoList({ vd }: { vd: string[] }) {
+function FBVideoList({ vd }: { vd?: string[] }) {
   const [viewCount, setViewCount] = useState(0);
   // Accumulate all of the videos and get the view count
   const fetchViewCount = async (vid: (string | null)[]) => {
@@ -203,8 +153,57 @@ function FBVideoList({ vd }: { vd: string[] }) {
     </div>
   );
 }
+function FBVideo({ videoID }: { videoID?: string }) {
+  return (
+    <div className="fb-video">
+      {videoID ? (
+        <LiteYoutubeEmbed
+          // src={`https://www.youtube.com/embed/${vid}`}
+          id={videoID}
+          title="YouTube video player"
+          // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          // loading="lazy"
+
+          key={"videoshowing " + videoID}
+          playerClass="iframe"
+          alwaysLoadIframe
+          lazyLoad
+          activatedClass="active"
+          // allowFullScreen
+        ></LiteYoutubeEmbed>
+      ) : (
+        <EmptyFrame />
+      )}
+    </div>
+  );
+}
+
+function RenderBlock({ block }: { block: FrameBlock }) {
+  switch (block.type) {
+    case "image":
+      return (
+        <FBImage
+          img={urlFor(block.image)?.height(900)?.auto("format")?.url() ?? null}
+        />
+      );
+    case "video":
+      return <FBVideo videoID={block.ytvid} />;
+    case "text":
+      return <FBText val={block.text} />;
+    case "videoList":
+      return <FBVideoList vd={block.videoList} />;
+    case "title":
+      return <FBTitle title={block.title} />;
+    case "empty":
+      return <EmptyFrame />;
+    default:
+      return <EmptyFrame />;
+  }
+}
 
 // Misc Components
+// ====================================================================
 function NoteDecor() {
   return (
     <div className="note-decor">

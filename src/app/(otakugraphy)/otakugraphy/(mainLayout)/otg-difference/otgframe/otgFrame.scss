@@ -2,59 +2,34 @@
   max-width: 1450px;
   margin: 0 auto;
 
-  @media screen and (max-width: 1280px) {
-    max-width: 98%;
-  }
   background: #1f1f1f url("/bg/diamond.png");
   color: white;
   margin-block: 50px 0;
 
   position: relative;
-  .note-decor {
-    position: absolute;
-    left: -60px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    top: 8%;
-    padding: 1em;
-    @media screen and (max-width: 1024px) {
-      display: none;
-    }
 
-    .circ {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: #10100f;
-    }
-  }
   padding: 80px;
-  @media screen and (max-width: 1280px) {
-    padding: 40px;
-  }
-  @media screen and (max-width: 1024px) {
-    padding: 1em;
-  }
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   gap: 2em;
   grid-template-areas: "a b";
   box-shadow: 0px 0px 7px 5px rgba(0, 0, 0, 0.185);
   position: relative;
-  .triangle {
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    background: var(--dgold);
-    left: 0%;
-    bottom: 0%;
-    clip-path: polygon(0 0, 0% 100%, 100% 100%);
-    @media screen and (max-width: 1024px) {
-      width: 30px;
-      height: 30px;
-    }
+
+  @media screen and (max-width: 1280px) {
+    max-width: 98%;
   }
+  @media screen and (max-width: 1280px) {
+    padding: 40px;
+  }
+  @media screen and (max-width: 1024px) {
+    padding: 1em;
+  }
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
   &.reverse {
     grid-template-columns: 1.1fr 1fr;
     grid-template-areas: "b a";
@@ -65,10 +40,6 @@
     }
   }
 
-  @media screen and (max-width: 550px) {
-    display: flex;
-    flex-direction: column;
-  }
   .detail {
     grid-area: a;
     display: flex;
@@ -92,7 +63,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         @media screen and (max-width: 768px) {
-          gap: 0;
+          gap: 5px;
         }
 
         .yt-lite {
@@ -217,6 +188,43 @@
         width: 100%;
         height: auto;
       }
+    }
+  }
+}
+
+// Decoration
+.otgframe {
+  .note-decor {
+    position: absolute;
+    left: -60px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    top: 8%;
+    padding: 1em;
+    @media screen and (max-width: 1024px) {
+      display: none;
+    }
+
+    .circ {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #10100f;
+    }
+  }
+
+  .triangle {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: var(--dgold);
+    left: 0%;
+    bottom: 0%;
+    clip-path: polygon(0 0, 0% 100%, 100% 100%);
+    @media screen and (max-width: 1024px) {
+      width: 30px;
+      height: 30px;
     }
   }
 }

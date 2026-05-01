@@ -6,20 +6,25 @@ import { urlFor } from "../db/sanity";
 import { AnimatePresence } from "motion/react";
 type Props = { otgdiff: any; fl: any; gd: any };
 import { motion } from "motion/react";
+import OTGFrameBlock from "./otgModularFrames/OTGFrameBlock";
 export default function OTGDiff({ otgdiff, fl, gd }: Props) {
   const [framesMap, setFramesMap] = useState(new Map<string, any[]>());
   const [activeCat, setActiveCat] = useState(fl[0]?.categoryName ?? "");
+
   useEffect(() => {
     const newMap = new Map<string, any[]>();
     for (let i = 0; i < fl.length; i++) {
-      newMap.set(fl[i]?.categoryName, fl[i]?.frames);
+      newMap.set(fl[i]?.categoryName, fl[i]?.frame_two);
     }
     setFramesMap(newMap);
   }, [fl]);
   const activeFrame = framesMap.get(activeCat);
+
+  // Divide the frames into top and bottom so center can be filled with section
   const frameList = activeFrame ?? [];
   const top = frameList?.slice(0, 3);
   const bottom = frameList?.slice(3);
+
   return (
     <main id="p_otg-diff">
       <img src="/gfx/herobg.webp" alt="" className="head-bg" />
@@ -52,17 +57,11 @@ export default function OTGDiff({ otgdiff, fl, gd }: Props) {
         >
           {top?.map((f: any, i: number) => {
             return (
-              <OTGFrame
+              <OTGFrameBlock
                 options={{
-                  title: f.title,
-                  type: f.type,
                   reverse: i % 2 == 0,
-                  videoID: f.ytvid,
-                  extraVID: f.extraVideos,
-                  imageURL: f.image
-                    ? urlFor(f.image).auto("format").url()
-                    : undefined,
-                  text: f.text,
+                  mainBlocks: f.mainBlocks,
+                  secondaryBlocks: f.secondaryBlocks,
                 }}
                 key={i + "frames" + f._key}
               />
@@ -91,16 +90,11 @@ export default function OTGDiff({ otgdiff, fl, gd }: Props) {
           )}
           {bottom?.map((f: any, i: number) => {
             return (
-              <OTGFrame
+              <OTGFrameBlock
                 options={{
-                  title: f.title,
-                  type: f.type,
                   reverse: i % 2 == 0,
-                  videoID: f.ytvid,
-                  extraVID: f.extraVideos,
-                  imageURL: f.image
-                    ? urlFor(f.image).auto("format").url()
-                    : undefined,
+                  mainBlocks: f.mainBlocks,
+                  secondaryBlocks: f.secondaryBlocks,
                 }}
                 key={i + "frames" + f._key}
               />
