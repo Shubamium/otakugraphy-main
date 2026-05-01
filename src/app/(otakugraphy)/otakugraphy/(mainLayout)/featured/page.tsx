@@ -7,6 +7,8 @@ import FeaturedAction from "./FeaturedAction";
 import { fetchData, urlFor } from "../db/sanity";
 import CreatorCard from "./CreatorCard";
 import CreatorLists from "./CreatorLists";
+import { group } from "console";
+import { groupByYoutubeDate } from "../db/youtube";
 
 type Props = {
   searchParams: Promise<{
@@ -27,6 +29,7 @@ function formateDate(ds?: string) {
   }
   return null;
 }
+
 export default async function page({ searchParams }: Props) {
   const sp = await searchParams;
   const nameCondition = sp.q ? `&& name match "${sp.q}*"` : "";
@@ -42,18 +45,7 @@ export default async function page({ searchParams }: Props) {
   if (view === "name") {
     ordering = " | order(name asc)";
   }
-  console.log("refetch", view);
-  // switch (view) {
-  //   case "name":
-  //     ordering = "order(name asc)";
-  //     break;
-  //   case "date":
-  //     ordering = "";
-  //     break;
-  //   default:
-  //     ordering = "";
-  //     break;
-  // }
+
   const dateFromCondition = beforeDate
     ? `&& date >= "${beforeDate.toISOString()}"`
     : "";
@@ -93,7 +85,6 @@ export default async function page({ searchParams }: Props) {
 			*[_type == 'creator-agency']{
 			...}
 	`);
-  console.log("alist", agency);
 
   const featured = await fetchData<any>(
     `*[_type == 'general' && preset == 'main'][0]{
@@ -101,6 +92,12 @@ export default async function page({ searchParams }: Props) {
 			fc_d
 		}`,
   );
+
+  let processedCreators = creators;
+  if (view === "date") {
+    processedCreators = await groupByYoutubeDate(creators);
+    console.log("processedCreators");
+  }
   return (
     <main id="p_featured">
       <div className="featured-h">
@@ -134,7 +131,7 @@ export default async function page({ searchParams }: Props) {
           </div>
         }
       >
-        <CreatorLists creators={creators} view={view} />
+        <CreatorLists creators={processedCreators} view={view} />
       </Suspense>
     </main>
   );

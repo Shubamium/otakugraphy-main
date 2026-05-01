@@ -7,10 +7,11 @@ type Props = {
   creator: any;
   onClick: () => void;
   delay?: number;
+  view: string;
 };
 import { motion } from "motion/react";
 
-export default function CreatorCard({ creator, onClick, delay }: Props) {
+export default function CreatorCard({ creator, onClick, delay, view }: Props) {
   return (
     <motion.div
       layout
@@ -22,12 +23,20 @@ export default function CreatorCard({ creator, onClick, delay }: Props) {
         y: 0,
         opacity: 1,
       }}
+      exit={{
+        y: 200,
+        opacity: 0,
+        transition: {
+          duration: 0.3,
+          delay: 0,
+        },
+      }}
       transition={{
         duration: 0.5,
         delay: delay,
       }}
       className="creator"
-      key={creator._id}
+      key={creator._id + "view:" + view}
     >
       <div className="panel">
         <p className="name">{creator.name}</p>

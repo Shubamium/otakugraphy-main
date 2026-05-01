@@ -8,6 +8,7 @@ import Footer from "./components/footer/Footer";
 import SideContact from "./components/sideContact/SideContact";
 import HeaderData from "./components/header/HeaderData";
 import ".././globals.scss";
+import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
 import Script from "next/script";
 

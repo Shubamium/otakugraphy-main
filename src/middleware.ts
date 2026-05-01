@@ -31,7 +31,6 @@ export async function middleware(req: NextRequest) {
     console.log("Admin Mode");
   } else {
     const gatedPages = (await redis.get<string[]>("protected")) ?? [];
-    const parsedURL = parse(href);
 
     console.log(gatedPages);
     const matchURL = gatedPages.some(

@@ -2,47 +2,56 @@
 import React, { useEffect } from "react";
 
 import "./otgFrame.scss";
-import {
-  getCachedYTViews,
-  getYoutubeViews,
-} from "@/app/(otakugraphy)/otakugraphy/(mainLayout)//db/youtube";
-import { FaXmark } from "react-icons/fa6";
+import { getMultipleYTViews } from "@/app/(otakugraphy)/otakugraphy/(mainLayout)//db/youtube";
+import LiteYoutubeEmbed from "react-lite-youtube-embed";
+import { FaEye } from "react-icons/fa6";
+
+import { PortableText, PortableTextReactComponents } from "@portabletext/react";
 type Props = {
   options: {
     title: string;
-    type: "image" | "video";
+    type: "image" | "video" | "text";
     reverse?: boolean;
     videoID?: string; // YT Video ID
     imageURL?: string;
     extraVID?: string[];
+    text?: any[];
   };
 };
 
+function formatNumber(num: number) {
+  let count = Intl.NumberFormat("en-US").format(num);
+  return count;
+}
+
 export default function OTGFrame({ options }: Props) {
   const { reverse, type, title, imageURL, videoID, extraVID } = options;
-  const [viewCount, setViewCount] = React.useState<string | number>(
-    "Loading views . . .",
-  );
-  const fetchViewCount = async (vid: string) => {
-    const vwc = await getCachedYTViews(vid);
-    // console.log(vwc);
+  const [viewCount, setViewCount] = React.useState<number>(0);
 
-    if (vwc.vwc) {
-      let count = Intl.NumberFormat("en-US").format(parseInt(vwc.vwc));
-      setViewCount(count);
-    } else {
-      setViewCount(vwc.status);
+  // Accumulate all of the videos and get the view count
+  const fetchViewCount = async (vid: (string | null)[]) => {
+    const vwc = await getMultipleYTViews(vid.filter((v) => v) as string[]);
+    const total = vwc.reduce((acc, curr) => acc + curr.vwc, 0);
+    if (total > 0) {
+      setViewCount(total);
     }
   };
 
   useEffect(() => {
     if (videoID) {
-      fetchViewCount(videoID);
     }
+    const mainVideo = videoID ?? null;
+    const otherVids = extraVID?.map((v) => v) ?? [];
+    fetchViewCount([mainVideo, ...otherVids]);
   }, []);
 
   return (
     <section className={`otgframe ${reverse ? "reverse" : ""}`}>
+      <div className="note-decor">
+        <div className="circ"></div>
+        <div className="circ"></div>
+        <div className="circ"></div>
+      </div>
       <div className="triangle"></div>
       <div className="detail">
         <div className="top">
@@ -51,62 +60,76 @@ export default function OTGFrame({ options }: Props) {
             {extraVID &&
               extraVID?.map((vid, i) => {
                 return (
-                  <iframe
-                    src={`https://www.youtube.com/embed/${vid}`}
+                  <LiteYoutubeEmbed
+                    // src={`https://www.youtube.com/embed/${vid}`}
+                    id={vid}
                     title="YouTube video player"
-                    className="iframe"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    key={"extra-video " + vid}
+                    // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin"
-                    loading="lazy"
-                    allowFullScreen
-                  ></iframe>
+                    // loading="lazy"
+                    key={"extra-video " + vid}
+                    playerClass="iframe"
+                    lazyLoad
+                    activatedClass="active"
+                    // allowFullScreen
+                  ></LiteYoutubeEmbed>
                 );
               })}
           </div>
         </div>
-        <div className="bottom">
-          {type === "video" && videoID && (
+        {viewCount > 0 && (
+          <div className="bottom">
             <div className="views">
               <h2>VIEWS</h2>
-              <p>{viewCount}</p>
+              <p>
+                <FaEye /> {formatNumber(viewCount)}
+              </p>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
       <div className="frames">
-        <div className="frame">
-          {type === "video" ? (
-            <React.Fragment>
-              {videoID ? (
-                <iframe
-                  src={`https://www.youtube.com/embed/${videoID}`}
-                  loading="lazy"
-                  title="YouTube video player"
-                  className="iframe"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                ></iframe>
-              ) : (
-                <EmptyFrame />
-              )}
-            </React.Fragment>
-          ) : (
-            <React.Fragment>
-              {imageURL ? (
-                <img
-                  src={options.imageURL}
-                  alt=""
-                  className="img"
-                  loading="lazy"
-                />
-              ) : (
-                <EmptyFrame />
-              )}
-            </React.Fragment>
-          )}
-        </div>
+        {type === "text" && (
+          <article>
+            <PortableText value={options.text} />
+          </article>
+        )}
+
+        {type !== "text" && (
+          <div className="frame">
+            {type === "video" && (
+              <React.Fragment>
+                {videoID ? (
+                  <iframe
+                    src={`https://www.youtube.com/embed/${videoID}`}
+                    loading="lazy"
+                    title="YouTube video player"
+                    className="iframe"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  ></iframe>
+                ) : (
+                  <EmptyFrame />
+                )}
+              </React.Fragment>
+            )}
+            {type === "image" && (
+              <React.Fragment>
+                {imageURL ? (
+                  <img
+                    src={options.imageURL}
+                    alt=""
+                    className="img"
+                    loading="lazy"
+                  />
+                ) : (
+                  <EmptyFrame />
+                )}
+              </React.Fragment>
+            )}
+          </div>
+        )}
       </div>
     </section>
   );

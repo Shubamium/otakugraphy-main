@@ -48,25 +48,6 @@ function groupByAgency(creators: any[]) {
   return toRender;
 }
 
-async function groupByYoutubeDate(creators: any[]) {
-  const datedCreators = [];
-  for (let i = 0; i < creators.length; i++) {
-    const currCreator = creators[i];
-    // If the current creator has a video link then look up the youtube
-    if (currCreator.Video) {
-      const youtubeDate = await getCachedYoutubeDate(currCreator.Video);
-      if (youtubeDate.success && youtubeDate.date) {
-        currCreator.date = new Date(youtubeDate.date);
-      }
-    }
-    datedCreators.push(currCreator);
-  }
-  // Sort by date
-  datedCreators.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-  );
-  return datedCreators;
-}
 export default function CreatorLists({ creators, view }: Props) {
   const [currVid, setCurrVid] = useState<VideoData | null>(null);
   const [mounted, setMounted] = useState(false);
@@ -107,10 +88,7 @@ export default function CreatorLists({ creators, view }: Props) {
       setGroupRender(groupByAgency(creators));
     }
     if (view == "date") {
-      // Replace All date with new youtube date
-      groupByYoutubeDate(creators).then((res) => {
-        setDateRender(res);
-      });
+      setDateRender(creators);
     }
   }, [view, creators ?? "nothing"]);
 
@@ -129,6 +107,7 @@ export default function CreatorLists({ creators, view }: Props) {
                   key={creator._id + "creator-card" + i + view}
                   creator={creator}
                   delay={i * 0.05}
+                  view={view}
                   onClick={() => {
                     setCurrVid({
                       name: creator.name,
@@ -146,7 +125,8 @@ export default function CreatorLists({ creators, view }: Props) {
             dateRender?.map((creator: any, i: number) => {
               return (
                 <CreatorCard
-                  key={creator._id + "creator-card" + i}
+                  key={creator._id + "creator-card" + i + view}
+                  view={view}
                   creator={creator}
                   delay={i * 0.05}
                   onClick={() => {
@@ -173,7 +153,8 @@ export default function CreatorLists({ creators, view }: Props) {
                     {group.creators?.map((creator: any, i: number) => {
                       return (
                         <CreatorCard
-                          key={creator._id + "creator-card" + i}
+                          view={view}
+                          key={creator._id + "creator-card" + i + view}
                           creator={creator}
                           delay={i * 0.05}
                           onClick={() => {

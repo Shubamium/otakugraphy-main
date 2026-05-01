@@ -42,7 +42,7 @@ export default function OTGDiff({ otgdiff, fl, gd }: Props) {
           })}
         </div>
       </div>
-      <AnimatePresence>
+      <AnimatePresence mode="popLayout">
         <motion.div
           key={activeCat}
           className="allframe"
@@ -62,6 +62,7 @@ export default function OTGDiff({ otgdiff, fl, gd }: Props) {
                   imageURL: f.image
                     ? urlFor(f.image).auto("format").url()
                     : undefined,
+                  text: f.text,
                 }}
                 key={i + "frames" + f._key}
               />
