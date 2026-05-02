@@ -2,7 +2,11 @@
 import React, { useEffect, useState } from "react";
 
 import "./otgFrameBlock.scss";
-import { getMultipleYTViews } from "@/app/(otakugraphy)/otakugraphy/(mainLayout)//db/youtube";
+import {
+  getCachedYTViews,
+  getMultipleYTViews,
+  getYoutubeViews,
+} from "@/app/(otakugraphy)/otakugraphy/(mainLayout)//db/youtube";
 import LiteYoutubeEmbed from "react-lite-youtube-embed";
 import { FaEye } from "react-icons/fa6";
 
@@ -34,7 +38,6 @@ function formatNumber(num: number) {
 
 export default function OTGFrameBlock({ options }: Props) {
   const { reverse, mainBlocks, secondaryBlocks } = options;
-  // const [viewCount, setViewCount] = React.useState<number>(0);
 
   return (
     <section className={`otgframeblock ${reverse ? "reverse" : ""}`}>
@@ -141,7 +144,7 @@ function FBVideoList({ vd }: { vd?: string[] }) {
           })}
       </div>
       {viewCount > 0 && (
-        <div className="bottom">
+        <div className="viewsCounter">
           <div className="views">
             <h2>VIEWS</h2>
             <p>
@@ -154,9 +157,16 @@ function FBVideoList({ vd }: { vd?: string[] }) {
   );
 }
 function FBVideo({ videoID }: { videoID?: string }) {
+  const [viewCount, setViewCount] = useState(0);
+
+  useEffect(() => {
+    getCachedYTViews(videoID).then((vwc) => {
+      setViewCount(vwc.vwc);
+    });
+  }, []);
   return (
     <div className="fb-video">
-      {videoID ? (
+      {videoID && (
         <LiteYoutubeEmbed
           // src={`https://www.youtube.com/embed/${vid}`}
           id={videoID}
@@ -172,8 +182,16 @@ function FBVideo({ videoID }: { videoID?: string }) {
           activatedClass="active"
           // allowFullScreen
         ></LiteYoutubeEmbed>
-      ) : (
-        <EmptyFrame />
+      )}
+      {viewCount > 0 && (
+        <div className="viewsCounter">
+          <div className="views">
+            <h2>VIEWS</h2>
+            <p>
+              <FaEye /> {formatNumber(viewCount)}
+            </p>
+          </div>
+        </div>
       )}
     </div>
   );
