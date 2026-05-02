@@ -160,9 +160,11 @@ function FBVideo({ videoID }: { videoID?: string }) {
   const [viewCount, setViewCount] = useState(0);
 
   useEffect(() => {
-    getCachedYTViews(videoID).then((vwc) => {
-      setViewCount(vwc.vwc);
-    });
+    if (videoID) {
+      getCachedYTViews(videoID).then((vwc) => {
+        setViewCount(vwc.vwc);
+      });
+    }
   }, []);
   return (
     <div className="fb-video">
