@@ -35,9 +35,8 @@ export async function middleware(req: NextRequest) {
     console.log(gatedPages);
     const matchURL = gatedPages.some(
       (p) =>
-        pathname.startsWith(
-          breakdownHostCheck(host ?? "089503850830583058", p),
-        ) || pathname.startsWith(p),
+        pathname == breakdownHostCheck(host ?? "089503850830583058", p) ||
+        pathname == p,
     );
 
     if (matchURL) {
