@@ -24,7 +24,6 @@ export default async function page({}: Props) {
   });
   return (
     <main id="p_jobs">
-      <PayloadRefreshRouteOnSave />
       <div className="banner">
         <img src={(jd.banner as Media)?.url ?? undefined} alt="" />
       </div>
