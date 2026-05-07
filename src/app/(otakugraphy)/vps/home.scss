@@ -116,7 +116,8 @@
         .pmedia {
           height: auto;
           background: black;
-          aspect-ratio: 1 / 1;
+          // aspect-ratio: 1 / 1;
+          height: 100%;
           width: 100%;
         }
       }
@@ -133,8 +134,16 @@
             font-size: 1rem;
           }
         }
-        p {
+        p,
+        a,
+        li {
           color: grey;
+        }
+        strong {
+          color: white;
+        }
+        ul {
+          padding-left: 1em;
         }
       }
     }

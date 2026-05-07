@@ -24,7 +24,7 @@ export default async function page({}: Props) {
   //
   return (
     <main id="p_vps">
-      <PayloadRefreshRouteOnSave />
+      {/* <PayloadRefreshRouteOnSave /> */}
 
       <section
         id="main_hero"
