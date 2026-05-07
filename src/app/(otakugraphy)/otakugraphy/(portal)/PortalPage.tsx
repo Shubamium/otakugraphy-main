@@ -24,7 +24,6 @@ export default async function PortalPage({}: Props) {
   const navigation = portal.navigation;
   return (
     <main id="p_portal">
-      <PayloadRefreshRouteOnSave />
       <section
         id="portal-hero"
         style={

@@ -30,7 +30,7 @@ export default async function page({}: Props) {
         id="main_hero"
         style={
           {
-            "--bg": `url(${(vpsd.Hero?.heroSection?.background as Media)?.url})`,
+            "--bg": `url(${(vpsd.Hero?.heroSection?.background as Media)?.sizes?.medium?.url})`,
           } as CSSProperties
         }
       >
@@ -89,7 +89,7 @@ export default async function page({}: Props) {
                 key={n.id}
                 style={
                   {
-                    "--bg": `url(${(n.background as Media)?.url ?? "undefined.jpg"})`,
+                    "--bg": `url(${(n.background as Media)?.sizes?.medium?.url ?? "undefined.jpg"})`,
                   } as CSSProperties
                 }
               >
@@ -163,7 +163,7 @@ export default async function page({}: Props) {
                   ></RichText>
                 </div>
                 <img
-                  src={(p.pfp as Media)?.sizes?.medium?.url ?? undefined}
+                  src={(p.pfp as Media)?.sizes?.small?.url ?? undefined}
                   alt=""
                   className="pfp"
                 />
