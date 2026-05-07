@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 
 import Link from "next/link";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -12,6 +12,11 @@ type Props = {
 
 export default function HeaderLogic({ hd }: Props) {
   const [drawer, setDrawer] = React.useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
   const isDesktop = useMediaQuery({ query: "(min-width: 1024px)" });
   return (
     <header id="header" className={` ${drawer ? "open" : "closed"}`}>
@@ -26,7 +31,7 @@ export default function HeaderLogic({ hd }: Props) {
         <GiHamburgerMenu />
       </button>
       <AnimatePresence mode="popLayout">
-        {(isDesktop || drawer) && (
+        {mounted && (isDesktop || drawer) && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
