@@ -7,7 +7,16 @@ body {
   background: linear-gradient(to bottom, #121211, #11100f);
   overflow-x: clip;
 }
-
+.payload-richtext {
+  p,
+  a,
+  li {
+    color: inherit;
+  }
+  ul {
+    padding-left: 1em;
+  }
+}
 * {
   scrollbar-width: thin;
   scroll-behavior: smooth;

@@ -71,7 +71,11 @@ export default async function page({}: Props) {
               return (
                 <div className="job" key={j.id}>
                   <img
-                    src={(j.icon as Media)?.url ?? undefined}
+                    src={
+                      (j.icon as Media)?.sizes?.small?.url ??
+                      (j.icon as Media)?.url ??
+                      undefined
+                    }
                     alt=""
                     className="icon"
                   />

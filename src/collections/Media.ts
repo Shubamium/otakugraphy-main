@@ -23,6 +23,7 @@ export const Media: CollectionConfig = {
   ],
   upload: {
     formatOptions,
+    mimeTypes: ["image/*", "video/*"],
     imageSizes: [
       {
         name: "small",
