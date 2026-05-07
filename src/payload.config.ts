@@ -43,7 +43,6 @@ export default buildConfig({
   plugins: [
     s3Storage({
       bucket: "otakugraphy",
-      clientUploads: true,
       collections: {
         media: {
           disablePayloadAccessControl: true,
