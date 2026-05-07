@@ -21,7 +21,7 @@ export default async function page({}: Props) {
   const vpsd = await p.findGlobal({
     slug: "vpsHome",
   });
-
+  //
   return (
     <main id="p_vps">
       <PayloadRefreshRouteOnSave />
