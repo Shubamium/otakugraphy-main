@@ -521,6 +521,7 @@ export interface VpsHome {
       titleTop?: string | null;
       titleCenter?: string | null;
       titleBottom?: string | null;
+      worksListHeading?: string | null;
       worksList?:
         | {
             title?: string | null;
@@ -606,6 +607,7 @@ export interface VpsJobsPage {
   subtitle?: string | null;
   title?: string | null;
   aboutImage?: (string | null) | Media;
+  jobsListBackground?: (string | null) | Media;
   cta?: {
     buttonText?: string | null;
     buttonLink?: string | null;
@@ -755,6 +757,7 @@ export interface VpsHomeSelect<T extends boolean = true> {
               titleTop?: T;
               titleCenter?: T;
               titleBottom?: T;
+              worksListHeading?: T;
               worksList?:
                 | T
                 | {
@@ -816,6 +819,7 @@ export interface VpsJobsPageSelect<T extends boolean = true> {
   subtitle?: T;
   title?: T;
   aboutImage?: T;
+  jobsListBackground?: T;
   cta?:
     | T
     | {

@@ -8,7 +8,7 @@ import { TestimonialSlide } from "../components/TestimonialSlide";
 import PartnershipSlide from "../components/partnershipSlide/PartnershipSlide";
 import Category from "../Category";
 import CreatorLists from "../featured/CreatorLists";
-
+import { GoogleAnalytics } from "@next/third-parties/google";
 const conventionPartners = [
   // "/gfx/p/c1.png",
   "/gfx/p/c2.png",
@@ -343,6 +343,7 @@ export default async function RigtoursPage() {
   };
   return (
     <main id="page_home">
+      <GoogleAnalytics gaId="G-0M41Y9TCPY" />
       <link
         rel="preload"
         as="image"

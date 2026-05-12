@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@googleapis/youtube": "^29.0.0",
+    "@next/third-parties": "^16.2.6",
     "@payloadcms/db-mongodb": "^3.82.1",
     "@payloadcms/live-preview-react": "^3.82.1",
     "@payloadcms/next": "^3.82.1",

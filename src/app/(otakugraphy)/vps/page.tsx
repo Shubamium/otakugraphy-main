@@ -9,7 +9,6 @@ import { getPayload } from "payload";
 import payloadConfig from "@/payload.config";
 import { Media } from "@/payload-types";
 import { RichText } from "@payloadcms/richtext-lexical/react";
-import PayloadRefreshRouteOnSave from "@/app/globalComponent/refreshRoute/PayloadRefreshRouteOnSave";
 import OurWorkSection from "./vps/ourWork/OurWorkSection";
 import { SerializedEditorState } from "lexical";
 
@@ -24,8 +23,6 @@ export default async function page({}: Props) {
   //
   return (
     <main id="p_vps">
-      {/* <PayloadRefreshRouteOnSave /> */}
-
       <section
         id="main_hero"
         style={

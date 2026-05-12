@@ -29,6 +29,11 @@ export const vpsJobsPage: GlobalConfig = {
       relationTo: "media",
     },
     {
+      name: "jobsListBackground",
+      type: "upload",
+      relationTo: "media",
+    },
+    {
       name: "cta",
       label: "Call To Action",
       type: "group",

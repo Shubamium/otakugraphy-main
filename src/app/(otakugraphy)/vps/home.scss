@@ -38,6 +38,7 @@
         flex-grow: 1;
         width: 100%;
         white-space: nowrap;
+        font-family: var(--fontG);
         @media screen and (max-width: 1024px) {
           font-size: 1rem;
         }
@@ -47,6 +48,7 @@
         gap: 1em;
         width: 100%;
         align-items: center;
+        font-family: var(--fontG);
         hr {
           height: 2px;
           width: 100%;
@@ -56,7 +58,8 @@
       h2 {
         font-size: 5rem;
         line-height: 90%;
-        max-width: 1000px;
+        font-family: var(--fontG);
+        max-width: 1200px;
         @media screen and (max-width: 1024px) {
           font-size: 3rem;
         }
@@ -95,7 +98,9 @@
   }
   #pro_shot {
     padding-top: 3em;
-
+    .title {
+      font-family: var(--fontG);
+    }
     .pmedia {
       width: 100%;
       background: black;

@@ -4,6 +4,14 @@ import { CSSProperties } from "react";
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
 import "./global.scss";
+
+import LocalFont from "next/font/local";
+import { GoogleAnalytics } from "@next/third-parties/google";
+const glitch = LocalFont({
+  src: "./fonts/glitch.otf",
+  variable: "--fontG",
+});
+
 const roboto = Roboto_Slab({
   variable: "--fontM",
   subsets: ["latin"],
@@ -77,9 +85,12 @@ export default function RootLayout({
           {
             "--fontO": roboto.style.fontFamily,
             "--fontM": roboto.style.fontFamily,
+            "--fontG": glitch.style.fontFamily,
           } as CSSProperties
         }
       >
+        <GoogleAnalytics gaId="G-XEGR9ZFQPY" />
+
         <Header />
         {children}
         <Footer />

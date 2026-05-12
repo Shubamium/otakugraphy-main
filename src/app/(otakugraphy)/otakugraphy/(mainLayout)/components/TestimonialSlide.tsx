@@ -64,7 +64,7 @@ const useCarousel = (length: number, blockClass: string, reverse?: boolean) => {
           duration: length * 2 * durationPerSlide,
           iterations: Infinity,
           direction: reverse ? "reverse" : "normal",
-        }
+        },
       );
       // console.log(animation);
       anims.push(animation);
@@ -123,7 +123,7 @@ export function TestimonialSlide({ gd }: Props) {
               <div className="t-card" key={"testimonials aa" + i + tm._key}>
                 <div className="person-info">
                   <img
-                    src={urlFor(tm.pfp).auto("format").url()}
+                    src={tm.pfp && urlFor(tm.pfp).auto("format").url()}
                     alt=""
                     className="img"
                   />
@@ -188,7 +188,7 @@ export function TestimonialSlide({ gd }: Props) {
               <div className="t-card" key={"testimonials ab" + i + tm._key}>
                 <div className="person-info">
                   <img
-                    src={urlFor(tm.pfp).auto("format").url()}
+                    src={tm.pfp && urlFor(tm.pfp).auto("format").url()}
                     alt=""
                     className="img"
                   />
@@ -281,7 +281,7 @@ export function TestimonialSlide({ gd }: Props) {
               <div className="t-card" key={"testimonials ba" + i + tm._key}>
                 <div className="person-info">
                   <img
-                    src={urlFor(tm.pfp).auto("format").url()}
+                    src={tm.pfp && urlFor(tm.pfp).auto("format").url()}
                     alt=""
                     className="img"
                   />
@@ -346,7 +346,7 @@ export function TestimonialSlide({ gd }: Props) {
               <div className="t-card" key={"testimonials bb" + i + tm._key}>
                 <div className="person-info">
                   <img
-                    src={urlFor(tm.pfp).auto("format").url()}
+                    src={tm.pfp && urlFor(tm.pfp).auto("format").url()}
                     alt=""
                     className="img"
                   />

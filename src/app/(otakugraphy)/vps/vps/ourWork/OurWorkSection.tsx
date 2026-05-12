@@ -31,7 +31,7 @@ export default function OurWorkSection({ data }: Props) {
         <div className="work-part">
           <div className="works-head confine">
             <hr />
-            <h2>OUR WORK</h2>
+            <h2>{ow?.worksListHeading}</h2>
             <hr />
           </div>
           <div className="work-list confine">

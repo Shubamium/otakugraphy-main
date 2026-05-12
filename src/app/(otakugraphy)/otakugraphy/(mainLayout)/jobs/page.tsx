@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
 type Props = {};
 import "./jobs.scss";
@@ -52,14 +52,30 @@ export default async function page({}: Props) {
           </div>
           <div className="r">
             <img
-              src="https://minio-api.venmiart.com/otakugraphy/mocapstudio-1440x1080.png"
+              src={(jd.aboutImage as Media)?.sizes?.medium?.url ?? undefined}
               alt=""
             />
           </div>
         </div>
       </section>
 
-      <section id="jobs-list">
+      <section
+        id="jobs-list"
+        style={
+          {
+            "--bg": `url('${
+              (jd.jobsListBackground as Media)?.sizes?.medium?.url ??
+              (jd.jobsListBackground as Media)?.url ??
+              undefined
+            }')`,
+          } as CSSProperties
+        }
+        data-bg={
+          (jd.jobsListBackground as Media)?.sizes?.medium?.url ??
+          (jd.jobsListBackground as Media)?.url ??
+          " NO IMAGE PROVIDED"
+        }
+      >
         <div className="confine">
           <div className="heading">
             <hr />

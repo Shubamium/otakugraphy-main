@@ -138,6 +138,11 @@ const OurWorkSectionFields: Field = {
       type: "text",
     },
     {
+      name: "worksListHeading",
+      label: "Works List Heading",
+      type: "text",
+    },
+    {
       name: "worksList",
       type: "array",
       fields: [
