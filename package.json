@@ -33,6 +33,7 @@
     "payload": "^3.82.1",
     "react": "^19.0.0",
     "react-blurhash": "^0.3.0",
+    "react-chrono": "^3.3.3",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
     "react-lite-youtube-embed": "^3.5.1",

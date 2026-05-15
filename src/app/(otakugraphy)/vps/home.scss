@@ -107,6 +107,53 @@
       aspect-ratio: 16/9;
     }
   }
+
+  #timeline {
+    .rc-card.active {
+      box-shadow: 0px 0px 0px 2px var(--dgold);
+      font-family: var(--fontM);
+    }
+    max-width: 1600px;
+    margin: 100px auto;
+    .heading {
+      display: flex;
+      align-items: center;
+      margin: 1em;
+      max-width: 800px;
+      gap: 1em;
+      margin: 2em auto;
+      hr {
+        height: 3px;
+        background: white;
+        border: none;
+        width: 100%;
+      }
+      h2 {
+        width: 100%;
+        text-align: center;
+        font-size: 4rem;
+        white-space: nowrap;
+      }
+    }
+    .timeline-wrapper {
+      mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        white 5%,
+        white 95%,
+        transparent 100%
+      );
+    }
+    .timeline-main-wrapper {
+      min-height: auto;
+    }
+    .rc-card {
+      border-radius: 0.1em;
+      .card-description {
+        font-family: var(--fontM);
+      }
+    }
+  }
   #overview {
     padding-top: 2em;
 

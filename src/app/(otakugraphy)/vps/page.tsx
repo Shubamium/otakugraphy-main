@@ -11,6 +11,7 @@ import { Media } from "@/payload-types";
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import OurWorkSection from "./vps/ourWork/OurWorkSection";
 import { SerializedEditorState } from "lexical";
+import TimelineSection from "./vps/timeline/TimelineSection";
 
 export default async function page({}: Props) {
   const p = await getPayload({
@@ -77,6 +78,8 @@ export default async function page({}: Props) {
           })}
         </section>
       </div>
+
+      <TimelineSection />
       <section id="external-link">
         {vpsd["Bottom Navigation"]?.bottomNavSection?.navigationList?.map(
           (n) => {
