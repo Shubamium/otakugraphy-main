@@ -4,7 +4,7 @@ import { MailOptions } from "nodemailer/lib/json-transport";
 const transporter = createTransport({
   service: "yahoo",
   auth: {
-    user: "vicnet.video@gmail.com",
+    user: process.env.SMTP_SENDER,
     pass: process.env.SMTP_PASS,
   },
 });
@@ -34,16 +34,15 @@ export async function sendMail(
     .map((line) => `<p style="margin:0;">${line}</p>`)
     .join("");
   const mailOption: MailOptions = {
-    from: "vicnet.video@gmail.com",
+    from: process.env.SMTP_SENDER,
     to: process.env.SMTP_TARGET,
-    replyTo: [mail],
     subject: `[Contact Form] New message from ${name}`,
     text: `Hello, ${name} has submitted a message through the website contact form. \n 
 		${messageBody}
 		`,
   };
   const confirmationEmail: MailOptions = {
-    from: "vicnet.video@gmail.com",
+    from: process.env.SMTP_SENDER,
     to: mail,
     subject: `[Otakugraphy] We’ve received your message`,
     // text: `Hi ${name},\n\nThank you for contacting us. We’ve successfully received your message and our team will review it shortly.\n\nIf your inquiry requires a response, we’ll get back to you as soon as possible. Please note that this is an automated message and replies to this email are not monitored.\n\nBest regards,\nOtakugraphy Team`,
@@ -66,6 +65,9 @@ export async function sendMail(
   </blockquote>
 `,
   };
+
+  console.group("mailOption", mailOption);
+  console.group("confirmationEmail", confirmationEmail);
   try {
     const res = await transporter.sendMail(mailOption);
     const confirm = await transporter.sendMail(confirmationEmail);
@@ -78,7 +80,8 @@ export async function sendMail(
     } else {
       return false;
     }
-  } catch {
+  } catch (err) {
+    console.log(err);
     return false;
   }
 }
