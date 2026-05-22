@@ -532,6 +532,19 @@ export interface VpsHome {
         | null;
     };
   };
+  'Our Journey'?: {
+    ourjourney?: {
+      heading?: string | null;
+      timeline?:
+        | {
+            title?: string | null;
+            date?: string | null;
+            description?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+  };
   Team?: {
     team?: {
       subtitle?: string | null;
@@ -764,6 +777,23 @@ export interface VpsHomeSelect<T extends boolean = true> {
                     title?: T;
                     thumbnail?: T;
                     fullPreview?: T;
+                    id?: T;
+                  };
+            };
+      };
+  'Our Journey'?:
+    | T
+    | {
+        ourjourney?:
+          | T
+          | {
+              heading?: T;
+              timeline?:
+                | T
+                | {
+                    title?: T;
+                    date?: T;
+                    description?: T;
                     id?: T;
                   };
             };

@@ -38,7 +38,7 @@
         flex-grow: 1;
         width: 100%;
         white-space: nowrap;
-        font-family: var(--fontG);
+        font-family: var(--fontM);
         @media screen and (max-width: 1024px) {
           font-size: 1rem;
         }
@@ -48,7 +48,6 @@
         gap: 1em;
         width: 100%;
         align-items: center;
-        font-family: var(--fontG);
         hr {
           height: 2px;
           width: 100%;
@@ -57,7 +56,6 @@
       }
       h2 {
         font-size: 5rem;
-        line-height: 90%;
         font-family: var(--fontG);
         max-width: 1200px;
         @media screen and (max-width: 1024px) {
@@ -135,22 +133,83 @@
         white-space: nowrap;
       }
     }
-    .timeline-wrapper {
-      mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        white 5%,
-        white 95%,
-        transparent 100%
-      );
+    .libtimelineclasses {
+      .timeline-wrapper {
+        mask-image: linear-gradient(
+          to right,
+          transparent 0%,
+          white 5%,
+          white 95%,
+          transparent 100%
+        );
+      }
+      .timeline-main-wrapper {
+      }
+      #testette {
+        height: 1000px;
+      }
+      .rc-card {
+        border-radius: 0.1em;
+        .card-description {
+          font-family: var(--fontM);
+        }
+      }
     }
-    .timeline-main-wrapper {
-      min-height: auto;
-    }
-    .rc-card {
-      border-radius: 0.1em;
-      .card-description {
-        font-family: var(--fontM);
+
+    .manual-timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      .timeline-col {
+        display: grid;
+        grid-template-rows: 1fr 80px 0px 90px 1fr;
+        .center {
+          position: relative;
+          border-top: 4px solid var(--dgold);
+          .dot {
+            width: 30px;
+            height: 30px;
+            background: var(--dgold);
+            border-radius: 1em;
+            position: absolute;
+            top: -15px;
+            left: -15px;
+          }
+        }
+
+        .lineto {
+          position: relative;
+          height: 100%;
+          width: 3px;
+          background: var(--dgold);
+        }
+        &:nth-child(even) {
+          .lineto.top {
+            opacity: 0;
+          }
+        }
+        &:nth-child(odd) {
+          .lineto.bottom {
+            opacity: 0;
+          }
+        }
+
+        .top-content {
+          display: flex;
+          align-items: flex-end;
+          margin-bottom: 1em;
+        }
+      }
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        .date {
+          color: var(--dgold);
+          font-weight: bold;
+        }
+        .description {
+          opacity: 0.5;
+        }
       }
     }
   }

@@ -295,11 +295,6 @@ export default async function RigtoursPage() {
         </div>
         <div className="content">
           <div className="p-l">
-            {/* <PartnershipSlide p={conventionPartners} />
-            <PartnershipSlide p={brandPartners} reverse={true} />
-            <PartnershipSlide p={vtuberPartners} />
-            <PartnershipSlide p={nightlifePartners} reverse={true} />
-            <PartnershipSlide p={newPartners} /> */}
             {rowList?.map((p: any, i: number) => {
               return (
                 <PartnershipSlide
@@ -310,32 +305,6 @@ export default async function RigtoursPage() {
               );
             })}
           </div>
-
-          {/* <div className="testimonials">
-            <h2 className="ttitle">TESTIMONIALS</h2>
-
-            <div className="blocks">
-              {gd.testimonials?.map((tm: any, i: number) => {
-                return (
-                  <div className="testiblock" key={"testimonials" + tm._key}>
-                    <div className="person-info">
-                      <img
-                        src={urlFor(tm.pfp).auto("format").url()}
-                        alt=""
-                        className="img"
-                      />
-                      <h2>{tm.name}</h2>
-                      <p> {tm.role}</p>
-                    </div>
-                    <div className="testi-text">
-                      <FaQuoteLeft />
-                      <p>{tm.text}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div> */}
         </div>
       </section>
     ),

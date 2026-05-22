@@ -208,6 +208,36 @@ const TeamSectionFields: Field = {
     },
   ],
 };
+const OurJourneySectionFields: Field = {
+  name: "ourjourney",
+  label: "Our Journey Section",
+  type: "group",
+  fields: [
+    {
+      name: "heading",
+      label: "Our Journey Heading",
+      type: "text",
+    },
+    {
+      name: "timeline",
+      type: "array",
+      fields: [
+        {
+          name: "title",
+          type: "text",
+        },
+        {
+          name: "date",
+          type: "text",
+        },
+        {
+          name: "description",
+          type: "textarea",
+        },
+      ],
+    },
+  ],
+};
 const vpsHome: GlobalConfig = {
   slug: "vpsHome",
   label: "Home Page",
@@ -245,6 +275,10 @@ const vpsHome: GlobalConfig = {
         {
           name: "Our Work",
           fields: [OurWorkSectionFields],
+        },
+        {
+          name: "Our Journey",
+          fields: [OurJourneySectionFields],
         },
         {
           name: "Team",

@@ -1050,16 +1050,16 @@
             left: calc(-100% + 40vw);
           }
         }
-        .partner {
-          height: 130px;
-          width: 100%;
-          img {
-            width: auto;
-            object-fit: contain;
-            margin: 1em 30px;
-            // max-width: 800px;
-            height: 100%;
-          }
+      }
+      .partner {
+        height: 130px;
+        width: 100%;
+        img {
+          width: auto;
+          object-fit: contain;
+          margin: 1em 30px;
+          // max-width: 800px;
+          height: 100%;
         }
       }
       @include mq(1024) {

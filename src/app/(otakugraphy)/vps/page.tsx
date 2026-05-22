@@ -12,6 +12,7 @@ import { RichText } from "@payloadcms/richtext-lexical/react";
 import OurWorkSection from "./vps/ourWork/OurWorkSection";
 import { SerializedEditorState } from "lexical";
 import TimelineSection from "./vps/timeline/TimelineSection";
+import { Any } from "next-sanity";
 
 export default async function page({}: Props) {
   const p = await getPayload({
@@ -38,12 +39,14 @@ export default async function page({}: Props) {
             <hr />
           </div>
           <h2>{vpsd.Hero?.heroSection?.title}</h2>
-          <Link
-            href={vpsd.Hero?.heroSection?.callToActionLink ?? "#"}
-            className="btn btn-cta"
-          >
-            {vpsd.Hero?.heroSection?.callToAction}
-          </Link>
+          {vpsd.Hero?.heroSection?.callToAction && (
+            <Link
+              href={vpsd.Hero?.heroSection?.callToActionLink ?? "#"}
+              className="btn btn-cta"
+            >
+              {vpsd.Hero?.heroSection?.callToAction}
+            </Link>
+          )}
         </article>
       </section>
 
@@ -79,7 +82,10 @@ export default async function page({}: Props) {
         </section>
       </div>
 
-      <TimelineSection />
+      <TimelineSection
+        data={vpsd["Our Journey"]?.ourjourney?.timeline as Any[]}
+        heading={vpsd["Our Journey"]?.ourjourney?.heading}
+      />
       <section id="external-link">
         {vpsd["Bottom Navigation"]?.bottomNavSection?.navigationList?.map(
           (n) => {

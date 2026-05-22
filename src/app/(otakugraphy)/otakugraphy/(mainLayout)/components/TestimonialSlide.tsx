@@ -88,6 +88,7 @@ const useCarousel = (length: number, blockClass: string, reverse?: boolean) => {
     bounds,
   };
 };
+
 export function TestimonialSlide({ gd }: Props) {
   // const [posA, setPosA] = useState(0);
   const [offsetA, setOffsetA] = useState(0);
