@@ -84,7 +84,7 @@ export default async function page({}: Props) {
 
       <TimelineSection
         data={vpsd["Our Journey"]?.ourjourney?.timeline as Any[]}
-        heading={vpsd["Our Journey"]?.ourjourney?.heading}
+        heading={vpsd["Our Journey"]?.ourjourney?.heading ?? "OUR JOURNEY"}
       />
       <section id="external-link">
         {vpsd["Bottom Navigation"]?.bottomNavSection?.navigationList?.map(

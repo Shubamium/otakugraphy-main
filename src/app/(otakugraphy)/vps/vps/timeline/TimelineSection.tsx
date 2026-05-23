@@ -8,7 +8,7 @@ type TimelineType = {
 };
 type Props = {
   data: TimelineType[];
-  heading: string;
+  heading?: string;
 };
 
 import { useMediaQuery } from "react-responsive";
