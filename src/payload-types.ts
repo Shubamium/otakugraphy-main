@@ -517,6 +517,7 @@ export interface VpsHome {
   };
   'Our Work'?: {
     ourwork?: {
+      isVisible?: boolean | null;
       headingBanner?: (string | null) | Media;
       titleTop?: string | null;
       titleCenter?: string | null;
@@ -527,6 +528,43 @@ export interface VpsHome {
             title?: string | null;
             thumbnail?: (string | null) | Media;
             fullPreview?: (string | null) | Media;
+            id?: string | null;
+          }[]
+        | null;
+    };
+  };
+  foundingAmbassador?: {
+    foundingAmbassador?: {
+      isVisible?: boolean | null;
+      creatorList?:
+        | {
+            name?: string | null;
+            title?: string | null;
+            desc?: string | null;
+            media?: {
+              type?: ('media' | 'youtube') | null;
+              videoId?: string | null;
+              media?: (string | null) | Media;
+            };
+            mainArt?: (string | null) | Media;
+            pfp?: (string | null) | Media;
+            quote?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+  };
+  collaborators?: {
+    collaboratorSection?: {
+      isVisible?: boolean | null;
+      collaboratorRows?:
+        | {
+            collaborators?:
+              | {
+                  collaborator?: (string | null) | Media;
+                  id?: string | null;
+                }[]
+              | null;
             id?: string | null;
           }[]
         | null;
@@ -766,6 +804,7 @@ export interface VpsHomeSelect<T extends boolean = true> {
         ourwork?:
           | T
           | {
+              isVisible?: T;
               headingBanner?: T;
               titleTop?: T;
               titleCenter?: T;
@@ -777,6 +816,53 @@ export interface VpsHomeSelect<T extends boolean = true> {
                     title?: T;
                     thumbnail?: T;
                     fullPreview?: T;
+                    id?: T;
+                  };
+            };
+      };
+  foundingAmbassador?:
+    | T
+    | {
+        foundingAmbassador?:
+          | T
+          | {
+              isVisible?: T;
+              creatorList?:
+                | T
+                | {
+                    name?: T;
+                    title?: T;
+                    desc?: T;
+                    media?:
+                      | T
+                      | {
+                          type?: T;
+                          videoId?: T;
+                          media?: T;
+                        };
+                    mainArt?: T;
+                    pfp?: T;
+                    quote?: T;
+                    id?: T;
+                  };
+            };
+      };
+  collaborators?:
+    | T
+    | {
+        collaboratorSection?:
+          | T
+          | {
+              isVisible?: T;
+              collaboratorRows?:
+                | T
+                | {
+                    collaborators?:
+                      | T
+                      | {
+                          collaborator?: T;
+                          id?: T;
+                        };
                     id?: T;
                   };
             };

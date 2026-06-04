@@ -117,6 +117,10 @@ const OurWorkSectionFields: Field = {
   type: "group",
   fields: [
     {
+      name: "isVisible",
+      type: "checkbox",
+    },
+    {
       name: "headingBanner",
       label: "Heading Banner Background",
       type: "upload",
@@ -164,6 +168,87 @@ const OurWorkSectionFields: Field = {
     },
   ],
 };
+const FoundingAmabassadorSectionFields: Field = {
+  name: "foundingAmbassador",
+  label: "Founding Ambassador Section",
+  type: "group",
+  fields: [
+    {
+      name: "isVisible",
+
+      type: "checkbox",
+    },
+    {
+      name: "creatorList",
+      type: "array",
+      fields: [
+        {
+          name: "name",
+          type: "text",
+        },
+        {
+          name: "title",
+          label: " Creator Title",
+          type: "text",
+        },
+        {
+          name: "desc",
+          type: "textarea",
+        },
+        {
+          name: "media",
+          type: "group",
+          fields: [...MediaSelector],
+        },
+        {
+          name: "mainArt",
+          type: "upload",
+          relationTo: "media",
+        },
+        {
+          name: "pfp",
+          label: "Profile Picture",
+          type: "upload",
+          relationTo: "media",
+        },
+        {
+          name: "quote",
+          type: "textarea",
+          label: "Quote / Testimonial",
+        },
+      ],
+    },
+  ],
+};
+const CollaboratorSectionFields: Field = {
+  name: "collaboratorSection",
+  label: "Collaborator Section",
+  type: "group",
+  fields: [
+    {
+      name: "isVisible",
+      type: "checkbox",
+    },
+    {
+      name: "collaboratorRows",
+      type: "array",
+      fields: [
+        {
+          name: "collaborators",
+          type: "array",
+          fields: [
+            {
+              name: "collaborator",
+              type: "upload",
+              relationTo: "media",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
 const TeamSectionFields: Field = {
   name: "team",
   label: "Team Section",
@@ -275,6 +360,14 @@ const vpsHome: GlobalConfig = {
         {
           name: "Our Work",
           fields: [OurWorkSectionFields],
+        },
+        {
+          name: "foundingAmbassador",
+          fields: [FoundingAmabassadorSectionFields],
+        },
+        {
+          name: "collaborators",
+          fields: [CollaboratorSectionFields],
         },
         {
           name: "Our Journey",

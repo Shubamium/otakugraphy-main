@@ -3,17 +3,120 @@
 import { Media, VpsHome } from "@/payload-types";
 import React, { useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import PayloadMedia, {
+  MediaSelector,
+} from "@/app/globalComponent/payloadMedia/PayloadMedia";
+import { GoTriangleLeft, GoTriangleRight } from "react-icons/go";
+import Marquee from "react-fast-marquee";
 type Props = {
-  data: VpsHome["Our Work"];
+  ourworkvps: VpsHome["Our Work"];
+  founding: VpsHome["foundingAmbassador"];
+  collaborators: VpsHome["collaborators"];
 };
 
-export default function OurWorkSection({ data }: Props) {
-  const ow = data?.ourwork;
+export default function OurWorkSection({
+  collaborators,
+  ourworkvps,
+  founding,
+}: Props) {
+  const ow = ourworkvps?.ourwork;
   const [actImg, setActImg] = useState<null | string>(
     (ow?.worksList && (ow?.worksList[0]?.fullPreview as Media))?.url ?? null,
   );
 
   const imgRef = useRef<HTMLDivElement>(null);
+  const works = (
+    <div className="works ">
+      <div className="work-part">
+        <div className="works-head confine">
+          <hr />
+          <h2>{ow?.worksListHeading}</h2>
+          <hr />
+        </div>
+        <div className="work-list confine">
+          {ow?.worksList?.map((w, i: number) => {
+            const thumb = w?.thumbnail as Media;
+            const full = w.fullPreview as Media;
+
+            return (
+              <div
+                className="work btn"
+                key={w.id}
+                onClick={() => {
+                  setActImg(full?.url ?? null);
+                  imgRef?.current?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                <img
+                  src={thumb.sizes?.small?.url ?? undefined}
+                  alt={thumb.alt}
+                  className="thumb"
+                />
+                <p>{w.title}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div className="display" ref={imgRef}>
+        <AnimatePresence mode="popLayout">
+          <motion.img
+            src={actImg ?? "emptydisimg"}
+            alt=""
+            className="displayimg"
+            key={actImg}
+            initial={{
+              clipPath: "inset(0 0 100% 0)",
+            }}
+            animate={{
+              clipPath: "inset(0 0 0 0)",
+            }}
+            exit={{
+              clipPath: "inset(100% 0 0% 0)",
+            }}
+          />
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+
+  const collabo = (
+    <div id="collaborators">
+      <h3>OTG Collaborators</h3>
+      {collaborators?.collaboratorSection?.collaboratorRows?.map((c, i) => {
+        return (
+          <Marquee
+            className="mar"
+            key={c.id}
+            direction={i % 2 === 0 ? "left" : "right"}
+            pauseOnHover={true}
+            autoFill
+          >
+            {c?.collaborators?.map((col) => {
+              return (
+                <img
+                  src={(col.collaborator as Media)?.url ?? ""}
+                  alt="Collaborator"
+                />
+              );
+            })}
+            {/* <img
+              src="https://cdn.sanity.io/images/m3ohpj5z/production/97db214b79d8dfc3e7ec6919f7f44959cf2ebb4e-2000x1000.png?h=300&fm=webp"
+              alt=""
+            />
+            <img
+              src="https://cdn.sanity.io/images/m3ohpj5z/production/97db214b79d8dfc3e7ec6919f7f44959cf2ebb4e-2000x1000.png?h=300&fm=webp"
+              alt=""
+            />
+            <img
+              src="https://cdn.sanity.io/images/m3ohpj5z/production/97db214b79d8dfc3e7ec6919f7f44959cf2ebb4e-2000x1000.png?h=300&fm=webp"
+              alt=""
+            /> */}
+          </Marquee>
+        );
+      })}
+    </div>
+  );
   return (
     <section id="our-work">
       <div className="heading ">
@@ -26,79 +129,110 @@ export default function OurWorkSection({ data }: Props) {
         <h2 className="center">{ow?.titleCenter}</h2>
         <h2 className="end">{ow?.titleBottom}</h2>
       </div>
+      {ow?.isVisible && works}
+      {founding?.foundingAmbassador?.isVisible && (
+        <FeaturedCreators founding={founding} />
+      )}
+      {collaborators?.collaboratorSection?.isVisible && collabo}
+    </section>
+  );
+}
 
-      <div className="works ">
-        <div className="work-part">
-          <div className="works-head confine">
-            <hr />
-            <h2>{ow?.worksListHeading}</h2>
-            <hr />
-          </div>
-          <div className="work-list confine">
-            {ow?.worksList?.map((w, i: number) => {
-              const thumb = w?.thumbnail as Media;
-              const full = w.fullPreview as Media;
+function FeaturedCreators({
+  founding,
+}: {
+  founding: VpsHome["foundingAmbassador"];
+}) {
+  const creators = founding?.foundingAmbassador?.creatorList ?? [];
+  const [activeCreator, setActiveCreator] = useState(0);
 
-              return (
-                <div
-                  className="work btn"
-                  key={w.id}
-                  onClick={() => {
-                    setActImg(full?.url ?? null);
-                    imgRef?.current?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                >
-                  <img
-                    src={thumb.sizes?.small?.url ?? undefined}
-                    alt={thumb.alt}
-                    className="thumb"
-                  />
-                  <p>{w.title}</p>
-                </div>
-              );
-            })}
-            {/* <div className="work btn">
-              <img src="/g/cube3.png" alt="" className="thumb" />
-              <p>SILVERVALE 3D CONCERT</p>
-            </div>
-            <div className="work btn">
-              <img src="/g/cube3.png" alt="" className="thumb" />
-              <p>SILVERVALE 3D CONCERT</p>
-            </div>
-            <div className="work btn">
-              <img src="/g/cube3.png" alt="" className="thumb" />
-              <p>SILVERVALE 3D CONCERT</p>
-            </div>
-            <div className="work btn">
-              <img src="/g/cube3.png" alt="" className="thumb" />
-              <p>SILVERVALE 3D CONCERT</p>
-            </div>
-            <div className="work btn">
-              <img src="/g/cube3.png" alt="" className="thumb" />
-              <p>SILVERVALE 3D CONCERT</p>
-            </div> */}
+  const handleNext = () => {
+    setActiveCreator((prev) => (prev + 1) % creators.length);
+  };
+
+  const handlePrev = () => {
+    setActiveCreator((prev) => (prev - 1 + creators.length) % creators.length);
+  };
+
+  const handlePageClick = (index: number) => {
+    setActiveCreator(index);
+  };
+
+  const currentCreator = creators[activeCreator];
+  const mainArtMedia = currentCreator?.mainArt as Media | undefined;
+  const pfpMedia = currentCreator?.pfp as Media | undefined;
+
+  if (!currentCreator) {
+    return null;
+  }
+
+  return (
+    <div id="featured-creator">
+      <button className="btn btn-name left" onClick={handlePrev}>
+        <GoTriangleLeft />{" "}
+      </button>
+      <div className="fc-head">
+        <h2>OTG Founding Ambassadors</h2>
+        <hr />
+        <div className="pages">
+          <div className="list">
+            {creators.map((_, index) => (
+              <button
+                key={index}
+                className={`btn p ${activeCreator === index ? "active" : ""}`}
+                onClick={() => handlePageClick(index)}
+              ></button>
+            ))}
           </div>
-        </div>
-        <div className="display" ref={imgRef}>
-          <AnimatePresence mode="popLayout">
-            <motion.img
-              src={actImg ?? "emptydisimg"}
-              alt=""
-              className="displayimg"
-              key={actImg}
-              initial={{
-                clipPath: "inset(0 0 100% 0)",
-              }}
-              animate={{
-                clipPath: "inset(0 0 0 0)",
-              }}
-              exit={{
-                clipPath: "inset(100% 0 0% 0)",
-              }}
-            />
-          </AnimatePresence>
+          <p>
+            {activeCreator + 1}/{creators.length}
+          </p>
         </div>
       </div>
-    </section>
+
+      <AnimatePresence mode="wait">
+        <motion.div
+          className="fc-content"
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 100 }}
+          transition={{ duration: 0.5 }}
+          key={currentCreator.id}
+        >
+          <div className="art">
+            <div className="bg-rect"></div>
+            <img
+              src={mainArtMedia?.sizes?.medium?.url ?? "/gfx/fcplace.png"}
+              alt={mainArtMedia?.alt ?? "Creator art"}
+              className="fc"
+            />
+          </div>
+          <div className="content">
+            <div className="chead">
+              <h3>{currentCreator.name}</h3>
+              <p>{currentCreator.title}</p>
+            </div>
+            <div className="desc">{currentCreator.desc}</div>
+            <PayloadMedia media={currentCreator.media as MediaSelector} />
+            <div className="quotes">
+              <div className="q">
+                <p>"</p>
+              </div>
+              <div className="quote">
+                <p>{currentCreator.quote}</p>
+              </div>
+              <img
+                src={pfpMedia?.url ?? "/"}
+                alt={pfpMedia?.alt ?? "Profile"}
+                className="pfp"
+              />
+            </div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+      <button className="btn btn-name right" onClick={handleNext}>
+        <GoTriangleRight />{" "}
+      </button>
+    </div>
   );
 }

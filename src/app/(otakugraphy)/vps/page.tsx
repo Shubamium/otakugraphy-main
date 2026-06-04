@@ -144,7 +144,11 @@ export default async function page({}: Props) {
           </div>
         </div> */}
       </section>
-      <OurWorkSection data={vpsd["Our Work"]} />
+      <OurWorkSection
+        ourworkvps={vpsd["Our Work"]}
+        founding={vpsd.foundingAmbassador}
+        collaborators={vpsd.collaborators}
+      />
       <section id="meet-the-team">
         <div className="heading">
           <p className="sub">{vpsd["Team"]?.team?.subtitle}</p>
