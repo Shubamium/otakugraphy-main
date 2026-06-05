@@ -121,6 +121,10 @@ const OurWorkSectionFields: Field = {
       type: "checkbox",
     },
     {
+      name: "sectionTitle",
+      type: "text",
+    },
+    {
       name: "headingBanner",
       label: "Heading Banner Background",
       type: "upload",
@@ -177,6 +181,10 @@ const FoundingAmabassadorSectionFields: Field = {
       name: "isVisible",
 
       type: "checkbox",
+    },
+    {
+      name: "sectionTitle",
+      type: "text",
     },
     {
       name: "creatorList",

@@ -26,63 +26,75 @@ export default function OurWorkSection({
 
   const imgRef = useRef<HTMLDivElement>(null);
   const works = (
-    <div className="works ">
-      <div className="work-part">
-        <div className="works-head confine">
-          <hr />
-          <h2>{ow?.worksListHeading}</h2>
-          <hr />
-        </div>
-        <div className="work-list confine">
-          {ow?.worksList?.map((w, i: number) => {
-            const thumb = w?.thumbnail as Media;
-            const full = w.fullPreview as Media;
+    <>
+      <div className="heading ">
+        <img
+          src={(ow?.headingBanner as Media)?.sizes?.medium?.url ?? undefined}
+          alt=""
+          className="bg"
+        />
+        <h2 className="first">{ow?.titleTop}</h2>
+        <h2 className="center">{ow?.titleCenter}</h2>
+        <h2 className="end">{ow?.titleBottom}</h2>
+      </div>
+      <div className="works ">
+        <div className="work-part">
+          <div className="works-head confine">
+            <hr />
+            <h2>{ow?.worksListHeading}</h2>
+            <hr />
+          </div>
+          <div className="work-list confine">
+            {ow?.worksList?.map((w, i: number) => {
+              const thumb = w?.thumbnail as Media;
+              const full = w.fullPreview as Media;
 
-            return (
-              <div
-                className="work btn"
-                key={w.id}
-                onClick={() => {
-                  setActImg(full?.url ?? null);
-                  imgRef?.current?.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                <img
-                  src={thumb.sizes?.small?.url ?? undefined}
-                  alt={thumb.alt}
-                  className="thumb"
-                />
-                <p>{w.title}</p>
-              </div>
-            );
-          })}
+              return (
+                <div
+                  className="work btn"
+                  key={w.id}
+                  onClick={() => {
+                    setActImg(full?.url ?? null);
+                    imgRef?.current?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  <img
+                    src={thumb.sizes?.small?.url ?? undefined}
+                    alt={thumb.alt}
+                    className="thumb"
+                  />
+                  <p>{w.title}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div className="display" ref={imgRef}>
+          <AnimatePresence mode="popLayout">
+            <motion.img
+              src={actImg ?? "emptydisimg"}
+              alt=""
+              className="displayimg"
+              key={actImg}
+              initial={{
+                clipPath: "inset(0 0 100% 0)",
+              }}
+              animate={{
+                clipPath: "inset(0 0 0 0)",
+              }}
+              exit={{
+                clipPath: "inset(100% 0 0% 0)",
+              }}
+            />
+          </AnimatePresence>
         </div>
       </div>
-      <div className="display" ref={imgRef}>
-        <AnimatePresence mode="popLayout">
-          <motion.img
-            src={actImg ?? "emptydisimg"}
-            alt=""
-            className="displayimg"
-            key={actImg}
-            initial={{
-              clipPath: "inset(0 0 100% 0)",
-            }}
-            animate={{
-              clipPath: "inset(0 0 0 0)",
-            }}
-            exit={{
-              clipPath: "inset(100% 0 0% 0)",
-            }}
-          />
-        </AnimatePresence>
-      </div>
-    </div>
+    </>
   );
 
   const collabo = (
     <div id="collaborators">
-      <h3>OTG Collaborators</h3>
+      <h3>{collaborators?.collaboratorSection?.sectionTitle}</h3>
       {collaborators?.collaboratorSection?.collaboratorRows?.map((c, i) => {
         return (
           <Marquee
@@ -119,16 +131,6 @@ export default function OurWorkSection({
   );
   return (
     <section id="our-work">
-      <div className="heading ">
-        <img
-          src={(ow?.headingBanner as Media)?.sizes?.medium?.url ?? undefined}
-          alt=""
-          className="bg"
-        />
-        <h2 className="first">{ow?.titleTop}</h2>
-        <h2 className="center">{ow?.titleCenter}</h2>
-        <h2 className="end">{ow?.titleBottom}</h2>
-      </div>
       {ow?.isVisible && works}
       {founding?.foundingAmbassador?.isVisible && (
         <FeaturedCreators founding={founding} />
@@ -172,7 +174,7 @@ function FeaturedCreators({
         <GoTriangleLeft />{" "}
       </button>
       <div className="fc-head">
-        <h2>OTG Founding Ambassadors</h2>
+        <h2>{founding?.foundingAmbassador?.sectionTitle}</h2>
         <hr />
         <div className="pages">
           <div className="list">
