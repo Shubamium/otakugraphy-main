@@ -171,7 +171,7 @@ export default async function page({}: Props) {
                   <div className="name-container">
                     <h2 className="n">{p.name}</h2>
                     {p.x && (
-                      <a href={p.x} className="btn btn-ct">
+                      <a href={p.x} target="_blank" className="btn btn-ct">
                         <FaXTwitter />
                       </a>
                     )}
