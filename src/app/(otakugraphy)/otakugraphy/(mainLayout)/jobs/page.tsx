@@ -40,6 +40,7 @@ export default async function page({}: Props) {
               {jd.cta && (
                 <Link
                   href={jd.cta?.buttonLink ?? "#"}
+                  target="_blank"
                   className={"btn btn-cta"}
                 >
                   {jd.cta.buttonText}
@@ -103,7 +104,7 @@ export default async function page({}: Props) {
                     </div>
                   </div>
                   <div className="action">
-                    <Link href={j.applyLink ?? "#"}>
+                    <Link href={j.applyLink ?? "#"} target="_blank">
                       Apply <img src="/gfx/smallarr.svg" alt="" />
                     </Link>
                   </div>
