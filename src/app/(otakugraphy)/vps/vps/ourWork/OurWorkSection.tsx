@@ -1,8 +1,14 @@
 "use client";
 
 import { Media, VpsHome } from "@/payload-types";
-import React, { useRef, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "motion/react";
 import PayloadMedia, {
   MediaSelector,
 } from "@/app/globalComponent/payloadMedia/PayloadMedia";
@@ -160,10 +166,29 @@ function FeaturedCreators({
     setActiveCreator(index);
   };
 
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const movX = useTransform(x, [0, 1], [5, -10]);
+  const movY = useTransform(y, [0, 1], [5, -10]);
+  const bgx = useTransform(x, [0, 1], [-45, 40]);
+  const bgy = useTransform(y, [0, 1], [-45, 40]);
+  const springX = useSpring(movX);
+  const springY = useSpring(movY);
   const currentCreator = creators[activeCreator];
   const mainArtMedia = currentCreator?.mainArt as Media | undefined;
   const pfpMedia = currentCreator?.pfp as Media | undefined;
 
+  useEffect(() => {
+    const mouseMoveListener = (e: MouseEvent) => {
+      x.set(e.clientX / window.innerWidth);
+      y.set(e.clientY / window.innerHeight);
+      console.log(x.get(), y.get());
+    };
+    window.addEventListener("mousemove", mouseMoveListener);
+    return () => {
+      window.removeEventListener("mousemove", mouseMoveListener);
+    };
+  }, []);
   if (!currentCreator) {
     return null;
   }
@@ -202,8 +227,12 @@ function FeaturedCreators({
           key={currentCreator.id}
         >
           <div className="art">
-            <div className="bg-rect"></div>
-            <img
+            <motion.div
+              style={{ x: bgx, y: bgy }}
+              className="bg-rect"
+            ></motion.div>
+            <motion.img
+              style={{ x: springX, y: springY }}
               src={mainArtMedia?.sizes?.medium?.url ?? "/gfx/fcplace.png"}
               alt={mainArtMedia?.alt ?? "Creator art"}
               className="fc"
