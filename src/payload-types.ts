@@ -607,6 +607,7 @@ export interface VpsHome {
       teamList?:
         | {
             name?: string | null;
+            x?: string | null;
             pfp?: (string | null) | Media;
             role?: string | null;
             description?: {
@@ -901,6 +902,7 @@ export interface VpsHomeSelect<T extends boolean = true> {
                 | T
                 | {
                     name?: T;
+                    x?: T;
                     pfp?: T;
                     role?: T;
                     description?: T;

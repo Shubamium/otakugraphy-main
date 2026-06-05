@@ -270,6 +270,7 @@ const TeamSectionFields: Field = {
       name: "title",
       type: "text",
     },
+
     {
       name: "description",
       label: "Description",
@@ -281,6 +282,11 @@ const TeamSectionFields: Field = {
       fields: [
         {
           name: "name",
+          type: "text",
+        },
+        {
+          name: "x",
+          label: "X / Twitter Links",
           type: "text",
         },
         {

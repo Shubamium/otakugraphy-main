@@ -169,9 +169,9 @@ function FeaturedCreators({
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const movX = useTransform(x, [0, 1], [5, -10]);
-  const movY = useTransform(y, [0, 1], [5, -10]);
+  const movY = useTransform(y, [0, 1], [5 * 1.7, -10 * 1.7]);
   const bgx = useTransform(x, [0, 1], [-45, 40]);
-  const bgy = useTransform(y, [0, 1], [-45, 40]);
+  const bgy = useTransform(y, [0, 1], [-45 * 1.7, 40 * 1.7]);
   const springX = useSpring(movX);
   const springY = useSpring(movY);
   const currentCreator = creators[activeCreator];

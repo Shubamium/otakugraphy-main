@@ -13,6 +13,7 @@ import OurWorkSection from "./vps/ourWork/OurWorkSection";
 import { SerializedEditorState } from "lexical";
 import TimelineSection from "./vps/timeline/TimelineSection";
 import { Any } from "next-sanity";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default async function page({}: Props) {
   const p = await getPayload({
@@ -152,7 +153,9 @@ export default async function page({}: Props) {
       <section id="meet-the-team">
         <div className="heading">
           <p className="sub">{vpsd["Team"]?.team?.subtitle}</p>
-          <h2>{vpsd["Team"]?.team?.title}</h2>
+          <div className="name">
+            <h2>{vpsd["Team"]?.team?.title}</h2>
+          </div>
           <RichText
             className="desc"
             data={vpsd["Team"]?.team?.description as SerializedEditorState}
@@ -165,7 +168,14 @@ export default async function page({}: Props) {
             return (
               <div className="person" key={p.id}>
                 <div className="data">
-                  <h2 className="n">{p.name}</h2>
+                  <div className="name-container">
+                    <h2 className="n">{p.name}</h2>
+                    {p.x && (
+                      <a href={p.x} className="btn btn-ct">
+                        <FaXTwitter />
+                      </a>
+                    )}
+                  </div>
                   <p className="r">{p.role}</p>
                   <RichText
                     className="desc"
