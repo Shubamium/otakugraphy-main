@@ -120,10 +120,7 @@ const OurWorkSectionFields: Field = {
       name: "isVisible",
       type: "checkbox",
     },
-    {
-      name: "sectionTitle",
-      type: "text",
-    },
+
     {
       name: "headingBanner",
       label: "Heading Banner Background",
@@ -235,6 +232,10 @@ const CollaboratorSectionFields: Field = {
   fields: [
     {
       name: "isVisible",
+      type: "checkbox",
+    },
+    {
+      name: "sectionTitle",
       type: "checkbox",
     },
     {

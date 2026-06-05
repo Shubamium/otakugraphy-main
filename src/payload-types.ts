@@ -518,7 +518,6 @@ export interface VpsHome {
   'Our Work'?: {
     ourwork?: {
       isVisible?: boolean | null;
-      sectionTitle?: string | null;
       headingBanner?: (string | null) | Media;
       titleTop?: string | null;
       titleCenter?: string | null;
@@ -559,6 +558,7 @@ export interface VpsHome {
   collaborators?: {
     collaboratorSection?: {
       isVisible?: boolean | null;
+      sectionTitle?: boolean | null;
       collaboratorRows?:
         | {
             collaborators?:
@@ -808,7 +808,6 @@ export interface VpsHomeSelect<T extends boolean = true> {
           | T
           | {
               isVisible?: T;
-              sectionTitle?: T;
               headingBanner?: T;
               titleTop?: T;
               titleCenter?: T;
@@ -859,6 +858,7 @@ export interface VpsHomeSelect<T extends boolean = true> {
           | T
           | {
               isVisible?: T;
+              sectionTitle?: T;
               collaboratorRows?:
                 | T
                 | {
