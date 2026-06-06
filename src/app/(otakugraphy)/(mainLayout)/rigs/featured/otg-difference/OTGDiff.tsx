@@ -1,12 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import OTGFrame from "./otgframe/OTGFrame";
-import TestimonialSlide from "../components/TestimonialSlide";
 import { urlFor } from "@/app/db/sanity";
 import { AnimatePresence } from "motion/react";
 type Props = { otgdiff: any; fl: any; gd: any };
 import { motion } from "motion/react";
 import OTGFrameBlock from "./otgModularFrames/OTGFrameBlock";
+import { TestimonialSlide } from "@/app/components/testimonialSlide/TestimonialSlide";
 export default function OTGDiff({ otgdiff, fl, gd }: Props) {
   const [framesMap, setFramesMap] = useState(new Map<string, any[]>());
   const [activeCat, setActiveCat] = useState(fl[0]?.categoryName ?? "");

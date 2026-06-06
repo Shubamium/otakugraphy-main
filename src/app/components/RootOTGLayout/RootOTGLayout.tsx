@@ -8,7 +8,7 @@ import { CSSProperties } from "react";
 import ReactLenis from "lenis/react";
 import "lenis/dist/lenis.css";
 
-import "@/app/components/RootOTGGlobal.scss";
+import "@/app/components/RootOTGLayout/RootOTGGlobal.scss";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
 import Script from "next/script";

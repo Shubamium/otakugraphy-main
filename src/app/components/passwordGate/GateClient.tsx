@@ -1,5 +1,4 @@
 "use client";
-import { p } from "motion/react-client";
 import React, { useEffect } from "react";
 import UnderConstruction from "../underConstuction/UnderConstruction";
 import { BypassGate } from "@/util/Login";

@@ -1,10 +1,10 @@
 // DEPRECATED
-import { fetchData } from "@/app/(otakugraphy)/otakugraphy/(mainLayout)//db/sanity";
 
 import React, { Suspense } from "react";
 import GateClient from "./GateClient";
 import UnderConstruction from "../underConstuction/UnderConstruction";
 import { redirect } from "next/navigation";
+import { fetchData } from "@/app/db/sanity";
 
 type Props = {
   children: React.ReactNode;
