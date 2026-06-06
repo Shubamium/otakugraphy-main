@@ -2,13 +2,11 @@ import React, { Suspense } from "react";
 
 import "./featured.scss";
 
-import { FaPlay, FaSpinner } from "react-icons/fa6";
+import { FaSpinner } from "react-icons/fa6";
 import FeaturedAction from "./FeaturedAction";
 import { fetchData, urlFor } from "@/app/db/sanity";
-import CreatorCard from "./CreatorCard";
 import CreatorLists from "./CreatorLists";
-import { group } from "console";
-import { groupByYoutubeDate } from "../db/youtube";
+import { groupByYoutubeDate } from "@/app/db/youtube";
 
 type Props = {
   searchParams: Promise<{

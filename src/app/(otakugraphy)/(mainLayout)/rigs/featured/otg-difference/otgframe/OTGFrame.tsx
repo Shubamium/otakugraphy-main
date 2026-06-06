@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 import "./otgFrame.scss";
-import { getMultipleYTViews } from "@/app/(otakugraphy)/otakugraphy/(mainLayout)//db/youtube";
+import { getMultipleYTViews } from "@/app/db/youtube";
 import LiteYoutubeEmbed from "react-lite-youtube-embed";
 import { FaEye } from "react-icons/fa6";
 

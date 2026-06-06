@@ -4,7 +4,7 @@ import CreatorCard from "./CreatorCard";
 import { createPortal } from "react-dom";
 import "./creatorList.scss";
 import { FaXmark } from "react-icons/fa6";
-import { getCachedYoutubeDate, getYoutubeDate } from "../db/youtube";
+import { getCachedYoutubeDate } from "@/app/db/youtube";
 import { AnimatePresence } from "motion/react";
 type Props = { creators: any; view?: string };
 

@@ -6,13 +6,13 @@ import {
   getCachedYTViews,
   getMultipleYTViews,
   getYoutubeViews,
-} from "@/app/(otakugraphy)/otakugraphy/(mainLayout)//db/youtube";
+} from "@/app/db/youtube";
 import LiteYoutubeEmbed from "react-lite-youtube-embed";
 import { FaEye } from "react-icons/fa6";
 
 import { PortableText, PortableTextReactComponents } from "@portabletext/react";
 import { h2 } from "motion/react-client";
-import { urlFor } from "../@/app/db/sanity";
+import { urlFor } from "@/app/db/sanity";
 
 type FrameBlock = {
   type: "image" | "video" | "text" | "videoList" | "title" | "empty";
