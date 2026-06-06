@@ -72,7 +72,7 @@ export default function Header({ navlist }: Props) {
         />
       </svg>
 
-      <Link className="btn logo" href={"/rigtours"}>
+      <Link className="btn logo" href={"/"}>
         <img src="/gfx/logo_only2.png" alt="" />
       </Link>
       <nav id="main-nav">

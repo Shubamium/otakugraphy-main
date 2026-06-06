@@ -4,7 +4,6 @@ import React from "react";
 type Props = {};
 
 export default function page({}: Props) {
-  // return <PasswordGate></PasswordGate>;
   return (
     <GateClient gated_pass="simple">
       <h2>hey</h2>

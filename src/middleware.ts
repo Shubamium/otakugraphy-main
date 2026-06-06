@@ -53,15 +53,16 @@ export async function middleware(req: NextRequest) {
 
   let target = new URL("/otakugraphy" + req.nextUrl.pathname, req.url);
 
-  if (req.nextUrl.pathname === "/") {
-    // Main page
-    target = new URL(req.nextUrl.pathname, req.url);
-  } else if (host?.includes("vps")) {
+  if (host?.includes("vps")) {
     target = new URL("/vps" + req.nextUrl.pathname, req.url);
   } else if (host?.includes("media")) {
     target = new URL("/media" + req.nextUrl.pathname, req.url);
   } else if (host?.includes("rigs")) {
     target = new URL("/rigs" + req.nextUrl.pathname, req.url);
+  } else if (req.nextUrl.pathname === "/") {
+    // Main page
+    target = new URL(req.nextUrl.pathname, req.url);
+    console.log("home");
   }
   console.log(target.href, "page");
   target.search = req.nextUrl.search;
