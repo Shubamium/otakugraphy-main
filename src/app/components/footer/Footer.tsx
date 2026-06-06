@@ -31,12 +31,12 @@ export default async function Footer({}: Props) {
         <div className="l">
           <h2 className="fh">NAVIGATION</h2>
           <nav className="fn">
-            <Link
+            <a
               href={process.env.NEXT_PUBLIC_PAYLOAD_URL ?? "#"}
               className="btn-fn"
             >
               Home
-            </Link>
+            </a>
             {gd?.navlist?.map((item: NavList, index: number) => {
               if (item.is_dropdown) {
                 return item.dr_list.map((dr_item, index) => {

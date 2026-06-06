@@ -72,12 +72,9 @@ export default function Header({ navlist }: Props) {
         />
       </svg>
 
-      <Link
-        className="btn logo"
-        href={process.env.NEXT_PUBLIC_PAYLOAD_URL ?? "#"}
-      >
+      <a className="btn logo" href={process.env.NEXT_PUBLIC_PAYLOAD_URL ?? "#"}>
         <img src="/gfx/logo_only2.png" alt="" />
-      </Link>
+      </a>
       <nav id="main-nav">
         {/* Mobile Menu Render */}
         {isMobile &&
