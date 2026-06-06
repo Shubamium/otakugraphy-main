@@ -62,7 +62,8 @@ export async function middleware(req: NextRequest) {
   } else if (req.nextUrl.pathname === "/") {
     // Main page
     target = new URL(req.nextUrl.pathname, req.url);
-    console.log("home");
+    target.search = req.nextUrl.search;
+    return NextResponse.redirect(target);
   }
   console.log(target.href, "page");
   target.search = req.nextUrl.search;
