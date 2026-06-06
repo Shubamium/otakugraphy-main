@@ -558,7 +558,7 @@ export interface VpsHome {
   collaborators?: {
     collaboratorSection?: {
       isVisible?: boolean | null;
-      sectionTitle?: boolean | null;
+      sectionTitle?: string | null;
       collaboratorRows?:
         | {
             collaborators?:

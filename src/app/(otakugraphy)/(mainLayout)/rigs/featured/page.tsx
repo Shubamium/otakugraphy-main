@@ -1,0 +1,138 @@
+import React, { Suspense } from "react";
+
+import "./featured.scss";
+
+import { FaPlay, FaSpinner } from "react-icons/fa6";
+import FeaturedAction from "./FeaturedAction";
+import { fetchData, urlFor } from "@/app/db/sanity";
+import CreatorCard from "./CreatorCard";
+import CreatorLists from "./CreatorLists";
+import { group } from "console";
+import { groupByYoutubeDate } from "../db/youtube";
+
+type Props = {
+  searchParams: Promise<{
+    q?: string;
+    from?: string;
+    to?: string;
+    cc?: string;
+    a?: string;
+    e?: string;
+    view?: string;
+  }>;
+};
+
+function formateDate(ds?: string) {
+  if (ds) {
+    const split = ds.split("-");
+    return split;
+  }
+  return null;
+}
+
+export default async function page({ searchParams }: Props) {
+  const sp = await searchParams;
+  const nameCondition = sp.q ? `&& name match "${sp.q}*"` : "";
+
+  const fbd = formateDate(sp.from);
+  const tbd = formateDate(sp.to);
+
+  const beforeDate = fbd ? new Date(Number(fbd[0]), Number(fbd[1])) : null;
+  const afterDate = tbd ? new Date(Number(tbd[0]), Number(tbd[1])) : null;
+  const view = sp.view ? sp.view : "default";
+
+  let ordering = " | order(ordering asc)";
+  if (view === "name") {
+    ordering = " | order(name asc)";
+  }
+
+  const dateFromCondition = beforeDate
+    ? `&& date >= "${beforeDate.toISOString()}"`
+    : "";
+  const dateToCondition = afterDate
+    ? `&& date <= "${afterDate.toISOString()}"`
+    : "";
+
+  const colorCondition = sp.cc ? `&& color == "${sp.cc}"` : "";
+  // const eventCondition = sp.e ? `&& event->slug.current == "${sp.e}"` : "";
+  const eventCondition = sp.e
+    ? `&&  "${sp.e}" in events[] -> slug.current`
+    : "";
+
+  const agencyCondition = sp.a ? `&&  agency -> slug.current == "${sp.a}"` : "";
+  const conditions = [
+    nameCondition,
+    dateFromCondition,
+    dateToCondition,
+    colorCondition,
+    eventCondition,
+    agencyCondition,
+  ].join("");
+
+  const creators = await fetchData<any>(`
+			*[_type == 'creator' ${conditions}] ${ordering}{
+			...,
+			'agency': agency->name,
+			'event': event ->name,
+	}
+	`);
+  const eventList = await fetchData<any>(`
+			*[_type == 'creator-event']{
+			...}
+	`);
+
+  const agency = await fetchData<any>(`
+			*[_type == 'creator-agency']{
+			...}
+	`);
+
+  const featured = await fetchData<any>(
+    `*[_type == 'general' && preset == 'main'][0]{
+			fc_t,
+			fc_d
+		}`,
+  );
+
+  let processedCreators = creators;
+  if (view === "date") {
+    processedCreators = await groupByYoutubeDate(creators);
+    console.log("processedCreators");
+  }
+  return (
+    <main id="p_featured">
+      <div className="featured-h">
+        <div className="text">
+          <h2>{featured?.fc_t}</h2>
+          <p>
+            {featured?.fc_d}
+            {/* (placeholder) Our History of Capturing Historical VTubing Events */}
+          </p>
+        </div>
+        <FeaturedAction
+          events={eventList}
+          agencies={agency}
+          paramDefaultValue={{
+            a: sp.a,
+            cc: sp.cc,
+            from: sp.from,
+            q: sp.q,
+            to: sp.to,
+            view: sp.view,
+          }}
+        />
+      </div>
+
+      {/* <CreatorLists creators={creators} view={view} /> */}
+      <Suspense
+        fallback={
+          <div className="fc-loader">
+            <FaSpinner />
+            <p>Loading...</p>
+          </div>
+        }
+      >
+        <CreatorLists creators={processedCreators} view={view} />
+      </Suspense>
+    </main>
+  );
+}

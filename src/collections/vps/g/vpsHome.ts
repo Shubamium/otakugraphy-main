@@ -236,7 +236,7 @@ const CollaboratorSectionFields: Field = {
     },
     {
       name: "sectionTitle",
-      type: "checkbox",
+      type: "text",
     },
     {
       name: "collaboratorRows",
