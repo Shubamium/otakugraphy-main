@@ -1,6 +1,5 @@
+import GateClient from "@/app/components/passwordGate/GateClient";
 import React from "react";
-import PasswordGate from "../components/passwordGate/PasswordGate";
-import GateClient from "../components/passwordGate/GateClient";
 
 type Props = {};
 
