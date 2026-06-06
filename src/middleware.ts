@@ -63,7 +63,7 @@ export async function middleware(req: NextRequest) {
     // Main page
     target = new URL(req.nextUrl.pathname, req.url);
     target.search = req.nextUrl.search;
-    return NextResponse.redirect(target);
+    return NextResponse.rewrite(target);
   }
   console.log(target.href, "page");
   target.search = req.nextUrl.search;

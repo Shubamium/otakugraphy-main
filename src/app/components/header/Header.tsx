@@ -72,7 +72,10 @@ export default function Header({ navlist }: Props) {
         />
       </svg>
 
-      <Link className="btn logo" href={"/"}>
+      <Link
+        className="btn logo"
+        href={process.env.NEXT_PUBLIC_PAYLOAD_URL ?? "#"}
+      >
         <img src="/gfx/logo_only2.png" alt="" />
       </Link>
       <nav id="main-nav">

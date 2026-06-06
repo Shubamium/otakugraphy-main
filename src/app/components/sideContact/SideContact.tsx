@@ -31,7 +31,7 @@ export default function SideContact({}: Props) {
         height: !open ? "50px" : "auto",
       }}
     >
-      <Link href={"/"} className="logo">
+      <Link href={process.env.NEXT_PUBLIC_PAYLOAD_URL ?? "#"} className="logo">
         <img src="/gfx/icon2.png" alt="" />
       </Link>
       <button

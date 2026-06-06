@@ -31,7 +31,10 @@ export default async function Footer({}: Props) {
         <div className="l">
           <h2 className="fh">NAVIGATION</h2>
           <nav className="fn">
-            <Link href={"/"} className="btn-fn">
+            <Link
+              href={process.env.NEXT_PUBLIC_PAYLOAD_URL ?? "#"}
+              className="btn-fn"
+            >
               Home
             </Link>
             {gd?.navlist?.map((item: NavList, index: number) => {
