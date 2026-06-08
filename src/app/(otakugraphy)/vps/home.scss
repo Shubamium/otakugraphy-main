@@ -214,6 +214,12 @@
     }
   }
   #overview {
+    position: relative;
+    top: -150px;
+    user-select: none;
+    pointer-events: none;
+  }
+  #overviews {
     padding-top: 2em;
 
     .content {
@@ -321,8 +327,10 @@
         filter: drop-shadow(0px 0px 4px black);
         max-width: min(1200px, 95%);
         h2 {
-          font-size: 3.5rem;
+          // font-size: 3.5rem;
+          font-size: var(--2xl);
           letter-spacing: 2px;
+          line-height: 80%;
           color: var(--dgold);
           @media screen and (max-width: 1024px) {
             font-size: 2rem;
@@ -331,7 +339,8 @@
         .subtitle {
           color: white;
           margin-top: 0.5em;
-          font-size: 1.2rem;
+          // font-size: 1.2rem;
+          font-size: var(--md);
           @media screen and (max-width: 1024px) {
             font-size: 0.9rem;
           }
@@ -705,7 +714,8 @@
         max-width: 500px;
       }
       .sub {
-        font-size: 1.3rem;
+        // font-size: 1.3rem;
+        font-size: var(--md);
         line-height: 1;
         font-weight: bold;
         @media screen and (max-width: 550px) {
@@ -714,7 +724,8 @@
       }
       h2 {
         line-height: 1;
-        font-size: 3.4rem;
+        // font-size: 3.4rem;
+        font-size: var(--2xl);
         color: var(--dgold);
         @media screen and (max-width: 550px) {
           font-size: 1.5rem;
@@ -805,7 +816,7 @@
             font-weight: bold;
             line-height: 1;
             text-transform: uppercase;
-            font-size: 1.2rem;
+            font-size: var(--md);
             @media screen and (max-width: 1024px) {
               font-size: 1rem;
             }
