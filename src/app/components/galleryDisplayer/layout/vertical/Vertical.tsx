@@ -12,19 +12,17 @@ export default function Vertical({ ml, hasHighlights }: Props) {
   const [cols, setCols] = useState<any[]>([[], [], [], []]);
   const [currColCount, setCurrColCount] = useState(0);
   const isMobile = useMediaQuery({
-    query: "(max-width:550px)",
+    query: "(max-width:1024px)",
   });
 
-  const isDesktop = useMediaQuery({
-    query: "(min-width:1024px)",
-  });
   const isSM = useMediaQuery({
     query: "(max-width:420px)",
   });
-  let colCount = isDesktop && hasHighlights ? 3 : 4;
-  if (!isDesktop) {
-    colCount = 3;
+  let colCount = 4;
+  if (!isMobile) {
+    colCount = 4;
   }
+  if (hasHighlights) colCount = 3;
   if (isMobile) {
     colCount = 3;
   }
@@ -32,11 +30,6 @@ export default function Vertical({ ml, hasHighlights }: Props) {
     colCount = 2;
   }
   useEffect(() => {
-    // let newCols: any[] = [...new Array(colCount).fill([])];
-    // const filling = new Array(colCount).fill(new Array(0));
-    // newCols[i % colCount].push(chop[i]);
-    // console.log("chopping", newCols);
-
     if (colCount !== currColCount) {
       const chop = [...ml];
       let newCols: any[] = [];

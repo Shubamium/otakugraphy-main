@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./galleryDisplayer.scss";
 import Vertical from "./layout/vertical/Vertical";
 import Horizontal from "./layout/horizontal/Horizontal";
@@ -23,7 +23,7 @@ export default function GalleryDisplayer({
   highlights,
 }: any) {
   const [p, setP] = useState(0);
-
+  const [mounted, setMounted] = useState(false);
   // const showHighlights =
   //   highlights && highlights.ht && highlights.thumbnail && highlights.link;
   const showHighlights = highlights && highlights.length > 1;
@@ -60,7 +60,9 @@ export default function GalleryDisplayer({
         return <Vertical ml={linked} hasHighlights={showHighlights} />;
     }
   };
-
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   const next = () => {
     if (pages && pages.length > 0) {
       setP(Math.min(p + 1, pages.length - 1));
@@ -72,96 +74,97 @@ export default function GalleryDisplayer({
     }
   };
   return (
-    <main id="gallery-displayer">
-      <section id="gd-head" className="confine">
-        <div className="l">
-          {/* Title */}
-          <h1 className="h">{title}</h1>
-          <p>{description}</p>
-        </div>
-        <div className="r">
-          {pages && pages.length > 1 && (
-            <div className="p-controls">
-              <svg
-                width="44"
-                height="52"
-                viewBox="0 0 44 52"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="btn btn-page"
-                onClick={prev}
-              >
-                <path
-                  d="M43 50.2487L0.999998 26L43 1.7513L43 50.2487Z"
-                  fill="#D9D9D9"
-                  stroke="#D9D9D9"
-                />
-              </svg>
-              <p>
-                {p + 1}/{pages ? pages.length : 0}
-              </p>
-              <svg
-                width="44"
-                height="52"
-                viewBox="0 0 44 52"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="btn btn-page r"
-                onClick={next}
-              >
-                <path
-                  d="M43 50.2487L0.999998 26L43 1.7513L43 50.2487Z"
-                  fill="#D9D9D9"
-                  stroke="#D9D9D9"
-                />
-              </svg>
-            </div>
-          )}
-          {side_images && side_images.length > 0 && (
-            <div className="side-images">
-              {side_images.map((img: any, i: number) => (
-                <img
-                  src={urlFor(img).auto("format")?.url() ?? "/"}
-                  alt=""
-                  key={i}
-                />
-              ))}
-            </div>
-          )}
-          {/* <img src="/gfx/slogan.png" alt="" className="slogan" /> */}
-        </div>
-      </section>
-
-      <section id="gallery">
-        {pages && pages.length > 0 && renderPage(pages[p])}
-        {showHighlights && (
-          <div className="highlights">
-            <div className="panel ">
-              <h2>
-                HIGHLIGHTS <BsFillStarFill />
-              </h2>
-              <div className="hlist">
-                {showHighlights &&
-                  highlights.map((h: any, i: number) => {
-                    return (
-                      <div className="hpanel" key={"hpanel" + h._key + i}>
-                        <iframe
-                          src={`https://www.youtube.com/embed/${h.link}?autoplay=0`}
-                          title="YouTube video player"
-                          className="iframe"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                          referrerPolicy="strict-origin-when-cross-origin"
-                          allowFullScreen
-                          loading="lazy"
-                        ></iframe>
-                        <p>
-                          <span className="title">{h.ht}</span>
-                        </p>
-                      </div>
-                    );
-                  })}
+    mounted && (
+      <main id="gallery-displayer">
+        <section id="gd-head" className="confine">
+          <div className="l">
+            {/* Title */}
+            <h1 className="h">{title}</h1>
+            <p>{description}</p>
+          </div>
+          <div className="r">
+            {pages && pages.length > 1 && (
+              <div className="p-controls">
+                <svg
+                  width="44"
+                  height="52"
+                  viewBox="0 0 44 52"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="btn btn-page"
+                  onClick={prev}
+                >
+                  <path
+                    d="M43 50.2487L0.999998 26L43 1.7513L43 50.2487Z"
+                    fill="#D9D9D9"
+                    stroke="#D9D9D9"
+                  />
+                </svg>
+                <p>
+                  {p + 1}/{pages ? pages.length : 0}
+                </p>
+                <svg
+                  width="44"
+                  height="52"
+                  viewBox="0 0 44 52"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="btn btn-page r"
+                  onClick={next}
+                >
+                  <path
+                    d="M43 50.2487L0.999998 26L43 1.7513L43 50.2487Z"
+                    fill="#D9D9D9"
+                    stroke="#D9D9D9"
+                  />
+                </svg>
               </div>
-              {/* <Link
+            )}
+            {side_images && side_images.length > 0 && (
+              <div className="side-images">
+                {side_images.map((img: any, i: number) => (
+                  <img
+                    src={urlFor(img).auto("format")?.url() ?? "/"}
+                    alt=""
+                    key={i}
+                  />
+                ))}
+              </div>
+            )}
+            {/* <img src="/gfx/slogan.png" alt="" className="slogan" /> */}
+          </div>
+        </section>
+
+        <section id="gallery">
+          {pages && pages.length > 0 && renderPage(pages[p])}
+          {showHighlights && (
+            <div className="highlights">
+              <div className="panel ">
+                <h2>
+                  HIGHLIGHTS <BsFillStarFill />
+                </h2>
+                <div className="hlist">
+                  {showHighlights &&
+                    highlights.map((h: any, i: number) => {
+                      return (
+                        <div className="hpanel" key={"hpanel" + h._key + i}>
+                          <iframe
+                            src={`https://www.youtube.com/embed/${h.link}?autoplay=0`}
+                            title="YouTube video player"
+                            className="iframe"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerPolicy="strict-origin-when-cross-origin"
+                            allowFullScreen
+                            loading="lazy"
+                          ></iframe>
+                          <p>
+                            <span className="title">{h.ht}</span>
+                          </p>
+                        </div>
+                      );
+                    })}
+                </div>
+                {/* <Link
                   href={highlights.link}
                   target="_blank"
                   className="link btn"
@@ -181,10 +184,11 @@ export default function GalleryDisplayer({
                   </div>
                   <span className="title">{highlights.ht}</span>
                 </Link> */}
+              </div>
             </div>
-          </div>
-        )}
-      </section>
-    </main>
+          )}
+        </section>
+      </main>
+    )
   );
 }
