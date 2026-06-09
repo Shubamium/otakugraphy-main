@@ -103,7 +103,7 @@
         opacity: 1;
       }
     }
-    span {
+    a {
       display: block;
     }
     .btn-nav {
@@ -142,8 +142,29 @@
       @media screen and (max-width: 550px) {
         font-size: 5vw;
       }
-
+      a {
+        color: inherit;
+      }
       &:not(.btn-popup) {
+        position: relative;
+
+        &:hover,
+        &.active {
+          opacity: 1;
+          scale: 1.02;
+          // filter: brightness(100%) drop-shadow(0px 0px 5px var(--dgold));
+        }
+        &:active {
+          opacity: 1;
+          scale: 0.9;
+        }
+
+        &:hover {
+          filter: brightness(100%) drop-shadow(0px 0px 5px var(--dgold));
+        }
+      }
+      &:not(.btn-popup),
+      &.btn-popup a {
         position: relative;
 
         &:hover,
@@ -165,8 +186,9 @@
         position: relative;
         opacity: 1;
         transform-origin: center;
-        span {
+        a {
           opacity: 0.6;
+          transition: all 500ms ease;
         }
         scale: 1;
         &:hover {

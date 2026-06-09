@@ -80,13 +80,22 @@ export default function Header({ navlist }: Props) {
         {isMobile &&
           navlist.map((item, index) => {
             if (item.is_dropdown) {
-              return item.dr_list.map((dr_item, index) => {
-                return (
-                  <Link href={dr_item.rl} key={index} className="btn btn-nav">
-                    {dr_item.name}
-                  </Link>
-                );
-              });
+              return [
+                <Link href={item.rl ?? "#"} key={"mainnav-" + index}>
+                  {item.name}
+                </Link>,
+                item.dr_list.map((dr_item, index) => {
+                  return (
+                    <Link
+                      href={dr_item.rl}
+                      key={"mainnav-" + index}
+                      className="btn btn-nav"
+                    >
+                      {dr_item.name}
+                    </Link>
+                  );
+                }),
+              ];
             }
             return (
               <Link href={item.rl} key={index} className="btn btn-nav">
@@ -104,7 +113,7 @@ export default function Header({ navlist }: Props) {
                   className="btn btn-nav btn-popup"
                   key={"dropdown-btn" + item.name}
                 >
-                  <span>{item.name}</span>
+                  <Link href={item.rl ?? "#"}>{item.name}</Link>
                   <div className="popups">
                     {load &&
                       item.dr_list?.map((dr_item, index) => {
