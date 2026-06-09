@@ -43,7 +43,7 @@ export default function OurWorkSection({
         <h2 className="center">{ow?.titleCenter}</h2>
         <h2 className="end">{ow?.titleBottom}</h2>
       </div>
-      <div className="works ">
+      <div id="our-work" className="works ">
         <div className="work-part">
           <div className="works-head confine">
             <hr />
