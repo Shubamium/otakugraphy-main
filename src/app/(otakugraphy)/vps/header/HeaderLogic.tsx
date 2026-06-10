@@ -39,17 +39,47 @@ export default function HeaderLogic({ hd }: Props) {
             className="side"
             key={drawer ? "view" : "closed"}
           >
-            {hd?.navigation?.map((n) => {
-              return (
-                <Link
-                  href={n.routeLink ?? "#"}
-                  key={n.id}
-                  className="btn btn-nav"
-                >
-                  {n.name}
-                </Link>
-              );
-            })}
+            {isDesktop &&
+              hd?.navigation?.map((n) => {
+                return (
+                  <div key={n.id} className="btn btn-nav">
+                    <Link href={n.routeLink ?? "#"}>{n.name}</Link>
+                    {n.isDropdown && (
+                      <div className="pop-up">
+                        {n.dropdownList?.map((d) => {
+                          return (
+                            <Link key={d.id} href={d.routeLink ?? "#"}>
+                              {d.name}
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            {!isDesktop &&
+              hd?.navigation?.map((n) => {
+                return (
+                  <React.Fragment key={"navigation" + n.id}>
+                    <div key={n.id} className="btn btn-nav">
+                      <Link href={n.routeLink ?? "#"}>{n.name}</Link>
+                    </div>
+                    {n.isDropdown &&
+                      n.dropdownList?.map((d) => {
+                        return (
+                          <Link
+                            key={d.id}
+                            className="btn btn-nav dr"
+                            href={d.routeLink ?? "#"}
+                          >
+                            {d.name}
+                          </Link>
+                        );
+                      })}
+                  </React.Fragment>
+                );
+              })}
           </motion.div>
         )}
       </AnimatePresence>

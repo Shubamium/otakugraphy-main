@@ -28,6 +28,27 @@ const vpsGeneral: GlobalConfig = {
                   name: "routeLink",
                   type: "text",
                 },
+                {
+                  name: "isDropdown",
+                  type: "checkbox",
+                },
+                {
+                  name: "dropdownList",
+                  type: "array",
+                  admin: {
+                    condition: (data, _sibling) => _sibling.isDropdown,
+                  },
+                  fields: [
+                    {
+                      name: "name",
+                      type: "text",
+                    },
+                    {
+                      name: "routeLink",
+                      type: "text",
+                    },
+                  ],
+                },
               ],
             },
           ],

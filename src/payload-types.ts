@@ -425,6 +425,14 @@ export interface VpsGeneral {
       | {
           name?: string | null;
           routeLink?: string | null;
+          isDropdown?: boolean | null;
+          dropdownList?:
+            | {
+                name?: string | null;
+                routeLink?: string | null;
+                id?: string | null;
+              }[]
+            | null;
           id?: string | null;
         }[]
       | null;
@@ -698,6 +706,14 @@ export interface VpsGeneralSelect<T extends boolean = true> {
           | {
               name?: T;
               routeLink?: T;
+              isDropdown?: T;
+              dropdownList?:
+                | T
+                | {
+                    name?: T;
+                    routeLink?: T;
+                    id?: T;
+                  };
               id?: T;
             };
       };
