@@ -4,9 +4,7 @@ import UnderConstruction from "../underConstuction/UnderConstruction";
 import { BypassGate } from "@/util/Login";
 import { useRouter } from "next/navigation";
 
-type Props = { gated_pass: string; children: React.ReactNode };
-
-export default function GateClient({ gated_pass, children }: Props) {
+export default function GateClient() {
   // const [pass, setPass] = React.useState("");
   // const [unlocked, setUnlocked] = React.useState(false);
   const navigation = useRouter();
