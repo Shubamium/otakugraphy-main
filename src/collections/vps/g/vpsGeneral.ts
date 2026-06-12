@@ -76,6 +76,63 @@ const vpsGeneral: GlobalConfig = {
             },
           ],
         },
+        {
+          name: "sectionOrder",
+          admin: {},
+          unique: true,
+          fields: [
+            {
+              name: "ordering",
+              admin: {
+                description: "Top to Bottom -> Left To Right",
+              },
+              type: "select",
+              hasMany: true,
+              options: [
+                {
+                  label: "Hero",
+                  value: "hero",
+                },
+                {
+                  label: "Pro Shot",
+                  value: "proShot",
+                },
+                {
+                  label: "Showcase",
+                  value: "showcase",
+                },
+                {
+                  label: "Our Work",
+                  value: "ourwork",
+                },
+                {
+                  label: "Collaborator",
+                  value: "collaborator",
+                },
+                {
+                  label: "About/Overview",
+                  value: "about",
+                },
+                {
+                  label: "Founding Ambassador",
+                  value: "foundingAmbassador",
+                },
+                {
+                  label: "Bottom Navigation / External Links",
+                  value: "bottomNavigation",
+                },
+                {
+                  label: "Our Journey / Timeline",
+                  value: "ourJourney",
+                },
+                {
+                  label: "Team",
+                  value: "team",
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
   ],

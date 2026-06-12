@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, JSX } from "react";
 
 type Props = {};
 
@@ -14,6 +14,8 @@ import { SerializedEditorState } from "lexical";
 import TimelineSection from "./vps/timeline/TimelineSection";
 import { Any } from "next-sanity";
 import { FaXTwitter } from "react-icons/fa6";
+import FoundingAmbassador from "./foundingAmbassador/FoundingAmbassador";
+import Collaborator from "./vps/collaborator/Collaborator";
 
 export default async function page({}: Props) {
   const p = await getPayload({
@@ -23,133 +25,135 @@ export default async function page({}: Props) {
   const vpsd = await p.findGlobal({
     slug: "vpsHome",
   });
+  const vpsg = await p.findGlobal({
+    slug: "vpsGeneral",
+  });
   //
-  return (
-    <main id="p_vps">
-      <section
-        id="main_hero"
-        style={
-          {
-            "--bg": `url(${(vpsd.Hero?.heroSection?.background as Media)?.sizes?.medium?.url})`,
-          } as CSSProperties
-        }
-      >
-        <article>
-          <div className="subtitle">
-            <p className="sub">{vpsd.Hero?.heroSection?.subtitle}</p>
-            <hr />
-          </div>
-          <h2>{vpsd.Hero?.heroSection?.title}</h2>
-          {vpsd.Hero?.heroSection?.callToAction && (
-            <Link
-              href={vpsd.Hero?.heroSection?.callToActionLink ?? "#"}
-              className="btn btn-cta"
-            >
-              {vpsd.Hero?.heroSection?.callToAction}
-            </Link>
-          )}
-        </article>
-      </section>
 
-      <div className="confine">
-        <section id="pro_shot">
-          <div className="title">
-            <p>{vpsd.ProShot?.proSection?.title}</p>
-            <hr />
-          </div>
-          <PayloadMedia media={vpsd.ProShot?.proSection?.media as any} />
-        </section>
-        <div id="overview"></div>
-        <section id="overviews">
-          <div className="title">
-            <p>{vpsd.About?.aboutSection?.title}</p>
-            <hr />
-          </div>
-
-          <div className="content">
-            <div className="l">
-              <PayloadMedia media={vpsd.About?.aboutSection?.media as any} />
-            </div>
-            <div className="r">
-              <RichText data={vpsd.About?.aboutSection?.description as any} />
-            </div>
-          </div>
-        </section>
-
-        <section id="showcase">
-          {vpsd.Gallery?.gallerySection?.mediaList?.map((m) => {
-            return <PayloadMedia media={m as any} key={m.id} />;
-          })}
-        </section>
+  const HeroSection = () => (
+    <section
+      id="main_hero"
+      style={
+        {
+          "--bg": `url(${(vpsd.Hero?.heroSection?.background as Media)?.sizes?.medium?.url})`,
+        } as CSSProperties
+      }
+    >
+      <article>
+        <div className="subtitle">
+          <p className="sub">{vpsd.Hero?.heroSection?.subtitle}</p>
+          <hr />
+        </div>
+        <h2>{vpsd.Hero?.heroSection?.title}</h2>
+        {vpsd.Hero?.heroSection?.callToAction && (
+          <Link
+            href={vpsd.Hero?.heroSection?.callToActionLink ?? "#"}
+            className="btn btn-cta"
+          >
+            {vpsd.Hero?.heroSection?.callToAction}
+          </Link>
+        )}
+      </article>
+    </section>
+  );
+  const ProShotSection = () => (
+    <section id="pro_shot" className="confine">
+      <div className="title">
+        <p>{vpsd.ProShot?.proSection?.title}</p>
+        <hr />
       </div>
+      <PayloadMedia media={vpsd.ProShot?.proSection?.media as any} />
+    </section>
+  );
+  const OverviewSection = () => (
+    <>
+      <div id="overview"></div>
+      <section id="overviews" className="confine">
+        <div className="title">
+          <p>{vpsd.About?.aboutSection?.title}</p>
+          <hr />
+        </div>
 
-      <TimelineSection
-        data={vpsd["Our Journey"]?.ourjourney?.timeline as Any[]}
-        heading={vpsd["Our Journey"]?.ourjourney?.heading ?? "OUR JOURNEY"}
-      />
-      <section id="external-link">
-        {vpsd["Bottom Navigation"]?.bottomNavSection?.navigationList?.map(
-          (n) => {
-            return (
-              <div
-                className="external"
-                key={n.id}
-                style={
-                  {
-                    "--bg": `url(${(n.background as Media)?.sizes?.medium?.url ?? "undefined.jpg"})`,
-                  } as CSSProperties
-                }
-              >
-                <div className="confine">
-                  <div className="l">
-                    <h2>
-                      <Link href={n.routeLink ?? "#"}>{n.title}</Link>
-                    </h2>
-                    <p className="subtitle">{n.subtitle}</p>
-                    <div className="tags">
-                      {n.tags?.map((t, i) => {
-                        return (
-                          <p className="t btn" key={t + i}>
-                            {t}
-                          </p>
-                        );
-                      })}
-                    </div>
-                  </div>
-                  <div className="r">
-                    <Link href={n.routeLink ?? "#"} className="btn btn-arr">
-                      <img src="/gfx/longarr.svg" alt="" />
-                    </Link>
-                  </div>
+        <div className="content">
+          <div className="l">
+            <PayloadMedia media={vpsd.About?.aboutSection?.media as any} />
+          </div>
+          <div className="r">
+            <RichText data={vpsd.About?.aboutSection?.description as any} />
+          </div>
+        </div>
+      </section>
+    </>
+  );
+  const ShowcaseSection = () => (
+    <section id="showcase" className="confine">
+      {vpsd.Gallery?.gallerySection?.mediaList?.map((m) => {
+        return <PayloadMedia media={m as any} key={m.id} />;
+      })}
+    </section>
+  );
+  const TimelinSection = () => (
+    <TimelineSection
+      data={vpsd["Our Journey"]?.ourjourney?.timeline as Any[]}
+      heading={vpsd["Our Journey"]?.ourjourney?.heading ?? "OUR JOURNEY"}
+    />
+  );
+  const BottomNavigation = () => (
+    <section id="external-link">
+      {vpsd["Bottom Navigation"]?.bottomNavSection?.navigationList?.map((n) => {
+        return (
+          <div
+            className="external"
+            key={n.id}
+            style={
+              {
+                "--bg": `url(${(n.background as Media)?.sizes?.medium?.url ?? "undefined.jpg"})`,
+              } as CSSProperties
+            }
+          >
+            <div className="confine">
+              <div className="l">
+                <h2>
+                  <Link href={n.routeLink ?? "#"}>{n.title}</Link>
+                </h2>
+                <p className="subtitle">{n.subtitle}</p>
+                <div className="tags">
+                  {n.tags?.map((t, i) => {
+                    return (
+                      <p className="t btn" key={t + i}>
+                        {t}
+                      </p>
+                    );
+                  })}
                 </div>
               </div>
-            );
-          },
-        )}
-        {/* <div className="external">
-          <div className="confine">
-            <div className="l">
-              <h2>TITLE HERE</h2>
-              <p className="subtitle">Subtitle here</p>
-              <div className="tags">
-                <p className="t">TAG HERE</p>
-                <p className="t">TAG HERE</p>
-                <p className="t">TAG HERE</p>
+              <div className="r">
+                <Link href={n.routeLink ?? "#"} className="btn btn-arr">
+                  <img src="/gfx/longarr.svg" alt="" />
+                </Link>
               </div>
             </div>
-            <div className="r">
-              <Link href={"#"} className="btn btn-arr">
-                <img src="/gfx/longarr.svg" alt="" />
-              </Link>
-            </div>
           </div>
-        </div> */}
-      </section>
-      <OurWorkSection
-        ourworkvps={vpsd["Our Work"]}
-        founding={vpsd.foundingAmbassador}
-        collaborators={vpsd.collaborators}
-      />
+        );
+      })}
+    </section>
+  );
+  const FeaturedSection = () => {
+    const founding = vpsd.foundingAmbassador;
+    return (
+      <>
+        {founding?.foundingAmbassador?.isVisible && (
+          <FoundingAmbassador founding={founding} />
+        )}
+      </>
+    );
+  };
+  const CollaboratorSection = () => {
+    const show = vpsd.collaborators?.collaboratorSection?.isVisible;
+    return show && <Collaborator collaborators={vpsd.collaborators} />;
+  };
+  const TeamSection = () => {
+    return (
       <section id="meet-the-team">
         <div className="heading">
           <p className="sub">{vpsd["Team"]?.team?.subtitle}</p>
@@ -216,6 +220,28 @@ export default async function page({}: Props) {
           </div> */}
         </div>
       </section>
+    );
+  };
+  const OurWork = () => {
+    return <OurWorkSection ourworkvps={vpsd["Our Work"]} />;
+  };
+  const sections: Record<string, JSX.Element> = {
+    hero: <HeroSection />,
+    proShot: <ProShotSection />,
+    ourwork: <OurWork />,
+    showcase: <ShowcaseSection />,
+    collaborator: <CollaboratorSection />,
+    about: <OverviewSection />,
+    foundingAmbassador: <FeaturedSection />,
+    bottomNavigation: <BottomNavigation />,
+    ourJourney: <TimelinSection />,
+    team: <TeamSection />,
+  };
+  return (
+    <main id="p_vps">
+      {vpsg.sectionOrder?.ordering?.map((s: string) => (
+        <React.Fragment key={s}>{sections[s]}</React.Fragment>
+      ))}
     </main>
   );
 }

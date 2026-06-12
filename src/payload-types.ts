@@ -444,6 +444,25 @@ export interface VpsGeneral {
       link?: string | null;
     };
   };
+  sectionOrder?: {
+    /**
+     * Top to Bottom -> Left To Right
+     */
+    ordering?:
+      | (
+          | 'hero'
+          | 'proShot'
+          | 'showcase'
+          | 'ourwork'
+          | 'collaborator'
+          | 'about'
+          | 'foundingAmbassador'
+          | 'bottomNavigation'
+          | 'ourJourney'
+          | 'team'
+        )[]
+      | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -727,6 +746,11 @@ export interface VpsGeneralSelect<T extends boolean = true> {
               text?: T;
               link?: T;
             };
+      };
+  sectionOrder?:
+    | T
+    | {
+        ordering?: T;
       };
   updatedAt?: T;
   createdAt?: T;
