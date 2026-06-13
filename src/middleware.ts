@@ -22,11 +22,8 @@ function redirectToUnavailable() {
   if (!base) {
     throw new Error("MIDDLEWARE_SITE_URL is not set / doesn't exist");
   }
-  const target = new URL(
-    "/otakugraphy/unavailable",
-    process.env.MIDDLEWARE_SITE_URL,
-  );
-  console.log(base);
+  const target = new URL("/unavailable", process.env.MIDDLEWARE_SITE_URL);
+  console.log(target.href);
   return NextResponse.rewrite(target);
 }
 export async function middleware(req: NextRequest) {
