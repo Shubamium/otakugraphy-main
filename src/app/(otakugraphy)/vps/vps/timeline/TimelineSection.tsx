@@ -1,10 +1,12 @@
 "use client";
+import { RichText } from "@payloadcms/richtext-lexical/react";
 import React, { useEffect, useState } from "react";
 
 type TimelineType = {
   date: string;
   title: string;
   description: string;
+  richTextDescription?: any;
 };
 type Props = {
   data: TimelineType[];
@@ -58,7 +60,7 @@ export default function TimelineSection({
 
   return (
     mounted && (
-      <section id="timeline">
+      <section id="timeline" className="scrolloffset">
         <div className="heading">
           <hr />
           <h2>{heading}</h2>
@@ -72,6 +74,12 @@ export default function TimelineSection({
                 <p className="date">{item.date}</p>
                 <h3 className="title">{item.title}</h3>
                 <p className="description">{item.description}</p>
+                {item.richTextDescription && (
+                  <RichText
+                    className="description rt"
+                    data={item.richTextDescription}
+                  />
+                )}
               </div>
             );
             return (

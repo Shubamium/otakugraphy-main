@@ -35,6 +35,15 @@ body {
   --sm: 1rem;
   // --xs: 0.5rem;
 }
+.scrolloffset {
+  scroll-margin-top: 10vh;
+}
+
+.rt {
+  ul {
+    margin-left: 1em;
+  }
+}
 main {
   min-height: 100vh;
   position: relative;

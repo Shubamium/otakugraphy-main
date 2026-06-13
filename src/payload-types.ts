@@ -607,6 +607,21 @@ export interface VpsHome {
             title?: string | null;
             date?: string | null;
             description?: string | null;
+            richTextDescription?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             id?: string | null;
           }[]
         | null;
@@ -925,6 +940,7 @@ export interface VpsHomeSelect<T extends boolean = true> {
                     title?: T;
                     date?: T;
                     description?: T;
+                    richTextDescription?: T;
                     id?: T;
                   };
             };

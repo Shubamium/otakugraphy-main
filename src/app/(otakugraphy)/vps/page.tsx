@@ -57,7 +57,7 @@ export default async function page({}: Props) {
     </section>
   );
   const ProShotSection = () => (
-    <section id="pro_shot" className="confine">
+    <section id="pro_shot" className="confine scrolloffset">
       <div className="title">
         <p>{vpsd.ProShot?.proSection?.title}</p>
         <hr />
@@ -67,8 +67,7 @@ export default async function page({}: Props) {
   );
   const OverviewSection = () => (
     <>
-      <div id="overview"></div>
-      <section id="overviews" className="confine">
+      <section id="overviews" className="confine scrolloffset">
         <div className="title">
           <p>{vpsd.About?.aboutSection?.title}</p>
           <hr />
@@ -86,7 +85,7 @@ export default async function page({}: Props) {
     </>
   );
   const ShowcaseSection = () => (
-    <section id="showcase" className="confine">
+    <section id="showcase" className="confine scrolloffset">
       {vpsd.Gallery?.gallerySection?.mediaList?.map((m) => {
         return <PayloadMedia media={m as any} key={m.id} />;
       })}
@@ -99,7 +98,7 @@ export default async function page({}: Props) {
     />
   );
   const BottomNavigation = () => (
-    <section id="external-link">
+    <section id="external-link" className="scrolloffset">
       {vpsd["Bottom Navigation"]?.bottomNavSection?.navigationList?.map((n) => {
         return (
           <div
@@ -154,7 +153,7 @@ export default async function page({}: Props) {
   };
   const TeamSection = () => {
     return (
-      <section id="meet-the-team">
+      <section id="meet-the-team" className="scrolloffset">
         <div className="heading">
           <p className="sub">{vpsd["Team"]?.team?.subtitle}</p>
           <div className="name">

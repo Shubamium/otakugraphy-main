@@ -8,7 +8,7 @@ type Props = {
 
 export default function Collaborator({ collaborators }: Props) {
   return (
-    <div id="collaborators">
+    <div id="collaborators" className="scrolloffset">
       <h3>{collaborators?.collaboratorSection?.sectionTitle}</h3>
       {collaborators?.collaboratorSection?.collaboratorRows?.map((c, i) => {
         return (

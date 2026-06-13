@@ -334,6 +334,10 @@ const OurJourneySectionFields: Field = {
           name: "description",
           type: "textarea",
         },
+        {
+          name: "richTextDescription",
+          type: "richText",
+        },
       ],
     },
   ],

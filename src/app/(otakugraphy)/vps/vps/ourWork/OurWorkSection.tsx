@@ -84,7 +84,7 @@ export default function OurWorkSection({ ourworkvps }: Props) {
   );
 
   return (
-    <section id="our-work">
+    <section id="our-work" className="scrolloffset">
       {ow?.isVisible && works}
       {/* {founding?.foundingAmbassador?.isVisible && (
         <FeaturedCreators founding={founding} />

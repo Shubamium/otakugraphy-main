@@ -62,7 +62,7 @@ export default function FoundingAmbassador({
   }
 
   return (
-    <div id="featured-creator">
+    <div id="featured-creator" className="scrolloffset">
       <button className="btn btn-name left" onClick={handlePrev}>
         <GoTriangleLeft />{" "}
       </button>
