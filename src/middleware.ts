@@ -16,18 +16,17 @@ function breakdownHostCheck(host: string, checker: string) {
   }
 }
 
-const base = process.env.NEXT_PUBLIC_PAYLOAD_URL;
-
-if (!base) {
-  throw new Error("NEXT_PUBLIC_PAYLOAD_URL is not set / doesn't exist");
-}
-
 function redirectToUnavailable() {
+  const base = process.env.NEXT_PUBLIC_PAYLOAD_URL;
+
+  if (!base) {
+    throw new Error("NEXT_PUBLIC_PAYLOAD_URL is not set / doesn't exist");
+  }
   const target = new URL(
     "/otakugraphy/unavailable",
     process.env.NEXT_PUBLIC_PAYLOAD_URL,
   );
-  console.log(target.href);
+  console.log(base);
   return NextResponse.rewrite(target);
 }
 export async function middleware(req: NextRequest) {
@@ -51,7 +50,7 @@ export async function middleware(req: NextRequest) {
     );
 
     if (matchURL) {
-      redirectToUnavailable();
+      return redirectToUnavailable();
     }
   }
 
