@@ -24,6 +24,9 @@ export default function SideContact({}: Props) {
   });
   const [open, setOpen] = useState(!isSmoll);
 
+  if (!process.env.NEXT_PUBLIC_PAYLOAD_URL) {
+    throw new Error("NEXT_PUBLIC_PAYLOAD_URL is not set / doesn't exist");
+  }
   return (
     <aside
       id="sidec"
