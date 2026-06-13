@@ -16,6 +16,20 @@ function breakdownHostCheck(host: string, checker: string) {
   }
 }
 
+const base = process.env.NEXT_PUBLIC_PAYLOAD_URL;
+
+if (!base) {
+  throw new Error("NEXT_PUBLIC_PAYLOAD_URL is not set / doesn't exist");
+}
+
+function redirectToUnavailable() {
+  const target = new URL(
+    "/otakugraphy/unavailable",
+    process.env.NEXT_PUBLIC_PAYLOAD_URL,
+  );
+  console.log(target.href);
+  return NextResponse.rewrite(target);
+}
 export async function middleware(req: NextRequest) {
   // Authentication
   let cookie = await cookies();
@@ -37,12 +51,7 @@ export async function middleware(req: NextRequest) {
     );
 
     if (matchURL) {
-      const target = new URL(
-        "/otakugraphy/unavailable",
-        process.env.NEXT_PUBLIC_PAYLOAD_URL,
-      );
-      console.log(target.href);
-      return NextResponse.rewrite(target);
+      redirectToUnavailable();
     }
   }
 
