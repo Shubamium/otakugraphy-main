@@ -10,9 +10,7 @@ export default function MountHashScroll({}: Props) {
     if (!hash) return;
 
     const el = document.querySelector(hash);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    setTimeout(() => el?.scrollIntoView({ behavior: "smooth" }), 10);
   }, []);
 
   return <></>;
