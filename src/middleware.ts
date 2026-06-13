@@ -17,14 +17,14 @@ function breakdownHostCheck(host: string, checker: string) {
 }
 
 function redirectToUnavailable() {
-  const base = process.env.NEXT_PUBLIC_PAYLOAD_URL;
+  const base = process.env.MIDDLEWARE_SITE_URL;
 
   if (!base) {
-    throw new Error("NEXT_PUBLIC_PAYLOAD_URL is not set / doesn't exist");
+    throw new Error("MIDDLEWARE_SITE_URL is not set / doesn't exist");
   }
   const target = new URL(
     "/otakugraphy/unavailable",
-    process.env.NEXT_PUBLIC_PAYLOAD_URL,
+    process.env.MIDDLEWARE_SITE_URL,
   );
   console.log(base);
   return NextResponse.rewrite(target);
