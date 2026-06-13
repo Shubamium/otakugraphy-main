@@ -16,6 +16,7 @@ import { Any } from "next-sanity";
 import { FaXTwitter } from "react-icons/fa6";
 import FoundingAmbassador from "./foundingAmbassador/FoundingAmbassador";
 import Collaborator from "./vps/collaborator/Collaborator";
+import MountHashScroll from "@/app/components/mountHashScroll/MountHashScroll";
 
 export default async function page({}: Props) {
   const p = await getPayload({
@@ -238,6 +239,7 @@ export default async function page({}: Props) {
   };
   return (
     <main id="p_vps">
+      <MountHashScroll />
       {vpsg.sectionOrder?.ordering?.map((s: string) => (
         <React.Fragment key={s}>{sections[s]}</React.Fragment>
       ))}
